@@ -6,19 +6,16 @@
 package org.khmeracademy.btb.auction.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ *
+ * @author User
+ */
 @Controller
-public class User_controller {
-    
-    @RequestMapping("/login")
-    public String index(){
-        return "login";
-    }
-    
-    @RequestMapping("/bid")
-    public String bid(){
-        return "bid";
+public class Login_controller {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password)
+    {
+        return "me";
     }
 }
