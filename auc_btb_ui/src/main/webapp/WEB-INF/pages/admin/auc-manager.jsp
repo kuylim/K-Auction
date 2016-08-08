@@ -39,6 +39,8 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
+<!--    moment-->
+  <script data-require="moment.js@*" data-semver="2.1.0" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
   </head>
 
   <body class="nav-md">
@@ -195,8 +197,8 @@
                             <td class=" ">{{auc.lastname}} </td>
                             <td class=" ">{{auc.name}} </td>
                             <td class=" ">{{auc.product_condition}} </td>
-                            <td class=" ">{{auc.start_date}} </td>
-                            <td class=" ">{{auc.end_date}} </td>
+                            <td class=" " >{{auc.start_date |  date:'yyyy-MM-dd'}} </td>
+                            <td class=" ">{{auc.end_date  |  date:'yyyy-MM-dd'}} </td>
                             <td class=" ">{{auc.start_price}}$ </td>
                             
                             <td class=" ">{{auc.buy_price}}$ </td>
@@ -402,6 +404,13 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
      angular app -->
     <script>
+        function fullDate() {
+                
+                var date = new Date(milis);
+                var dateToStr = date.toUTCString().split(' ');
+                var cleanDate =dateToStr[3] + ' ' + dateToStr[2]+ ' ' + dateToStr[1];
+               
+        }
       $(document).ready(function() {
         var handleDataTableButtons = function() {
           if ($("#datatable-buttons").length) {

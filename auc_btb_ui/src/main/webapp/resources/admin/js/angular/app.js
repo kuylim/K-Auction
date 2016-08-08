@@ -5,7 +5,7 @@
  */
 
 
-var app = angular.module('AuctionApp', []);
+
 //app.controller('AppController', function($scope, $http){
 ///************************************************** LOADING SCOPE **********************************************************/
 //         $scope.getAuction = function(){
@@ -33,14 +33,37 @@ var app = angular.module('AuctionApp', []);
 //    
 //        $scope.getAuction();
 //});
+var app = angular.module('AuctionApp', []);
 /************************************************** AUCTION CONTROLLER**********************************************************/
 app.controller('AuctionController', function($scope, $http){
+    // FORMAT DATE
+
          $scope.getAuction = function(){
                     $http({
                                 url:'http://localhost:9999/api/auction/get',
                                 method:'GET'
                     }).then(function(response){
-                                $scope.auctions = response.data.DATA;
+
+                    $scope.auctions = response.data.DATA;
+                                console.log(response.data.DATA);
+                    });
+         };
+         
+         $scope.getProduct = function(){
+                    $http({
+                                url:'http://localhost:9999/api/product/get',
+                                method:'GET'
+                    }).then(function(response){
+                                $scope.products = response.data.DATA;
+                                console.log(response.data.DATA);
+                    });
+         };
+         $scope.getOwner = function(){
+                    $http({
+                                url:'http://localhost:9999/api/product-owner/get',
+                                method:'GET'
+                    }).then(function(response){
+                                $scope.owners = response.data.DATA;
                                 console.log(response.data.DATA);
                     });
          };
@@ -65,8 +88,9 @@ app.controller('AuctionController', function($scope, $http){
                                     'usr_id': $scope.usrid     
                            }            
                  }).then(function(response){
-                                    $scope.getAuction();
-                                    console.log(response.data.MESSAGE);
+                            alert("Message : "+response.data.MESSAGE);
+                                   // $scope.getAuction();
+                                    //console.log(response.data.MESSAGE);
                            },function(response){
                                     //console.log(response.data.DATA);
                   });
@@ -74,12 +98,13 @@ app.controller('AuctionController', function($scope, $http){
         $scope.deleteAuctionItem = function(id){	
 	$http({
 		url:'http://localhost:9999/api/auction/delete/'+id,
-		method:'PUT'
-                           }).then(function(response){
+		method:'PUT'    
+                           }).then(function(response){    
                                     $scope.getAuction();
                                     console.log(response.data.MESSAGE);
                            },function(response){
-                                    //console.log(response.data.DATA);    
+                                    //console.log(response.data.DATA);  
+                                    //$scope.getAuction();            
 	});          
          };
          $scope.findAuctionItemUpdate = function(obj){
@@ -90,12 +115,11 @@ app.controller('AuctionController', function($scope, $http){
                             url:'http://localhost:9999/api/auction/edit',
                             method:'PUT',
                             data:{
-                                    'auc_id': $scope.aucid,
+                                   
                                     'bid_increment_price': $scope.bidincrementprice,
                                     'buy_price': $scope.buyprice,
                                     'current_price': $scope.currentprice,
                                     'end_date':$scope.enddate ,
-                                    'image': $scope.image,
                                     'name': $scope.name,
                                     'owner_id': $scope.ownerid,
                                     'pro_id': $scope.proid,
@@ -113,17 +137,7 @@ app.controller('AuctionController', function($scope, $http){
 	});          
          };
         $scope.getAuction();
+        $scope.getOwner();
+        $scope.getProduct();
 });
 
-
-//app.controller('UserController', function($scope, $http){
-//         $scope.getUsers = function(){
-//                    $http({
-//                           url:'http://localhost:9999/api/user/get',
-//                           method:'GET'
-//                    }).then(function(response){
-//                           $scope.users= response.data.DATA;
-//                           console.log(response.data.DATA);
-//                    });
-//         };
-//});

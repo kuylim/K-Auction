@@ -163,110 +163,88 @@
                   <div class="x_title">
                       
                     <h2>Update Information </h2>
+                    <h1>${id}</h1>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                    <div class="x_content" ng-repeat="">
                     <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" ng-repeat="auc in auctions | filter:{'auc_id':2}">
-                           <div class="form-group">
-                                <label for="ownerid" class="control-label col-md-3 col-sm-3 col-xs-12">Owner ID </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="ownerid"  placeholder="Owner ID">
-                                </div>
-                           </div>
-                           <div class="form-group">
-                                <label for="auctionid" class="control-label col-md-3 col-sm-3 col-xs-12">Auction ID </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="aucid" value="{{auc.auc_id}}" placeholder="Auction ID">
-                                </div>
-                           </div>
-                           <div class="form-group">
-                                <label for="increasingprice" class="control-label col-md-3 col-sm-3 col-xs-12">BID Inrement Price </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="bidincrementprice" placeholder="Increment per BID">
-                                </div>
-                           </div>
-                           <div class="form-group">
-                                <label for="buyprice" class="control-label col-md-3 col-sm-3 col-xs-12">Buy Price </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="buyprice" placeholder="Buy Price">
-                                </div>
-                           </div>
-                           <div class="form-group">
-                                    <label for="currentprice" class="control-label col-md-3 col-sm-3 col-xs-12">Current Price </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="number" ng-model="currentprice" placeholder="Current Price">
+                   <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                       <div class="form-group">
+                                    <label  class="control-label col-md-3 col-sm-3 col-xs-12">Auction ID </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12" >
+                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" value="" readonly="true">
                                     </div>
+                        </div>    
+                       <div class="form-group">
+                                <label for="ownerid" class="control-label col-md-3 col-sm-3 col-xs-12">Owner Name </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" ng-model="ownerid" style="padding-top:2px;">
+
+                                        <option ng-repeat="owner in owners" value="{{owner.owner_id}}" >{{owner.firstname}} {{owner.lastname}}</option>  
+                                    </select>
+                                </div>
                            </div>
+                        
                             <div class="form-group">
-                                    <label for="enddate" class="control-label col-md-3 col-sm-3 col-xs-12">End Date </label>
+                                    <label for="productid" class="control-label col-md-3 col-sm-3 col-xs-12">Product Name </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="date" ng-model="enddate" placeholder="End Date">
-                                    </div>
-                           </div>
-                           <div class="form-group">
-                                    <label for="image" class="control-label col-md-3 col-sm-3 col-xs-12">Image </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="text" ng-model="image" placeholder="Image Part">
-                                    </div>
-                           </div>
-                           <div class="form-group">
-                                    <label for="auctionngname" class="control-label col-md-3 col-sm-3 col-xs-12">Auction Name </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="name" placeholder="Auction Name">
-                                    </div>
-                           </div>
-                           <div class="form-group">
-                                    <label for="productid" class="control-label col-md-3 col-sm-3 col-xs-12">Product ID </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="proid" placeholder="Product ID">
+                                        <select class="form-control" ng-model="proid" required style="padding-top:2px;">
+                                                <option ng-repeat="pro in products" value="{{pro.id}}" >{{pro.name}}</option>  
+                                        </select>
                                     </div>
                            </div>
                         <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="productcondition">Product Condition <span class="required">*</span>
                                 </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select class="form-control" ng-model="productcondition"  required style="padding-top:2px;">
-                                                    <option>Product codition</option>
-                                                    <option>name2</option>
-                                                    <option>name3</option>
+                                            <select class="form-control" ng-model="productcondition"  style="padding-top:2px;">
+                                                <option value="new">New</option>
+                                                <option value="99">99%</option>
+                                                <option value="95">95%</option>
+                                                 <option value="90">90%</option>
+                                                <option value ="80">80%</option>
                                             </select>
                                     </div>
                           </div>
                         <div class="form-group">
-                                    <label for="startdate" class="control-label col-md-3 col-sm-3 col-xs-12">Start Date </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input  class="form-control col-md-7 col-xs-12" type="date" ng-model="startdate" placeholder="Start Date">
-                                    </div>
-                        </div>
-                         <div class="form-group">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">Start Price </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input id="start-price" class="form-control col-md-7 col-xs-12" type="number" ng-model="startprice" placeholder="Start Price">
                                     </div>
                         </div>
                         <div class="form-group">
-                                    <label for="status" class="control-label col-md-3 col-sm-3 col-xs-12">Status </label>
+                                <label for="buyprice" class="control-label col-md-3 col-sm-3 col-xs-12">Buy Price </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="buyprice" placeholder="Buy Price">
+                                </div>
+                           </div>
+                        <div class="form-group">
+                                    <label for="currentprice" class="control-label col-md-3 col-sm-3 col-xs-12">Current Price </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" type="number" ng-model="status" placeholder="Status">
+                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="number" ng-model="currentprice" placeholder="Current Price">
+                                    </div>
+                       </div>
+                       <div class="form-group">
+                                    <label for="startdate" class="control-label col-md-3 col-sm-3 col-xs-12">Start Date </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input  class="form-control col-md-7 col-xs-12" type="date" ng-model="startdate" placeholder="Start Date">
                                     </div>
                         </div>
                         <div class="form-group">
-                                    <label for="usrid" class="control-label col-md-3 col-sm-3 col-xs-12">User ID </label>
+                                    <label for="enddate" class="control-label col-md-3 col-sm-3 col-xs-12">End Date </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input class="form-control col-md-7 col-xs-12" type="number" ng-model="usrid" placeholder="User ID">
+                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="date" ng-model="enddate" placeholder="End Date">
                                     </div>
-                        </div>                                      
+                        </div>                                   
                         <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a href="" ng-click="addAuctionItem()" type="button"  id="add" class="btn btn-success">Add</a>
-                                  <button type="submit" class="btn btn-success">Submit</button>
+                                    <button ng-click="addAuctionItem()"  id="add" class="btn btn-success btn-sm pull-right" style="margin-right: 0px; width: 70px;">Add</a>
+                                    <button ng-click="clearAuctionForm()"  id="clear" class="btn btn-info btn-sm pull-right" style=" width: 70px;">Clear</a>
+                                
                                 </div>
                        </div> 
-                                  
-                      </div>
                     </form>
-                    
+                  </div>  
                   </div>
                 </div>
               </div>
@@ -313,14 +291,15 @@
     <!-- bootstrap-daterangepicker -->
     <script src="${pageContext.request.contextPath }/resources/admin/js/moment/moment.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/admin/js/datepicker/daterangepicker.js"></script>
-    <!-- angular app -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-    <!-- angular app -->
     <!-- Custom Theme Scripts -->
     <script src="${pageContext.request.contextPath }/resources/build/js/custom.min.js"></script>
 
     <!-- Flot -->
+    <!-- angular app -->
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+    <!-- angular app -->
     <script>
       $(document).ready(function() {
         //define chart clolors ( you maybe add more colors if you want or flot will add it automatic )
