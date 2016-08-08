@@ -1,0 +1,36 @@
+.left-sidebar h2, .brands_products h2{
+			 color:rgb(78, 156, 80);
+		}
+
+		.productinfo h2,.choose ul li a:hover,.shop-menu ul li a:hover{
+			 color:rgb(78, 156, 80);
+		}
+
+		.mainmenu ul li a:hover, .mainmenu ul li a.active, .shop-menu ul li a.active,.single-widget ul li a:hover{
+			 color:rgb(78, 156, 80);
+		}
+
+		a#scrollUp {
+			background:rgb(78, 156, 80);
+		}
+
+		.pagination .active a, .pagination .active span, .pagination .active a:hover, .pagination .active span:hover, .pagination .active a:focus, .pagination .active span:focus{
+			background:rgb(78, 156, 80);
+			border-color: #009688;
+		}
+
+		.pagination  li  a:hover{
+			background:rgb(78, 156, 80);
+		}
+
+		h2.title{
+			 color:rgb(78, 156, 80);
+		}
+
+		.searchform button:hover, .searchform button:focus ,.searchform button,.add-to-cart:hover{
+    		background:rgb(78, 156, 80);
+		}
+
+		.productinfo img{
+			height: 210px;
+		}

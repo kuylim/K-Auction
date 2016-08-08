@@ -1,0 +1,8 @@
+body { height:100% !important; }
+
+.backdrop { position:fixed; top:0; left:0; height:100%; width:100%; background-color:#000; background-color:rgba(0,0,0,0.8); z-index:8000; }
+
+#ws-lightbox-outer { position:fixed; left:50%; top:50%; border:1px solid #000; z-index:9999; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; background-color: #ffffff; }
+#ws-lightbox-outer iframe { overflow:hidden; padding:0; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; }
+
+.close-lb { position:absolute; top:-18px; right:-18px; background-image:url('close-x.png'); height:27px; width:27px; cursor:pointer; }
