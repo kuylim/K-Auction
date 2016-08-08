@@ -21,4 +21,9 @@ public class User_controller {
     public String bid(){
         return "bid";
     }
+    
+       @RequestMapping(value={"/", "index"})
+    public String aucAdmin(){
+        return "index";
+    }
 }
