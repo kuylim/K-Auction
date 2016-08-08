@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UserController {
+public class Admin_controller {
     @RequestMapping(value={"/account"})
     public String account(){
         return "account";
