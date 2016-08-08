@@ -68,7 +68,7 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index"><img src="images/home/logochange.gif" alt="" /></a>
+							<a href="index"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -124,7 +124,6 @@
 		<div class="container">
 		<div class="row ">
 
-					<div class="col-sm-12"><img src="${pageContext.request.contextPath }/resources/images/home/logothanak1.jpg" alt="" style="height:250px; width:98.5%; margin-left:15px;"></div>
 				</div>
 			<div class="row">
 				<div class="col-sm-12 padding-right">

@@ -32,7 +32,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/contactUs.css">
 
-   	
+        <style>
+            body{
+                color: black;
+            }
+            </style>
 </head><!--/head-->
 
 <body>

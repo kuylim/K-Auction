@@ -5,10 +5,15 @@
  */
 package org.khmeracademy.btb.auction.controller;
 
-/**
- *
- * @author User
- */
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
 public class User_controller {
     
+    @RequestMapping("/login1")
+    public String index(){
+        return "login1";
+    }
 }

@@ -109,8 +109,13 @@
 						</div>
 					</div>
 					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="ស្វែងរក"/>
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -550,7 +555,7 @@
 							<h2>សេវាកម្ម</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Online Help</a></li>
-								<li><a href="contact-us.html">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
+								<li><a href="contact-us">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
 								<!-- <li><a href="">កម្មង់</a></li> -->
 								<li><a href="">ផ្លាស់ប្ដូរការដេញថ្លៃ</a></li>
 

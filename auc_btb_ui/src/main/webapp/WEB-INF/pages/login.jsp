@@ -3,7 +3,7 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -107,22 +107,18 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" /></a>
+							<a href="index"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							
-							
-							
-						</div>
+						
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="account.html"><i class="fa fa-user"></i> គណនីយ</a></li> 
-								<li><a href="wishlist.html"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រាថ្នា</a></li>
+								<li><a href="account"><i class="fa fa-user"></i> គណនីយ</a></li> 
+								<li><a href="wishlist"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រាថ្នា</a></li>
 								
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> កន្រ្តក</a></li>
-								<li><a href="login.html" class="active"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+								<li><a href="cart"><i class="fa fa-shopping-cart"></i> កន្រ្តក</a></li>
+								<li><a href="login" class="active"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
 							</ul>
 						</div>
 					</div>
@@ -144,15 +140,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">ទំព័រដើម</a></li>
+								<li><a href="index">ទំព័រដើម</a></li>
 								<li class="dropdown"><a href="#">K-Auction<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">ផលិតផល</a></li>
 										 
-										<li><a href="login.html" class="active">ចូលទៅកាន់</a></li> 
+										<li><a href="login" class="active">ចូលទៅកាន់</a></li> 
                                     </ul>
                                 </li> 
-								<li><a href="contact-us.html">ទំនាក់ទំនង</a></li>
+								<li><a href="contact-us">ទំនាក់ទំនង</a></li>
 							</ul>
 						</div>
 					</div>
@@ -173,8 +169,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 					<div class="login-form"><!--login form-->
 						<h2>ចូលទៅ​កាន់គណនីយ របស់អ្នក</h2>
 						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+							<input type="text" placeholder="Username or Email" />
+							<input type="password" placeholder="Password" />
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
@@ -190,11 +186,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 					<div class="signup-form"><!--sign up form-->
 						<h2>បង្កើត គណនីយថ្មី!</h2>
 						<form action="#">
-							<input type="text" placeholder="Name"/>
-							<input type="email" placeholder="Email Address"/>
-                            <input type="text" placeholder="Phone Number"/>
-                            <input type="password" placeholder="Password"/>
-							<input type="password" placeholder="Comfirm Password"/>
+							<input type="text" placeholder="First Name"/>
+							<input type="email" placeholder="Last Name"/>
+                                                                                                                               <input type="text" placeholder="User Name"/>
+                                                                                                                               <input type="email" placeholder="Email"/>
+                                                                                                                               <input type="password" placeholder="Password"/>
+                                                                                                                                 <input type="password" placeholder="Comfirm Password"/>
+                                                                                                                                <input type="text" placeholder="Address"/>
+                                                                                                                                <input type="text" placeholder="Phone Number"/>
+                                                                                                                              
 							<button type="submit" class="btn btn-default" >បង្កើត</button>
 						</form>
 					</div><!--/sign up form-->
@@ -217,7 +217,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 							<h2>សេវាកម្ម</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Online Help</a></li>
-								<li><a href="contact-us.html">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
+								<li><a href="contact-us">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
 								<!-- <li><a href="">កម្មង់</a></li> -->
 								<li><a href="">ផ្លាស់ប្ដូរការដេញថ្លៃ</a></li>
 
@@ -244,9 +244,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 								<li><a href="">របៀបចូលរួមដេញថ្លៃ</a></li>
 								<li><a href="">ដាក់ផលិតផលដេញថ្លៃ</a></li>
 								<li><a href="">សេវាកម្ម</a></li>
-								<!-- <li><a href="">Refund Policy</a></li>
-								<li><a href="">Billing System</a></li>
-								<li><a href="">Ticket System</a></li> -->
+								
 							</ul>
 						</div>
 					</div>

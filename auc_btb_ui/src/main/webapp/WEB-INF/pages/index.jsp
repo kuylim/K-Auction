@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -11,17 +9,14 @@
     <meta name="author" content="">
     <title>ទំព័រដើម | K-Auction</title>
     <link href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath }/resources/css/font-awesone.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/price-range.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/animate.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/colorbox.css" />
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
+          
     <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-114-precomposed.png">
@@ -29,8 +24,18 @@
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 	
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
-   	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/auction.css">
-   
+   	
+   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
+  
+  <style type="text/css">
+      .choose ul li a,.productinfo p{
+          color: black;
+      }
+      .add-to-cart{
+          color:white;
+      }
+  </style>
+   	
 
 </head><!--/head-->
 
@@ -60,23 +65,31 @@
 				</div>
 			</div>
 		</div><!--/header_top-->
+                <script>
+                    $(function() {
+    $('#iframe1').click(function() {
+        $(window).scroll(function() { return false; });
+        pageTracker._trackPageview('/onclick/emailquote');            
+    });
+});
+                    </script>
 		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
+							<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="account"><i class="fa fa-user"></i> គណនីយ</a></li>
-								<li><a href="wishlist"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រាថ្នា</a></li>
+								<li><a href="account.html"><i class="fa fa-user"></i> គណនីយ</a></li>
+								<li><a href="wishlist.html"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រាថ្នា</a></li>
 								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
-								<li><a href="cart"><i class="fa fa-shopping-cart"> កន្រ្តក</i></a></li>
-								<li><a href="login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"> កន្រ្តក</i></a></li>
+								<li><a href="login1"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
 							</ul>
 						</div>
 					</div>
@@ -87,7 +100,7 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
+					<div class="col-sm-5">
 						<div class="navbar-header">
 							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 								<span class="sr-only">Toggle navigation</span>
@@ -98,21 +111,26 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index" class="active">ទំព័រដើម</a></li>
+								<li><a href="index.html" class="active">ទំព័រដើម</a></li>
 								<li class="dropdown"><a href="#">K-Auction<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">ផលិតផល</a></li> 
-										<li><a href="loginl">ចាកចេញ</a></li> 
+										<li><a href="login.html">ចាកចេញ</a></li> 
                                     </ul>
                                 </li> 
-								<li><a href="contact-us">ទំនាក់ទំនង</a></li>
+								<li><a href="contact-us.html">ទំនាក់ទំនង</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
-						</div>
+					<div class="col-sm-5">
+						<div class="input-group">
+                                                                                                    <input type="text" class="form-control" placeholder="Search Blog..">
+                                                                                                    <span class="input-group-btn">
+                                                                                                      <button class="btn btn-default" type="button">
+                                                                                                        <span class="glyphicon glyphicon-search"></span>
+                                                                                                      </button>
+                                                                                                    </span>
+                                                                                                  </div>
 					</div>
 				</div>
 			</div>
@@ -136,7 +154,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-default get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
@@ -147,7 +165,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-default get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
@@ -159,7 +177,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-default get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
@@ -282,7 +300,7 @@
 						</div><!--/brands_products-->
 						
 						<div class="shipping text-center"><!--shipping-->
-							<img src="${pageContext.request.contextPath }/resources/images/home/wing1 (2).jpg" alt="" />
+							<!-- <img src="images/home/wing1 (2).jpg" alt="" /> -->
 						</div><!--/shipping-->
 					
 					</div>
@@ -295,11 +313,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<a href="product-detail1" id="iframe"><img src="${pageContext.request.contextPath }/resources/images/Face/$_58.JPG" alt="" /></a>
-                                                                                                                                                                                                               
+											<a href="product-details1" id="iframe"><img src="${pageContext.request.contextPath }/resources/images/Face/$_58.JPG" alt="" /></a>
 											<h2>$17</h2>
 											<p>ទឺកអប់ Rokley </p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+											<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 										</div>
 								</div>
 								<div class="choose">
@@ -320,10 +337,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="product-detail1.html" id="iframe1"><img src="${pageContext.request.contextPath }/resources/images/Perfume/$_58.JPG" alt=""/></a>
+										<a href="product-details1" id="iframe1"><img src="${pageContext.request.contextPath }/resources/images/Perfume/$_58.JPG" alt=""/></a>
 										<h2>$21</h2>
 										<p>ទឹកអប់ Rool ON</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 									</div>								
 								</div>
 								<div class="choose">
@@ -344,10 +361,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="product-detail1" id="iframe2"><img src="${pageContext.request.contextPath }/resources/images/Bag/$_58.JPG" alt="" /></a>
+										<a href="product-detail1.html" id="iframe2"><img src="${pageContext.request.contextPath }/resources/images/Bag/$_58.JPG" alt="" /></a>
 										<h2>$35</h2>
 										<p>វាលី Honey moon</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 									</div>
 								</div>
 								<div class="choose">
@@ -368,10 +385,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="product-detail1" id="iframe3"><img src="${pageContext.request.contextPath }/resources/images/DZ09/s-l1600.jpg" alt="invicta men watch" /></a>
+										<a href="product-detail1.html" id="iframe3"><img src="${pageContext.request.contextPath }/resources/images/DZ09/s-l1600.jpg" alt="invicta men watch" /></a>
 										<h2>$24</h2>
 										<p>នាឡិកា Samsung</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 									</div>
 									
 								</div>
@@ -393,10 +410,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="product-detail1" id="iframe4"><img src="${pageContext.request.contextPath }/resources/images/DZ09/apple.jpg" alt="invicta men watch" /></a>
+										<a href="product-detail1.html" id="iframe4"><img src="${pageContext.request.contextPath }/resources/images/DZ09/apple.jpg" alt="invicta men watch" /></a>
 										<h2>$110</h2>
 										<p>នាឡិកា Apple</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 									</div>
 									
 								</div>
@@ -421,7 +438,7 @@
 										<img src="${pageContext.request.contextPath }/resources/images/NikonCoolPix/s-l1603.jpg" alt="" />
 										<h2>$230</h2>
 										<p>កាមេរា Nikon</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 									</div>
 								</div>
 								<div class="choose">
@@ -442,7 +459,7 @@
 					</div><!--features_items-->
 					
 					<div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">ផលិតផលដែលអ្នកអាចនឹងចូលចិត្ដ</h2>
+						<h2 class="title text-center">ផលិតផលដែលពេញនិយម</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -454,7 +471,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/GalaxyS5/s-l501(1).jpg" alt="" />
 													<h2>$280</h2>
 													<p>ទូរស័ព្ទ Galaxy S5</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -467,7 +484,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/WaterProof/s-l1604 (1).jpg" alt="" />
 													<h2>$80</h2>
 													<p>នាឡិកា WaterProof</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -480,7 +497,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/Plugin/s-l5010.jpg" alt="" />
 													<h2>$11</h2>
 													<p>កាស BOBO</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -495,7 +512,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/OEMAppleAdapter/s-l500.jpg" alt="" />
 													<h2>$16</h2>
 													<p>ឆ្នាំសាក IPhone 4/4s</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -508,7 +525,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/eyeClass/s-l1600.jpg" alt="" />
 													<h2>$15</h2>
 													<p>វែនតា Sun Protection</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -521,7 +538,7 @@
 													<img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
 													<h2>$450</h2>
 													<p>កុំព្យូទ័រ Asus N4532</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+													<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
 												</div>
 												
 											</div>
@@ -556,7 +573,7 @@
 							<h2>សេវាកម្ម</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Online Help</a></li>
-								<li><a href="contact-us">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
+								<li><a href="contact-us.html">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
 								<!-- <li><a href="">កម្មង់</a></li> -->
 								<li><a href="">ផ្លាស់ប្ដូរការដេញថ្លៃ</a></li>
 
@@ -607,7 +624,7 @@
 							<h2>អំពីលោកអ្នក</h2>
 							<form action="#" class="searchform">
 								<input type="text" placeholder="Email របស់លោកអ្នក" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<button type="submit" class="btn btn-success"><i class="fa fa-arrow-circle-o-right"></i></button>
 								<p>ទទួលបានការកែប្រែថ្មីៗរបស់<br />គេហទំព័ររបស់យើងខ្ញុំ </p>
 							</form>
 						</div>
@@ -640,14 +657,14 @@
   		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <!--pop up product detail-->
-		<script src="js/jquery.colorbox.js"></script>
-		<script>
+		<script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
+                <%--<script>
 			$(document).ready(function(){
 				
 				$("#iframe,#iframe1,#iframe2,#iframe3,#iframe4").colorbox({iframe:true, width:"80%", height:"80%"});
 			});
 		</script>
-	
+	--%>
      
 </body>
 </html>

@@ -1,8 +1,4 @@
-<%-- 
-    Document   : wishlist
-    Created on : Aug 1, 2016, 10:36:44 PM
-    Author     : V C
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -17,25 +13,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Contact | K-Auction</title>
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
-    <link href="../resources/css/price-range.css" rel="stylesheet">
-    <link href="../resources/css/animate.css" rel="stylesheet">
-	<link href="../resources/css/main.css" rel="stylesheet">
-	<link href="../resources/css/responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/price-range.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/animate.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../resources/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
-    <link rel="stylesheet" href="css/mystyle.css">
-   	<link rel="stylesheet" href="css/auction.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+   	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/auction.css">
 
 </head><!--/head-->
 
@@ -82,14 +78,14 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html">ទំព័រដើម</a></li>
+								<li><a href="index">ទំព័រដើម</a></li>
 								<li class="dropdown"><a href="#">ហាង<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">ផលិតផល</a></li>
-										<li><a href="login.html">ចូលទៅកាន់</a></li> 
+                                        <li><a href="shop">ផលិតផល</a></li>
+										<li><a href="login">ចូលទៅកាន់</a></li> 
                                     </ul>
                                 </li> 
-								<li><a href="contact-us.html" class="active">ទំនាក់ទំនង</a></li>
+								<li><a href="contact-us" class="active">ទំនាក់ទំនង</a></li>
 							</ul>
 						</div>
 					</div>
@@ -128,7 +124,7 @@
 					<tbody>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../resources/images/GalaxyS5/s-l500 - Copy (2).jpg" alt=""></a>
+								<a href=""><img src="${pageContext.request.contextPath }/resources/images/GalaxyS5/s-l500 - Copy (2).jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">ទូរស័ព្ទ Galaxy S5</a></h4>
@@ -152,7 +148,7 @@
 
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../resources/images/Asus/s-l5001 - Copy (3).jpg" alt=""></a>
+								<a href=""><img src="${pageContext.request.contextPath }/resources/images/Asus/s-l5001 - Copy (3).jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">កុំព្យូទ័រ​ Asus N4325</a></h4>
@@ -175,7 +171,7 @@
 						</tr>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="../resources/images/eyeClass/s-l1600 - Copy (2).jpg" alt=""></a>
+								<a href=""><img src="${pageContext.request.contextPath }/resources/images/eyeClass/s-l1600 - Copy (2).jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">វែនតា Eye Protection</a></h4>
@@ -224,7 +220,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/Asus/s-l5001 - Copy (2).jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/Asus/s-l5001 - Copy (2).jpg" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -237,7 +233,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/Plugin/s-l5010 - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/Plugin/s-l5010 - Copy.jpg" alt="" />
 													<h2>$11</h2>
 													<p>កាស BOBO</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -250,7 +246,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/GalaxyS5/s-l500 - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/GalaxyS5/s-l500 - Copy.jpg" alt="" />
 													<h2>$56</h2>
 													<p>Easy Polo Black Edition</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -263,7 +259,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/NikonCoolPix/s-l1603 - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/NikonCoolPix/s-l1603 - Copy.jpg" alt="" />
 													<h2>$560</h2>
 													<p>កាមេរា Nikon</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -278,7 +274,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/googleAndriod/s-l1605 (1) - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/googleAndriod/s-l1605 (1) - Copy.jpg" alt="" />
 													<h2>$130</h2>
 													<p>ទូរស័ព្ទ​ Googl Andriod</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -291,7 +287,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/eyeClass/s-l1600 - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/eyeClass/s-l1600 - Copy.jpg" alt="" />
 													<h2>$11</h2>
 													<p>វែនតា Eye protection</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -304,7 +300,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/invicta/s-l1600 - Copy (2).jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/invicta/s-l1600 - Copy (2).jpg" alt="" />
 													<h2>$34</h2>
 													<p>Sprite Perfume</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -320,7 +316,7 @@
 										<div class="product-image-wrapper">
 											<div class="single-products">
 												<div class="productinfo text-center">
-													<img src="../resources/images/Perfume/$_58 - Copy.jpg" alt="" />
+													<img src="${pageContext.request.contextPath }/resources/images/Perfume/$_58 - Copy.jpg" alt="" />
 													<h2>$56</h2>
 													<p>Perfume from korea</p>
 													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -365,7 +361,7 @@
 							<h2>សេវាកម្ម</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Online Help</a></li>
-								<li><a href="contact-us.html">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
+								<li><a href="contact-us">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
 								<li><a href="">ផ្លាស់ប្ដូរការដេញថ្លៃ</a></li>
 
 							</ul>
@@ -423,14 +419,14 @@
 	
 
   
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-    <script type="text/javascript" src="js/gmaps.js"></script>
-	<script src="js/contact.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/gmaps.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/contact.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 </body>
 </html>
