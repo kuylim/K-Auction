@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
    	
    	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
-  
+            
   <style type="text/css">
       .choose ul li a,.productinfo p{
           color: black;
@@ -40,6 +40,7 @@
 </head><!--/head-->
 
 <body>
+    <div >
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -123,7 +124,7 @@
 						</div>
 					</div>
 					<div class="col-sm-5">
-						<div class="input-group">
+					<div class="input-group">
                                                                                                     <input type="text" class="form-control" placeholder="Search Blog..">
                                                                                                     <span class="input-group-btn">
                                                                                                       <button class="btn btn-default" type="button">
@@ -200,80 +201,29 @@
 	</section><!--/slider-->
 	
 	<section>
-		<div class="container">
+		<div class="container"  ng-controller="ctrl">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>ប្រភេទមុខទំនិញ</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
+							<div class="panel panel-default" ng-repeat="x in persons" ng-show="x.parent_id == 0">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+										<a data-toggle="collapse" data-parent="#accordian" href= "#_{{x.name}}">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											គ្រឿងអេឡិចត្រូនិច
+											<!--គ្រឿងអេឡិចត្រូនិច-->
+                                            {{x.name}}
 										</a>
 									</h4>
 								</div>
-								<div id="sportswear" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-                                        	<li><a href="#">កុំព្យូទ័រ </a></li>
-                                            <li><a href="#">ទូរស័ព្ទ</a></li>
-											<li><a href="#">ទូរទស្សន៍ </a></li>
-											<li><a href="#">ទូរទឹកកក </a></li>
-											<li><a href="#">ម៉ាស៊ីនត្រជាក់ </a></li>
-											<li><a href="#">ម៉ាស៊ីនបោកខោអាវ </a></li>
-											<li><a href="#">ម៉ាស៊ីនបូមធូលី </a></li>
+								<div id="_{{x.name}}"   ng-show="x.parent_id == 0" class="panel-collapse collapse">
+									<div class="panel-body" >
+										<ul ng-repeat = "y in persons" ng-show = "y.parent_id == x.cat_id">
+                                             
+                                                                                                                                                                                                       <li><a>{{y.name}}</a></li>
 										</ul>
 									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#mens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											គ្រឿងយន្ដ
-										</a>
-									</h4>
-								</div>
-								<div id="mens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">រថយន្ដ</a></li>
-											<li><a href="#">ម៉ូតូ</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#womens">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											អចលនទ្រព្យ
-										</a>
-									</h4>
-								</div>
-								<div id="womens" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">ដី</a></li>
-											<li><a href="#">ផ្ទះ</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">កាបួបនារី</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">ស្បែកជើង</a></h4>
 								</div>
 							</div>
 							<div class="panel panel-default">
@@ -645,8 +595,10 @@
 		
 	</footer><!--/Footer-->
 	
-
-  
+</div>
+     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
+             <script src="${pageContext.request.contextPath }/resources/js/category.js"></script>
+             
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
@@ -665,6 +617,6 @@
 			});
 		</script>
 	--%>
-     
+    
 </body>
 </html>

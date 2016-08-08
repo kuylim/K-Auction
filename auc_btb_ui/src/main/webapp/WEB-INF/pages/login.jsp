@@ -72,6 +72,11 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 		});
 	});
 </script>
+<style>
+    #form{
+        margin-top: 0px;
+    }
+</style>
 </head><!--/head-->
 
 <body>
@@ -168,9 +173,9 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>ចូលទៅ​កាន់គណនីយ របស់អ្នក</h2>
-						<form action="#">
-							<input type="text" placeholder="Username or Email" />
-							<input type="password" placeholder="Password" />
+						<form action="http://localhost:9999/api/category/get">
+                                                    <input type="text" placeholder="Username or Email" name="username" />
+                                                        <input type="password" placeholder="Password"  name="password"/>
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
