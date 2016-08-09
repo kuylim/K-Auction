@@ -65,6 +65,13 @@
 			<version>0.4.8</version>
 		</dependency>
 		<!--END FILE RESIZE DEPENDENCY -->
+                
+                <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+                
+                
 <dependency>
     <groupId>jstl</groupId>
     <artifactId>jstl</artifactId>
