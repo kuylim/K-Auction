@@ -13,9 +13,9 @@
     <link href="${pageContext.request.contextPath }/resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/price-range.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/animate.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/colorbox.css" />
+    <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/colorbox.css" />
           
     <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-144-precomposed.png">
@@ -201,13 +201,13 @@
 	</section><!--/slider-->
 	
 	<section>
-		<div class="container"  ng-controller="ctrl">
+		<div class="container" ng-controller="ctrl">
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>ប្រភេទមុខទំនិញ</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default" ng-repeat="x in persons" ng-show="x.parent_id == 0">
+							<div class="panel panel-default" ng-repeat="x in categories" ng-show="x.parent_id == 0">
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordian" href= "#_{{x.name}}">
@@ -597,7 +597,7 @@
 	
 </div>
      <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
-             <script src="${pageContext.request.contextPath }/resources/js/category.js"></script>
+             <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
              
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
