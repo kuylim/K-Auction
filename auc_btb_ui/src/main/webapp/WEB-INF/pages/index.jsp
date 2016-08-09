@@ -219,7 +219,7 @@
 								</div>
 								<div id="_{{x.name}}"   ng-show="x.parent_id == 0" class="panel-collapse collapse">
 									<div class="panel-body" >
-										<ul ng-repeat = "y in persons" ng-show = "y.parent_id == x.cat_id">
+										<ul ng-repeat = "y in categories" ng-show = "y.parent_id == x.cat_id">
                                              
                                                                                                                                                                                                        <li><a>{{y.name}}</a></li>
 										</ul>
@@ -259,14 +259,14 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">ផលិតផល ដែលពេញនិយម</h2>
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
+						<div ng-repeat=" auc in auctions" class="col-sm-4">
+                                                    <div  class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
 											<a href="product-details1" id="iframe"><img src="${pageContext.request.contextPath }/resources/images/Face/$_58.JPG" alt="" /></a>
-											<h2>$17</h2>
-											<p>ទឺកអប់ Rokley </p>
-											<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+											<h2>{{auc.current_price}} $</h2>
+											<p>{{auc.name}}</p>
+                                                                                        <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
 										</div>
 								</div>
 								<div class="choose">
@@ -277,13 +277,13 @@
 								</div>
                                 <div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
+										<li><a>{{auc.number_of_bids}} bids</a></li>
+										<li><a>នៅសល់ {{(auc.end_date - date) / (1000*60*60)%24 | number:0}} ម៉ោង</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4">
+						<!--<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
@@ -306,7 +306,8 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
+                                                <!--
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -330,7 +331,8 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
+                                                <!--
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -355,7 +357,8 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
+                                                <!--
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -380,7 +383,8 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
+                                                <!--
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -404,7 +408,7 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
 						
 					</div><!--features_items-->
 					
