@@ -22,8 +22,18 @@ public class User_controller {
         return "bid";
     }
     
-       @RequestMapping(value={"/", "index"})
+    @RequestMapping(value={"/", "index"})
     public String aucAdmin(){
         return "index";
+    }
+    
+    @RequestMapping("/shop")
+    public String shop(){
+        return "shop";
+    }
+    
+    @RequestMapping("/product-details1")
+    public String proDetail(){
+        return "product-details1";
     }
 }
