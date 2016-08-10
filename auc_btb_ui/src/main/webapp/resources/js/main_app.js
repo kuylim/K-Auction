@@ -3,7 +3,7 @@ var app = angular.module('app', []);
 app.controller('ctrl', function ($scope, $filter, $http) {
 		
                 
-                
+                //testing customer
                 $scope.cus;
                 //fetch persons
 		$scope.getCus = function(){
@@ -14,21 +14,14 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 			.then(function(response){
 				$scope.cus = response.data.DATA;
                                 $scope.cus.credit = $scope.cus.credit-500;
-				console.log(response.data.DATA);
+				//console.log(response.data.DATA);
 			}, function(response){
 				
 			});
 		}
-                
-                
-                
-                
-                
-                
-		
-                
-                
-		//fetch persons
+                //end testing
+                               
+		//fetch categories
 		$scope.getCategories = function(){
 			$http({
 				method: 'GET',
@@ -36,7 +29,7 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 			})
 			.then(function(response){
 				$scope.categories = response.data.DATA;
-				console.log(response.data.DATA);
+				//console.log(response.data.DATA);
 			}, function(response){
 				
 			});
@@ -51,23 +44,25 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 			})
 			.then(function(response){
 				$scope.auctions = response.data.DATA;
-				console.log(response.data.DATA);
+				//console.log(response.data.DATA);
 			}, function(response){
 				
 			});
 		}
                 $scope.getAuction();
                 
+                // bidding function
                 $scope.bidding = function(id){
                         $scope.Nowsday = new Date();
                         $scope.bid_log;
-                        alert(id);
+                        //alert(id);
 			$http({
 				method: 'GET',
 				url: 'http://localhost:9999/api/auction/search/'+id
 			})
 			.then(function(response){
                             $scope.auction = response.data.DATA; 
+                            //define bid_log class
                             $scope.bid_log = {
                                 auc_id: 1,
                                 current_price: 1.0,
@@ -75,7 +70,7 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                                 date: "1"
                             }
                             
-                            console.log($scope.auction.auc_id);
+                            //console.log($scope.auction.auc_id);
                             $scope.bid_log.auc_id = $scope.auction.auc_id;
                             $scope.bid_log.current_price = $scope.auction.current_price + $scope.auction.bid_increment_price; 
                             $scope.bid_log.cus_id = 2;
@@ -85,37 +80,39 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                             $http.post('http://localhost:9999/api/bid-log/add', $scope.bid_log)
                                     .success(function()
                                         {
-                                            
+                                            $scope.getCus();
                                             $http({
                                                     method: 'PUT',
                                                     url: 'http://localhost:9999/api/auction/update-current-price/'+$scope.auction.auc_id+'/'+$scope.auction.current_price
                                                 })
                                                     .success(function(){
-                                                        console.log($scope.auction);
-                                                        alert("update price");
-                                                        $http.post('http://localhost:9999/api/customer/update-balance', $scope.cus)
+                                                        //console.log($scope.auction);
+                                                        //alert("update price");
+                                                        
+                                                        $http.put('http://localhost:9999/api/customer/update-balance', $scope.cus)
                                                         
                                                                 .success(function(){
-                                                                    alert("update user balance");
+                                                                    //alert("update user balance");
+                                                                    $scope.getAuction();
                                                                 })
                                                                 .error(function()
                                                                     {
 
                                                                     });
                                                     })
-                                                            .error(function(){
+                                                    .error(function(){
                                                                 
-                                                            });
-                                            alert("done bidding");
+                                                    });
+                                            //alert("done bidding");
                                         })
                                     .error(function()
-                                        {
-                                            
-                                            alert("error bidding"); 
+                                        {    
+                                            //alert("error bidding"); 
                                         });
                             
 			}, function(response){
 				
 			});
-		}		
+		}
+                // end bidding
 });
