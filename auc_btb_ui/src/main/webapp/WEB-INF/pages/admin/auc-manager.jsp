@@ -34,16 +34,12 @@
     <!-- datatable -->
 	<link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-   <!-- angular app -->
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-    <!-- angular app -->
+
 <!--    moment-->
-  <script data-require="moment.js@*" data-semver="2.1.0" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+  
   </head>
 
-  <body class="nav-md">
+  <body class="nav-md "  ng-app="AuctionApp">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
@@ -163,7 +159,7 @@
             
             <div class="row">
             <h1 >Auction Manager</h1>
-               <div ng-app="AuctionApp">
+               <div>
                    <div ng-controller="AuctionController">
                       <div class="table-responsive" style="border:none;">
                           <h3 class="pull-left">Filter Here..</h3>
@@ -371,7 +367,11 @@
     
     
     
-    
+       <!-- angular app -->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+    <!-- angular app -->
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!-- Switchery -->
@@ -404,13 +404,13 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
      angular app -->
     <script>
-        function fullDate() {
-                
-                var date = new Date(milis);
-                var dateToStr = date.toUTCString().split(' ');
-                var cleanDate =dateToStr[3] + ' ' + dateToStr[2]+ ' ' + dateToStr[1];
-               
-        }
+//        function fullDate() {
+//                
+//                var date = new Date(milis);
+//                var dateToStr = date.toUTCString().split(' ');
+//                var cleanDate =dateToStr[3] + ' ' + dateToStr[2]+ ' ' + dateToStr[1];
+//               
+//        }
       $(document).ready(function() {
         var handleDataTableButtons = function() {
           if ($("#datatable-buttons").length) {

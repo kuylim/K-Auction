@@ -47,8 +47,8 @@
                <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="..." class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
-                <span>សូមស្វាគមន៍,</span>
-                <h2>ទិត្យ គុយលីម</h2>
+                <span>WELCOME,</span>
+                <h2>TITH KUYLIM</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -60,13 +60,13 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu" ng-app="AuctionApp">
-                   <li><a><i class="fa fa-home"></i> ទំព័រដើម <span class="fa fa-chevron-down"></span></a>
+                   <li><a><i class="fa fa-home"></i> HOME <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="auc-admin">ផ្ទាំងគ្រប់គ្រង</a></li>
+                      <li><a href="auc-admin">DASHBOARD</a></li>
                     </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>អ្នកប្រើប្រាស់</a></li>
-                  <li><a><i class="fa fa-edit"></i> ប្រភេទផលិតផល <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
+                  <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" ng-controller="CategoryController">
 <!--                          <li ng-repeat="cat in category | filter:{'parent_id':0}"><a href="#"><i class="fa fa-desktop"></i>{{cat.name}} <span class="fa fa-chevron-down"></span></a>
                               <ul class="nav child_menu">
@@ -92,8 +92,8 @@
                      --->
                     </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>ផលិតផល</a></li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>គ្រប់គ្រងការដេញថ្លៃ</a>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>AUCTION MANAGE</a>
                   </li>
                 </ul>
               </div>

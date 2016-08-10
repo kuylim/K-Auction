@@ -161,10 +161,10 @@
            <div class="row">
             <h1 >User Manager</h1>
                <div ng-app="AuctionApp">
-                   <div ng-controller="AuctionController">
+                   <div ng-controller="UserController">
                       <div class="table-responsive" style="border:none;">
                           <h3 class="pull-left">Filter Here..</h3>
-                     <a href="${pageContext.request.contextPath }manage/add" class="btn btn-primary pull-right" style="margin-right: 0px;">Register</a>   
+                     <a href="${pageContext.request.contextPath }user/register" class="btn btn-primary pull-right" style="margin-right: 0px;">Register</a>   
                       <table class="table table-striped jambo_table bulk_action">
                       
                         <thead>
@@ -184,16 +184,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr class="even pointer" ng-repeat="auc in auctions" >
-                            <td class=" ">{{auc.auc_id}}</td>
-                            <td class=" ">{{auc.lastname}} </td>
-                            <td class=" ">{{auc.name}} </td>
-                            <td class=" ">{{auc.product_condition}} </td>
-                            <td class=" ">{{auc.start_date}} </td>
-                            <td class=" ">{{auc.end_date}} </td>
+                          <tr class="even pointer" ng-repeat="usr in users" >
+                            <td class=" ">{{usr.id}}</td>
+                            <td class=" ">{{usr.username}} </td>
+                            <td class=" ">{{usr.password}} </td>
+                            <td class=" ">{{usr.phone}} </td>
+                            <td class=" ">{{usr.email}} </td>
+                            <td class=" ">{{usr.status}} </td>
                             <td class=" last">
-                            	<a href="${pageContext.request.contextPath }manage/update/{{auc.auc_id}}" class=" btn btn-success btn-sm" ng-click="findAuctionItemUpdate(this)" >Edit</a>
-                                <a href="" class=" btn btn-danger btn-sm " ng-click="deleteAuctionItem(auc.auc_id)" >Delete</a>
+                            	<a href="${pageContext.request.contextPath }user/update/{{usr.id}}" class=" btn btn-success btn-sm"  >Edit</a>
+                                <a href="" class=" btn btn-danger btn-sm " ng-click="revokeUser(usr.id)" >Revoke</a>
                             </td>
                           </tr>
                         </tbody>
