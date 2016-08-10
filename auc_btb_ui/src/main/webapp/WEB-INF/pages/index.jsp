@@ -115,7 +115,7 @@
 								<li><a href="index.html" class="active">ទំព័រដើម</a></li>
 								<li class="dropdown"><a href="#">K-Auction<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">ផលិតផល</a></li> 
+                                        <li><a href="shop">ផលិតផល</a></li> 
 										<li><a href="login.html">ចាកចេញ</a></li> 
                                     </ul>
                                 </li> 
@@ -614,13 +614,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <!--pop up product detail-->
 		<script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
-                <%--<script>
+                <script>
 			$(document).ready(function(){
 				
 				$("#iframe,#iframe1,#iframe2,#iframe3,#iframe4").colorbox({iframe:true, width:"80%", height:"80%"});
 			});
 		</script>
-	--%>
+
     
 </body>
 </html>
