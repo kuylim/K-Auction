@@ -1,14 +1,14 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
   
-<html lang="en">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,8 +79,8 @@
 	
 	
 	<section>
-		<div class="container">
-			<div class="row">
+            <div class="container" ng-controller="ctrl">
+                <div class="row" ng-init="getAuction_detail(${id})">
 			
 				
 				<div class="col-sm-12 padding-right">
@@ -138,12 +138,12 @@
 
 						<div class="col-sm-6">
 							<div class="product-information"><!--/product-information-->
-								<!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->
-								<h2>Samsung Galaxy S6 Edge</h2>
-								<p>Web ID: 1089772</p>
+								<!-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> -->              
+								<h2>{{auc_detail.name}}</h2>
+								
 								<span>
-									<span>US $200</span>
-									<a  class="btn btn-fefault cart" href="login">
+									<span>{{auc_detail.current_price}} $</span>
+                                                                        <a  class="btn btn-fefault cart" ng-click="bidding(auc_detail.auc_id)">
 										<i class="fa fa-shopping-cart"></i>
 										Bid
 									</a>
@@ -156,10 +156,11 @@
 										Add to wishlist
 									</button>
 								</span>
-                                <p><b>ចំនួននៃការ bid:</b> 5 bids</p>
-								<p><b>ចំនួនៃថ្ងដែលនៅសល់:</b> នៅសល់ ៧ ថ្ងៃទៀត</p>
-								<p><b>ស្ថានភាព:</b> ថ្មី ៩០%</p>
-								<p><b>ម៉ាក:</b> Samsung</p>           
+                                <p><b>ចំនួននៃការ bid:</b> {{auc_detail.number_of_bids}} bids</p>
+								<p><b>ចំនួនៃថ្ងដែលនៅសល់:</b> {{(auc_detail.end_date - date) / (1000*60*60)%24 | number:0}} ម៉ោង</p>
+								<p><b>ស្ថានភាព:</b> {{auc_detail.product_condition}}</p>
+								<p><b>ថ្ងៃចាប់ផ្ដើម:</b> {{auc_detail.start_date | date:'yyyy-MM-dd'}}</p>       
+                                                                                                                                                <p><b>ថ្ងៃបញ្ចប់:</b> {{auc_detail.end_date | date:'yyyy-MM-dd'}}</p>  
 								<a href=""><img src="${pageContext.request.contextPath }/resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>
@@ -175,32 +176,19 @@
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade" id="details" >
-								<p>This Galaxy S6 Edge is second hand from korea. bids or click buy now to get this product.</p>
-                                <h3>Specification</h3>
-                                <p>Technology: GSM/HSPA/LTE</p>
-                                <p>Resolution: 1440 x 2560 pixels</p>
-                                <p>CPU: Quad-core 1.5 GHz Cortex-A53 &amp; Quad-Core 2.1 GHz</p>
-                                <p>Internal: 32GB, 3 GB RAM</p>
-                                <p>Camera: 16 MP</p>
-                                <p>Sensors: Fingerprint, accelerometer, gyro, proximity, compass, barometer, heart rate, SpO2</p>
-								<p>Battery: 2550 mah</p>
+                                                            <p>{{auc_detail.pro_info}}</p>
                             </div>
 							
 							<div class="tab-pane fade" id="companyprofile" >
-								<p>Sokly Phone Shop Asia started its business in early 2000, located at #44, street 67, west of Phsar Thom Thmei, Phnom Penh. With the continued supports Sokly Phone Shop Asia has opened the second shop in early 2009 located at #395E0, street 128 KampucheaKrom , Phsar Depo 3, Phnom Penh.
-
-Sokly Phone Shop Asia offers variety of phone products including the iPhone, Sony, Microsoft, Xiaomi , LG, Asus, Oppo, Samsung, Nokia, hTc, Motorola, Blackberry, Phillips , Smart watches and all types of phone accessories etc. with the most attractive update market price. All applications will be free to all customers who purchase phone products at Sokly Phone Shop Asia. The warranty will be covered on a specific product, please check for further information with our helpful staffs.
-
-Sokly Phone Shop Asia staffs are friendly and attentive, we always take great care of and meet our clients’ demand at all time and your satisfaction of our price and service is our success.
-
-Our vision is to open more branches in Phnom Penh and other provinces so we all stay close together and keep our clients comfortable with our on-time service provision. Sokly Phone Shop Asia will provide soon the online sales service so our clients can place a purchase order from home or office and the products will be delivered to your door. For further detailed information.</p>
+                                                            <p>ឈ្មោះម្ចាស់ផលិតផល: {{auc_detail.lastname}}  {{auc_detail.firstname}}</p>
+                                                            <p>{{auc_detail.company_profile}}</p>
              
 							</div>		
 						</div>
 					</div><!--/category-tab-->
                     
                     <div class="recommended_items"><!--recommended_items-->
-						<h2 class="title text-center">ផលិតផលដែលអ្នកអាចនឹងចូលចិត្ដ</h2>
+						<h2 class="title text-center">ផលិតផលពេញនិយម</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
@@ -382,11 +370,13 @@ Our vision is to open more branches in Phnom Penh and other provinces so we all 
 		</div>
 		
 	</section>
-	
+        
+    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 

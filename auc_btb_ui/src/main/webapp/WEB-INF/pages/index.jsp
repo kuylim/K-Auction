@@ -263,7 +263,7 @@
                                                     <div  class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<a href="product-details1" id="iframe"><img src="${pageContext.request.contextPath }/resources/images/Face/$_58.JPG" alt="" /></a>
+											<a href="product-details/{{auc.auc_id}}"><img src="${pageContext.request.contextPath }/resources/images/Face/$_58.JPG" alt="" /></a>
 											<h2>{{auc.current_price}} $</h2>
 											<p>{{auc.name}}</p>
                                                                                         <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
@@ -615,10 +615,12 @@
         <!--pop up product detail-->
 		<script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
                 <script>
-			$(document).ready(function(){
-				
-				$("#iframe,#iframe1,#iframe2,#iframe3,#iframe4").colorbox({iframe:true, width:"80%", height:"80%"});
-			});
+			
+                        
+                        $.noConflict();
+                            jQuery(document).ready(function(){
+                               jQuery("#iframe22").colorbox({iframe:true, width:"80%", height:"80%"});
+                            });
 		</script>
 
     

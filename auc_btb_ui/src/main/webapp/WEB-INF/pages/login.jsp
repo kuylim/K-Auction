@@ -1,6 +1,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -173,14 +175,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>ចូលទៅ​កាន់គណនីយ របស់អ្នក</h2>
-						<form action="http://localhost:9999/api/category/get">
+                                                <form action="/login" method="post">
                                                     <input type="text" placeholder="Username or Email" name="username" />
                                                         <input type="password" placeholder="Password"  name="password"/>
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
 							</span>
-							<button type="submit" class="btn btn-default">ចូលទៅកាន់</button>
+<!--                                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />-->
+                                                        <input type="submit" class="btn btn-default">ចូលទៅកាន់</button>
 						</form>
 					</div><!--/login form-->
 				</div>
