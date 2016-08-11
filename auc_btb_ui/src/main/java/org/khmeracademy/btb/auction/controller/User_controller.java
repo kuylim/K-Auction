@@ -6,6 +6,8 @@
 package org.khmeracademy.btb.auction.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -17,10 +19,6 @@ public class User_controller {
         return "login";
     }
     
-    @RequestMapping("/bid")
-    public String bid(){
-        return "bid";
-    }
     
     @RequestMapping(value={"/", "index"})
     public String aucAdmin(){
@@ -32,8 +30,9 @@ public class User_controller {
         return "shop";
     }
     
-    @RequestMapping("/product-details1")
-    public String proDetail(){
+    @RequestMapping("/product-details/{id}")
+    public String proDetail( ModelMap model,   @PathVariable("id") int id){
+        model.addAttribute("id", id);
         return "product-details1";
     }
 }
