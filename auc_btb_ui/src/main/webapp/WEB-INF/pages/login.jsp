@@ -78,6 +78,16 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
     #form{
         margin-top: 0px;
     }
+    
+    .productinfo{
+  	border:1px solid #8BC34A ;
+  	}
+  	.choose ul li a,.productinfo p,.category-products .panel-default .panel-heading .panel-title a,.brands-name .nav-stacked li a,.shop-menu ul li a,.mainmenu ul li a{
+          color: black;
+      }
+      .add-to-cart{
+          color:white;
+      }
 </style>
 </head><!--/head-->
 
@@ -232,18 +242,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 							</ul>
 						</div>
 					</div>
-					<!-- <div class="col-sm-2">
-						<div class="single-widget">
-							<h2>Quock Shop</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="">T-Shirt</a></li>
-								<li><a href="">Mens</a></li>
-								<li><a href="">Womens</a></li>
-								<li><a href="">Gift Cards</a></li>
-								<li><a href="">Shoes</a></li>
-							</ul>
-						</div>
-					</div> -->
+					
 					<div class="col-sm-2">
 						<div class="single-widget">
 							<h2>គោលការណ៍</h2>

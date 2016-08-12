@@ -34,6 +34,15 @@
       .add-to-cart{
           color:white;
       }
+      .productinfo{
+  		border:1px solid #8BC34A ;
+  	}
+  	.choose ul li a,.productinfo p,.category-products .panel-default .panel-heading .panel-title a,.brands-name .nav-stacked li a,.shop-menu ul li a,.mainmenu ul li a{
+          color: black;
+      }
+      .add-to-cart{
+          color:white;
+      }
   </style>
    	
 
@@ -251,9 +260,6 @@
 							</div>
 						</div><!--/brands_products-->
 						
-						<div class="shipping text-center"><!--shipping-->
-							<!-- <img src="images/home/wing1 (2).jpg" alt="" /> -->
-						</div><!--/shipping-->
 					
 					</div>
 				</div>
