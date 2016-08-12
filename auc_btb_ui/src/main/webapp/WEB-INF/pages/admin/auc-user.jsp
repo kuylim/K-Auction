@@ -192,7 +192,7 @@
                             <td class=" ">{{usr.email}} </td>
                             <td class=" ">{{usr.status}} </td>
                             <td class=" last">
-                            	<a href="${pageContext.request.contextPath }user/update/{{usr.id}}" class=" btn btn-success btn-sm"  >Edit</a>
+                            	<a href="${pageContext.request.contextPath }user/update/{{usr.id}}" ng-click="getUserSelect(usr.id)" class=" btn btn-success btn-sm"  >Edit</a>
                                 <a href="" class=" btn btn-danger btn-sm " ng-click="revokeUser(usr.id)" >Revoke</a>
                             </td>
                           </tr>

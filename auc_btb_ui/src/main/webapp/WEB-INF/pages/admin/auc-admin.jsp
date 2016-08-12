@@ -30,8 +30,8 @@
     <link href="${pageContext.request.contextPath }/resources/build/css/auction.css" rel="stylesheet">
   </head>
 
-  <body class="nav-md">
-    <div class="container body">
+  <body class="nav-md" ng-app="AuctionApp">
+      <div class="container body" ng-controller="AdminController">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -67,7 +67,7 @@
                   </li>
                   <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
                   <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
-                      <ul class="nav child_menu" ng-controller="CategoryController">
+                      <ul class="nav child_menu" >
 <!--                          <li ng-repeat="cat in category | filter:{'parent_id':0}"><a href="#"><i class="fa fa-desktop"></i>{{cat.name}} <span class="fa fa-chevron-down"></span></a>
                               <ul class="nav child_menu">
                                     <li ng-repeat="sub in category | filter:{'parent_id':cat.cat_id}"><a href="#">{{sub.name}}</a></li>
@@ -188,17 +188,20 @@
                     <div class="x_content ">
                   <!--  <ul class="nav navbar-right panel_toolbox">-->
                     	<!--<ul class="list-unstyled top_profiles scroll-view">-->
-                          <article class="media event">
+                       
+<!--                        <article class="media event" ng-repeat="customer in bidcustomers">
+                            <h6>{{customer.cus_id}}</h6>
                             <a class="pull-left border-aero profile_thumb">
                               <i class="fa fa-user aero"></i>
                             </a>
-                            <div class="media-body">
-                              <a class="title" href="#">ទិត្យ គុយលីម</a>
-                              <p>ចំនាយអស់ <strong>2300 Credit </strong>ក្នុងថ្ងៃនេះ</p>
-                              <p> <small>បាន Bids ចំនួន 12 ដង</small>
+                            <div class="media-body" ng-repeat="top in topcustomers | filter:{ 'cus_id': 1}">
+                              <a class="title" href="#">{{top.cus_id}}</a>
+                              <p>Pay for bidding <strong>2300 Credit </strong>today</p>
+                              <p> <small>Number of Bids 12 times</small>
                               </p>
                             </div>
-                          </article>
+                          </article>-->
+                       
                           <article class="media event">
                             <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-user green"></i>
@@ -210,7 +213,7 @@
                               </p>
                             </div>
                           </article>
-                          <article class="media event">
+<!--                          <article class="media event">
                             <a class="pull-left border-blue profile_thumb">
                               <i class="fa fa-user blue"></i>
                             </a>
@@ -220,8 +223,8 @@
                               <p> <small>បាន Bids ចំនួន 12 ដង</small>
                               </p>
                             </div>
-                          </article>
-                          <article class="media event">
+                          </article>-->
+<!--                          <article class="media event">
                             <a class="pull-left border-aero profile_thumb">
                               <i class="fa fa-user aero"></i>
                             </a>
@@ -231,8 +234,8 @@
                               <p> <small>បាន Bids ចំនួន 12 ដង</small>
                               </p>
                             </div>
-                          </article>
-                          <article class="media event">
+                          </article>-->
+<!--                          <article class="media event">
                             <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-user green"></i>
                             </a>
@@ -242,7 +245,7 @@
                               <p> <small>បាន Bids ចំនួន 12 ដង</small>
                               </p>
                             </div>
-                          </article>
+                          </article>-->
                         <!--</ul>-->
  					<!--</ul>-->
                     </div>
@@ -408,7 +411,11 @@
         <!-- /footer content -->
       </div>
     </div>
-
+<!-- angular app -->
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+    <!-- angular app -->
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -438,10 +445,7 @@
     
     <!-- Custom Theme Scripts -->
     <script src="${pageContext.request.contextPath }/resources/build/js/custom.min.js"></script>
-    <!-- angular app -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-    <!-- angular app -->
+    
     
     <!-- Flot -->
     <script>

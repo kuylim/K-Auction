@@ -166,33 +166,40 @@
                     <h1>${id}</h1>
                     <div class="clearfix"></div>
                   </div>
-                    <div class="x_content">
-<!--                        <div class="x_content" ng-repeat="auc in auctions | filter:{'auc_id':${id}}">-->
+<!--                    <div class="x_content">-->
+                        <div class="x_content" ng-repeat="auc in auctions | filter:{'auc_id':${id}}">
                     <br />
                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
                        <div class="form-group">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">Auction ID </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12" >
-<!--                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" value="{{auc.auc_id}}" >-->
-                                             <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" placeholder="Auction ID" >
+                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" value="{{auc.auc_id}}" >
+<!--                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" placeholder="Auction ID" >-->
                                     </div>
-                        </div>    
-                     
+                        </div>
                        <div class="form-group">
+                                    <label  class="control-label col-md-3 col-sm-3 col-xs-12">Product Owner </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12" >
+                                        <input  class="form-control col-md-7 col-xs-12" type="text" ng-model="ownerid"  value="{{auc.owner_name}}" >
+<!--                                        <input  class="form-control col-md-7 col-xs-12" type="number" ng-model="auctionid" placeholder="Auction ID" >-->
+                                    </div>
+                        </div>
+                     
+<!--                       <div class="form-group">
                                 <label for="ownerid" class="control-label col-md-3 col-sm-3 col-xs-12">Owner Name </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select class="form-control" ng-model="ownerid"   style="padding-top:2px;">
-                                             <option ng-repeat="owner in owners" value="{{owner.owner_id}}" >{{owner.firstname}} {{owner.lastname}}</option>
-<!--                                        <option ng-repeat="owner in owners" value="{{owner.owner_id}}" >{{owner.firstname}} {{owner.lastname}}</option>  -->
+                                             <option ng-repeat="owner in owners | filter:{'owner_id': {{auc.owner_id}} } value="{{owner.owner_id}}" >{{owner.firstname}} {{owner.lastname}}</option>
+                                        <option ng-repeat="owner in owners" value="{{owner.owner_id}}" >{{owner.firstname}} {{owner.lastname}}</option>  
                                     </select>
                                 </div>
-                           </div>
+                           </div>-->
                         
                             <div class="form-group">
                                     <label for="productid" class="control-label col-md-3 col-sm-3 col-xs-12">Product Name </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select class="form-control" ng-model="proid" style="padding-top:2px;">
-<!--                                                <option ng-repeat="pro in products" value="{{pro.id}}" >{{pro.name}}</option>  -->
+                                            <option ng-repeat="pro in products" value="{{pro.id}}" >{{pro.name}}</option>
                                         </select>
                                     </div>
                            </div>
@@ -202,8 +209,9 @@
                                 </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select class="form-control" ng-model="productcondition"  style="padding-top:2px;">
-<!--                                                <option value="{{auc.product_condition}}">{{auc.product_condition}}</option>
-                                                <option value="new">New</option>
+<!--                                                <option ng-repeat="auc in auctions " value="{{auc.product_condition}}" >{{auc.product_condition}}</option>-->
+                                                <option ng-repeat="auc in auctions | filter:{'auc_id':${id}}" value="{{auc.product_condition}}" >{{auc.product_condition}}</option>
+<!--                                                <option value="new">New</option>
                                                 <option value="99">99%</option>
                                                 <option value="95">95%</option>
                                                  <option value="90">90%</option>
@@ -212,6 +220,13 @@
                                             
                                     </div>
                           </div>
+                           <div class="form-group">
+                                    <label  class="control-label col-md-3 col-sm-3 col-xs-12"> BID Increment Price </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+<!--                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="number" value="{{auc.start_price}}" ng-model="startprice" placeholder="Start Price">-->
+                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="number" ng-model="bidincrementprice" placeholder="Increment price per bid">
+                                    </div>
+                        </div>
                         <div class="form-group">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">Start Price </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -235,16 +250,18 @@
                        </div>
                        <div class="form-group">
                                     <label for="startdate" class="control-label col-md-3 col-sm-3 col-xs-12">Start Date </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-<!--                                        <input  class="form-control col-md-7 col-xs-12" type="date" value="{{auc.start_date |  date:'yyyy-MM-dd'}}" ng-model="startdate" placeholder="Start Date">-->
-                                             <input  class="form-control col-md-7 col-xs-12" type="date"  ng-model="startdate" placeholder="Start Date">
+<!--                                    <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat=" auc in auctions | filter:{'auc_id':${id}}">-->
+                                    <div class="col-md-6 col-sm-6 col-xs-12">    
+                                        <input  class="form-control col-md-7 col-xs-12" type="date" value="{{auc.start_date |  date:'yyyy-MM-dd'}}" ng-model="startdate" placeholder="Start Date">
+<!--                                             <input  class="form-control col-md-7 col-xs-12" type="date"  ng-model="startdate" placeholder="Start Date">-->
                                     </div>
                         </div>
                         <div class="form-group">
                                     <label for="enddate" class="control-label col-md-3 col-sm-3 col-xs-12">End Date </label>
+<!--                                    <div class="col-md-6 col-sm-6 col-xs-12" ng-repeat=" auc in auctions | filter:{'auc_id':${id}}">-->
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-<!--                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="date" value="{{auc.end_date  |  date:'yyyy-MM-dd'}}" ng-model="enddate" placeholder="End Date">-->
-                                                <input id="start-price" class="form-control col-md-7 col-xs-12" type="date"  ng-model="enddate" placeholder="End Date">
+                                        <input id="start-price" class="form-control col-md-7 col-xs-12" type="date" value="{{auc.end_date  |  date:'yyyy-MM-dd'}}" ng-model="enddate" placeholder="End Date">
+<!--                                                <input id="start-price" class="form-control col-md-7 col-xs-12" type="date"  ng-model="enddate" placeholder="End Date">-->
                                     </div>
                         </div>                                   
                         <div class="form-group">
