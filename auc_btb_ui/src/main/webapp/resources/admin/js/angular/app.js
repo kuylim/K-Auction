@@ -34,6 +34,33 @@
 //        $scope.getAuction();
 //});
 var app = angular.module('AuctionApp', []);
+app.controller('AdminController', function($scope,$http){
+    $scope.getBidCustomers = function(){
+        $http({
+                           url:'http://localhost:9999/api/bid-log/get',
+                           method:'GET'           
+                 }).then(function(response){
+                                   $scope.bidcustomers = response.data.DATA;
+                                    console.log(response.data.DATA);
+                           },function(response){
+                                    console.log(response.data.MESSAGE);
+                  });
+    };
+    $scope.getTopCustomers = function(){
+        $http({
+                           url:'http://localhost:9999/api/customer/get?page=1&limit=12',
+                           method:'GET'           
+                 }).then(function(response){
+                                   $scope.topcustomers = response.data.DATA;
+                                    console.log(response.data.DATA);
+                           },function(response){
+                                    console.log(response.data.MESSAGE);
+                  });
+    };
+    $scope.getTopCustomers();
+    $scope.getBidCustomers();
+});
+
 /************************************************** AUCTION CONTROLLER**********************************************************/
 app.controller('AuctionController', function($scope, $http){
          $scope.getAuction = function(){
@@ -42,12 +69,12 @@ app.controller('AuctionController', function($scope, $http){
                                 method:'GET'
                     }).then(function(response){
                                 $scope.auctions = response.data.DATA;
-                                $scope.auctionid = response.data.DATA[0].auc_id;
-                                
-                                $scope.startdate = '12-12-2018';//start_date;
-                                $scope.enddate = response.data.DATA[0].end_date;
-                                $scope.startprice = response.data.DATA[0].start_price;
-                                $scope.currentprice = response.data.DATA[0].current_price;
+//                                $scope.auctionid = response.data.DATA[0].auc_id;
+//                                
+//                                $scope.startdate = '12-12-2018';//start_date;
+//                                $scope.enddate = response.data.DATA[0].end_date;
+//                                $scope.startprice = response.data.DATA[0].start_price;
+//                                $scope.currentprice = response.data.DATA[0].current_price;
                                 console.log(response.data.DATA);
                     });
          };
@@ -145,6 +172,11 @@ app.controller('AuctionController', function($scope, $http){
         $scope.getOwner();
         $scope.getProduct();
 });
+
+
+
+
+var globalID = 1;
 app.controller('UserController', function($scope, $http){
          $scope.getUser = function(){
                     $http({
@@ -152,13 +184,28 @@ app.controller('UserController', function($scope, $http){
                                 method:'GET'
                     }).then(function(response){
                                 $scope.users = response.data.DATA; 
-                                $scope.userid = response.data.DATA[0].id;
-                                $scope.username = response.data.DATA[0].username;
-                                $scope.password = response.data.DATA[0].password;
-                                $scope.phone = response.data.DATA[0].phone;
-                                $scope.email = response.data.DATA[0].email;
-                                console.log(response.data.DATA[0]);
+//                                $scope.userid = response.data.DATA[0].id;
+//                                $scope.username = response.data.DATA[0].username;
+//                                $scope.password = response.data.DATA[0].password;
+//                                $scope.phone = response.data.DATA[0].phone;
+//                                $scope.email = response.data.DATA[0].email;
+                                console.log(response.data.DATA);
                     });
+         };
+         $scope.getUserSelect = function(id){
+         globalID = id;
+           $http({
+                                url:'http://localhost:9999/api/user/search/'+id,
+                                method:'GET'
+                    }).then(function(response){
+                                $scope.selector = response.data.DATA; 
+//                                $scope.userid = response.data.DATA[0].id;
+//                                $scope.username = response.data.DATA[0].username;
+//                                $scope.password = response.data.DATA[0].password;
+//                                $scope.phone = response.data.DATA[0].phone;
+//                                $scope.email = response.data.DATA[0].email;
+                                console.log(response.data.DATA);
+                    });   
          };
          
            $scope.revokeUser = function(id){	
@@ -192,5 +239,6 @@ app.controller('UserController', function($scope, $http){
                   });
         };
          $scope.getUser(); 
+          $scope.getUserSelect(globalID); 
 });
 

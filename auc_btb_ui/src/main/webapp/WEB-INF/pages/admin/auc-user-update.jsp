@@ -164,22 +164,22 @@
                     <h3>User Update Information</h2>
                     <div class="clearfix"></div>
                   </div>
-<!--                  <div class="x_content" ng-repeat="usr in users | filter:{ 'id': ${id} }">-->
-                   <div class="x_content">   
+                  <div class="x_content" ng-repeat="usr in users | filter:{ 'id': ${id} }">
+<!--                   <div class="x_content">   -->
                     <br />
                     <form id="demo-form2"   data-parsley-validate class="form-horizontal form-label-left">
                             <div class="form-group">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">User ID </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-<!--                                        <h2>{{usr.id}}</h2>-->
-                                        <input class="form-control col-md-7 col-xs-12" type="text" ng-model="userid"  readonly="true">
+                                        <h2>{{usr.id}}</h2>
+                                        <input class="form-control col-md-7 col-xs-12" type="text"  ng-bid="userid" value="{{usr.id}}"  >
                                     </div>
                         </div>
                         <div class="form-group">
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">Username </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">     
 <!--                                         <h2>{{usr.username}}</h2>-->
-                                         <input class="form-control col-md-7 col-xs-12" type="text" ng-model="username" placeholder=" Username">
+                                         <input class="form-control col-md-7 col-xs-12" type="text" ng-model="username" value="{{usr.id}}" placeholder=" Username">
                                     </div>
                         </div>
                         <div class="form-group">
@@ -200,7 +200,7 @@
                                     <label  class="control-label col-md-3 col-sm-3 col-xs-12">Phone </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
 <!--                                         <h2>{{usr.phone}}</h2>-->
-                                        <input class="form-control col-md-7 col-xs-12" type="phone" ng-model="phone" placeholder="Phone number">
+                                        <input class="form-control col-md-7 col-xs-12" type="number" ng-model="phone" value="{{usr.id}}" placeholder="Phone number">
                                     </div>
                         </div>
                         <div class="form-group">
