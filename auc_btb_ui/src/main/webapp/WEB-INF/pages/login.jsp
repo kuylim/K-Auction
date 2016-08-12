@@ -181,8 +181,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
-							</span>
-<!--                                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />-->
+							</span>                                                  
                                                         <input type="submit" class="btn btn-default">ចូលទៅកាន់</button>
 						</form>
 					</div><!--/login form-->

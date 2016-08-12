@@ -205,7 +205,9 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
+                                            
 						<h2>ប្រភេទមុខទំនិញ</h2>
+                                                
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 							<div class="panel panel-default" ng-repeat="x in categories" ng-show="x.parent_id == 0">
 								<div class="panel-heading">

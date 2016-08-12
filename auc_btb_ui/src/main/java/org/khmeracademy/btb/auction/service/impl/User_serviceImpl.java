@@ -50,10 +50,11 @@ public class User_serviceImpl implements User_service{
 			u.setEmail((String)data.get("email"));
 			u.setUsername((String)data.get("username"));
 			u.setPassword((String) data.get("password"));
-			//List<Role> roles = new ArrayList<Role>();
+			List<Role> roles = new ArrayList<Role>();
                         Role role = new Role();
-                        role.setName("role");
-                        u.setRole(role);
+                        role.setName((String)data.get("role"));
+                        roles.add(role);
+                        u.setRoles(roles);
 //			List<HashMap<String, Object>> dataRole = (List<HashMap<String, Object>>) data.get("role");
 //			for (Map<String , Object> datas  : dataRole) {
 //				Role role = new Role();
@@ -68,6 +69,5 @@ public class User_serviceImpl implements User_service{
 			return u;
 		}
 		return null;
-    }
-    
+    }   
 }
