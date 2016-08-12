@@ -175,7 +175,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
 						<h2>ចូលទៅ​កាន់គណនីយ របស់អ្នក</h2>
-                                                <form action="/login" method="post">
+                                                <form action="login" method="post">
                                                     <input type="text" placeholder="Username or Email" name="username" />
                                                         <input type="password" placeholder="Password"  name="password"/>
 							<span>
