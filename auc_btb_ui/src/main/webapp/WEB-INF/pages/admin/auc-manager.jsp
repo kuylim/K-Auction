@@ -216,10 +216,10 @@
 								</select><br> -->
 								<span>Owner</span>
 								<select  class="form-control" ng-model="ownerid" style="padding-left:6px;">
-        							<option  ng-repeat="own in owners" value="{{own.owner_id}}">
-        								{{own.firstname}} {{own.lastname}}
-        							</option>
-        						</select><br>
+                                                                                                                                                                    <option  ng-repeat="own in owners" value="{{own.owner_id}}">
+                                                                                                                                                                            {{own.firstname}} {{own.lastname}}
+                                                                                                                                                                    </option>
+                                                                                                                                                </select><br>
         						<span>Product</span>
 								<select  class="form-control" ng-model="proid" style="padding-left:6px;">
         							<option  ng-repeat="pro in products" value="{{pro.pro_id}}">
