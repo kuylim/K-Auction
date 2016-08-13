@@ -248,7 +248,7 @@
 
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter){
-	$scope.getPeople = function(){
+$scope.getPeople = function(){
 		       
         $http({
         	url:'http://localhost:9999/api/auction/get',
@@ -258,7 +258,7 @@ app.controller('AuctionController', function($scope, $http, $filter){
             console.log(response.data.DATA);
         });
 	};
-	$scope.addAuction = function(){
+$scope.addAuction = function(){
 		$http({
 			url:'http://localhost:9999/api/auction/add',
 			method:'POST',
@@ -394,22 +394,53 @@ $scope.getOwner = function(){
             url:'http://localhost:9999/api/product/get',
             method:'GET'
         }).then(function(response){
-            $scope.fsearch = 'anything';
+          
             $scope.products = response.data.DATA;
             console.log(response.data.DATA);
         });
     };
-    $scope.getProduct();
-    $scope.targetSearch = function(){
-        alert($scope.fsearch);
-      //return $scope.fsearch;
+    $scope.addProduct = function(){
+        alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
+         $http({
+	url:'http://localhost:9999/api/product/add',
+                            method:'POST',
+                        data:{
+		"name": $scope.name,
+		"cat_id": $scope.catid,
+		"brand_id": $scope.brandid,
+		"pro_info":$scope.proinfo
+                           }
+		}).then(function(response){
+			console.log(response.data);
+			$scope.getProduct();
+			}, function(response){			
+		});
+	};
+    $scope.getCategory = function(){
+        $http({
+            url:'http://localhost:9999/api/category/get',
+            method:'GET'
+        }).then(function(response){
+            $scope.category = response.data.DATA;
+            console.log(response.data.DATA);
+        });
     };
+    $scope.getCategory();
+    $scope.getBrand = function(){
+        $http({
+            url:'http://localhost:9999/api/brand/get',
+            method:'GET'
+        }).then(function(response){
+            $scope.brand = response.data.DATA;
+            console.log(response.data.DATA);
+        });
+    };
+    $scope.getBrand();
+    
+    
+    $scope.getProduct();
     $scope.getProduct();
    
 });
-function test()
-{
-    var search = document.getElementById("search").value;
-    return search;
-}
+
 
