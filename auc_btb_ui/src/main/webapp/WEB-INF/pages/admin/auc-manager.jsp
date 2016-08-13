@@ -25,7 +25,6 @@
     
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath }/resources/build/css/custom.css" rel="stylesheet">
 	<!-- Mystyle -->
@@ -34,9 +33,9 @@
     <!-- datatable -->
 	<link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-
 <!--    moment-->
-  
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css">
   </head>
 
   <body class="nav-md "  ng-app="AuctionApp">
@@ -153,178 +152,171 @@
         <!-- /top navigation -->
 		<div class="clearfix"></div>
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" ng-controller="AuctionController">
           <div class="">
-	<!--add new product-->
-            
-            <div class="row">
-            <h1 >Auction Manager</h1>
-               <div>
-                   <div ng-controller="AuctionController">
-                      <div class="table-responsive" style="border:none;">
-                          <h3 class="pull-left">Filter Here..</h3>
-                     <a href="${pageContext.request.contextPath }manage/add" class="btn btn-success pull-right" style="margin-right: 0px;">Add Product</a>   
-                      <!--<table class="table table-striped jambo_table bulk_action" id="datatable-buttons">-->
-                      <table class="table table-striped jambo_table bulk_action">
-                      
-                        <thead>
-                          <tr>
-                            <th>Auction ID </th>
-                            <th >Owner Name </th>
-                            <th >Product Name </th>
+	
+            <!--replace by the sweetalert start-->
+           	   	    <!--modal​ add-->
+	   	    <div class="modal fade" id="add" role="dialog">
+	   	        <div class="modal-dialog">
+	   	    	 <div class="modal-content">
+	   	    	 	  <div class="modal-header">
+	   	    	 	  	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	   	    	 	  	  <h4 class="modal-title">Add New</h4>
+	   	    	 	  </div>
+	   	    	 	  <div class="modal-body">
+	   	    	 	  	   <div class="form-group">
+	   	    	 	  	   		<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Product</span><input type="number" class="form-control"  ng-model="proid" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
+
+	   	    	 	  	     	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success">Add</a>
+	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
+	   	    	 	  	     	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
+	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
+	   	    	 	  	    </div>     	  
+	   	    	 	  </div>
+	   	        </div>
+	   	      </div>	 	  	     		
+	   	   </div>
+	   	   <!--end modal-->
+
+	   	   <!--modal​ update-->
+	   	   <div class="modal fade" id="update" role="dialog">
+	   	        <div class="modal-dialog">
+	   	    	 <div class="modal-content">
+	   	    	 	  <div class="modal-header">
+	   	    	 	  	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	   	    	 	  	  <h4 class="modal-title">Update Auction</h4>
+	   	    	 	  </div>
+	   	    	 	  <div class="modal-body">
+	   	    	 	  	   <div class="form-group">
+	   	    	 	  	   		<span>AuctID</span><input type="number" ng-model="aucid"  class="form-control" readonly><br>
+
+								<!-- <span>Owner</span><input type="number" ng-model="ownerid"  class="form-control"><br> -->
+
+								<!-- <span>Owner</span><select class="form-control">
+									<option ng-model="ownerid">sample</option>
+								</select><br> -->
+								<span>Owner</span>
+								<select  class="form-control" ng-model="ownerid" style="padding-left:6px;">
+        							<option  ng-repeat="own in owners" value="{{own.owner_id}}">
+        								{{own.firstname}} {{own.lastname}}
+        							</option>
+        						</select><br>
+        						<span>Product</span>
+								<select  class="form-control" ng-model="proid" style="padding-left:6px;">
+        							<option  ng-repeat="pro in products" value="{{pro.pro_id}}">
+        								{{pro.name}}
+        							</option>
+        						</select><br>
+
+	   	    	 	  	     	<!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br>
+ -->
+	   	    	 	  	     	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
+
+	   	    	 	  	     	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
+
+	   	    	 	  	     	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
+
+	   	    	 	  	     	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>
+								
+	   	    	 	  	     	<a href="" ng-click="updatePerson(id)" class="btn btn-success" >Update</a>
+	   	    	 	  	     	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
+								
+	   	    	 	  	     	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
+	   	    	 	  	     	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
+	   	    	 	  	    </div>    	  
+	   	    	 	  </div>
+	   	        </div>
+	   	      </div>	 	  	     		
+	   	   </div>
+	   	   <!--end modal-->
+	   	    <div class="row">
+	   	    	 <div class="col-md-12" >
+	   	    	 	<h3>Auctions List</h3>
+	   	    	 	  <div class="table-responsive">
+	   	    	 	  	  <table class="table table-bordered">
+	   	    	 	  	  <tr >
+	   	    	 	  	    <td colspan="13">
+                                                                                                            <span>Search here </span>
+                                                                                                            <select  class="single_field" id="search" onchange="test()" style="padding-left:6px;">
+                                                                                                                     <option  ng-repeat="pro in products" value="{{pro.name}}">{{pro.name}}</option>
+                                                                                                            </select>
+	   	    	 	  	     	<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add" >Add Auction Item</button>
+	   	    	 	  	    </td>  
+	   	    	 	  	  </tr>
+	   	    	 	  	  <tr​​>
+                            <th>No </th>
+                            <th >AuctID </th>
+                            <th >Owner </th>
+
+                            <th >Product </th>
                             <th >Condition </th>
+                            <th >Start Price </th>
+
+                            <th >Buy Price</th>
+                            <th >Bid Increase </th>
+                            <th >Current Price </th>
+
                             <th >Start Date </th>
                             <th >End Date </th>
-                            <th >Current Price </th>
-                            <th >Buy Price </th>
-                             <th >Increase Price </th>
-                             <th >Status </th>
-                            <th class="column-title no-link last"><span class="nobr">Action</span>
-                            </th>
-                            <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                            </th>
-                          </tr>
-                        </thead>
+                            <th >User ID </th>
 
-                        <tbody>
-                          <tr class="even pointer" ng-repeat="auc in auctions" >
-                            <td class=" ">{{auc.auc_id}}</td>
-                            <td class=" ">{{auc.lastname}} </td>
-                            <td class=" ">{{auc.name}} </td>
-                            <td class=" ">{{auc.product_condition}} </td>
-                            <td class=" " >{{auc.start_date |  date:'yyyy-MM-dd'}} </td>
-                            <td class=" ">{{auc.end_date  |  date:'yyyy-MM-dd'}} </td>
-                            <td class=" ">{{auc.start_price}}$ </td>
+                            <th >Action </th>
+
+	   	    	 	  	  </tr>
+	   	    	 	  	  <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">
+						   
+						    <td>{{$index+1}} </td>
+						    <td>{{au.auc_id}}</td>
+						    <td>{{au.firstname}} {{au.lastname}}</td>
+
+						    <td>{{au.name}} </td>
+						    <td>{{au.product_condition}}</td>
+						    <td>{{au.start_price}}</td>
+						    
+						    <td>{{au.buy_price}}</td>
+						    <td >{{au.bid_increment_price}} </td>
+						    <td >{{au.current_price}} </td>                            
                             
-                            <td class=" ">{{auc.buy_price}}$ </td>
-                             <td class=" ">{{auc.company_profile}}</td>
-                            <td class=" ">{{auc.status}}</td>
-                            <td class=" last">
-                            	<a href="${pageContext.request.contextPath }manage/update/{{auc.auc_id}}" class=" btn btn-primary btn-sm" ng-click="findAuctionItemUpdate(this)" >Edit</a>
-                                <a href="" class=" btn btn-danger btn-sm " ng-click="deleteAuctionItem(auc.auc_id)" >Delete</a>
+                            <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
+                            <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
+                            <td >{{au.urs_id}} </td>
+                            <td>
+								<a href="" ng-click="getData(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
+                                <a href="" ng-click="deletePerson(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
                             </td>
-                          </tr>
-                        
-                          <!-----------------------------------------------------------------------------------------------------------------------------------------
-                          <tr class="odd pointer">
-                            <td class=" ">121000039</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class=" ">121000038</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class=" ">121000038</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class=" ">121000038</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class=" ">121000037</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$333.21</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class=" ">121000040</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class=" ">121000039</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes </td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="even pointer">
-                            <td class=" ">121000038</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes</td>
-                            <td class="a-right a-right ">$432.26</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class=" ">121000037</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes</td>
-                            <td class="a-right a-right ">$333.21</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-
-                          <tr class="even pointer">
-                            <td class=" ">121000040</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes</td>
-                            <td class="a-right a-right ">$7.45</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          <tr class="odd pointer">
-                            <td class=" ">121000039</td>
-                            <td class=" ">Huawei GR5 </td>
-                            <td class=" ">៧ ថ្ងៃ </td>
-                            <td class=" ">10 </td>
-                            <td class=" ">Yes</td>
-                            <td class="a-right a-right ">$741.20</td>
-                            <td class=" last"><a href="#">View</a>
-                            </td>
-                          </tr>
-                          ------------------------------------------------------------------------------------------->
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
+						</tr>
+					</table>
+	   	    	</div> 
+	   	   	</div>
+	   	</div>
+            <!--replace by the sweetalert end-->      
          </div>
             </div>
           </div>  
@@ -364,9 +356,7 @@
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/icheck.min.js"></script>
      <!-- Select2 -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    
-    
-    
+
        <!-- angular app -->
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
