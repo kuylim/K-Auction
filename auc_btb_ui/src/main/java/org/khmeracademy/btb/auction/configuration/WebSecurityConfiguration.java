@@ -57,5 +57,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		
 		http.csrf().disable();
 		http.exceptionHandling().accessDeniedPage("/access-denied");
+               
 	}
 }

@@ -487,6 +487,13 @@ $scope.getOwner = function(){
 					console.log(response);
 				});
 			};
+                        
+                        
+                   
+			
+			
+			
+   
    
 });
 
