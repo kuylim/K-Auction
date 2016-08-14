@@ -440,6 +440,53 @@ $scope.getOwner = function(){
     
     $scope.getProduct();
     $scope.getProduct();
+    
+    
+    //=========================upload image===================================
+    var FILE = {};
+			
+			//TODO: on submit event, multiple file
+			$scope.upload = function(event){
+				event.preventDefault();
+
+				var frmData = new FormData();
+				var files = angular.element('#file')[0].files;
+				for(var i=0; i<files.length; i++)
+					frmData.append("files", files[i]);
+				
+				FILE.upload(frmData);
+			};
+			
+			
+			
+			
+			
+			//TODO: upload file to server
+			FILE.upload = function(frmData){
+				$http({
+					url: 'http://localhost:9999/api/image/upload',
+					params: {
+						folder: $scope.folder
+					},
+					method: 'POST',
+					data: frmData,
+					transformRequest: angular.identity,
+		            headers: {'Content-Type': undefined}
+					
+				}).then(function(response){
+					var files = response.data;
+					$scope.message = files.message;
+					$scope.filePath = files.projectPath;
+					
+					$scope.images = [];
+					for(var i=0; i<files.names.length; i++){
+						$scope.images.push(files.names[i]);
+					}
+					console.log(response);
+				}, function(response){
+					console.log(response);
+				});
+			};
    
 });
 

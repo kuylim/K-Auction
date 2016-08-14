@@ -110,8 +110,8 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                                                             $http.put('http://localhost:9999/api/customer/update-balance', $scope.cus)
 
                                                                     .success(function(){
-                                                                        $scope.getAuction();
-                                                                        $scope.getAuction_detail(id);
+                                                                        //$scope.getAuction();
+                                                                        //$scope.getAuction_detail(id);
                                                                         alert("You bid succesfully!");
                                                                     })
                                                                     .error(function()

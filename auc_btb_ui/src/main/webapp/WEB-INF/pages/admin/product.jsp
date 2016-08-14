@@ -157,7 +157,11 @@
 	
             <!--replace by the sweetalert start-->
             
-           	   	    <!--modal​ add-------------------------------------------------------------------------------------------------------------------------->
+                    <!--modal​ add-------------------------------------------------------------------------------------------------------------------------->
+                    
+                    
+                    
+                    
 	   	    <div class="modal fade" id="add" role="dialog">
 	   	        <div class="modal-dialog">
 	   	    	 <div class="modal-content">
@@ -184,7 +188,7 @@
                                                                                                             <br>
 	   	    	 	  	     	<span>Product Info</span><input type="text" class="form-control"  ng-model="proinfo" placeholder="Product information"><br>
 
-	   	    	 	  	     	<a href="" ng-click="addProduct()" type="button" id="add" class="btn btn-success">Add</a>
+	   	    	 	  	     	<a href="" ng-click="addProduct()" type="button" id="add" class="btn btn-success" data-toggle="modal" data-target="#upload_img">Add</a>
 	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
 	   	    	 	  	     	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
 	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
@@ -254,6 +258,36 @@
 	   	      </div>	 	  	     		
 	   	   </div>
 	   	   <!--end modal-->
+                   
+                   <div class="modal fade" id="upload_img" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <form ng-submit = "upload($event)">
+                                            <table>
+                                                    <tr>
+                                                            <td>Folder</td>
+                                                            <td>: <input type="text" ng-model="folder" class="form-control" placeholder="folder to upload"/></td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td>File(multiple)</td>
+                                                            <td>: <input type="file" id="file" name="file" class="form-control" multiple></td>
+                                                    </tr>
+                                                   
+                                                    <tr>
+                                                           <td>: <input type="submit" class="btn btn-success" value="Upload"/></td>
+                                                    </tr>
+                                            </table>
+                                        </form>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 	   	    <div class="row">
 	   	    	 <div class="col-md-12" >
 	   	    	 	<h3>Auctions List</h3>
@@ -312,6 +346,8 @@
         <!-- /footer content -->
       </div>
     </div>
+    
+    
 
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery/dist/jquery.min.js"></script>
@@ -340,6 +376,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/jquery/jquery.js"></script>
     <!-- angular app -->
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
@@ -443,6 +480,8 @@
         TableManageButtons.init();
       });
     </script>
+    
+    
     
   </body>
 </html>
