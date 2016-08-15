@@ -245,20 +245,20 @@
 //          $scope.getUserSelect(globalID); 
 //});
 // 13th, Aug, 2016---------------------------------------------------------------------------------------------------------------//
-
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
-//    $scope.getAuction = function(){
-//        $http({
-//        	url:'http://localhost:9999/api/auction/get',
-//            method:'GET'
-//        }).then(function(response){
-//            $scope.auctions = response.data.DATA;
-//            console.log(response.data.DATA);
-//        });
-//    };
-//    $scope.getAuction();
+    $scope.getAuction = function(){
+        $http({
+        	url:'http://localhost:9999/api/auction/get',
+                  method:'GET'
+        }).then(function(response){
+            $scope.auctions = response.data.DATA;
+            console.log(response.data.DATA);
+        });
+    };
+    $scope.getAuction();
+
     $scope.addAuction = function(){
             $http({
             url:'http://localhost:9999/api/auction/add',
@@ -278,7 +278,8 @@ app.controller('AuctionController', function($scope, $http, $filter){
             }).then(function(response){
                       console.log(response.data);
                             //alert(response.data.MESSAGE);
-                      $scope.getAuction();
+//                      $scope.getAuction();
+                      $scope.showData(currentPage);
                             // $scope.name = "";
                             // $scope.age = "";
                       },function(response){
@@ -301,8 +302,9 @@ app.controller('AuctionController', function($scope, $http, $filter){
                     url:'http://localhost:9999/api/auction/delete/'+id,
                                         method:'PUT'
                                 }).then(function(response){
+                                    alert(document.getElementById("pagination").value);
                     swal("Deleted!", "Auction item has been deleted :)", "success");  
-                    $scope.getPeople();
+                    $scope.getAuction();
                     },function(response){
                     }); 
             } else {     
@@ -449,22 +451,20 @@ app.controller('AuctionController', function($scope, $http, $filter){
     };
     $scope.getBrand();
 $scope.addBrand = function(){
-//        alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
          $http({
 	url:'http://localhost:9999/api/brand/add',
-                            method:'POST',
-                        data:{
+                  method:'POST',
+                  data:{
                                     "description": $scope.description,
                                     "name": $scope.brandname
                            }
-		}).then(function(response){
-			console.log(response.data);
-			$scope.getBrand();
-			}, function(response){			
-		});
+                           }).then(function(response){
+		console.log(response.data);
+		$scope.getBrand();
+                            }, function(response){			
+                            });
     };  
     $scope.deleteBrand = function(id){
-        alert(id);
             swal({   
             title: "Are you sure to delete this Auction?",   
             text: "Bider will not see this item anymore!",   
@@ -477,13 +477,12 @@ $scope.addBrand = function(){
             closeOnCancel: false}, 
             function(isConfirm){   
             if (isConfirm) {     
-                               $http({
-                    url:'http://localhost:9999/api/brand/delete/'+id,
-                                        method:'PUT'
-                                }).then(function(response){
-                    swal("Deleted!", "Auction item has been deleted :)", "success");  
-                    $scope.getBrand();
-                    },function(response){
+                  $http({
+                        url:'http://localhost:9999/api/brand/delete/'+id,
+                         method:'PUT'
+                        }).then(function(response){
+                            swal("Deleted!", "Auction item has been deleted :)", "success");  
+                            $scope.getBrand();
                     }); 
             } else {     
                     swal("Cancelled", "This Auction item has not been deleted :(", "error");   
@@ -492,10 +491,9 @@ $scope.addBrand = function(){
     };
 //-------------------------------------------------------------------------------------------------Product Manager block end-----------//
     //=========================upload image===================================
-    var FILE = {};
-			
+    var FILE = {};			
 			//TODO: on submit event, multiple file
-			$scope.upload = function(event){
+    $scope.upload = function(event){
 				event.preventDefault();
 
 				var frmData = new FormData();
@@ -506,7 +504,7 @@ $scope.addBrand = function(){
 				FILE.upload(frmData);
 			};
 			//TODO: upload file to server
-			FILE.upload = function(frmData){
+   FILE.upload = function(frmData){
 				$http({
 					url: 'http://localhost:9999/api/image/upload',
 					params: {
@@ -530,14 +528,13 @@ $scope.addBrand = function(){
 				}, function(response){
 					console.log(response);
 				});
-			};
-                        
-               //=================pagination===========================
+			};                       
+//=================pagination===========================
             check = true;
             currentPage = 1;
-            $scope.showData = function(currentPage){
+   $scope.showData = function(currentPage){
                 //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';  
-                $http({url: 'http://localhost:9999/api/auction/get?page='+ currentPage +'&limit=10',
+                $http({url: 'http://localhost:9999/api/auction/get?page='+ currentPage +'&limit=6',
                        method: 'GET'
                 }).then(function(response){
                         console.log(response.data);
@@ -550,8 +547,7 @@ $scope.addBrand = function(){
                         alert('Error');
                 }); 
             };
-
-            setPagination = function(totalPage, currentPage){
+   setPagination = function(totalPage, currentPage){
                        $('#pagination').bootpag({
                                total: totalPage,
                                page: currentPage,
@@ -573,7 +569,7 @@ $scope.addBrand = function(){
                                $scope.showData(currentPage);
                            }); 	
                        };
-               $scope.showData(currentPage);                        			
+   $scope.showData(currentPage);                        			
    
    
 });

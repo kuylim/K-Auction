@@ -38,6 +38,10 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
+    <!--    sweetaler style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+ <!--    sweetaler style--> 
   </head>
 
   <body class="nav-md">
@@ -156,7 +160,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main"  ng-app="AuctionApp">
-          <div class="" ng-controller="AuctionController">
+          <div class="" ng-controller="AuctionController" ng-cloak="cloak">
 	<!--add new product-->
         
                   <!--replace by the sweetalert start-->

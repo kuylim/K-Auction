@@ -38,6 +38,14 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
+<!--    sweetaler style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+ <!--    sweetaler style--> 
+ <!--    Cloak style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
+    
+ <!--    Cloak style-->
   </head>
 
   <body class="nav-md">
@@ -156,7 +164,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main"  ng-app="AuctionApp">
-          <div class="" ng-controller="AuctionController">
+            <div class="" ng-controller="AuctionController" ng-cloak="cloak">
 	<!--add new product-->
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
@@ -213,6 +221,9 @@
                                     </select><br>
         		<span>Product</span>
 		<select  class="form-control" ng-model="proid" style="padding-left:5px;" 
+                                             ng-options="pro.pro_id as pro.name for pro in products">
+        		</select><br>
+                                    <select  class="form-control" ng-model="proid" style="padding-left:5px;" 
                                              ng-options="pro.pro_id as pro.name for pro in products">
         		</select><br>
                                    <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
