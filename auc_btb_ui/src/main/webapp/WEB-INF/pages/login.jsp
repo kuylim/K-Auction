@@ -6,7 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
-<html lang="en">
+<html lang="en" ng-app="login">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,21 +31,11 @@
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/colorbox.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/jquery.colorbox.js"></script>
-
-
-	 <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+	
 	
 
 <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="ws-lightbox.js" type="text/javascript"></script>
+
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/ws-lightbox.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
 
@@ -58,22 +48,7 @@ google_ad_width = 728;
 google_ad_height = 90;
 //-->
 </script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script></div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".youtube-video").click(function(){
-			var params = {};
-			params.type = 'youtube';
-			params.src = 'https://www.youtube.com/embed/vFT8HXJlvfA';
-			params.height = 400;
-			params.width = 600;
-			ws_lightbox.open(params);
 
-		});
-	});
-</script>
 <style>
     #form{
         margin-top: 0px;
@@ -180,7 +155,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</header><!--/header-->
 	
 	<section id="form"><!--form-->
-		<div class="container">
+            <div class="container" ng-controller="ctrl">
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form"><!--login form-->
@@ -203,15 +178,15 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 					<div class="signup-form"><!--sign up form-->
 						<h2>បង្កើត គណនីយថ្មី!</h2>
 						<form action="#">
-							<input type="text" placeholder="First Name"/>
-							<input type="email" placeholder="Last Name"/>
-                                                            <input type="text" placeholder="User Name"/>
-                                                            <input type="email" placeholder="Email"/>
-                                                            <input type="password" placeholder="Password"/>
-                                                            <input type="password" placeholder="Comfirm Password"/>
-                                                            <input type="text" placeholder="Address"/>
-                                                            <input type="text" placeholder="Phone Number"/>                                                                                                                            
-							<button type="submit" class="btn btn-default" >បង្កើត</button>
+                                                    <input type="text" placeholder="First Name" ng-model="user.firstname"/>
+                                                    <input type="text" placeholder="Last Name" ng-model="user.lastname"/>
+                                                    <input type="text" placeholder="Userame" ng-model="user.username"/>
+                                                    <input type="email" placeholder="Email" ng-model="user.email"/>
+                                                    <input type="password" placeholder="Password" ng-model="user.password"/>
+                                                    <input type="password" placeholder="Comfirm Password"/>
+                                                    <input type="text" placeholder="Address" ng-model="user.address"/>
+                                                    <input type="text" placeholder="Phone Number" ng-model="user.phone"/>                                                                                                                            
+                                                    <button ng-click="user_login(user)" class="btn btn-default" >បង្កើត</button>
 						</form>
 					</div><!--/sign up form-->
 				</div>
@@ -290,5 +265,24 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 		</div>
 		
 	</footer><!--/Footer-->	
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <!-- main app -->
+        <script src="${pageContext.request.contextPath }/resources/js/login_app.js"></script>
+        
+        <!--page script-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/jquery.colorbox.js"></script>
+
+
+	<script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="ws-lightbox.js" type="text/javascript"></script>
 </body>
 </html>
