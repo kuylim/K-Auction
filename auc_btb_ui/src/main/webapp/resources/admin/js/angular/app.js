@@ -248,8 +248,8 @@
 
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter){
-$scope.getPeople = function(){
-		       
+//-------------------------------------------------------------------------------------------------Auction Manager block---------------//
+    $scope.getAuction = function(){
         $http({
         	url:'http://localhost:9999/api/auction/get',
             method:'GET'
@@ -257,148 +257,160 @@ $scope.getPeople = function(){
             $scope.auctions = response.data.DATA;
             console.log(response.data.DATA);
         });
-	};
-$scope.addAuction = function(){
-		$http({
-			url:'http://localhost:9999/api/auction/add',
-			method:'POST',
-			 data:{
+    };
+    $scope.getAuction();
+    $scope.addAuction = function(){
+            $http({
+            url:'http://localhost:9999/api/auction/add',
+            method:'POST',
+            data:{
+                "bid_increment_price": $scope.bidincrementprice,
+                "buy_price": $scope.buyprice,
+                "current_price": $scope.currentprice,
+                "end_date":$scope.enddate, 
+                "owner_id": $scope.ownerid,
+                "pro_id": $scope.proid,
+                "product_condition": $scope.productcondition,
+                "start_date":  $scope.startdate,
+                "start_price": $scope.startprice,
+                "usr_id": $scope.usrid
+           }
+            }).then(function(response){
+                      console.log(response.data);
+                            //alert(response.data.MESSAGE);
+                      $scope.getAuction();
+                            // $scope.name = "";
+                            // $scope.age = "";
+                      },function(response){
+            });
+    };
+    $scope.deleteAuction = function(id){
+            swal({   
+            title: "Are you sure to delete this Auction?",   
+            text: "Bider will not see this item anymore!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#ED0909",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false}, 
+            function(isConfirm){   
+            if (isConfirm) {     
+                               $http({
+                    url:'http://localhost:9999/api/auction/delete/'+id,
+                                        method:'PUT'
+                                }).then(function(response){
+                    swal("Deleted!", "Auction item has been deleted :)", "success");  
+                    $scope.getPeople();
+                    },function(response){
+                    }); 
+            } else {     
+                    swal("Cancelled", "This Auction item has not been deleted :(", "error");   
+            } 
+             });
+    };
+    $scope.getCurrentObject = function(rec){
 
-				  "bid_increment_price": $scope.bidincrementprice,
-				  "buy_price": $scope.buyprice,
-				  "current_price": $scope.currentprice,
-				  "end_date":$scope.enddate, 
-				  "owner_id": $scope.ownerid,
-				  "pro_id": $scope.proid,
-				  "product_condition": $scope.productcondition,
-				  "start_date":  $scope.startdate,
-				  "start_price": $scope.startprice,
-				  "usr_id": $scope.usrid 
-
-				  //"auc_id": 23,  
-				  //"status": "1",
-				  //"image": "string",
-				  //"name": "string",
-                   }
-		}).then(function(response){
-			console.log(response.data);
-			//alert(response.data.MESSAGE);
-			$scope.getPeople();
-			// $scope.name = "";
-			// $scope.age = "";
-			}, function(response){
-					
-			});
-	};
-	$scope.deletePerson = function(id){
-		swal({   
-			title: "Are you sure to delete this Auction?",   
-			text: "Bider will not see this item anymore!",   
-			type: "warning",   
-			showCancelButton: true,   
-			confirmButtonColor: "#ED0909",   
-			confirmButtonText: "Yes",   
-			cancelButtonText: "No",   
-			closeOnConfirm: false,   
-			closeOnCancel: false}, 
-		function(isConfirm){   
-			if (isConfirm) {     
-				$http({
-					url:'http://localhost:9999/api/auction/delete/'+id,
-					method:'PUT'
-				}).then(function(response){
-					swal("Deleted!", "Auction item has been deleted :)", "success");  
-					$scope.getPeople();
-				},function(response){
-
-				}); 
-			} else {     
-				swal("Cancelled", "This Auction item has not been deleted :(", "error");   
-			} 
-		});
-	};
-
-
-	$scope.getData = function(rec){
-		 $scope.ownerid =rec.au.firstname,
-		 $scope.proid =rec.au.pro_id,
-
-		 $scope.bidincrementprice = rec.au.bid_increment_price,
-		 $scope.buyprice =rec.au.buy_price,
-		 $scope.currentprice =rec.au.current_price,
-		 $scope.enddate = $filter('date')(rec.au.end_date,'yyyy-MM-dd'),
-		 $scope.productcondition =rec.au.product_condition,
-		 $scope.startdate = $filter('date')(rec.au.start_date,'yyyy-MM-dd'),
-		 $scope.startprice =rec.au.start_price,
-		 $scope.usrid =	1,//rec.au.usr_id,
-		 $scope.aucid =rec.au.auc_id
-	};
-
-	$scope.updatePerson = function(){
-		alert("Owner is "+$scope.ownerid+" , product is"+$scope.proid);
-		swal({   
-			title: "Are you sure to update this record?",   
-			text: "You will not be able to roll back!",   
-			type: "warning",   
-			showCancelButton: true,   
-			confirmButtonColor: "#E98106",   
-			confirmButtonText: "Yes",   
-			cancelButtonText: "No",   
-			closeOnConfirm: false,   
-			closeOnCancel: false }, 
-		function(isConfirm){   
-			if (isConfirm) {     
-				$http({
-					url:'http://localhost:9999/api/auction/edit',
-					method:'PUT',
-					data:{
-						
-						  "auc_id": $scope.aucid,
-						  "bid_increment_price": $scope.bidincrementprice,
-						  "buy_price": $scope.buyprice,
-						  "current_price": $scope.currentprice,
-						  "end_date":$scope.enddate, 
-						  "owner_id": $scope.ownerid,
-						  "pro_id": $scope.proid,
-						  "product_condition": $scope.productcondition,
-						  "start_date":  $scope.startdate,
-						  "start_price": $scope.startprice,
-						  "usr_id":1 //$scope.usrid 
-					}
-				}).then(function(response){
-					swal("Updated!", "Auction item has been updated :)", "success"); 
-					$('#btnclose').trigger('click');
-					$scope.getPeople();
-			},function(response){
-
-			});	  
-			}else {     
-				swal("Cancelled", "Auction item has not been updated :(", "error");   
-			} 
-		});
-	};
-	$scope.getPeople();
-
-$scope.getOwner = function(){
-        $http({
-            url:'http://localhost:9999/api/product-owner/get',
-        	method:'GET'
-        }).then(function(response){
-        	$scope.owners = response.data.DATA;
-            console.log(response.data.DATA);
-        });
+            $scope.ownerid =rec.au.owner_id,
+            $scope.proid =rec.au.pro_id,
+            $scope.bidincrementprice = rec.au.bid_increment_price,
+            $scope.buyprice =rec.au.buy_price,
+            $scope.currentprice =rec.au.current_price,
+            $scope.enddate = $filter('date')(rec.au.end_date,'yyyy-MM-dd'),
+            $scope.productcondition =rec.au.product_condition,
+            $scope.startdate = $filter('date')(rec.au.start_date,'yyyy-MM-dd'),
+            $scope.startprice =rec.au.start_price,
+            $scope.usrid =	1,//rec.au.usr_id,
+            $scope.aucid =rec.au.auc_id;
+            $scope.currentObject = rec.au;
+    };
+    $scope.updateAuction = function(){
+           // alert("Owner is "+$scope.ownerid+" , product is"+$scope.proid);
+            swal({   
+            title: "Are you sure to update this record?",   
+            text: "You will not be able to roll back!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#E98106",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false }, 
+            function(isConfirm){   
+            if(isConfirm) {     
+                    $http({
+                            url:'http://localhost:9999/api/auction/edit',
+                            method:'PUT',
+                            data:{					
+                                     "auc_id": $scope.aucid,
+                                     "bid_increment_price": $scope.bidincrementprice,
+                                     "buy_price": $scope.buyprice,
+                                     "current_price": $scope.currentprice,
+                                     "end_date":$scope.enddate, 
+                                     "owner_id": $scope.ownerid,
+                                     "pro_id": $scope.proid,
+                                     "product_condition": $scope.productcondition,
+                                     "start_date":  $scope.startdate,
+                                     "start_price": $scope.startprice,
+                                      "usr_id":1 //$scope.usrid 
+                    }
+                    }).then(function(response){
+                            $scope.currentObject.bid_increment_price = $scope.bidincrementprice;
+                            $scope.currentObject.buy_price = $scope.buyprice;
+                            $scope.currentObject.current_price = $scope.currentprice;
+                            $scope.currentObject.end_date = $scope.enddate; 
+                            $scope.currentObject.owner_id = $scope.ownerid;
+                            $scope.currentObject.pro_id = $scope.proid;
+                            $scope.currentObject.product_condition = $scope.productcondition;
+                            $scope.currentObject.start_date = $scope.startdate;
+                            $scope.currentObject.start_price = $scope.startprice;
+                            swal("Updated!", "Auction item has been updated :)", "success"); 
+                            $('#btnclose').trigger('click');
+                           //$scope.getAuction();
+                             },function(response){
+                             });	  
+                     }else {     
+                           swal("Cancelled", "Auction item has not been updated :(", "error");   
+                     } 
+             });
+    };
+//-------------------------------------------------------------------------------------------------Auction Manager block end----------//
+//-------------------------------------------------------------------------------------------------Owner Manager  block---------------//
+    $scope.getOwner = function(){
+            $http({
+                url:'http://localhost:9999/api/product-owner/get',
+                    method:'GET'
+            }).then(function(response){
+                    $scope.owners = response.data.DATA;
+                console.log(response.data.DATA);
+            });
     };
     $scope.getOwner();
+//-------------------------------------------------------------------------------------------------Owner  Manager block end-----------//    
+//-------------------------------------------------------------------------------------------------Owner Manager  block---------------//
+    $scope.getUser = function(){
+            $http({
+                url:'http://localhost:9999/api/user/get',
+                    method:'GET'
+            }).then(function(response){
+                    $scope.users = response.data.DATA;
+                console.log(response.data.DATA);
+            });
+    };
+    $scope.getUser();
+//-------------------------------------------------------------------------------------------------Owner  Manager block end-----------//    
+//-------------------------------------------------------------------------------------------------Product Manager block-----------------//   
     $scope.getProduct = function(){
         $http({
             url:'http://localhost:9999/api/product/get',
             method:'GET'
         }).then(function(response){
-          
             $scope.products = response.data.DATA;
             console.log(response.data.DATA);
         });
     };
+    $scope.getProduct();
     $scope.addProduct = function(){
         alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
          $http({
@@ -415,7 +427,7 @@ $scope.getOwner = function(){
 			$scope.getProduct();
 			}, function(response){			
 		});
-	};
+    };
     $scope.getCategory = function(){
         $http({
             url:'http://localhost:9999/api/category/get',
@@ -436,12 +448,7 @@ $scope.getOwner = function(){
         });
     };
     $scope.getBrand();
-    
-    
-    $scope.getProduct();
-    $scope.getProduct();
-    
-    
+//-------------------------------------------------------------------------------------------------Product Manager block end-----------//
     //=========================upload image===================================
     var FILE = {};
 			
@@ -456,11 +463,6 @@ $scope.getOwner = function(){
 				
 				FILE.upload(frmData);
 			};
-			
-			
-			
-			
-			
 			//TODO: upload file to server
 			FILE.upload = function(frmData){
 				$http({
