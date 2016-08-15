@@ -489,6 +489,13 @@ app.controller('AuctionController', function($scope, $http, $filter){
 					console.log(response);
 				});
 			};
+                        
+                        
+                   
+			
+			
+			
+   
    
 });
 

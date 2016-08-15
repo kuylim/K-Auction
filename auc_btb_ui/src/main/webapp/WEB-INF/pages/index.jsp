@@ -23,9 +23,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 	
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
    	
-   	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
             
   <style type="text/css">
       .choose ul li a,.productinfo p{
@@ -291,133 +291,9 @@
 								</div>
 							</div>
 						</div>
-						<!--<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<a href="product-details1" id="iframe1"><img src="${pageContext.request.contextPath }/resources/images/Perfume/$_58.JPG" alt=""/></a>
-										<h2>$21</h2>
-										<p>ទឹកអប់ Rool ON</p>
-										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
-									</div>								
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a></li>
-										<li><a href="#"><i class="fa fa-money"></i>ទិញឥឡូវនេះ</a></li>    
-									</ul>
-								</div>
-                                <div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-                                                <!--
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<a href="product-detail1.html" id="iframe2"><img src="${pageContext.request.contextPath }/resources/images/Bag/$_58.JPG" alt="" /></a>
-										<h2>$35</h2>
-										<p>វាលី Honey moon</p>
-										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a></li>
-										<li><a href="#"><i class="fa fa-money"></i>ទិញឥឡូវនេះ</a></li>
-									</ul>
-								</div>
-                                <div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-                                                <!--
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<a href="product-detail1.html" id="iframe3"><img src="${pageContext.request.contextPath }/resources/images/DZ09/s-l1600.jpg" alt="invicta men watch" /></a>
-										<h2>$24</h2>
-										<p>នាឡិកា Samsung</p>
-										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
-									</div>
-									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a></li>
-										<li><a href="#"><i class="fa fa-money"></i>ទិញឥឡូវនេះ</a></li>
-									</ul>
-								</div>
-                                 <div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-                                                <!--
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<a href="product-detail1.html" id="iframe4"><img src="${pageContext.request.contextPath }/resources/images/DZ09/apple.jpg" alt="invicta men watch" /></a>
-										<h2>$110</h2>
-										<p>នាឡិកា Apple</p>
-										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
-									</div>
-									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a></li>
-										<li><a href="#"><i class="fa fa-money"></i>ទិញឥឡូវនេះ</a></li>
-									</ul>
-								</div>
-                                 <div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-                                                <!--
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="${pageContext.request.contextPath }/resources/images/NikonCoolPix/s-l1603.jpg" alt="" />
-										<h2>$230</h2>
-										<p>កាមេរា Nikon</p>
-										<a href="#" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a></li>
-										<li><a href="#"><i class="fa fa-money"></i>ទិញឥឡូវនេះ</a></li>
-									</ul>
-								</div>
-                                <div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a>5 bids</a></li>
-										<li><a>នៅសល់ ៧ ថ្ងៃទៀត</a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-						
+                                                
+                                                <div id="pagination" class="pull-right"></div>
+                                                
 					</div><!--features_items-->
 					
 					<div class="recommended_items"><!--recommended_items-->
@@ -608,30 +484,29 @@
 	</footer><!--/Footer-->
 	
 </div>
-                                                                                                         
-     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
-             <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
-             
+                                                                                       
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>                                                                                                     
+    
+
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-
-  		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <!--pop up product detail-->
-		<script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
-                <script>
-			
-                        
-                        $.noConflict();
-                            jQuery(document).ready(function(){
-                               jQuery("#iframe22").colorbox({iframe:true, width:"80%", height:"80%"});
-                            });
-		</script>
-
+    <!-- boot page -->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
+    <!-- main app -->
+    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
     
+    <!--pop up product detail-->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
+    <!--<script>
+    
+        $.noConflict();
+        jQuery(document).ready(function(){
+        jQuery("#iframe22").colorbox({iframe:true, width:"80%", height:"80%"});
+        });
+    </script>--> 
 </body>
 </html>

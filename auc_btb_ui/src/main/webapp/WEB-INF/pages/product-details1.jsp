@@ -24,8 +24,7 @@
 	<link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
 
 	<!-- slide -->
-	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/jsslide/jssor.slider.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/jsslide/myjs.js"></script>
+	
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/images/motor/myslide.css">
    
     <style>
@@ -76,13 +75,10 @@
 </head><!--/head-->
 
 <body>
-	
-	
 	<section>
             <div class="container" ng-controller="ctrl">
                 <div class="row" ng-init="getAuction_detail(${id})">
-			
-				
+	
 				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-6" style="margin-top:50px;">
@@ -93,12 +89,12 @@
 					            <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 					            <div style="position:absolute;display:block;background:url('${pageContext.request.contextPath }/resources/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
 					        </div>
-					        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;">
+					        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;" ng-repeat="image in auc_detail.images">
 					            <div data-p="144.50" style="display: none;">
-					                <img src="${pageContext.request.contextPath }/resources/images/motor/Untitled-1-Recovered.jpg">
-					                <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-1-Recovered.jpg" />
+                                                        <img src="http://localhost:9999/resources/{{image.img_path}}" width="640" height="480">
+					                <img  src="http://localhost:9999/resources/{{image.img_path}}" data-u="thumb" />
 					            </div>
-					            <div data-p="144.50" style="display: none;">
+					            <!--<div data-p="144.50" style="display: none;">
 					                <img data-u="image" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-2-Recovered.jpg"/>
 					                <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-2-Recovered.jpg" />
 					            </div>
@@ -109,11 +105,11 @@
 					            <div data-p="144.50" style="display: none;">
 					                <img data-u="image" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-4-Recovered.jpg" />
 					                <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-4-Recovered.jpg"/>
-					            </div>
+					            </div>-->
 					           
 					           
 					            
-					            <a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider</a>
+					            <!--<a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider</a>-->
 					        
 					        </div>
 					        <!-- Thumbnail Navigator -->
@@ -380,7 +376,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 
-
+    <!--slider-->
+    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/jsslide/jssor.slider.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/jsslide/myjs.js"></script>
     
     <script>
         jssor_1_slider_init();
