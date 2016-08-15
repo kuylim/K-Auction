@@ -1,11 +1,10 @@
 <%-- 
-    Document   : product
-    Created on : Aug 3, 2016, 9:11:56 AM
+    Document   : user
+    Created on : Aug 3, 2016, 9:13:34 AM
     Author     : User
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Products</title>
+    <title>K-Auction | Users</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -25,22 +24,24 @@
     
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
+
     <!-- Custom Theme Style -->
     <link href="${pageContext.request.contextPath }/resources/build/css/custom.css" rel="stylesheet">
 	<!-- Mystyle -->
     <link href="${pageContext.request.contextPath }/resources/build/css/auction.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- datatable -->
-	<link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-<!--    moment-->
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css">      
-     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css">   
+  <!-- angular app -->
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+    <!-- angular app -->
   </head>
 
-  <body class="nav-md "  ng-app="AuctionApp">
-    <div class="container body" ng-cloak="cloak">
+  <body class="nav-md">
+    <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -61,6 +62,7 @@
               </div>
             </div>
             <!-- /menu profile quick info -->
+
             <br />
 
             <!-- sidebar menu -->
@@ -119,6 +121,7 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
+
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -150,11 +153,12 @@
           </div>
         </div>
         <!-- /top navigation -->
-        <div class="clearfix"></div>
+         <div class="clearfix"></div>
         <!-- page content -->
-        <div class="right_col" role="main" ng-controller="AuctionController">
-          <div class="">	
-            <!--replace by the sweetalert start-->
+        <div class="right_col" role="main"  ng-app="AuctionApp">
+          <div class="" ng-controller="AuctionController">
+	<!--add new product-->
+                  <!--replace by the sweetalert start-->
            	<!--modal​ add-->
 	<div class="modal fade" id="add" role="dialog">
 	   <div class="modal-dialog">
@@ -192,7 +196,6 @@
                     </div>	 	  	     		
 	</div>
 	<!--end modal add -->
-
 	<!--modal​ update-->
 	 <div class="modal fade" id="update" role="dialog">
 	   <div class="modal-dialog">
@@ -231,60 +234,63 @@
                         </div>
                      </div>	 	  	     		
 	</div>
-	<!--end modal update-->
-	<div class="row">
-	  <div class="col-md-12" >
-	   <h3>Auctions List</h3>
-	   <div class="table-responsive">
-	   <table class="table table-bordered">
-                        <tr >
-                           <td colspan="13">
-                               <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add" >Add Auction Item</button>
-                            </td>  
-                        </tr>
-                        <tr​​>
-                            <th>No </th>
-                            <th >AuctID </th>
-                            <th >Owner </th>
-                            <th >Product </th>
-                            <th >Condition </th>
-                            <th >Start Price </th>
-                            <th >Buy Price</th>
-                            <th >Bid Increase </th>
-                            <th >Current Price </th>
-                            <th >Start Date </th>
-                            <th >End Date </th>
-                            <th >User ID </th>
-                            <th >Action </th>
-                        </tr>
-                        <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
-                           <td>{{$index+1}} </td>
-                           <td>{{au.auc_id}}</td>
-                           <td>{{au.firstname}} {{au.lastname}}</td>
-                           <td>{{au.name}} </td>
-                           <td>{{au.product_condition}}</td>
-                           <td>{{au.start_price}}</td>		    
-                           <td>{{au.buy_price}}</td>
-                           <td >{{au.bid_increment_price}} </td>
+	<!--end modal update-->  
+                    <div class="row">
+                     <h1 >User Manager</h1>
+                        <div >
+                            <div >
+                                
+                               <div class="table-responsive" style="border:none;">
+                                   <h3 class="pull-left">Filter Here..</h3>
+                              
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                               <table class="table table-striped jambo_table bulk_action">
+                               <thead
+                                 <tr​​>
+                                     <th>No </th>
+                                     <th >AuctID </th>
+                                     <th >Owner </th>
+                                     <th >Product </th>
+                                     <th >Condition </th>
+                                     <th >Start Price </th>
+                                     <th >Buy Price</th>
+                                     <th >Bid Increase </th>
+                                     <th >Current Price </th>
+                                     <th >Start Date </th>
+                                     <th >End Date </th>
+                                     <th >User ID </th>
+                                     <th >Action </th>
+                                 </tr
+                               </thead>
+                               <tbody>
+                                 <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
+                                    <td>{{$index+1}} </td>
+                                    <td>{{au.auc_id}}</td>
+                                    <td>{{au.firstname}} {{au.lastname}}</td>
+                                    <td>{{au.name}} </td>
+                                    <td>{{au.product_condition}}</td>
+                                    <td>{{au.start_price}}</td>		    
+                                    <td>{{au.buy_price}}</td>
+                                    <td >{{au.bid_increment_price}} </td>
                                     <td >{{au.current_price}} </td>
-                          <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
-                          <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
-                          <td >{{au.urs_id}} </td>
-                          <td>
+                                   <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
+                                   <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
+                                   <td >{{au.urs_id}} </td>
+                                   <td>
                                     <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                            <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                          </td>
-						        </tr>
-					</table>
-	   	    	</div> 
-	   	   	</div>
-	</div>
-            <!--replace by the sweetalert end-->      
-         </div>
-            </div>
+                                     <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                   </td>
+                                  </tr>
+                                 </tbody>
+                               </table>
+                             </div>
+                             <div   id="pagination" class="pull-right" ></div> 
+                           </div>
+                         </div>
+                   </div>
           </div>  
         </div>
-        <!-- /page content -->
+        <!-- end page content -->
 
         <!-- footer content -->
         <footer>
@@ -350,6 +356,13 @@
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/pdfmake/build/vfs_fonts.js"></script>
     
+    <!-- boot page -->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
+    <!-- main app -->
+    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+    <!--pop up product detail-->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
+    <!--<script>
     
     <!-- Datatables -->
 <!--     angular app 
