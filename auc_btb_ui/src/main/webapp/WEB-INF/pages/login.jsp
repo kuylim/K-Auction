@@ -192,7 +192,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 								<input type="checkbox" class="checkbox"> 
 								Keep me signed in
 							</span>                                                  
-                                                        <input type="submit" class="btn btn-default">ចូលទៅកាន់</button>
+                                                        <input type="submit" ng class="btn btn-default">ចូលទៅកាន់</button>
 						</form>
 					</div><!--/login form-->
 				</div>
@@ -205,13 +205,12 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 						<form action="#">
 							<input type="text" placeholder="First Name"/>
 							<input type="email" placeholder="Last Name"/>
-                                                                                                                               <input type="text" placeholder="User Name"/>
-                                                                                                                               <input type="email" placeholder="Email"/>
-                                                                                                                               <input type="password" placeholder="Password"/>
-                                                                                                                                 <input type="password" placeholder="Comfirm Password"/>
-                                                                                                                                <input type="text" placeholder="Address"/>
-                                                                                                                                <input type="text" placeholder="Phone Number"/>
-                                                                                                                              
+                                                            <input type="text" placeholder="User Name"/>
+                                                            <input type="email" placeholder="Email"/>
+                                                            <input type="password" placeholder="Password"/>
+                                                            <input type="password" placeholder="Comfirm Password"/>
+                                                            <input type="text" placeholder="Address"/>
+                                                            <input type="text" placeholder="Phone Number"/>                                                                                                                            
 							<button type="submit" class="btn btn-default" >បង្កើត</button>
 						</form>
 					</div><!--/sign up form-->
@@ -286,19 +285,10 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 			<div class="container">
 				<div class="row">
 					<p class="pull-left">Copyright © 2016 K-Auction. All rights reserved.</p>
-					
 				</div>
 			</div>
 		</div>
 		
-	</footer><!--/Footer-->
-
-
-	
-
-  
-   
-
-	
+	</footer><!--/Footer-->	
 </body>
 </html>
