@@ -41,7 +41,7 @@ public class User_serviceImpl implements User_service{
 		
 		login.setEmail(userEmail);
 		HttpEntity<Object> request = new HttpEntity<Object>(login);
-		ResponseEntity<Map> response = rest.exchange(WS_URL + "/customer/find-user-by-email", HttpMethod.POST , request , Map.class) ;
+		ResponseEntity<Map> response = rest.exchange(WS_URL + "/user/find-user-by-email", HttpMethod.POST , request , Map.class) ;
 		Map<String, Object> map = (HashMap<String, Object>)response.getBody();
 		if(map.get("DATA") != null){
 			Map<String , Object> data = (HashMap<String , Object>) map.get("DATA");

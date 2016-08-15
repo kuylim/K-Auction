@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
@@ -50,6 +51,8 @@
 
 <body>
     <div >
+        
+        
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -274,7 +277,15 @@
 											<a href="product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" /></a>
 											<h2>{{auc.current_price}} $</h2>
 											<p>{{auc.name}}</p>
-                                                                                        <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                                                        
+                                                                                        <security:authorize access="isAuthenticated()">
+                                                                                            <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>    
+                                                                                            <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                                                        </security:authorize>
+                                                                                            
+                                                                                        <security:authorize access="isAnonymous()">
+                                                                                            <a href="/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                                                        </security:authorize>      
 										</div>
 								</div>
 								<div class="choose">

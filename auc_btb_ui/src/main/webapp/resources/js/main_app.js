@@ -6,19 +6,19 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                 //testing customer
                 $scope.cus;
                 //fetch persons
-		$scope.getCus = function(){
-			$http({
-				method: 'GET',
-				url: 'http://localhost:9999/api/customer/search/2'
-			})
-			.then(function(response){
-				$scope.cus = response.data.DATA;
-                                
-				//console.log(response.data.DATA);
-			}, function(response){
-				
-			});
-		}
+		$scope.getCus = function(bidder_id){
+                                $http({
+                                        method: 'GET',
+                                        url: 'http://localhost:9999/api/user/search/'+bidder_id
+                                })
+                                .then(function(response){
+                                        $scope.cus = response.data.DATA;
+
+                                        //console.log(response.data.DATA);
+                                }, function(response){
+
+                                });
+                        }
                 //end testing
                                
 		//fetch categories
@@ -64,13 +64,16 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 
                 });
                 }
-                $scope.getCus();
+                
                 // bidding function
                 $scope.bidding = function(id){
+                        //alert(bidder_id);
+                        
                         
                         if ($scope.cus.credit <= 0) {
                             alert("You don't have enought credit to bit. please charge your balance");
                         } else {
+                            
                             $scope.Nowsday = new Date();
                             $scope.bid_log;
                             //alert(id);
@@ -107,7 +110,7 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                                                             //console.log($scope.auction);
                                                             //alert("update price");
                                                             $scope.cus.credit = $scope.cus.credit-500;
-                                                            $http.put('http://localhost:9999/api/customer/update-balance', $scope.cus)
+                                                            $http.put('http://localhost:9999/api/user/update-balance', $scope.cus)
 
                                                                     .success(function(){
                                                                         //$scope.getAuction();
