@@ -23,7 +23,7 @@ public class User_controller {
 //    }
     
     
-    @RequestMapping(value={"/", "index"})
+    @RequestMapping(value={"/", "/index", "/home"})
     public String aucAdmin(){
         return "index";
     }
@@ -37,5 +37,11 @@ public class User_controller {
     public String proDetail( ModelMap model,   @PathVariable("id") int id){
         model.addAttribute("id", id);
         return "product-details1";
+    }
+    
+    @RequestMapping("/access-denied")
+    public String Permision()
+    {
+        return "no-permison";
     }
 }
