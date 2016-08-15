@@ -35,11 +35,12 @@
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <!--    moment-->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css">      
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css">   
   </head>
 
   <body class="nav-md "  ng-app="AuctionApp">
-    <div class="container body">
+    <div class="container body" ng-cloak="cloak">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -118,7 +119,6 @@
             <!-- /menu footer buttons -->
           </div>
         </div>
-
         <!-- top navigation -->
         <div class="top_nav">
           <div class="nav_menu">
@@ -150,172 +150,135 @@
           </div>
         </div>
         <!-- /top navigation -->
-		<div class="clearfix"></div>
+        <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main" ng-controller="AuctionController">
-          <div class="">
-	
+          <div class="">	
             <!--replace by the sweetalert start-->
-           	   	    <!--modal​ add-->
-	   	    <div class="modal fade" id="add" role="dialog">
-	   	        <div class="modal-dialog">
-	   	    	 <div class="modal-content">
-	   	    	 	  <div class="modal-header">
-	   	    	 	  	  <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	    	 	  	  <h4 class="modal-title">Add New</h4>
-	   	    	 	  </div>
-	   	    	 	  <div class="modal-body">
-	   	    	 	  	   <div class="form-group">
-	   	    	 	  	   		<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>
+           	<!--modal​ add-->
+	<div class="modal fade" id="add" role="dialog">
+	   <div class="modal-dialog">
+	    <div class="modal-content">
+                        <div class="modal-header">
+	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	   	<h4 class="modal-title">Add New</h4>
+	     </div>
+                       <div class="modal-body">
+	         <div class="form-group">
+<!--	   	<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>-->
+                                    <span>Owner</span>
+		<select  class="form-control" ng-model="ownerid" style="padding-left:6px;" 
+                                            ng-options="own.owner_id as own.lastname for own in owners">
+                                    </select><br>
+	   	<select  class="form-control" ng-model="proid" style="padding-left:6px;" 
+                                             ng-options="pro.pro_id as pro.name for pro in products">
+        		</select><br>
+	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
+	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
+	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
+	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
+	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
+	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
+	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
+	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
+	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
+                                        ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
+	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
+	   	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
+	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
+                            </div>     	  
+	       </div>
+	    </div>
+                    </div>	 	  	     		
+	</div>
+	<!--end modal add -->
 
-	   	    	 	  	     	<span>Product</span><input type="number" class="form-control"  ng-model="proid" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
-
-	   	    	 	  	     	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success">Add</a>
-	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-	   	    	 	  	     	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
-	   	    	 	  	     	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
-	   	    	 	  	    </div>     	  
-	   	    	 	  </div>
-	   	        </div>
-	   	      </div>	 	  	     		
-	   	   </div>
-	   	   <!--end modal-->
-
-	   	   <!--modal​ update-->
-	   	   <div class="modal fade" id="update" role="dialog">
-	   	        <div class="modal-dialog">
-	   	    	 <div class="modal-content">
-	   	    	 	  <div class="modal-header">
-	   	    	 	  	  <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	    	 	  	  <h4 class="modal-title">Update Auction</h4>
-	   	    	 	  </div>
-	   	    	 	  <div class="modal-body">
-	   	    	 	  	   <div class="form-group">
-	   	    	 	  	   		<span>AuctID</span><input type="number" ng-model="aucid"  class="form-control" readonly><br>
-
-								<!-- <span>Owner</span><input type="number" ng-model="ownerid"  class="form-control"><br> -->
-
-								<!-- <span>Owner</span><select class="form-control">
-									<option ng-model="ownerid">sample</option>
-								</select><br> -->
-								<span>Owner</span>
-								<select  class="form-control" ng-model="ownerid" style="padding-left:6px;">
-                                                                                                                                                                    <option  ng-repeat="own in owners" value="{{own.owner_id}}">
-                                                                                                                                                                            {{own.firstname}} {{own.lastname}}
-                                                                                                                                                                    </option>
-                                                                                                                                                </select><br>
-        						<span>Product</span>
-								<select  class="form-control" ng-model="proid" style="padding-left:6px;">
-        							<option  ng-repeat="pro in products" value="{{pro.pro_id}}">
-        								{{pro.name}}
-        							</option>
-        						</select><br>
-
-	   	    	 	  	     	<!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br>
- -->
-	   	    	 	  	     	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-
-	   	    	 	  	     	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-
-	   	    	 	  	     	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
-
-	   	    	 	  	     	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>
-								
-	   	    	 	  	     	<a href="" ng-click="updatePerson(id)" class="btn btn-success" >Update</a>
-	   	    	 	  	     	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
-								
-	   	    	 	  	     	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
-	   	    	 	  	     	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
-	   	    	 	  	    </div>    	  
-	   	    	 	  </div>
-	   	        </div>
-	   	      </div>	 	  	     		
-	   	   </div>
-	   	   <!--end modal-->
-	   	    <div class="row">
-	   	    	 <div class="col-md-12" >
-	   	    	 	<h3>Auctions List</h3>
-	   	    	 	  <div class="table-responsive">
-	   	    	 	  	  <table class="table table-bordered">
-	   	    	 	  	  <tr >
-	   	    	 	  	    <td colspan="13">
-                                                                                                            <span>Search here </span>
-                                                                                                            <select  class="single_field" id="search" onchange="test()" style="padding-left:6px;">
-                                                                                                                     <option  ng-repeat="pro in products" value="{{pro.name}}">{{pro.name}}</option>
-                                                                                                            </select>
-	   	    	 	  	     	<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add" >Add Auction Item</button>
-	   	    	 	  	    </td>  
-	   	    	 	  	  </tr>
-	   	    	 	  	  <tr​​>
+	<!--modal​ update-->
+	 <div class="modal fade" id="update" role="dialog">
+	   <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	   	<h4 class="modal-title">Update Auction</h4>
+                           </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+	   	<span>AuctID</span><input type="number" ng-model="aucid"  class="form-control" readonly><br>
+		<span>Owner</span>
+		<select  class="form-control" ng-model="ownerid" style="padding-left:5px;" 
+                                             ng-options="own.owner_id as own.lastname for own in owners">
+                                    </select><br>
+        		<span>Product</span>
+		<select  class="form-control" ng-model="proid" style="padding-left:5px;" 
+                                             ng-options="pro.pro_id as pro.name for pro in products">
+        		</select><br>
+                                   <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
+	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
+	   	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
+	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
+	   	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
+	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
+	   	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
+	   	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
+	   	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>					
+	   	<a href="" ng-click="updateAuction(id)" class="btn btn-success"  
+                                    ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
+	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
+	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
+	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
+                                </div>    	  
+                            </div>
+                        </div>
+                     </div>	 	  	     		
+	</div>
+	<!--end modal update-->
+	<div class="row">
+	  <div class="col-md-12" >
+	   <h3>Auctions List</h3>
+	   <div class="table-responsive">
+	   <table class="table table-bordered">
+                        <tr >
+                           <td colspan="13">
+                               <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add" >Add Auction Item</button>
+                            </td>  
+                        </tr>
+                        <tr​​>
                             <th>No </th>
                             <th >AuctID </th>
                             <th >Owner </th>
-
                             <th >Product </th>
                             <th >Condition </th>
                             <th >Start Price </th>
-
                             <th >Buy Price</th>
                             <th >Bid Increase </th>
                             <th >Current Price </th>
-
                             <th >Start Date </th>
                             <th >End Date </th>
                             <th >User ID </th>
-
                             <th >Action </th>
-
-	   	    	 	  	  </tr>
-	   	    	 	  	  <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">
-						   
-						    <td>{{$index+1}} </td>
-						    <td>{{au.auc_id}}</td>
-						    <td>{{au.firstname}} {{au.lastname}}</td>
-
-						    <td>{{au.name}} </td>
-						    <td>{{au.product_condition}}</td>
-						    <td>{{au.start_price}}</td>
-						    
-						    <td>{{au.buy_price}}</td>
-						    <td >{{au.bid_increment_price}} </td>
-						    <td >{{au.current_price}} </td>                            
-                            
-                            <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
-                            <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
-                            <td >{{au.urs_id}} </td>
-                            <td>
-								<a href="" ng-click="getData(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                <a href="" ng-click="deletePerson(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                            </td>
-						</tr>
+                        </tr>
+                        <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
+                           <td>{{$index+1}} </td>
+                           <td>{{au.auc_id}}</td>
+                           <td>{{au.firstname}} {{au.lastname}}</td>
+                           <td>{{au.name}} </td>
+                           <td>{{au.product_condition}}</td>
+                           <td>{{au.start_price}}</td>		    
+                           <td>{{au.buy_price}}</td>
+                           <td >{{au.bid_increment_price}} </td>
+                                    <td >{{au.current_price}} </td>
+                          <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
+                          <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
+                          <td >{{au.urs_id}} </td>
+                          <td>
+                                    <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
+                            <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                          </td>
+						        </tr>
 					</table>
 	   	    	</div> 
 	   	   	</div>
-	   	</div>
+	</div>
             <!--replace by the sweetalert end-->      
          </div>
             </div>
