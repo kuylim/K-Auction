@@ -249,16 +249,16 @@
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
-    $scope.getAuction = function(){
-        $http({
-        	url:'http://localhost:9999/api/auction/get',
-            method:'GET'
-        }).then(function(response){
-            $scope.auctions = response.data.DATA;
-            console.log(response.data.DATA);
-        });
-    };
-    $scope.getAuction();
+//    $scope.getAuction = function(){
+//        $http({
+//        	url:'http://localhost:9999/api/auction/get',
+//            method:'GET'
+//        }).then(function(response){
+//            $scope.auctions = response.data.DATA;
+//            console.log(response.data.DATA);
+//        });
+//    };
+//    $scope.getAuction();
     $scope.addAuction = function(){
             $http({
             url:'http://localhost:9999/api/auction/add',
@@ -448,6 +448,48 @@ app.controller('AuctionController', function($scope, $http, $filter){
         });
     };
     $scope.getBrand();
+$scope.addBrand = function(){
+//        alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
+         $http({
+	url:'http://localhost:9999/api/brand/add',
+                            method:'POST',
+                        data:{
+                                    "description": $scope.description,
+                                    "name": $scope.brandname
+                           }
+		}).then(function(response){
+			console.log(response.data);
+			$scope.getBrand();
+			}, function(response){			
+		});
+    };  
+    $scope.deleteBrand = function(id){
+        alert(id);
+            swal({   
+            title: "Are you sure to delete this Auction?",   
+            text: "Bider will not see this item anymore!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#ED0909",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false}, 
+            function(isConfirm){   
+            if (isConfirm) {     
+                               $http({
+                    url:'http://localhost:9999/api/brand/delete/'+id,
+                                        method:'PUT'
+                                }).then(function(response){
+                    swal("Deleted!", "Auction item has been deleted :)", "success");  
+                    $scope.getBrand();
+                    },function(response){
+                    }); 
+            } else {     
+                    swal("Cancelled", "This Auction item has not been deleted :(", "error");   
+            } 
+             });
+    };
 //-------------------------------------------------------------------------------------------------Product Manager block end-----------//
     //=========================upload image===================================
     var FILE = {};
@@ -490,11 +532,48 @@ app.controller('AuctionController', function($scope, $http, $filter){
 				});
 			};
                         
-                        
-                   
-			
-			
-			
+               //=================pagination===========================
+            check = true;
+            currentPage = 1;
+            $scope.showData = function(currentPage){
+                //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';  
+                $http({url: 'http://localhost:9999/api/auction/get?page='+ currentPage +'&limit=10',
+                       method: 'GET'
+                }).then(function(response){
+                        console.log(response.data);
+                        $scope.auctions = response.data.DATA;
+                        if(check){
+                                setPagination(response.data.PAGINATION.TOTAL_PAGES,currentPage);
+                                check=false;
+                            }
+                }, function(){
+                        alert('Error');
+                }); 
+            };
+
+            setPagination = function(totalPage, currentPage){
+                       $('#pagination').bootpag({
+                               total: totalPage,
+                               page: currentPage,
+                               maxVisible: 5,
+                               leaps: true,
+                               firstLastUse: true,
+                               first: 'First',
+                               last: 'Last',
+                               wrapClass: 'pagination',
+                               activeClass: 'active',
+                               disabledClass: 'disabled',
+                               nextClass: 'next',
+                               prevClass: 'prev',
+                               lastClass: 'last',
+                               firstClass: 'first'
+                           }).on("page", function(event, currentPage){
+                               check = false;
+                               getCurrentPage = currentPage;
+                               $scope.showData(currentPage);
+                           }); 	
+                       };
+               $scope.showData(currentPage);                        			
    
    
 });
