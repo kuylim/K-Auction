@@ -270,10 +270,6 @@
                                         <form ng-submit = "upload($event)">
                                             <table>
                                                     <tr>
-                                                            <td>Folder</td>
-                                                            <td>: <input type="text" ng-model="folder" class="form-control" placeholder="folder to upload"/></td>
-                                                    </tr>
-                                                    <tr>
                                                             <td>File(multiple)</td>
                                                             <td>: <input type="file" id="file" name="file" class="form-control" multiple></td>
                                                     </tr>
@@ -480,8 +476,5 @@
         TableManageButtons.init();
       });
     </script>
-    
-    
-    
   </body>
 </html>

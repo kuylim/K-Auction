@@ -28,10 +28,10 @@ public class User_controller {
         return "index";
     }
     
-     @RequestMapping("/account")
-    public String account(){
-        return "account";
-    }
+//     @RequestMapping("/account")
+//    public String account(){
+//        return "account";
+//    }
     
 //    @RequestMapping("/shop/**")
 //    public String shop(){

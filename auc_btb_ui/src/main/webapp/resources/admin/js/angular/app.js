@@ -569,9 +569,19 @@ $scope.addBrand = function(){
                                $scope.showData(currentPage);
                            }); 	
                        };
-   $scope.showData(currentPage);                        			
+   $scope.showData(currentPage);          
    
    
 });
+
+// $('#add').modal({
+//            backdrop: 'static',
+//            keyboard: false
+//        });
+//        
+//  $('#update').modal({
+//            backdrop: 'static',
+//            keyboard: false
+//        });
 
 

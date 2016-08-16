@@ -92,17 +92,19 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.html"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
+							<a href="/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="account"><i class="fa fa-user"></i> គណនីយ</a></li>
-								<li><a href="wishlist.html"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រាថ្នា</a></li>
-								<!-- <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> -->
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"> កន្រ្តក</i></a></li>
-								<li><a href="login1"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+								<li><a href="/account"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                                <security:authorize access="isAuthenticated()">
+                                                                    <li><a href="/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
+                                                                </security:authorize>
+                                                                <security:authorize access="isAnonymous()">
+                                                                    <li><a href="/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+                                                                </security:authorize>
 							</ul>
 						</div>
 					</div>
@@ -124,20 +126,15 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">ទំព័រដើម</a></li>
-								<li class="dropdown"><a href="#">K-Auction<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop">ផលិតផល</a></li> 
-										<li><a href="login.html">ចាកចេញ</a></li> 
-                                    </ul>
-                                </li> 
-								<li><a href="contact-us.html">ទំនាក់ទំនង</a></li>
+								<li><a href="/home" class="active">ទំព័រដើម</a></li>
+								
+								<li><a href="/contact-us">ទំនាក់ទំនង</a></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-sm-5">
 					<div class="input-group">
-                                                                                                    <input type="text" class="form-control" placeholder="Search Blog..">
+                                                                                                    <input type="text" class="form-control" placeholder="ស្វែងរក ផលិតផល">
                                                                                                     <span class="input-group-btn">
                                                                                                       <button class="btn btn-default" type="button">
                                                                                                         <span class="glyphicon glyphicon-search"></span>
@@ -167,7 +164,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
@@ -178,7 +175,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
@@ -190,7 +187,7 @@
 									<h1><span>K</span>-AUCTION</h1>
 									<h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
 									<p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-									<button type="button" class="btn btn-success get"><a href="login.html" style="color:#fff;">បង្កើតគណនីយ</a></button>
+									
 								</div>
 								<div class="col-sm-6">
 									<img src="${pageContext.request.contextPath }/resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />

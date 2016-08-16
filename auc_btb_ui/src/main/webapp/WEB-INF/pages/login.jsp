@@ -18,8 +18,8 @@
     <link href="${pageContext.request.contextPath }/resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/price-range.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/css/animate.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/resources/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -30,25 +30,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/colorbox.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/colorbox.css" />
 	
-	
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 
-<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/ws-lightbox.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
 
-<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/ws-lightbox.css">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.css">
 
-
-<div class="jquery-script-ads"><script type="text/javascript"><!--
-google_ad_client = "ca-pub-2783044520727903";
-
-google_ad_slot = "2780937993";
-google_ad_width = 728;
-google_ad_height = 90;
-//-->
-</script>
-
+<div class="jquery-script-ads">
 <style>
     #form{
         margin-top: 0px;
@@ -178,14 +169,14 @@ google_ad_height = 90;
 					<div class="signup-form"><!--sign up form-->
 						<h2>បង្កើត គណនីយថ្មី!</h2>
 						<form action="#">
-                                                    <input type="text" placeholder="First Name" ng-model="user.firstname"/>
-                                                    <input type="text" placeholder="Last Name" ng-model="user.lastname"/>
-                                                    <input type="text" placeholder="Userame" ng-model="user.username"/>
-                                                    <input type="email" placeholder="Email" ng-model="user.email"/>
-                                                    <input type="password" placeholder="Password" ng-model="user.password"/>
-                                                    <input type="password" placeholder="Comfirm Password"/>
-                                                    <input type="text" placeholder="Address" ng-model="user.address"/>
-                                                    <input type="text" placeholder="Phone Number" ng-model="user.phone"/>                                                                                                                            
+                                                    <input  type="text" placeholder="First Name" ng-model="user.firstname" required/>
+                                                    <input type="text" placeholder="Last Name" ng-model="user.lastname" required/>
+                                                    <input type="text" placeholder="Userame" ng-model="user.username" required/>
+                                                    <input type="email" placeholder="Email" ng-model="user.email" required/>
+                                                    <input type="password" placeholder="Password" ng-model="user.password" required/>
+                                                    <input type="password" placeholder="Comfirm Password" ng-model="user.comfirm_pass" required/>
+                                                    <input type="text" placeholder="Address" ng-model="user.address" required/>
+                                                    <input type="text" placeholder="Phone Number" ng-model="user.phone" required/>                                                                                                                            
                                                     <button ng-click="user_login(user)" class="btn btn-default" >បង្កើត</button>
 						</form>
 					</div><!--/sign up form-->
@@ -283,6 +274,9 @@ google_ad_height = 90;
         <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="ws-lightbox.js" type="text/javascript"></script>
+        <script src="ws-lightbox.js" type="text/javascript"></script>
+        
+        <!--sweet alert-->
+        <script src="${pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.min.js"></script>  
 </body>
 </html>
