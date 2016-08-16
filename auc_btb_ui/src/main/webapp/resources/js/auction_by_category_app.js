@@ -94,7 +94,7 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                                 //console.log($scope.auction.auc_id);
                                 $scope.bid_log.auc_id = $scope.auction.auc_id;
                                 $scope.bid_log.current_price = $scope.auction.current_price + $scope.auction.bid_increment_price; 
-                                $scope.bid_log.cus_id = 2;
+                                $scope.bid_log.cus_id = $scope.cus.cus_id;
                                 $scope.bid_log.date = $scope.Nowsday; 
                                 $scope.auction.current_price = $scope.bid_log.current_price;
 
@@ -149,11 +149,8 @@ app.controller('ctrl', function ($scope, $filter, $http) {
             $scope.cate_id = cate_id;
 
             $scope.showData = function(currentPage){
-                alert("CATEGORY ==>" + cate_id);
-                alert($scope.cate_id);
-                //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';
-               // http://localhost:9999/api/auction/get-by-category/2?page=1&limit=60
                 
+                //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';     
                 $http({url: 'http://localhost:9999/api/auction/get-by-category/'+$scope.cate_id+'?page='+currentPage + '&limit=6',
                        method: 'GET'
                 }).then(function(response){
