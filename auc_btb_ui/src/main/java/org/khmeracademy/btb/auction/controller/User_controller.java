@@ -49,4 +49,11 @@ public class User_controller {
     {
         return "no-permison";
     }
+    
+    @RequestMapping("/auction/category/{cat_id}")
+    public String auction_by_category(ModelMap model , @PathVariable("cat_id") int cat_id)
+    {
+        model.addAttribute("cat_id", cat_id);
+        return "auction-by-category";
+    }
 }

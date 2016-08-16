@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
@@ -147,8 +147,12 @@
 		</div><!--/header-bottom-->
 	</header><!--/header-->
 	
+        <script>
+            var cate_id = '${cat_id}';
+        </script>
 	<section id="slider"><!--slider-->
-		<div class="container">
+            <div class="container" ng-init="showData()">
+                <!--<h1 ng-hide="cate_id = ${cat_id}">This is cate_id ${cat_id}</h1>-->
 			<div class="row">
 				<div class="col-sm-12">
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
@@ -503,7 +507,7 @@
     <!-- boot page -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
     <!-- main app -->
-    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/auction_by_category_app.js"></script>
     
     <!--pop up product detail-->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
