@@ -30,15 +30,14 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/colorbox.css" />
-
-        <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
-
-        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath }/resources/ws-lightbox.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+        
 
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/js/main.js">
 
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="ws-lightbox.js" type="text/javascript"></script>
+        <link href="${pageContext.request.contextPath }/resources/css/mystyle.css" rel="stylesheet">
     <div class="jquery-script-ads">
         <style>
             #form{
@@ -260,21 +259,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <!-- main app -->
     <script src="${pageContext.request.contextPath }/resources/js/login_app.js"></script>
-
-    <!--page script-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/jquery.colorbox.js"></script>
-
-
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/jquery.prettyPhoto.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="ws-lightbox.js" type="text/javascript"></script>
 
     <!--sweet alert-->
     <script src="${pageContext.request.contextPath }/resources/js/sweetalert/sweetalert.min.js"></script>  
