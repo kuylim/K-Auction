@@ -148,12 +148,13 @@
                     </div>
                 </div><!--/header-bottom-->
             </header><!--/header-->
-
+            <!-- pass category id to angular control -->
             <script>
-            var cate_id = '${cat_id}';
+                var cate_id = '${cat_id}';
             </script>
+            
             <section id="slider"><!--slider-->
-                <div class="container" ng-init="showData()">
+                <div class="container">
 
                     <div class="row">
                         <div class="col-sm-12">

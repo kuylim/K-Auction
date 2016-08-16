@@ -36,22 +36,6 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 		}
 		$scope.getCategories();
                 
-//                $scope.getAuction = function(){
-//                        $scope.date = new Date();
-//			$http({
-//				method: 'GET',
-//				url: 'http://localhost:9999/api/auction/get'
-//			})
-//			.then(function(response){
-//				$scope.auctions = response.data.DATA;
-//				//console.log(response.data.DATA);
-//			}, function(response){
-//				
-//			});
-//		}
-//                $scope.getAuction();
-                
-                
                 $scope.getAuction_detail = function(id){
                     $http({
                         method: 'GET',
