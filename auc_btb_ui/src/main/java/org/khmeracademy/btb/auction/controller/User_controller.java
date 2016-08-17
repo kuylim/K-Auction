@@ -28,6 +28,11 @@ public class User_controller {
         return "index";
     }
     
+//     @RequestMapping("/account")
+//    public String account(){
+//        return "account";
+//    }
+    
 //    @RequestMapping("/shop/**")
 //    public String shop(){
 //        return "shop";
@@ -43,5 +48,12 @@ public class User_controller {
     public String Permision()
     {
         return "no-permison";
+    }
+    
+    @RequestMapping("/auction/category/{cat_id}")
+    public String auction_by_category(ModelMap model , @PathVariable("cat_id") int cat_id)
+    {
+        model.addAttribute("cat_id", cat_id);
+        return "auction-by-category";
     }
 }

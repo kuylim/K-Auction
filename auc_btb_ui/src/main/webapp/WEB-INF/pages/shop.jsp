@@ -72,7 +72,7 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="account.html"><i class="fa fa-user"></i> គណនីយ</a></li>
+								<li><a href="account"><i class="fa fa-user"></i> គណនីយ</a></li>
 								<li><a href="wishlist.html"><i class="fa fa-star"></i> របស់ដែលប្រាថ្នា</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> កន្រ្តក</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
