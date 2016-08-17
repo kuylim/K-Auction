@@ -60,13 +60,13 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile">
+           <div class="profile">
               <div class="profile_pic">
-                <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="..." class="img-circle profile_img">
+               <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="..." class="img-circle profile_img"/>
               </div>
               <div class="profile_info">
-                <span>សូមស្វាគមន៍,</span>
-                <h2>ទិត្យ គុយលីម</h2>
+                <span>WELCOME,</span>
+                <h2>TITH KUYLIM</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -78,42 +78,25 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> ទំព័រដើម <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../au-admin.html">ផ្ទាំងគ្រប់គ្រង</a></li>
+                      <li><a href="../au-admin.html">Dashboard</a></li>
                     </ul>
                   </li>
-                  <li><a href="user.html"><i class="fa fa-user"></i>អ្នកប្រើប្រាស់</a></li>
-                  <li><a><i class="fa fa-edit"></i> ប្រភេទផលិតផល <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
+                  <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">គ្រឿងអេឡិចត្រូនិច</a></li>
                       <li><a href="#">យានយន្ដ</a></li>
                       <li><a href="#">អចលនទ្រព្យ</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> គ្រឿងអេឡិចត្រូនិច <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">ទូរស័ព្ទ</a></li>
-                      <li><a href="#">កុំព្យូទ័រ</a></li>
-                      <li><a href="#">ម៉ាស៊ីនបោកខោអាវ</a></li>
-                      <li><a href="#">ទូទឹកកក</a></li>
-                      <li><a href="#">ម៉ាស៊ីនត្រជាក់</a></li>
-                    </ul>
+                 
                   </li>
-                  <li><a><i class="fa fa-cab"></i> យានយន្ដ <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">រថយន្ដ</a></li>
-                      <li><a href="#">ម៉ូតូ</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> អចលទ្រព្យ <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#">ដីលូ</a></li>
-                      <li><a href="#">ផ្ទះល្វែង</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="product.html"><i class="fa fa-legal"></i>ផលិតផល</a></li>
-                  <li><a href="auction.html"><i class="fa fa-plus"></i>ដាក់ផលិតផលដេញថ្លៃ</a>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
+                  <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>AUCTION MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }auc-admin/brand"><i class="fa fa-plus-square"></i>BRAND MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>
                   </li>
                 </ul>
               </div>
@@ -195,10 +178,8 @@
 	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
 	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-	   	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
-                            </div>     	  
+	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>                            
+                             </div>     	  
 	       </div>
 	    </div>
                     </div>	 	  	     		
@@ -223,9 +204,7 @@
 		<select  class="form-control" ng-model="proid" style="padding-left:5px;" 
                                              ng-options="pro.pro_id as pro.name for pro in products">
         		</select><br>
-                                    <select  class="form-control" ng-model="proid" style="padding-left:5px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>
+                                    
                                    <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
 	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
 	   	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
@@ -252,7 +231,7 @@
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left">Filter Here..</h3>
+                                   <h3 class="pull-left"></h3>
                               
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
                                <table class="table table-striped jambo_table bulk_action">
