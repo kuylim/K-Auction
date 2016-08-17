@@ -435,11 +435,103 @@ app.controller('AuctionController', function($scope, $http, $filter){
             url:'http://localhost:9999/api/category/get',
             method:'GET'
         }).then(function(response){
+            
             $scope.category = response.data.DATA;
-            console.log(response.data.DATA);
+            console.log('CAT', response.data.DATA);
         });
     };
     $scope.getCategory();
+    $scope.addCategory = function(){ 
+        $http({
+	url:'http://localhost:9999/api/category/add',
+                  method:'POST',
+                  data:{ 
+                           "parent_id": $scope.parentid,
+                           "name": $scope.categoryname,
+                           "description":$scope.description
+                  }
+	}).then(function(response){
+                           $scope.categoryname = "";
+                           $scope.description = "";
+                           console.log(response.data);
+                           $scope.getCategory();
+	}, function(response){			
+	});
+    };
+        $scope.deleteCategory = function(id){
+            swal({   
+            title: "Are you sure to delete this Category?",   
+            text: "It may worstly effect to existing relational product!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#ED0909",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false}, 
+            function(isConfirm){   
+            if (isConfirm) {     
+                  $http({
+                        url:'http://localhost:9999/api/category/delete/'+id,
+                         method:'PUT'
+                        }).then(function(response){
+                            swal("Deleted!", " Current catgory has been deleted :)", "success");  
+                            $scope.getBrand();
+                    }); 
+            } else {     
+                    swal("Cancelled", "Current category has not been deleted :(", "error");   
+            } 
+             });
+    };
+    $scope.getCategoryObject = function(rec){
+            alert("CateID : "+rec.cat.cat_id+"  ParrentID"+rec.cat.parent_id);
+            $scope.categoryname ="";
+            $scope.catid =rec.cat.cat_id;
+            if(rec.cat.parent_id === 0)
+            {
+                $scope.parentid =rec.cat.cat_id;
+                
+            }
+            $scope.categorytype=1;
+            $scope.categoryname =rec.cat.name;
+            $scope.parentid =rec.cat.parent_id;
+            $scope.description =rec.cat.description;
+            $scope.categoryObject = rec.cat;
+    };
+    $scope.updateCategory = function(){
+            swal({   
+            title: "Are you sure to update this record?",   
+            text: "You will not be able to roll back!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#E98106",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false }, 
+            function(isConfirm){   
+            if(isConfirm) {     
+                    $http({
+                            url:'http://localhost:9999/api/brand/edit',
+                            method:'PUT',
+                            data:{
+                                "brand_id": $scope.brandid,
+                                "name": $scope.brandname,
+                                "description": $scope.description
+                              }
+                    }).then(function(response){
+                            $scope.brandObject.name = $scope.brandname;
+                            $scope.brandObject.description = $scope.description;
+                            swal("Updated!", "Current brand has been updated :)", "success"); 
+                            $('#btnclose').trigger('click');
+                             },function(response){
+                             });	  
+                     }else {     
+                           swal("Cancelled", "Current brand has not been updated :(", "error");   
+                     } 
+             });
+    };
+    
     $scope.getBrand = function(){
         $http({
             url:'http://localhost:9999/api/brand/get',
@@ -451,6 +543,9 @@ app.controller('AuctionController', function($scope, $http, $filter){
     };
     $scope.getBrand();
 $scope.addBrand = function(){
+        swal({
+            
+        });
          $http({
 	url:'http://localhost:9999/api/brand/add',
                   method:'POST',
@@ -466,7 +561,7 @@ $scope.addBrand = function(){
     };  
     $scope.deleteBrand = function(id){
             swal({   
-            title: "Are you sure to delete this Auction?",   
+            title: "Are you sure to delete this Brand?",   
             text: "Bider will not see this item anymore!",   
             type: "warning",   
             showCancelButton: true,   
@@ -481,12 +576,51 @@ $scope.addBrand = function(){
                         url:'http://localhost:9999/api/brand/delete/'+id,
                          method:'PUT'
                         }).then(function(response){
-                            swal("Deleted!", "Auction item has been deleted :)", "success");  
+                            swal("Deleted!", " Current brand has been deleted :)", "success");  
                             $scope.getBrand();
                     }); 
             } else {     
-                    swal("Cancelled", "This Auction item has not been deleted :(", "error");   
+                    swal("Cancelled", "Current brand has not been deleted :(", "error");   
             } 
+             });
+    };
+     $scope.getBrandObject = function(rec){
+            $scope.brandid =rec.bra.brand_id;
+            $scope.brandname =rec.bra.name;
+            $scope.description =rec.bra.description;
+            $scope.brandObject = rec.bra;
+    };
+    $scope.updateBrand = function(){
+            swal({   
+            title: "Are you sure to update this record?",   
+            text: "You will not be able to roll back!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#E98106",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false }, 
+            function(isConfirm){   
+            if(isConfirm) {     
+                    $http({
+                            url:'http://localhost:9999/api/brand/edit',
+                            method:'PUT',
+                            data:{
+                                "brand_id": $scope.brandid,
+                                "name": $scope.brandname,
+                                "description": $scope.description
+                              }
+                    }).then(function(response){
+                            $scope.brandObject.name = $scope.brandname;
+                            $scope.brandObject.description = $scope.description;
+                            swal("Updated!", "Current brand has been updated :)", "success"); 
+                            $('#btnclose').trigger('click');
+                             },function(response){
+                             });	  
+                     }else {     
+                           swal("Cancelled", "Current brand has not been updated :(", "error");   
+                     } 
              });
     };
 //-------------------------------------------------------------------------------------------------Product Manager block end-----------//
