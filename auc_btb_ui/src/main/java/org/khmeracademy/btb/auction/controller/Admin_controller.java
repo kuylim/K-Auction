@@ -43,6 +43,10 @@ public class Admin_controller {
     public String aucCategory(){
         return "admin/auc-category";
     }
+    @RequestMapping(value={"/auc-admin/brand"})
+    public String aucBrand(){
+        return "admin/auc-brand";
+    }
     
 // @RequestMapping(value={"/auc-admin/user/"})
 //    public String aucUserAdd(){
