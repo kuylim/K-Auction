@@ -246,7 +246,7 @@
 //});
 // 13th, Aug, 2016---------------------------------------------------------------------------------------------------------------//
 var app = angular.module('AuctionApp', []);
-app.controller('AuctionController', function($scope, $http, $filter){
+app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
     $scope.getAuction = function(){
         $http({
@@ -569,7 +569,38 @@ $scope.addBrand = function(){
                                $scope.showData(currentPage);
                            }); 	
                        };
-   $scope.showData(currentPage);          
+   $scope.showData(currentPage);    
+   
+   $scope.addRestaurant = function(){
+
+                alert($scope.name);
+		var frmData = new FormData();
+		
+		var restaurant_files = angular.element('#img')[0].files;
+		for(var i=0; i<restaurant_files.length; i++){
+			frmData.append("images", restaurant_files[i]);
+		}
+		
+		frmData.append('name', $scope.name);
+		frmData.append('cat_id', $scope.catid);
+                frmData.append('brand_id', $scope.brandid);
+                frmData.append('pro_info', $scope.proinfo);
+		
+		$http({
+			url:'http://localhost:9999/api/product/add',
+			method: 'POST',
+			data: frmData,
+			transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+		}).then(function(response){
+			console.log(response.data);
+			//$scope.getRest();
+		}, function(error){
+			console.log(error.data);
+			alert('failed to upload data! Please Try again Youra !!!!!');
+			//$scope.getRest();
+		});
+}
    
    
 });
