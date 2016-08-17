@@ -34,8 +34,10 @@
 	<link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <!--    moment-->
-    <script type="text/javascript" src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css">
+   <!--    sweetaler style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+ <!--    sweetaler style--> 
   </head>
 
   <body class="nav-md "  ng-app="AuctionApp">
@@ -174,7 +176,7 @@
 	   	    	 	  	     	<span>Name</span><input type="type" ng-model="name"  class="form-control" placeholder="Product name"><br>
 	   	    	 	  	     	<span>Category ID</span>
 						<select  class="form-control" ng-model="catid" style="padding-left:6px;">
-                                                                                                                     <option  ng-repeat="cat in category" value="{{cat.cat_id}}">
+                                                                                                                     <option  ng-repeat="cat in category | filter:{'parent_id': '0'}" value="{{cat.cat_id}}" >
                                                                                                                              {{cat.name}} {{own.lastname}}
                                                                                                                        </option>
                                                                                                              </select>
@@ -322,7 +324,7 @@
                                                                                                                 <td>{{pro.product_info}}</td>
 						     <td>
                                                                                                                         <a href="" ng-click="getData(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                                                                                                        <a href="" ng-click="deletePerson(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                                                                                                        <a href="" ng-click="deleteProduct(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
                                                                                                                     </td>
 						</tr>
 					</table>
