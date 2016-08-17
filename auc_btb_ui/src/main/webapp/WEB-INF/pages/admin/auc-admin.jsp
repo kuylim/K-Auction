@@ -94,7 +94,8 @@
                   </li>
                   <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
                   <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>AUCTION MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>    
+                   <li><a href="${pageContext.request.contextPath }auc-admin/brand"><i class="fa fa-plus-square"></i>BRAND MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>   
                   </li>
                 </ul>
               </div>
