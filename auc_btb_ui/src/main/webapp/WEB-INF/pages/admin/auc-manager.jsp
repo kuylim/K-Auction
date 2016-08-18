@@ -143,9 +143,19 @@
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left"></h3>
+                                   <div class="form-group">
+<!--                                       <select style=" height: 30px;">
+                                           <option value="">Category</option>
+                                       </select>-->
+                                       <input   ng-model="searcheng" ng-click="searchCategory()"  style=" height: 30px; ">
+                                       <select ng-model="catid"style="padding-left:8px; height: 30px;" 
+                                                       ng-options="cat.cat_id as cat.name for cat in category | filter: listOnlySubCategory('parent_id', 0)">
+                                       </select>
+                                       <button style="margin-top:5px; margin-left:1px; height: 30px;">Search</button>
+                                       <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                                   </div>
                               
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                                  
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
@@ -181,6 +191,8 @@
                                    <td>
                                     <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
                                      <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                     <a href="${pageContext.request.contextPath }/auc-admin/manage/info/{{au.auc_id}}" target="_new"  class='btn btn-info btn-sm'>Review</a>
+                                     
                                    </td>
                                   </tr>
                                  </tbody>
