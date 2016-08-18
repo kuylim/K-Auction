@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
     <head>
@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>ទំព័រដើម | K-Auction</title>
+        <title>ផលិតផល | K-Auction</title>
         <link href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath }/resources/css/font-awesome.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath }/resources/css/prettyPhoto.css" rel="stylesheet">
@@ -51,8 +51,6 @@
 
     <body>
         <div >
-
-
             <header id="header"><!--header-->
                 <div class="header_top"><!--header_top-->
                     <div class="container">
@@ -100,12 +98,12 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="/account"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/account"><i class="fa fa-user"></i> គណនីយ</a></li>
                                             <security:authorize access="isAuthenticated()">
-                                            <li><a href="/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
                                             </security:authorize>
                                             <security:authorize access="isAnonymous()">
-                                            <li><a href="/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
                                             </security:authorize>
                                     </ul>
                                 </div>
@@ -128,9 +126,9 @@
                                 </div>
                                 <div class="mainmenu pull-left">
                                     <ul class="nav navbar-nav collapse navbar-collapse">
-                                        <li><a href="/home" class="active">ទំព័រដើម</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/home" class="active">ទំព័រដើម</a></li>
 
-                                        <li><a href="/contact-us">ទំនាក់ទំនង</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/contact-us">ទំនាក់ទំនង</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -148,67 +146,10 @@
                     </div>
                 </div><!--/header-bottom-->
             </header><!--/header-->
-
-            <section id="slider"><!--slider-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                                    <li data-target="#slider-carousel" data-slide-to="1"></li>
-                                    <li data-target="#slider-carousel" data-slide-to="2"></li>
-                                </ol>
-
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <div class="col-sm-6">
-                                            <h1><span>K</span>-AUCTION</h1>
-                                            <h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
-                                            <p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-sm-6">
-                                            <h1><span>K</span>-AUCTION</h1>
-                                            <h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
-                                            <p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>
-
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="col-sm-6">
-                                            <h1><span>K</span>-AUCTION</h1>
-                                            <h2>គេហទំព័រដេញថ្លៃ ទំនិញដំបូងគេបង្អស់នៅកម្ពុជា</h2>
-                                            <p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>	
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev" >
-                                    <i class="fa fa-angle-left" ></i>
-                                </a>
-                                <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section><!--/slider-->
+            <!-- pass category id to angular control -->
+            <script>
+                var brand_id = '${brand_id}';
+            </script>
 
             <section>
                 <div class="container" ng-controller="ctrl">
@@ -232,7 +173,7 @@
                                         <div id="_{{x.name}}"   ng-show="x.parent_id == 0" class="panel-collapse collapse">
                                             <div class="panel-body" >
                                                 <ul ng-repeat = "y in categories" ng-show = "y.parent_id == x.cat_id">
-                                                    <li><a href="/auction/category/{{y.cat_id}}">{{y.name}}</a></li>
+                                                    <li><a href="${pageContext.request.contextPath }/auction/category/{{y.cat_id}}">{{y.name}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -248,7 +189,7 @@
                                     <h2>ម៉ាកផលិតផល</h2>
                                     <div class="brands-name">
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li ng-repeat=" br in brand"><a href="/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
+                                            <li ng-repeat=" br in brand"><a href="${pageContext.request.contextPath}/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
                                         </ul>
                                     </div>
                                 </div><!--/brands_products-->
@@ -264,7 +205,7 @@
                                     <div  class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" /></a>
+                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" /></a>
                                                 <h2>{{auc.current_price}} $</h2>
                                                 <p>{{auc.name}}</p>
 
@@ -274,7 +215,7 @@
                                                 </security:authorize>
 
                                                 <security:authorize access="isAnonymous()">
-                                                    <a href="/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                    <a href="${pageContext.request.contextPath }/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
                                                 </security:authorize>      
                                             </div>
                                         </div>
@@ -287,8 +228,7 @@
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
                                                 <li><a>{{auc.number_of_bids}} bids</a></li>
-                                                <!--<li><a>នៅសល់ {{(auc.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</a></li>-->
-                                                <li><a>{{auc.remainingTime | durationview}}</a></li>
+                                                <li><a>នៅសល់ {{(auc.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -416,33 +356,17 @@
                                         <li><a href="contact-us.html">ទំនាក់ទំនងយើងខ្ញុំ</a></li>
                                         <!-- <li><a href="">កម្មង់</a></li> -->
                                         <li><a href="">ផ្លាស់ប្ដូរការដេញថ្លៃ</a></li>
-
-                                        <!-- <li><a href="">FAQ’s</a></li> -->
                                     </ul>
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-2">
-                                    <div class="single-widget">
-                                            <h2>Quock Shop</h2>
-                                            <ul class="nav nav-pills nav-stacked">
-                                                    <li><a href="">T-Shirt</a></li>
-                                                    <li><a href="">Mens</a></li>
-                                                    <li><a href="">Womens</a></li>
-                                                    <li><a href="">Gift Cards</a></li>
-                                                    <li><a href="">Shoes</a></li>
-                                            </ul>
-                                    </div>
-                            </div> -->
+                           
                             <div class="col-sm-2">
                                 <div class="single-widget">
                                     <h2>គោលការណ៍</h2>
                                     <ul class="nav nav-pills nav-stacked">
                                         <li><a href="">របៀបចូលរួមដេញថ្លៃ</a></li>
                                         <li><a href="">ដាក់ផលិតផលដេញថ្លៃ</a></li>
-                                        <li><a href="">សេវាកម្ម</a></li>
-                                        <!-- <li><a href="">Refund Policy</a></li>
-                                        <li><a href="">Billing System</a></li>
-                                        <li><a href="">Ticket System</a></li> -->
+                                        <li><a href="">សេវាកម្ម</a></li>    
                                     </ul>
                                 </div>
                             </div>
@@ -487,7 +411,6 @@
 
         </div>
 
-        <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>                                                                                                     
 
 
@@ -500,7 +423,7 @@
         <!-- boot page -->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
         <!-- main app -->
-        <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/auction_by_brand_app.js"></script>
 
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>

@@ -130,15 +130,14 @@ app.controller('ctrl', function ($scope, $filter, $http) {
     check = true;
     currentPage = 1;
 
-    $scope.cate_id = cate_id;
+    $scope.brand_id = brand_id;
 
     $scope.showData = function (currentPage) {
 
         //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';     
-        $http({url: 'http://localhost:9999/api/auction/get-by-category/' + $scope.cate_id + '?page=' + currentPage + '&limit=6',
+        $http({url: 'http://localhost:9999/api/auction/get-by-brand/' + $scope.brand_id + '?page=' + currentPage + '&limit=6',
             method: 'GET'
-        }).then(function (response) {
-            console.log(response.data);
+        }).then(function (response) {      
             $scope.auctions = response.data.DATA;
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
@@ -190,6 +189,9 @@ app.controller('ctrl', function ($scope, $filter, $http) {
     }
     $scope.getAuctionInBrand();
 });
+
+
+
 
 
 

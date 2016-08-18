@@ -56,4 +56,11 @@ public class User_controller {
         model.addAttribute("cat_id", cat_id);
         return "auction-by-category";
     }
+    
+    @RequestMapping("/auction/brand/{brand_id}")
+    public String auction_by_brand(ModelMap model, @PathVariable("brand_id") int brand_id)
+    {
+        model.addAttribute("brand_id", brand_id);
+        return "auction-by-brand";
+    }
 }
