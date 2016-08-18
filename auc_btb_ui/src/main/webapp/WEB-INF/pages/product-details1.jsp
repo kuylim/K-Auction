@@ -2,7 +2,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -77,8 +77,7 @@
     <body>
     <section>
         <div class="container" ng-controller="ctrl">
-            <div class="row" ng-init="getAuction_detail(${id})">
-
+            <div class="row" ng-init="getAuction_detail(${id})"> 
                 <div class="col-sm-12 padding-right">
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-6" style="margin-top:50px;">
@@ -139,21 +138,28 @@
 
                                 <span>
                                     <span>{{auc_detail.current_price}} $</span>
-                                    <a  class="btn btn-fefault cart" ng-click="bidding(auc_detail.auc_id)">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Bid
-                                    </a>
+                                    <security:authorize access="isAuthenticated()">
+                                        <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>  
+                                        <a  class="btn btn-fefault cart" ng-click="bidding(auc_detail.auc_id)">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Bid
+                                        </a>    
+                                    </security:authorize>
+                                    <security:authorize access="isAnonymous()">
+                                        <a  class="btn btn-fefault cart" href="/login">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Bid
+                                        </a>
+                                    </security:authorize>
+                                    
                                     <button type="button" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Buy now
-                                    </button>
-                                    <button type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Add to wishlist
-                                    </button>
+                                    </button> 
                                 </span>
                                 <p><b>ចំនួននៃការ bid:</b> {{auc_detail.number_of_bids}} bids</p>
-                                <p><b>ចំនួនៃថ្ងដែលនៅសល់:</b> {{(auc_detail.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</p>
+                                <!--<p><b>ចំនួនៃថ្ងដែលនៅសល់:</b> {{(auc_detail.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</p>-->
+                                <p><b>ចំនួនៃថ្ងដែលនៅសល់:</b>{{auc_detail.remainingTime | durationview}}</p>
                                 <p><b>ស្ថានភាព:</b> {{auc_detail.product_condition}}</p>
                                 <p><b>ថ្ងៃចាប់ផ្ដើម:</b> {{auc_detail.start_date| date:'yyyy-MM-dd'}}</p>       
                                 <p><b>ថ្ងៃបញ្ចប់:</b> {{auc_detail.end_date| date:'yyyy-MM-dd'}}</p>  
@@ -367,8 +373,9 @@
 
     </section>
 
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>

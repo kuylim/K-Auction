@@ -294,7 +294,8 @@
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
                                                 <li><a>{{auc.number_of_bids}} bids</a></li>
-                                                <li><a>នៅសល់ {{(auc.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</a></li>
+                                                <!--<li><a>នៅសល់ {{(auc.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</a></li>-->
+                                                <li><a>{{auc.remainingTime | durationview}}</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -493,6 +494,7 @@
 
         </div>
 
+        <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>                                                                                                     
 
 

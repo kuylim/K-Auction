@@ -1,19 +1,18 @@
 
 var app = angular.module('app', []);
-app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
+app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
 
     //testing customer
     $scope.cus;
     //fetch persons
-    $scope.getCus = function (bidder_id) {
+    $scope.getCus = function (bidder_id) {    
         $http({
             method: 'GET',
             url: 'http://localhost:9999/api/user/search/' + bidder_id
         })
                 .then(function (response) {
                     $scope.cus = response.data.DATA;
-
                     //console.log(response.data.DATA);
                 }, function (response) {
 
@@ -53,13 +52,14 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
 
 
     $scope.getAuction_detail = function (id) {
-        alert("ME");
+        
         $http({
             method: 'GET',
             url: 'http://localhost:9999/api/auction/search/' + id
         })
                 .then(function (response) {
                     $scope.auc_detail = response.data.DATA;
+                    processAuctionItems($scope.auc_detail);
                     //console.log(response.data.DATA);
                 }, function (response) {
 
@@ -116,7 +116,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                                                         .success(function () {
                                                             //$scope.getAuction();
                                                             $scope.getAuction_detail(id);
-                                                            $scope.showData(currentPage);
+                                                            //$scope.showData(currentPage);
                                                             alert("You bid succesfully!");
                                                         })
                                                         .error(function ()
@@ -143,76 +143,76 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
     }
     // end bidding
 
-    //=================pagination===========================
-    check = true;
-    currentPage = 1;
+//    //=================pagination===========================
+//    check = true;
+//    currentPage = 1;
 
 
 
-    $scope.showData = function (currentPage) {
+//    $scope.showData = function (currentPage) {
+//
+//        //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';
+//
+//        $http({url: 'http://localhost:9999/api/auction/get?page=' + currentPage + '&limit=6',
+//            method: 'GET'
+//        }).then(function (response) {
+//            console.log(response.data);
+//            $scope.auctions = response.data.DATA;
+//            if (check) {
+//                setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
+//                check = false;
+//            }
+//        }, function () {
+//            alert('Error');
+//        });
+//
+//
+//    }
 
-        //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';
-
-        $http({url: 'http://localhost:9999/api/auction/get?page=' + currentPage + '&limit=6',
-            method: 'GET'
-        }).then(function (response) {
-            console.log(response.data);
-            $scope.auctions = response.data.DATA;
-            if (check) {
-                setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
-                check = false;
-            }
-        }, function () {
-            alert('Error');
-        });
-
-
-    }
-
-    setPagination = function (totalPage, currentPage) {
-        $('#pagination').bootpag({
-            total: totalPage,
-            page: currentPage,
-            maxVisible: 5,
-            leaps: true,
-            firstLastUse: true,
-            first: 'First',
-            last: 'Last',
-            wrapClass: 'pagination',
-            activeClass: 'active',
-            disabledClass: 'disabled',
-            nextClass: 'next',
-            prevClass: 'prev',
-            lastClass: 'last',
-            firstClass: 'first'
-        });
-    };
-
-    $("#pagination").on("page", function (event, currentPage) {
-        check = false;
-        getCurrentPage = currentPage;
-        $scope.showData(currentPage);
-    });
-
-    $scope.showData(currentPage);
+//    setPagination = function (totalPage, currentPage) {
+//        $('#pagination').bootpag({
+//            total: totalPage,
+//            page: currentPage,
+//            maxVisible: 5,
+//            leaps: true,
+//            firstLastUse: true,
+//            first: 'First',
+//            last: 'Last',
+//            wrapClass: 'pagination',
+//            activeClass: 'active',
+//            disabledClass: 'disabled',
+//            nextClass: 'next',
+//            prevClass: 'prev',
+//            lastClass: 'last',
+//            firstClass: 'first'
+//        });
+//    };
+//
+//    $("#pagination").on("page", function (event, currentPage) {
+//        check = false;
+//        getCurrentPage = currentPage;
+//        $scope.showData(currentPage);
+//    });
+//
+//    $scope.showData(currentPage);
 
     //==============================================
     var tick = function () {
         $scope.currentTime = moment();
-        processAuctionItems($scope.auctions);
+        processAuctionItems($scope.auc_detail);
         $timeout(tick, 1000);
     }
     var processAuctionItems = function (data) {
-        angular.forEach(data, function (item) {
-            item.remainingTime = datetime.getRemainigTime(item.end_date);
-        });
+        //angular.forEach(data, function (item) {
+            data.remainingTime = datetime.getRemainigTime(data.end_date);
+        //});
     }
 
     $scope.currentTime = moment();
 
     $timeout(tick, 1000);
 
-    $timeout($scope.auctions, 10000);
+    $timeout($scope.auc_detail, 10000);
     //==============================================
 
 });
@@ -249,4 +249,7 @@ app.filter('durationview', ['datetime', function (datetime) {
             return duration.days + "d:" + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
         };
     }]);
+
+
+
 
