@@ -1,18 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
-
-
-    <html>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-            <title>Left sid bar</title>
-     </head>
-        <body>
-    
-         <div class="col-md-3 left_col">
+<div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
               <a href="auc-admin" class="site_title"><i class="fa fa-paw"></i> <span>K-Auction</span></a>
@@ -47,14 +34,7 @@
                   <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
                   <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-<!--                          <li ng-repeat="cat in category | filter:{'parent_id':0}"><a href="#"><i class="fa fa-desktop"></i>{{cat.name}} <span class="fa fa-chevron-down"></span></a>
-                              <ul class="nav child_menu">
-                                    <li ng-repeat="sub in category | filter:{'parent_id':cat.cat_id}"><a href="#">{{sub.name}}</a></li>
-                                    <li><a href="#">ម៉ាស៊ីនបោកខោអាវ</a></li>
-                                    <li><a href="#">ទូទឹកកក</a></li>
-                                    <li><a href="#">ម៉ាស៊ីនត្រជាក់</a></li>
-                        </ul>
-                      </li>-->
+
                       
                       <li ><a href="#"><i class="fa fa-cab"></i>យានយន្ដ <span class="fa fa-chevron-down"></span></a>
                       	<ul class="nav child_menu">
@@ -120,6 +100,3 @@
             </nav>
           </div>
         </div>
-        </body>
-    </html>
-
