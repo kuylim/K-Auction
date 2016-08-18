@@ -508,6 +508,79 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         });
     };
     $scope.getProduct();
+    $scope.getProductObject = function(rec){
+         alert(rec.pro.cat_id +" "+ rec.pro.brand_id);
+         	$scope.name = rec.pro.name;
+	$scope.catid = rec.pro.cat_id;
+	$scope.brandid = rec.pro.brand_id;
+	$scope.proinfo = rec.pro.pro_info;
+                  $scope.productObject = rec.pro;
+    };
+    $scope.updateProduct = function(){
+            swal({   
+            title: "Are you sure to update this owner?",   
+            text: "This will be effective to existing information!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#E98106",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false }, 
+            function(isConfirm){   
+            if(isConfirm) {     
+                    $http({
+                            url:'http://localhost:9999/api/product/edit',
+                            method:'PUT',
+                            data:{
+                                    "pro_id" : $scope.proid,
+		"name": $scope.name,
+		"cat_id": $scope.catid,
+		"brand_id": $scope.brandid,
+		"pro_info":$scope.proinfo
+                    }
+                    }).then(function(response){
+                           $scope.productObject.name = $scope.name ;
+                           $scope.productObject.cat_id = $scope.catid;
+                           $scope.productObject.brand_id = $scope.brandid;
+                           $scope.productObject.pro_info = $scope.prinfo;
+                            swal("Updated!", "Record has been updated :)", "success"); 
+                            $('#btnclose').trigger('click');
+                           //$scope.getAuction();
+                             },function(response){
+                             });	  
+                     }else {     
+                           swal("Cancelled", "Record has not been updated :(", "error");   
+                     } 
+             });
+    };
+        $scope.deleteProduct = function(id){
+            swal({   
+            title: "Are you sure to delete this product?",   
+            text: "It may worstly effect to rational auction item!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#ED0909",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false}, 
+            function(isConfirm){   
+            if (isConfirm) {     
+                               $http({
+                                        url:'http://localhost:9999/api/product/delete/'+id,
+                                        method:'PUT'
+                                }).then(function(response){
+                                    swal("Deleted!", "Current product has been deleted :)", "success");  
+                                    $scope.getProduct();
+                    },function(response){
+                    }); 
+                    } else {     
+                            swal("Cancelled", "Current product has not been deleted :(", "error");   
+                    } 
+             });
+    };
+
 //    $scope.addProduct = function(){
 //        alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
 //         $http({
@@ -525,6 +598,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
 //			}, function(response){			
 //		});
 //    };
+
     //-------------------------------------------------------------------------------------------------Product Manager block end-----------------//   
     //-------------------------------------------------------------------------------------------------Category Manager block-----------------//   
     $scope.getCategory = function(){
