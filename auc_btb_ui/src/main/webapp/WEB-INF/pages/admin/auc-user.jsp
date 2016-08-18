@@ -226,8 +226,7 @@
                                 
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                              
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add User</button>
+                                   
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
                                  <tr​​>
