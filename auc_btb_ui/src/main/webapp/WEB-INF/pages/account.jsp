@@ -1,9 +1,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    <html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,11 +37,10 @@
 
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <style>
         ul li{
             list-style: none;
@@ -153,9 +153,14 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
+<script>
+    var user_id = '${user_id}';
+</script>
+
 <section>
-    <div class="container">	
-        <div class="row">
+    <div class="container" ng-controller="ctrl">	
+        <div class="row" ng-init="test()">
+            <h1>${user_id}</h1>
             <div class="col-sm-3">
 
                 <div class="panel panel-success ">
@@ -185,7 +190,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-4" for="email">នាម:</label>
                                         <div class="col-sm-8">
-                                            <input type="email" class="form-control" id="email" value="nganthanak@gmail.com">
+                                            <input type="email" class="form-control" id="email" ng-model="user.firstname">
                                         </div><br>
                                     </div>
                                     <div class="form-group">
@@ -363,26 +368,32 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <p class="pull-left">Copyright © 2013 K-Auction. All rights reserved.</p>
-
+                    <p class="pull-left">Copyright © 2016 K-Auction. All rights reserved.</p>        
                 </div>
             </div>
         </div>
 
     </footer><!--/Footer-->
-
-
 </section>
 
 
 
 
-
-<script>
+<!--<script>
     $(document).ready(function () {
         $('#rootwizard').bootstrapWizard({'tabClass': 'nav nav-tabs'});
     });
-</script>
+</script>-->
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/account_app.js"></script>
 
 </body>
 </html>

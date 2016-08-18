@@ -470,7 +470,7 @@
 
     </section>
 
-    <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>

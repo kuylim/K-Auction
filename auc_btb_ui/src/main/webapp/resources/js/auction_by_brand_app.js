@@ -1,6 +1,6 @@
 
 var app = angular.module('app', []);
-app.controller('ctrl', function ($scope, $filter, $http) {
+app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
 
     //testing customer
@@ -188,7 +188,57 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                 });
     }
     $scope.getAuctionInBrand();
+    
+    var tick = function () {
+        $scope.currentTime = moment();
+        processAuctionItems($scope.auctions);
+        $timeout(tick, 1000);
+    }
+    var processAuctionItems = function (data) {
+        angular.forEach(data, function (item) {
+            item.remainingTime = datetime.getRemainigTime(item.end_date);
+        });
+    }
+
+    $scope.currentTime = moment();
+
+    $timeout(tick, 1000);
+
+    $timeout($scope.auctions, 10000);
 });
+
+app.factory('datetime', ['$timeout', function ($timeout) {
+
+        var duration = function (timeSpan) {
+            var days = Math.floor(timeSpan / 86400000);
+            var diff = timeSpan - days * 86400000;
+            var hours = Math.floor(diff / 3600000);
+            diff = diff - hours * 3600000;
+
+            var minutes = Math.floor(diff / 60000);
+            diff = diff - minutes * 60000;
+
+            var secs = Math.floor(diff / 1000);
+
+            return {'days': days, 'hours': hours, 'minutes': minutes, 'seconds': secs};
+        };
+
+        function getRemainigTime(referenceTime) {
+            var now = moment().utc();
+            return moment(referenceTime) - now;
+        }
+        return {
+            duration: duration,
+            getRemainigTime: getRemainigTime
+        };
+    }]);
+
+app.filter('durationview', ['datetime', function (datetime) {
+        return function (input, css) {
+            var duration = datetime.duration(input);
+            return duration.days + "d:" + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
+        };
+    }]);
 
 
 

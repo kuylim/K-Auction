@@ -171,7 +171,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
         $http({url: 'http://localhost:9999/api/auction/get?page=' + currentPage + '&limit=6',
             method: 'GET'
         }).then(function (response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.auctions = response.data.DATA;
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
