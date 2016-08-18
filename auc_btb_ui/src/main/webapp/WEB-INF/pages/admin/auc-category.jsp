@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Users</title>
+    <title>K-Auction | Category</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -170,15 +170,25 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Brand</h4>
+	   	<h4 class="modal-title">Add New Category</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
 <!--	   	<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>-->
-	   	<span>Brand Name </span><input type="text" ng-model="brandname"  class="form-control" placeholder="New brand name"><br>
-	   	<span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
+                                    <span>Category Type </span><span style="color: red;">* </span>
+                                    <select class="form-control"  ng-model="categorytype" style="padding-top: 2px;">
+                                        <option value="" >Main Category</option>
+                                         <option value="1">Sub Category</option>
+                                    </select><br>
+                                    <span>Category</span>
+                                    <input type="text" class="form-control"  ng-model="categoryname" placeholder="Brand description"><br>
+                                    <span>In Categorize of </span>
+                                    <select class="form-control"  ng-model="parentid" style="padding-top: 2px;" ng-disabled="!categorytype">
+                                        <option ng-repeat=" cat in category | filter: {'parent_id' : '0'}" value="{{cat.cat_id}}" >{{cat.name}}</option>
+                                    </select><br>
+                                    <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
 	   	
-	   	<a href="" ng-click="addBrand()" type="button" id="add" class="btn btn-success" ng-disabled="!brandname || !description">Add</a>
+	   	<a href="" ng-click="addCategory()" type="button" id="add" class="btn btn-success" ng-disabled="!categoryname">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
 
                             </div>     	  
@@ -193,13 +203,37 @@
                         <div class="modal-content">
                            <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Brand</h4>
+	   	<h4 class="modal-title">Update Category</h4>
                            </div>
                             <div class="modal-body">
                                 <div class="form-group">
-	   	<span>Brand Name </span><input type="text" ng-model="brandname"  class="form-control" placeholder="New brand name"><br>
-	   	<span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
-	   	<a href="" ng-click="updatBrand()" type="button" id="add" class="btn btn-success" ng-disabled="!brandname || !description">Update</a>
+                                    <span>CatID</span>
+                                    <input type="number" class="form-control"  ng-model="catid" readonly="true"><br>
+                                       <span>ParentID</span>
+                                       <input type="number" class="form-control"  ng-model="parentid" readonly="true" style="display:none;"><br>
+                                  
+<!--                                    <select  class="form-control" ng-model="" style="padding-left:5px;" 
+                                             ng-options="pro.pro_id as pro.name for pro in products">
+        		</select><br>-->
+<!--	   	<span>Category Type </span><span style="color: red;">* </span>
+                                    <select class="form-control"  ng-model="categorytype" style="padding-top: 2px;">
+                                        <option value="" >Main Category</option>
+                                         <option value="1">Sub Category</option>
+                                    </select><br>-->
+                                    <span>Category</span>
+                                    <input type="text" class="form-control"  ng-model="categoryname" placeholder="Brand description"><br>
+                                    <span>In Categorize of </span>
+<!--                                    <select  class="form-control" ng-model="proid" style="padding-left:5px;" 
+                                             ng-options="pro.pro_id as pro.name for pro in products">
+        		</select><br>-->
+<!--                                    <select class="form-control"  ng-model="parentid" style="padding-top: 2px;">
+                                        <option ng-repeat=" cat in category | filter:{'parent_id':0}" value="{{cat.cat_id}}" >{{cat.name}}</option>
+                                    </select><br>-->
+<select  class="form-control" ng-model="parentid" ng-disabled="parentid===0" style="padding-left:8px; padding-top: 2px;" 
+                                             ng-options="cat.cat_id as cat.name for cat in category | filter:{'parent_id':0}">
+        		</select><br>
+                                    <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
+	   	<a href="" ng-click="updateCategory()" type="button" id="add" class="btn btn-success" ng-disabled="!categoryname">Update</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>							
                                 </div>    	  
                             </div>
@@ -208,37 +242,39 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                     <h1 >Brand & Category</h1>
+                     <h1 >Category Manager</h1>
                         <div >
                             <div >                  
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left">Filter Here..</h3>
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Brand</button>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
                                      <th>No </th>
-                                     <th >Brand ID </th>
-                                     <th >Brand Name </th>
+                                     <th >Category ID </th>
+                                     <th >Category Name </th>
+                                     <th >Parrent ID </th>
                                      <th >Description</th>
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="bra in brand | orderBy:'brand_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="cat in category | orderBy:'cat_id':'reverse':'DESC' ">	   
                                     <td>{{$index+1}} </td>
-                                    <td>{{bra.brand_id}}</td>
-                                    <td>{{bra.name}}</td>
-                                    <td>{{bra.description}} </td>                          
+                                    <td>{{cat.cat_id}}</td>
+                                    <td>{{cat.name}}</td>
+                                    <td>{{cat.parent_id}}</td>
+                                    <td>{{cat.description}} </td>                          
                                    <td>
-                                    <a href="" ng-click="" class='btn btn-success btn-sm' data-toggle='modal' data-target='#updatebrand'>Update</a>
-                                     <a href="" ng-click="deleteBrand(bra.brand_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                    <a href="" ng-click="getCategoryObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#updatebrand'>Update</a>
+                                     <a href="" ng-click="deleteCategory(cat.cat_id)"  class='btn btn-danger btn-sm'>Delete</a>
                                    </td>
                                   </tr>
                                  </tbody>
                                </table>
                              </div>
-                             <div   id="pagination" class="pull-right" ></div> 
+<!--                             <div   id="pagination" class="pull-right" ></div> -->
                            </div>
                          </div>
                    </div>

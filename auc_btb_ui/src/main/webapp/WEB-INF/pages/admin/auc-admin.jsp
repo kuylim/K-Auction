@@ -66,16 +66,16 @@
                     </ul>
                   </li>
                   <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
-                  <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
+<!--                  <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-<!--                          <li ng-repeat="cat in category | filter:{'parent_id':0}"><a href="#"><i class="fa fa-desktop"></i>{{cat.name}} <span class="fa fa-chevron-down"></span></a>
+                          <li ng-repeat="cat in category | filter:{'parent_id':0}"><a href="#"><i class="fa fa-desktop"></i>{{cat.name}} <span class="fa fa-chevron-down"></span></a>
                               <ul class="nav child_menu">
                                     <li ng-repeat="sub in category | filter:{'parent_id':cat.cat_id}"><a href="#">{{sub.name}}</a></li>
                                     <li><a href="#">ម៉ាស៊ីនបោកខោអាវ</a></li>
                                     <li><a href="#">ទូទឹកកក</a></li>
                                     <li><a href="#">ម៉ាស៊ីនត្រជាក់</a></li>
                         </ul>
-                      </li>-->
+                      </li>
                       
                       <li ><a href="#"><i class="fa fa-cab"></i>យានយន្ដ <span class="fa fa-chevron-down"></span></a>
                       	<ul class="nav child_menu">
@@ -89,12 +89,13 @@
                           <li><a href="#">ផ្ទះល្វែង</a></li>
                         </ul>
                       </li>
-                     --->
+                     
                     </ul>
-                  </li>
+                  </li>-->
                   <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
                   <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>AUCTION MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>    
+                   <li><a href="${pageContext.request.contextPath }auc-admin/brand"><i class="fa fa-plus-square"></i>BRAND MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-circle"></i>CATEGORY MANAGE</a>   
                   </li>
                 </ul>
               </div>
@@ -274,7 +275,7 @@
                               </p>
                             </div>
                           </article>
-                          <article class="media event">
+<!--                          <article class="media event">
                             <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-legal"></i>
                             </a>
@@ -317,7 +318,7 @@
                               <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
                               </p>
                             </div>
-                          </article>
+                          </article>-->
                <!--         </ul>
  					</ul>-->
                     </div>
@@ -345,7 +346,7 @@
                               </p>
                             </div>
                           </article>
-                          <article class="media event">
+<!--                          <article class="media event">
                             <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-legal"></i>
                             </a>
@@ -388,7 +389,7 @@
                               <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
                               </p>
                             </div>
-                          </article>
+                          </article>-->
                <!--         </ul>
  					</ul>-->
                     </div>

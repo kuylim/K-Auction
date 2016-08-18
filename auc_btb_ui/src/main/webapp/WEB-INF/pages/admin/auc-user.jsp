@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Users</title>
+    <title>K-Auction | User</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -38,6 +38,10 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
+       <!--    sweetaler style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+ <!--    sweetaler style--> 
   </head>
 
   <body class="nav-md">
@@ -165,28 +169,19 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New</h4>
+	   	<h4 class="modal-title">Add New Owner</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
-<!--	   	<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>-->
-                                    <span>Owner</span>
-		<select  class="form-control" ng-model="ownerid" style="padding-left:6px;" 
-                                            ng-options="own.owner_id as own.lastname for own in owners">
-                                    </select><br>
-	   	<select  class="form-control" ng-model="proid" style="padding-left:6px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
-	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
-	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
-                                        ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
+                                    <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name"><br>
+                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
+                                    <span>Phone</span><input type="number" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
+                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Input name"><br>
+                                    <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
+                                    <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>
+	   	
+	   	<a href="" ng-click="addOwner()" type="button" id="add" class="btn btn-success" 
+                                        ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
 	   	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
@@ -206,26 +201,15 @@
                            </div>
                             <div class="modal-body">
                                 <div class="form-group">
-	   	<span>AuctID</span><input type="number" ng-model="aucid"  class="form-control" readonly><br>
-		<span>Owner</span>
-		<select  class="form-control" ng-model="ownerid" style="padding-left:5px;" 
-                                             ng-options="own.owner_id as own.lastname for own in owners">
-                                    </select><br>
-        		<span>Product</span>
-		<select  class="form-control" ng-model="proid" style="padding-left:5px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>
-                                   <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
-	   	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>					
-	   	<a href="" ng-click="updateAuction(id)" class="btn btn-success"  
-                                    ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
+                                    <span>OwnerID</span><input type="number" ng-model="ownerid"  class="form-control" readonly="true"><br>
+	   	 <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name"><br>
+                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
+                                    <span>Phone</span><input type="text" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
+                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Input name"><br>
+                                    <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
+                                    <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>				
+	   	<a href="" ng-click="updateOwner()" class="btn btn-success"  
+                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Update</a>
 	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
 	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
 	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
@@ -236,55 +220,46 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                     <h1 >User Manager</h1>
+                        <h1 >Owner Account Manager</h1>
                         <div >
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left">Filter Here..</h3>
+<!--                                   <h3 class="pull-left">Filter Here..</h3>-->
                               
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add User</button>
                                <table class="table table-striped jambo_table bulk_action">
-                               <thead
+                                   <thead>
                                  <tr​​>
                                      <th>No </th>
-                                     <th >AuctID </th>
-                                     <th >Owner </th>
-                                     <th >Product </th>
-                                     <th >Condition </th>
-                                     <th >Start Price </th>
-                                     <th >Buy Price</th>
-                                     <th >Bid Increase </th>
-                                     <th >Current Price </th>
-                                     <th >Start Date </th>
-                                     <th >End Date </th>
-                                     <th >User ID </th>
+                                     <th >Owner ID </th>
+                                     <th >Owner Name </th>
+                                     <th >Phone </th>
+                                     <th >Email </th>
+                                     <th >Address </th>
+                                     <th >Company </th>
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="owner in owners | orderBy:'owner_id':'reverse':'DESC' ">	   
                                     <td>{{$index+1}} </td>
-                                    <td>{{au.auc_id}}</td>
-                                    <td>{{au.firstname}} {{au.lastname}}</td>
-                                    <td>{{au.name}} </td>
-                                    <td>{{au.product_condition}}</td>
-                                    <td>{{au.start_price}}</td>		    
-                                    <td>{{au.buy_price}}</td>
-                                    <td >{{au.bid_increment_price}} </td>
-                                    <td >{{au.current_price}} </td>
-                                   <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.urs_id}} </td>
+                                    <td>{{owner.owner_id}}</td>
+                                    <td>{{owner.firstname}} {{owner.lastname}}</td>
+                                    <td>{{owner.phone}} </td>
+                                    <td>{{owner.email}}</td>
+                                    <td>{{owner.address}}</td>		    
+                                    <td>{{owner.company_profile}}</td>
+                                    
                                    <td>
-                                    <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                     <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
+                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Delete</a>
                                    </td>
                                   </tr>
                                  </tbody>
                                </table>
                              </div>
-                             <div   id="pagination" class="pull-right" ></div> 
+<!--                             <div   id="pagination" class="pull-right" ></div> -->
                            </div>
                          </div>
                    </div>

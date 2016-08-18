@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Auction</title>
+    <title>K-Auction | Brand</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -38,14 +38,10 @@
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
-<!--    sweetaler style-->
+    <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
  <!--    sweetaler style--> 
- <!--    Cloak style-->
-    <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
-    
- <!--    Cloak style-->
   </head>
 
   <body class="nav-md">
@@ -60,13 +56,13 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-           <div class="profile">
+            <div class="profile">
               <div class="profile_pic">
-               <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="..." class="img-circle profile_img"/>
+                <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>WELCOME,</span>
-                <h2>TITH KUYLIM</h2>
+                <span>សូមស្វាគមន៍,</span>
+                <h2>ទិត្យ គុយលីម</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -78,25 +74,42 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i> ទំព័រដើម <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="../au-admin.html">Dashboard</a></li>
+                      <li><a href="../au-admin.html">ផ្ទាំងគ្រប់គ្រង</a></li>
                     </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/user"><i class="fa fa-user"></i>USER</a></li>
-                  <li><a><i class="fa fa-edit"></i> CATEGORY <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="user.html"><i class="fa fa-user"></i>អ្នកប្រើប្រាស់</a></li>
+                  <li><a><i class="fa fa-edit"></i> ប្រភេទផលិតផល <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#">គ្រឿងអេឡិចត្រូនិច</a></li>
                       <li><a href="#">យានយន្ដ</a></li>
                       <li><a href="#">អចលនទ្រព្យ</a></li>
                     </ul>
                   </li>
-                 
+                  <li><a><i class="fa fa-desktop"></i> គ្រឿងអេឡិចត្រូនិច <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">ទូរស័ព្ទ</a></li>
+                      <li><a href="#">កុំព្យូទ័រ</a></li>
+                      <li><a href="#">ម៉ាស៊ីនបោកខោអាវ</a></li>
+                      <li><a href="#">ទូទឹកកក</a></li>
+                      <li><a href="#">ម៉ាស៊ីនត្រជាក់</a></li>
+                    </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
-                  <li><a href="${pageContext.request.contextPath }auc-admin/manage"><i class="fa fa-plus"></i>AUCTION MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }auc-admin/brand"><i class="fa fa-plus-square"></i>BRAND MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>
+                  <li><a><i class="fa fa-cab"></i> យានយន្ដ <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">រថយន្ដ</a></li>
+                      <li><a href="#">ម៉ូតូ</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> អចលទ្រព្យ <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">ដីលូ</a></li>
+                      <li><a href="#">ផ្ទះល្វែង</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="product.html"><i class="fa fa-legal"></i>ផលិតផល</a></li>
+                  <li><a href="auction.html"><i class="fa fa-plus"></i>ដាក់ផលិតផលដេញថ្លៃ</a>
                   </li>
                 </ul>
               </div>
@@ -147,78 +160,51 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main"  ng-app="AuctionApp">
-            <div class="" ng-controller="AuctionController" ng-cloak="cloak">
+          <div class="" ng-controller="AuctionController" ng-cloak="cloak">
 	<!--add new product-->
+        
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
-	<div class="modal fade" id="add" role="dialog">
+	<div class="modal fade" id="addbrand" role="dialog">
 	   <div class="modal-dialog">
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New</h4>
+	   	<h4 class="modal-title">Add New Brand</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
 <!--	   	<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>-->
-                                    <span>Owner</span>
-		<select  class="form-control" ng-model="ownerid" style="padding-left:6px;" 
-                                            ng-options="own.owner_id as own.lastname for own in owners">
-                                    </select><br>
-	   	<select  class="form-control" ng-model="proid" style="padding-left:6px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
-	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
-	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
-                                        ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>                            
-                             </div>     	  
+	   	<span>Brand Name </span><input type="text" ng-model="brandname"  class="form-control" placeholder="New brand name"><br>
+	   	<span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
+	   	
+	   	<a href="" ng-click="addBrand()" type="button" id="add" class="btn btn-success" ng-disabled="!brandname || !description">Add</a>
+	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
+
+                            </div>     	  
 	       </div>
 	    </div>
                     </div>	 	  	     		
 	</div>
 	<!--end modal add -->
 	<!--modal​ update-->
-	 <div class="modal fade" id="update" role="dialog">
+	 <div class="modal fade" id="updatebrand" role="dialog">
 	   <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Auction</h4>
+	   	<h4 class="modal-title">Update Brand</h4>
                            </div>
                             <div class="modal-body">
                                 <div class="form-group">
-	   	<span>AuctID</span><input type="number" ng-model="aucid"  class="form-control" readonly><br>
-		<span>Owner</span>
-		<select  class="form-control" ng-model="ownerid" style="padding-left:5px;" 
-                                             ng-options="own.owner_id as own.lastname for own in owners">
-                                    </select><br>
-        		<span>Product</span>
-		<select  class="form-control" ng-model="proid" style="padding-left:5px;" 
+                                    <span>Brand ID </span><input type="id" ng-model="brandid"  class="form-control" readonly="true"><br>
+<!--                                    <select  class="form-control" ng-model="" style="padding-left:5px;" 
                                              ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>
-                                    
-                                   <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
-	   	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>					
-	   	<a href="" ng-click="updateAuction(id)" class="btn btn-success"  
-                                    ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
-	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
+        		</select><br>-->
+	   	<span>Brand Name </span><input type="text" ng-model="brandname"  class="form-control" placeholder="New brand name"><br>
+	   	<span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
+	   	<a href="" ng-click="updateBrand()" type="button" id="add" class="btn btn-success" ng-disabled="!brandname || !description">Update</a>
+	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>							
                                 </div>    	  
                             </div>
                         </div>
@@ -226,49 +212,31 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                     <h1 >Auction Manager</h1>
+                     <h1 >Branding Manager</h1>
                         <div >
-                            <div >
-                                
+                            <div >                  
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left"></h3>
-                              
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                                   <h3 class="pull-left">Filter Here..</h3>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Brand</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
                                      <th>No </th>
-                                     <th >AuctID </th>
-                                     <th >Owner </th>
-                                     <th >Product </th>
-                                     <th >Condition </th>
-                                     <th >Start Price </th>
-                                     <th >Buy Price</th>
-                                     <th >Bid Increase </th>
-                                     <th >Current Price </th>
-                                     <th >Start Date </th>
-                                     <th >End Date </th>
-                                     <th >User ID </th>
+                                     <th >Brand ID </th>
+                                     <th >Brand Name </th>
+                                     <th >Description</th>
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="bra in brand | orderBy:'brand_id':'reverse':'DESC' ">	   
                                     <td>{{$index+1}} </td>
-                                    <td>{{au.auc_id}}</td>
-                                    <td>{{au.firstname}} {{au.lastname}}</td>
-                                    <td>{{au.name}} </td>
-                                    <td>{{au.product_condition}}</td>
-                                    <td>{{au.start_price}}</td>		    
-                                    <td>{{au.buy_price}}</td>
-                                    <td >{{au.bid_increment_price}} </td>
-                                    <td >{{au.current_price}} </td>
-                                   <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.urs_id}} </td>
+                                    <td>{{bra.brand_id}}</td>
+                                    <td>{{bra.name}}</td>
+                                    <td>{{bra.description}} </td>                          
                                    <td>
-                                    <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                     <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                    <a href="" ng-click="getBrandObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#updatebrand'>Update</a>
+                                     <a href="" ng-click="deleteBrand(bra.brand_id)"  class='btn btn-danger btn-sm'>Delete</a>
                                    </td>
                                   </tr>
                                  </tbody>
@@ -317,7 +285,7 @@
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
        <!-- angular app -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
