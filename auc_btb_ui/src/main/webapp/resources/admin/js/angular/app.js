@@ -248,16 +248,20 @@
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
-    $scope.getAuction = function(){
-        $http({
-        	url:'http://localhost:9999/api/auction/get',
-                  method:'GET'
-        }).then(function(response){
-            $scope.auctions = response.data.DATA;
-            console.log(response.data.DATA);
-        });
-    };
-    $scope.getAuction();
+//    $scope.getAuction = function(searchcat){
+//        if(searchcat==="")
+//        {
+//           $http({
+//        	url:'http://localhost:9999/api/auction/get',
+//                  method:'GET'
+//        }).then(function(response){
+//            $scope.auctions = response.data.DATA;
+//            console.log(response.data.DATA);
+//        }); 
+//        }
+//        
+//    };
+//    $scope.getAuction();
 
     $scope.addAuction = function(){
             $http({
@@ -907,7 +911,7 @@ $scope.addBrand = function(){
 			alert('failed to upload data');
 			//$scope.getRest();
 		});
-}
+};
    $scope.showData(currentPage);
    
    $scope.listOnlyMainCategory = function (prop, value){
@@ -917,7 +921,13 @@ $scope.addBrand = function(){
            }
        };
    };
-   
+   $scope.listOnlySubCategory = function (prop, value){
+       return function(item){
+           if (item[prop] !== value){
+               return true;
+           }
+       };
+   }; 
    
 });
 
