@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Users</title>
+    <title>K-Auction | Auction</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -226,7 +226,7 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                     <h1 >User Manager</h1>
+                     <h1 >Auction Manager</h1>
                         <div >
                             <div >
                                 

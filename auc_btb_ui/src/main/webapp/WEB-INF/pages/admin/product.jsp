@@ -176,7 +176,7 @@
 	   	    	 	  	     	<span>Name</span><input type="type" ng-model="name"  class="form-control" placeholder="Product name"><br>
 	   	    	 	  	     	<span>Category ID</span>
 						<select  class="form-control" ng-model="catid" style="padding-left:6px;">
-                                                                                                                     <option  ng-repeat="cat in category | filter:{'parent_id': '0'}" value="{{cat.cat_id}}" >
+                                                                                                                     <option  ng-repeat="cat in category | filter: listOnlyMainCategory('parent_id', 0)" value="{{cat.cat_id}}" >
                                                                                                                              {{cat.name}} {{own.lastname}}
                                                                                                                        </option>
                                                                                                              </select>
@@ -288,7 +288,7 @@
                     </div>
 	   	    <div class="row">
 	   	    	 <div class="col-md-12" >
-	   	    	 	<h3>Auctions List</h3>
+                                                                          <h3>Natural Product Manager</h3>
 	   	    	 	  <div class="table-responsive">
 	   	    	 	  	  <table class="table table-bordered">
 	   	    	 	  	  <tr >
@@ -307,6 +307,7 @@
                                                                                                     <th >Product Category </th>
                                                                                                     <th >Product Brand </th>
                                                                                                     <th >Product information </th>
+                                                                                                    <th> </th>
                                                                                                     <th >Action </th>
 
 	   	    	 	  	  </tr>

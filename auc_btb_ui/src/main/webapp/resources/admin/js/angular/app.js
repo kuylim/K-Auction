@@ -247,7 +247,8 @@
 // 13th, Aug, 2016---------------------------------------------------------------------------------------------------------------//
 var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter){
-//-------------------------------------------------------------------------------------------------Auction Manager block---------------//
+    
+    //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
     $scope.getAuction = function(){
         $http({
         	url:'http://localhost:9999/api/auction/get',
@@ -313,7 +314,6 @@ app.controller('AuctionController', function($scope, $http, $filter){
              });
     };
     $scope.getCurrentObject = function(rec){
-
             $scope.ownerid =rec.au.owner_id,
             $scope.proid =rec.au.pro_id,
             $scope.bidincrementprice = rec.au.bid_increment_price,
@@ -389,6 +389,102 @@ app.controller('AuctionController', function($scope, $http, $filter){
             });
     };
     $scope.getOwner();
+   $scope.addOwner = function(){
+            $http({
+            url:'http://localhost:9999/api/product-owner/add',
+            method:'POST',
+            data:{
+                    "address": $scope.address,
+                    "company_profile":$scope.company ,
+                    "email": $scope.email,
+                    "firstname":$scope.firstname,
+                    "lastname": $scope.lastname,
+                    "phone": $scope.phone
+                  }
+            }).then(function(response){
+                      console.log(response.data);
+                      $scope.getOwner();
+                      },function(response){
+            });
+    }; 
+        $scope.deleteOwner = function(id){
+            swal({   
+            title: "Are you sure to delete this owner?",   
+            text: "It may worstly effect to rational product!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#ED0909",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false}, 
+            function(isConfirm){   
+            if (isConfirm) {     
+                               $http({
+                                        url:'http://localhost:9999/api/product-owner/delete/'+id,
+                                        method:'PUT'
+                                }).then(function(response){
+                                    swal("Deleted!", "Current owner has been deleted :)", "success");  
+                                    $scope.getOwner();
+                    },function(response){
+                    }); 
+                    } else {     
+                            swal("Cancelled", "Current owner has not been deleted :(", "error");   
+                    } 
+             });
+    };
+    $scope.getOwnerObject = function(rec){
+            $scope.ownerid = rec.owner.owner_id;
+            $scope.address = rec.owner.address;
+            $scope.company = rec.owner.company_profile;
+            $scope.email = rec.owner.email;
+            $scope.firstname = rec.owner.firstname;
+            $scope.lastname = rec.owner.lastname;
+            $scope.phone = rec.owner.phone;
+            $scope.OwnerObject = rec.owner;
+    };
+    $scope.updateOwner = function(){
+            swal({   
+            title: "Are you sure to update this owner?",   
+            text: "This will be effective to existing information!",   
+            type: "warning",   
+            showCancelButton: true,   
+            confirmButtonColor: "#E98106",   
+            confirmButtonText: "Yes",   
+            cancelButtonText: "No",   
+            closeOnConfirm: false,   
+            closeOnCancel: false }, 
+            function(isConfirm){   
+            if(isConfirm) {     
+                    $http({
+                            url:'http://localhost:9999/api/product-owner/edit',
+                            method:'PUT',
+                            data:{	
+                                    "owner_id": $scope.ownerid,
+                                    "address": $scope.address,
+                                    "company_profile":$scope.company ,
+                                    "email": $scope.email,
+                                    "firstname":$scope.firstname,
+                                    "lastname": $scope.lastname,
+                                    "phone": $scope.phone
+                    }
+                    }).then(function(response){
+                               $scope.OwnerObject.company_profile = $scope.company;
+                               $scope.OwnerObject.address = $scope.address;
+                               $scope.OwnerObject.email = $scope.email;
+                               $scope.OwnerObject.firstname = $scope.firstname;
+                               $scope.OwnerObject.lastname = $scope.lastname;
+                              $scope.OwnerObject.phone = $scope.phone;
+                            swal("Updated!", "Record has been updated :)", "success"); 
+                            $('#btnclose').trigger('click');
+                           //$scope.getAuction();
+                             },function(response){
+                             });	  
+                     }else {     
+                           swal("Cancelled", "Record has not been updated :(", "error");   
+                     } 
+             });
+    };
 //-------------------------------------------------------------------------------------------------Owner  Manager block end-----------//    
 //-------------------------------------------------------------------------------------------------Owner Manager  block---------------//
     $scope.getUser = function(){
@@ -430,6 +526,8 @@ app.controller('AuctionController', function($scope, $http, $filter){
 			}, function(response){			
 		});
     };
+    //-------------------------------------------------------------------------------------------------Product Manager block end-----------------//   
+    //-------------------------------------------------------------------------------------------------Category Manager block-----------------//   
     $scope.getCategory = function(){
         $http({
             url:'http://localhost:9999/api/category/get',
@@ -476,7 +574,7 @@ app.controller('AuctionController', function($scope, $http, $filter){
                          method:'PUT'
                         }).then(function(response){
                             swal("Deleted!", " Current catgory has been deleted :)", "success");  
-                            $scope.getBrand();
+                            $scope.getCategory();
                     }); 
             } else {     
                     swal("Cancelled", "Current category has not been deleted :(", "error");   
@@ -490,15 +588,15 @@ app.controller('AuctionController', function($scope, $http, $filter){
             if(rec.cat.parent_id === 0)
             {
                 $scope.parentid =rec.cat.cat_id;
-                
             }
-            $scope.categorytype=1;
+            //$scope.categorytype=1;
             $scope.categoryname =rec.cat.name;
             $scope.parentid =rec.cat.parent_id;
             $scope.description =rec.cat.description;
             $scope.categoryObject = rec.cat;
     };
     $scope.updateCategory = function(){
+         alert("CateID : "+$scope.catid+"  ParrentID :"+ $scope.parentid+" Categoryname : "+ $scope.categoryname+" Description"+ $scope.description);
             swal({   
             title: "Are you sure to update this record?",   
             text: "You will not be able to roll back!",   
@@ -512,16 +610,20 @@ app.controller('AuctionController', function($scope, $http, $filter){
             function(isConfirm){   
             if(isConfirm) {     
                     $http({
-                            url:'http://localhost:9999/api/brand/edit',
+                            url:'http://localhost:9999/api/category/edit',
                             method:'PUT',
                             data:{
-                                "brand_id": $scope.brandid,
-                                "name": $scope.brandname,
-                                "description": $scope.description
+                                "cat_id": $scope.catid,
+                                "parent_id": $scope.parentid,
+                                "name": $scope.categoryname,
+                                "description":$scope.description
                               }
                     }).then(function(response){
-                            $scope.brandObject.name = $scope.brandname;
-                            $scope.brandObject.description = $scope.description;
+                                $scope.categoryObject.name=$scope.categoryname;
+                                 $scope.categoryObject.parent_id=$scope.parentid;
+                                  $scope.categoryObject.description=$scope.description;
+//                            $scope.brandObject.name = $scope.brandname;
+//                            $scope.brandObject.description = $scope.description;
                             swal("Updated!", "Current brand has been updated :)", "success"); 
                             $('#btnclose').trigger('click');
                              },function(response){
@@ -531,7 +633,8 @@ app.controller('AuctionController', function($scope, $http, $filter){
                      } 
              });
     };
-    
+    //-------------------------------------------------------------------------------------------------Category Manager block end-----------------//   
+    //-------------------------------------------------------------------------------------------------Brand Manager block-----------------//   
     $scope.getBrand = function(){
         $http({
             url:'http://localhost:9999/api/brand/get',
@@ -543,9 +646,6 @@ app.controller('AuctionController', function($scope, $http, $filter){
     };
     $scope.getBrand();
 $scope.addBrand = function(){
-        swal({
-            
-        });
          $http({
 	url:'http://localhost:9999/api/brand/add',
                   method:'POST',
@@ -623,7 +723,7 @@ $scope.addBrand = function(){
                      } 
              });
     };
-//-------------------------------------------------------------------------------------------------Product Manager block end-----------//
+//-------------------------------------------------------------------------------------------------Brand Manager block-----------------//   
     //=========================upload image===================================
     var FILE = {};			
 			//TODO: on submit event, multiple file
@@ -703,7 +803,15 @@ $scope.addBrand = function(){
                                $scope.showData(currentPage);
                            }); 	
                        };
-   $scope.showData(currentPage);          
+   $scope.showData(currentPage);
+   
+   $scope.listOnlyMainCategory = function (prop, value){
+       return function(item){
+           if (item[prop] === value){
+               return true;
+           }
+       };
+   };
    
    
 });

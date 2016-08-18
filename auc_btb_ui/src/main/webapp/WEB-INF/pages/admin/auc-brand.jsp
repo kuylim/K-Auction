@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Users</title>
+    <title>K-Auction | Brand</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -212,12 +212,12 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                     <h1 >Branding Manage</h1>
+                     <h1 >Branding Manager</h1>
                         <div >
                             <div >                  
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left">Filter Here..</h3>
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Brand</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
