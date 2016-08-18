@@ -160,10 +160,7 @@
             <!--replace by the sweetalert start-->
             
                     <!--modal​ add-------------------------------------------------------------------------------------------------------------------------->
-                    
-                    
-                    
-                    
+
 	   	    <div class="modal fade" id="add" role="dialog">
 	   	        <div class="modal-dialog">
 	   	    	 <div class="modal-content">
@@ -216,8 +213,8 @@
 	   	    	 	  </div>
 	   	    	 	  <div class="modal-body">
 	   	    	 	  	<div class="form-group">
-	   	    	 	  	     	<span>Name</span><input type="type" ng-model="name"  class="form-control" placeholder="Product name"><br>
-	   	    	 	  	     	<span>Category ID</span>
+	   	    	 	  	     	<span>Product Name</span><input type="type" ng-model="name"  class="form-control" placeholder="Product name"><br>
+	   	    	 	  	     	<span>Category </span>
 <!--						<select  class="form-control" ng-model="catid" style="padding-left:6px;">
                                                                                                                      <option  ng-repeat="cat in category | filter: listOnlyMainCategory('parent_id', 0)" value="{{cat.cat_id}}" >
                                                                                                                              {{cat.name}} {{own.lastname}}
@@ -227,7 +224,7 @@
                                                                                                                 ng-options="cat.cat_id as cat.name for cat in category">
                                                                                                             </select><br>
                                                                                                             <br>
-                                                                                                            <span>Brand ID</span>
+                                                                                                            <span>Brand</span>
 <!--                                                                                                                <select  class="form-control" ng-model="brandid" style="padding-left:6px;">
                                                                                                                      <option  ng-repeat="bra in brand" value="{{bra.brand_id}}">
                                                                                                                              {{bra.name}} 
@@ -272,48 +269,47 @@
                             </div>
                         </div>
                     </div>
-	   	    <div class="row">
-	   	    	 <div class="col-md-12" >
-                                                                          <h3>Natural Product Manager</h3>
-	   	    	 	  <div class="table-responsive">
-	   	    	 	  	  <table class="table table-bordered">
-	   	    	 	  	  <tr >
-	   	    	 	  	    <td colspan="13">
-                                                                                                            <span>Search here </span>
-                                                                                                            <select  class="single_field" id="search" onchange="test()" style="padding-left:6px;">
-                                                                                                                     <option  ng-repeat="pro in products" value="{{pro.name}}">{{pro.name}}</option>
-                                                                                                            </select>
-	   	    	 	  	     	<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add" >Add Product Item</button>
-	   	    	 	  	    </td>  
-	   	    	 	  	  </tr>
-	   	    	 	  	  <tr​​>
-                                                                                                    <th>No </th
-                                                                                                    <th>Product ID </th>
-                                                                                                    <th >Product Name </th>
-                                                                                                    <th >Product Category </th>
-                                                                                                    <th >Product Brand </th>
-                                                                                                    <th >Product information </th>
-                                                                                                    <th> </th>
-                                                                                                    <th >Action </th>
-
-	   	    	 	  	  </tr>
-	   	    	 	  	  <tr ng-repeat="pro in products | orderBy:'pro_id':'reverse':'DESC' ">
-						   
-						    <td>{{$index+1}} </td>
-						    <td>{{pro.pro_id}}</td>
-						    <td>{{pro.name}}</td>
-						    <td>{{pro.cat_id}} </td>
-						    <td>{{pro.brand_id}}</td>
-                                                                                                                <td>{{pro.product_info}}</td>
-						     <td>
-                                                                                                                        <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                                                                                                        <a href="" ng-click="deleteProduct(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                                                                                                                    </td>
-						</tr>
-					</table>
-	   	    	</div> 
-	   	   	</div>
-	   	</div>
+	   <div class="row">
+                     <h1 >Auction Manager</h1>
+                        <div >
+                            <div >
+                                
+                               <div class="table-responsive" style="border:none;">
+                                   <h3 class="pull-left"></h3>
+                              
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                               <table class="table table-striped jambo_table bulk_action">
+                               <thead
+                                 <tr​​>
+                                     <th>No </th>
+                                     <th >PID </th>
+                                     <th >Name </th>
+                                     <th >Brand </th>
+                                     <th >Category </th>
+                                     <th >Information </th>
+                                     <th >Action </th>
+                                 </tr
+                               </thead>
+                               <tbody>
+                                 <tr ng-repeat="pro in products | orderBy:'pro_id':'reverse':'DESC' ">	   
+                                    <td>{{$index+1}} </td>
+                                    <td>{{pro.pro_id}}</td>
+                                    <td>{{pro.name}}</td>
+                                    <td>{{pro.brand_id}} </td>
+                                    <td>{{pro.cat_id}}</td>
+                                    <td>{{pro.pro_info}}</td>		    
+                                   <td>
+                                    <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
+                                     <a href="" ng-click="deleteProduct(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                   </td>
+                                  </tr>
+                                 </tbody>
+                               </table>
+                             </div>
+                             <div   id="pagination" class="pull-right" ></div> 
+                           </div>
+                         </div>
+                   </div>
             <!--replace by the sweetalert end-->      
          </div>
             </div>
