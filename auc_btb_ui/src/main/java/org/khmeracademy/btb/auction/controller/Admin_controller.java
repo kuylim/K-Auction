@@ -16,10 +16,10 @@ public class Admin_controller {
     public String aucAdmin(){
         return "admin/auc-admin";
     }
-    @RequestMapping(value={"/auc-admin/manage/update/{id}"})
+    @RequestMapping(value={"/auc-admin/manage/info/{id}"})
     public String aucManageUpdate (ModelMap model,   @PathVariable("id") int id){
         model.addAttribute("id", id);
-        return "admin/auc-manager-update";
+        return "admin/auc-manager-info";
     }
     
     @RequestMapping(value={"/auc-admin/manage"})
