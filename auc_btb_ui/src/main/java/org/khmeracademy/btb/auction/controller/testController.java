@@ -1,0 +1,13 @@
+
+package org.khmeracademy.btb.auction.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class testController {
+    @RequestMapping("/auc-user")
+    public String auc(){
+        return "admin/auc-admin";
+    }
+}
