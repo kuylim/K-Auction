@@ -39,7 +39,7 @@
   </head>
 
   <body class="nav-md">
-      <div class="container body" ng-controller="ctrl">
+      <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -160,47 +160,157 @@
                 var auc_id = '${id}';
             </script>
               
-          <div class="row">
+          <div class="row" ng-controller="ctrl">
                      <h1 >Auction History</h1>
-                        <div >
+                     <hr>
+                     <div>
                             <div>
-                                <b>Product Information</b>
+                                <h4>Product Information</h4>
                                 <hr>
-                                <p>{{auction[0].pro_name}}</p>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Name:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].pro_name" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Infomation: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].pro_info" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Product Condition: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].pro_condition" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
                            </div>
                             <div>
-                                <b>Product Owner Information</b>
+                                <h4>Product Owner Information</h4>
+                                <hr>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Firstname:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].owner_firstname" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Lastname: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].owner_lastname" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Phone: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].owner_phone" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Email: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].owner_email" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Address: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].owner_address" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Owner Company Profile </label>
+                                        <div class="col-sm-8">
+                                            <textarea ng-model="auction[0].owner_com_profile" class="form-control" readonly></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
                             </div>
                             
                             <div>
-                                <b>Auction Information</b>
+                                <h4>Auction Information</h4>
+                                <hr>
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Start Price: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_start_price | currency:'$ ':0" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Buy Price: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_buy_price | currency:'$ ':0" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Bid Increment: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_bid_increment | currency:'$ ':0" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Current Price: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_current_price | currency:'$ ':0" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">Start Date: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_start_date | date:'medium'" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-4">End Date: </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" ng-model="auction[0].auc_end_date | date:'medium'" class="form-control" readonly/>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             
                             <div>
-                                <b>Bidding History</b>
+                                <h4>Bidding History</h4>
+                                <hr>
                                 <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​> 
-                                     <th >Auc</th>
-                                     <th >Product Name</th>
-                                     <th >Current Price</th>
-                                     <th >Start Date</th>
-                                     <th >End Date</th>
-                                     <th >You Bid AT</th>
+                                     <th >Bidder</th>
+                                     <th >Phone</th>
+                                     <th >Email</th>
+                                     <th >Bid Date</th>     
                                  </tr
                                </thead>
                                <tbody>
                                  <tr ng-repeat="au in auction | orderBy:'bid_date':'reverse':'DESC' ">	   
                                    
-                                    <td>{{au.auc_id}}</td>
-                                    <td>{{au.pro_name}}</td>
-                                    <td>{{au.auc_current_price}} </td> 
-                                   <td >{{au.auc_start_date   | date:'medium'}}</td>
-                                   <td >{{au.auc_end_date   | date:'medium'}}</td>
-                                   <td >{{au.bid_date  | date:'medium'}}</td>
+                                    <td>{{au.user_lastname}} {{au.user_firstname}}</td>
+                                    <td>{{au.user_phone}}</td>
+                                    <td>{{au.user_email}} </td> 
+                                    <td >{{au.bid_date   | date:'medium'}}</td>                           
                                   </tr>
                                  </tbody>
                                </table>
+                              
                                 <div id="pagination" class="pull-right"></div>
                             </div>
                          </div>

@@ -14,13 +14,11 @@ app.controller('ctrl', function ($scope, $filter, $http) {
 
         //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';
         $scope.id = auc_id;
-        alert(auc_id);
         $http({url: 'http://localhost:9999/api/auction/get-history-view-by-admin/'+ $scope.id +'?page='+currentPage+'&limit=10',
             method: 'GET'
         }).then(function (response) {
             //console.log(response.data);
-            $scope.auction = response.data.DATA;
-            console.log(response.data.DATA);
+            $scope.auction = response.data.DATA;   
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
                 check = false;
