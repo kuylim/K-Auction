@@ -51,8 +51,6 @@
 
     <body>
         <div >
-
-
             <header id="header"><!--header-->
                 <div class="header_top"><!--header_top-->
                     <div class="container">
@@ -157,7 +155,7 @@
             </header><!--/header-->
             <!-- pass category id to angular control -->
             <script>
-                var cate_id = '${cat_id}';
+                var brand_id = '${brand_id}';
             </script>
 
             <section>
@@ -198,7 +196,7 @@
                                     <h2>ម៉ាកផលិតផល</h2>
                                     <div class="brands-name">
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li ng-repeat=" br in brand"><a href="${pageContext.request.contextPath }/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
+                                            <li ng-repeat=" br in brand"><a href="${pageContext.request.contextPath}/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
                                         </ul>
                                     </div>
                                 </div><!--/brands_products-->
@@ -420,9 +418,9 @@
             </footer><!--/Footer-->
 
         </div>
-
+        
         <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
-        <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>                                                                                                     
+        <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>                                                                                                   
 
 
         <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
@@ -434,7 +432,7 @@
         <!-- boot page -->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
         <!-- main app -->
-        <script src="${pageContext.request.contextPath }/resources/js/auction_by_category_app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/auction_by_brand_app.js"></script>
 
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>

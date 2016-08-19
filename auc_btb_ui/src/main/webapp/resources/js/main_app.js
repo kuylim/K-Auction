@@ -35,6 +35,21 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                 });
     }
     $scope.getCategories();
+    
+    
+    $scope.getAuctionInBrand = function () {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:9999/api/brand/get-number-auction-in-brand'
+        })
+                .then(function (response) {
+                    $scope.brand = response.data.DATA;
+                    //console.log(response.data.DATA);
+                }, function (response) {
+
+                });
+    }
+    $scope.getAuctionInBrand();
 
 //                $scope.getAuction = function(){
 //                        $scope.date = new Date();
@@ -156,7 +171,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
         $http({url: 'http://localhost:9999/api/auction/get?page=' + currentPage + '&limit=6',
             method: 'GET'
         }).then(function (response) {
-            console.log(response.data);
+            //console.log(response.data);
             $scope.auctions = response.data.DATA;
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);

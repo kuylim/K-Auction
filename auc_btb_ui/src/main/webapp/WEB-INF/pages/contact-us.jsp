@@ -1,6 +1,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,92 +41,108 @@
     </head><!--/head-->
 
     <body>
-    <header id="header"><!--header-->
-        <div class="header_top"><!--header_top-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="contactinfo">
-                            <ul class="nav nav-pills">
-                                <li><a href=""><i class="fa fa-phone"></i> +855 92 391 577</a></li>
-                                <li><a href=""><i class="fa fa-envelope"></i> kuylim.tith@gmail.com</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="social-icons pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/header_top-->
-
-        <div class="header-middle"><!--header-middle-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="logo pull-left">
-                            <a href="index"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" /></a>
-                        </div>
-                        <div class="btn-group pull-right">
-
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="shop-menu pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="account"><i class="fa fa-user"></i> គណនីយ</a></li>
-                                <li><a href="wishlist"><i class="fa fa-star"></i> របស់ដែលអ្នកប្រថ្នា</a></li>
-                                <li><a href="cart"><i class="fa fa-shopping-cart"></i> កន្រ្តក</a></li>
-                                <li><a href="login"><i class="fa fa-lock"></i> ចូលគណនីយ</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!--/header-middle-->
-
-        <div class="header-bottom"><!--header-bottom-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index">ទំព័រដើម</a></li>
-                                <li class="dropdown"><a href="#">K-Auction<em class="fa fa-angle-down"></em></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop">ផលិតផល</a></li>
-                                        <li><a href="login">ចូលគណនីយ</a></li> 
+                <header id="header"><!--header-->
+                <div class="header_top"><!--header_top-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="contactinfo">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="#"><i class="fa fa-phone"></i> +855 92 391 577</a></li>
+                                        <li><a href="#"><i class="fa fa-envelope"></i> kuylim.tith@gmail.com</a></li>
                                     </ul>
-                                </li> 
-                                <li> <a href="contactUs">ទំនាក់ទំនង</a></li>
-                            </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="social-icons pull-right">
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="ស្វែងរក"/>
+                </div><!--/header_top-->
+                <script>
+                    $(function () {
+                        $('#iframe1').click(function () {
+                            $(window).scroll(function () {
+                                return false;
+                            });
+                            pageTracker._trackPageview('/onclick/emailquote');
+                        });
+                    });
+                </script>
+
+                <div class="header-middle"><!--header-middle-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="logo pull-left">
+                                    <a href="/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="shop-menu pull-right">
+                                    <ul class="nav navbar-nav">
+                                        <security:authorize access="isAuthenticated()">
+                                            <li><a href="${pageContext.request.contextPath }/account/<security:authentication property="principal.id" />"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>
+
+                                                <security:authorize access="isAnonymous()">
+                                                    <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>  
+                                        
+                                            <security:authorize access="isAuthenticated()">
+                                            <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
+                                            </security:authorize>
+                                            <security:authorize access="isAnonymous()">
+                                            <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+                                            </security:authorize>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div><!--/header-bottom-->
-    </header><!--/header-->
+                </div><!--/header-middle-->
+
+                <div class="header-bottom"><!--header-bottom-->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="mainmenu pull-left">
+                                    <ul class="nav navbar-nav collapse navbar-collapse">
+                                        <li><a href="${pageContext.request.contextPath }/home" class="active">ទំព័រដើម</a></li>
+
+                                        <li><a href="${pageContext.request.contextPath }/contact-us">ទំនាក់ទំនង</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="ស្វែងរក ផលិតផល">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/header-bottom-->
+            </header><!--/header-->
 
     <div id="contact-page" class="container">
         <div class="bg">

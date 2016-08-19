@@ -100,12 +100,19 @@
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="/account"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                        <security:authorize access="isAuthenticated()">
+                                            <li><a href="${pageContext.request.contextPath }/account/<security:authentication property="principal.id" />"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>
+
+                                                <security:authorize access="isAnonymous()">
+                                                    <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>  
+                                        
                                             <security:authorize access="isAuthenticated()">
-                                            <li><a href="/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
                                             </security:authorize>
                                             <security:authorize access="isAnonymous()">
-                                            <li><a href="/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
                                             </security:authorize>
                                     </ul>
                                 </div>
@@ -128,9 +135,9 @@
                                 </div>
                                 <div class="mainmenu pull-left">
                                     <ul class="nav navbar-nav collapse navbar-collapse">
-                                        <li><a href="/home" class="active">ទំព័រដើម</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/home" class="active">ទំព័រដើម</a></li>
 
-                                        <li><a href="/contact-us">ទំនាក់ទំនង</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/contact-us">ទំនាក់ទំនង</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -248,14 +255,7 @@
                                     <h2>ម៉ាកផលិតផល</h2>
                                     <div class="brands-name">
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#"> <span class="pull-right">(99)</span>Samsung</a></li>
-                                            <li><a href="#"> <span class="pull-right">(20)</span>Honda</a></li>
-                                            <li><a href="#"> <span class="pull-right">(27)</span>Panasonic</a></li>
-                                            <li><a href="#"> <span class="pull-right">(10)</span>LG</a></li>
-                                            <li><a href="#"> <span class="pull-right">(5)</span>Dell</a></li>
-                                            <li><a href="#"> <span class="pull-right">(9)</span>KIA</a></li>
-                                            <li><a href="#"> <span class="pull-right">(3)</span>Hitachi</a></li>
-                                            <li><a href="#"> <span class="pull-right">(30)</span>ផ្សេងៗ</a></li>
+                                            <li ng-repeat=" br in brand"><a href="/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
                                         </ul>
                                     </div>
                                 </div><!--/brands_products-->
@@ -494,8 +494,8 @@
 
         </div>
 
-        <script type="text/javascript" src="http://momentjs.com/downloads/moment-with-locales.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>                                                                                                     
+        <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
+        <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>                                                                                                     
 
 
         <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>

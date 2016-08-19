@@ -17,26 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class User_controller {
     
-//    @RequestMapping(value =  "/login")
-//    public String login(ModelMap model){
-//        return "login";
-//    }
-    
-    
     @RequestMapping(value={"/", "/index", "/home"})
     public String aucAdmin(){
         return "index";
     }
-    
-//     @RequestMapping("/account")
-//    public String account(){
-//        return "account";
-//    }
-    
-//    @RequestMapping("/shop/**")
-//    public String shop(){
-//        return "shop";
-//    }
     
     @RequestMapping("/product-details/{id}")
     public String proDetail( ModelMap model,   @PathVariable("id") int id){
@@ -55,5 +39,19 @@ public class User_controller {
     {
         model.addAttribute("cat_id", cat_id);
         return "auction-by-category";
+    }
+    
+    @RequestMapping("/auction/brand/{brand_id}")
+    public String auction_by_brand(ModelMap model, @PathVariable("brand_id") int brand_id)
+    {
+        model.addAttribute("brand_id", brand_id);
+        return "auction-by-brand";
+    }
+    
+    @RequestMapping("/account/{user_id}")
+    public String user_account(ModelMap model, @PathVariable("user_id") int user_id)
+    {
+        model.addAttribute("user_id" ,user_id);
+        return "account";
     }
 }

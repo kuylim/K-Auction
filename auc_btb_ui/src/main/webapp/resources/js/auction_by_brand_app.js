@@ -130,15 +130,14 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     check = true;
     currentPage = 1;
 
-    $scope.cate_id = cate_id;
+    $scope.brand_id = brand_id;
 
     $scope.showData = function (currentPage) {
 
         //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';     
-        $http({url: 'http://localhost:9999/api/auction/get-by-category/' + $scope.cate_id + '?page=' + currentPage + '&limit=6',
+        $http({url: 'http://localhost:9999/api/auction/get-by-brand/' + $scope.brand_id + '?page=' + currentPage + '&limit=6',
             method: 'GET'
-        }).then(function (response) {
-            console.log(response.data);
+        }).then(function (response) {      
             $scope.auctions = response.data.DATA;
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
@@ -190,7 +189,6 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     }
     $scope.getAuctionInBrand();
     
-    //========== animate end date ==============
     var tick = function () {
         $scope.currentTime = moment();
         processAuctionItems($scope.auctions);
@@ -207,7 +205,6 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     $timeout(tick, 1000);
 
     $timeout($scope.auctions, 10000);
-    //=================== end =========================
 });
 
 app.factory('datetime', ['$timeout', function ($timeout) {
@@ -242,6 +239,9 @@ app.filter('durationview', ['datetime', function (datetime) {
             return duration.days + "d:" + duration.hours + "h:" + duration.minutes + "m:" + duration.seconds + "s";
         };
     }]);
+
+
+
 
 
 
