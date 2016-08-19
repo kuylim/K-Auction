@@ -118,18 +118,25 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="logo pull-left">
-                                    <a href="/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
+                                    <a href="${pageContext.request.contextPath }/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="/account"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                        <security:authorize access="isAuthenticated()">
+                                            <li><a href="${pageContext.request.contextPath }/account/<security:authentication property="principal.id" />"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>
+
+                                                <security:authorize access="isAnonymous()">
+                                                    <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>  
+                                        
                                             <security:authorize access="isAuthenticated()">
-                                            <li><a href="/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
                                             </security:authorize>
                                             <security:authorize access="isAnonymous()">
-                                            <li><a href="/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
+                                            <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-lock"></i> ចូលទៅកាន់</a></li>
                                             </security:authorize>
                                     </ul>
                                 </div>
@@ -152,22 +159,12 @@
                                 </div>
                                 <div class="mainmenu pull-left">
                                     <ul class="nav navbar-nav collapse navbar-collapse">
-                                        <li><a href="/home" class="active">ទំព័រដើម</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/home" class="active">ទំព័រដើម</a></li>
 
-                                        <li><a href="/contact-us">ទំនាក់ទំនង</a></li>
+                                        <li><a href="${pageContext.request.contextPath }/contact-us">ទំនាក់ទំនង</a></li>
                                     </ul>
                                 </div>
                             </div>
-<!--                            <div class="col-sm-5">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="ស្វែងរក ផលិតផល">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <span class="glyphicon glyphicon-search"></span>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div><!--/header-bottom-->

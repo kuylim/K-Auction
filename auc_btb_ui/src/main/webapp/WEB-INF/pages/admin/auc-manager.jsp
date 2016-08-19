@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>K-Auction | Auction</title>
-
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Bootstrap -->
@@ -276,13 +275,6 @@
     <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
     <!--pop up product detail-->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
-    <!--<script>
-    
-    <!-- Datatables -->
-<!--     angular app 
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-     angular app -->
     <script>
 //        function fullDate() {
 //                

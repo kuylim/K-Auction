@@ -92,13 +92,20 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="logo pull-left">
-                                    <a href="/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
+                                    <a href="${pageContext.request.contextPath }/home"><img src="${pageContext.request.contextPath }/resources/images/home/logochange.gif" alt="" ></a>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="${pageContext.request.contextPath }/account"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                        <security:authorize access="isAuthenticated()">
+                                            <li><a href="${pageContext.request.contextPath }/account/<security:authentication property="principal.id" />"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>
+
+                                                <security:authorize access="isAnonymous()">
+                                                    <li><a href="${pageContext.request.contextPath }/login"><i class="fa fa-user"></i> គណនីយ</a></li>
+                                                </security:authorize>  
+                                        
                                             <security:authorize access="isAuthenticated()">
                                             <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out"></i> ចាកចេញ</a></li>
                                             </security:authorize>

@@ -330,7 +330,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             $scope.aucid =rec.au.auc_id;
             $scope.currentObject = rec.au;
     };
-    $scope.updateAuction = function(){
+    $scope.updateAuction = function(){ 
            // alert("Owner is "+$scope.ownerid+" , product is"+$scope.proid);
             swal({   
             title: "Are you sure to update this record?",   
