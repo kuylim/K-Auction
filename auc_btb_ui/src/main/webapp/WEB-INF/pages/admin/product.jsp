@@ -172,21 +172,21 @@
 	   	    	 	  	   <div class="form-group">
                                                <form ng-submit="addProduct()">
 	   	    	 	  	     	<span>Name</span><input type="type" ng-model="name"  class="form-control" placeholder="Product name"><br>
-	   	    	 	  	     	<span>Category ID</span>
+	   	    	 	  	     	<span>Type</span>
 						<select  class="form-control" ng-model="catid" style="padding-left:6px;">
-                                                                                                                     <option  ng-repeat="cat in category | filter: listOnlyMainCategory('parent_id', 0)" value="{{cat.cat_id}}" >
-                                                                                                                             {{cat.name}} {{own.lastname}}
+                                                                                                                     <option  ng-repeat="cat in category | filter: listOnlySubCategory('parent_id', 0)" value="{{cat.cat_id}}" >
+                                                                                                                             {{cat.name}}
                                                                                                                        </option>
                                                                                                              </select>
                                                                                                             <br>
-                                                                                                            <span>Brand ID</span>
+                                                                                                            <span>Brand</span>
                                                                                                                 <select  class="form-control" ng-model="brandid" style="padding-left:6px;">
                                                                                                                      <option  ng-repeat="bra in brand" value="{{bra.brand_id}}">
                                                                                                                              {{bra.name}} 
                                                                                                                        </option>
                                                                                                              </select>
                                                                                                             <br>
-	   	    	 	  	     	<span>Product Info</span><input type="text" class="form-control"  ng-model="proinfo" placeholder="Product information"><br>
+                                                                                                            <span>Product Info</span><textarea class="form-control"  ng-model="proinfo" placeholder="Product information"> </textarea><br>
                                                 <span>Image</span> <input type="file" id="img" name="file" class="form-control" multiple>
 
                                                 <!--<a href="" ng-click="addProduct()" type="button" id="add" class="btn btn-success" data-toggle="modal" data-target="#upload_img">Add</a>-->
@@ -270,14 +270,14 @@
                         </div>
                     </div>
 	   <div class="row">
-                     <h1 >Auction Manager</h1>
+                     <h1 >Product Manager</h1>
                         <div >
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left"></h3>
                               
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
