@@ -133,23 +133,78 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                 });
     };
     
+    //================pagination===================
     
+    check = true;
+    currentPage = 1;
     
-    $scope.getAuctionHistory = function()
-    {
-        $scope.usr_id = user_id;
-        $http({
-            method: 'GET',
-            url: 'http://localhost:9999/api/auction/get-history/' + user_id
-        })
-                .then(function (response) {
-                    $scope.auction = response.data.DATA;
-                }, function (response) {
+    //=======================
+//    $scope.getAuctionHistory = function()
+//    {
+//        $scope.usr_id = user_id;
+//        $http({
+//            method: 'GET',
+//            url: 'http://localhost:9999/api/auction/get-history/' + user_id
+//        })
+//                .then(function (response) {
+//                    $scope.auction = response.data.DATA;
+//                }, function (response) {
+//
+//                });
+//    };
+    //=================================
+    
+    $scope.showData = function (currentPage) {
 
-                });
-    };
+        //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';
+
+        $http({url: 'http://localhost:9999/api/auction/get-history/' + user_id +'?page='+currentPage+'&limit=10',
+            method: 'GET'
+        }).then(function (response) {
+            //console.log(response.data);
+            $scope.auction = response.data.DATA;
+            if (check) {
+                setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);
+                check = false;
+            }
+        }, function () {
+            swal(
+                    'Problem',
+                    'Please check your internet connection',
+                    'error'
+               );
+        });
+    }
     
-    $scope.getAuctionHistory();
+    //$scope.getAuctionHistory();
+    
+    
+    setPagination = function (totalPage, currentPage) {
+        $('#pagination').bootpag({
+            total: totalPage,
+            page: currentPage,
+            maxVisible: 5,
+            leaps: true,
+            firstLastUse: true,
+            first: 'First',
+            last: 'Last',
+            wrapClass: 'pagination',
+            activeClass: 'active',
+            disabledClass: 'disabled',
+            nextClass: 'next',
+            prevClass: 'prev',
+            lastClass: 'last',
+            firstClass: 'first'
+        });
+    };
+
+    $("#pagination").on("page", function (event, currentPage) {
+        check = false;
+        getCurrentPage = currentPage;
+        $scope.showData(currentPage);
+    });
+
+    $scope.showData(currentPage);
 
 
 });

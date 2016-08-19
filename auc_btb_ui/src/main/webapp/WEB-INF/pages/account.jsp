@@ -276,6 +276,7 @@
                                   </tr>
                                  </tbody>
                                </table>
+                               <div id="pagination" class="pull-right"></div>
                             </div>
 
                             <div class="tab-pane" id="tab4">
@@ -326,6 +327,7 @@
     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
      <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/account_app.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
    
 </body>
 </html>

@@ -5,9 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -38,8 +38,8 @@
 	<link href="${pageContext.request.contextPath }/resources/build/css/auction.css" rel="stylesheet">
   </head>
 
-  <body class="nav-md" ng-app="AuctionApp">
-    <div class="container body">
+  <body class="nav-md">
+      <div class="container body" ng-controller="ctrl">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -155,42 +155,54 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-			<!--add new product-->
-            
+			
+            <script>
+                var auc_id = '${id}';
+            </script>
+              
           <div class="row">
-                     <h1 >Aucting Bidder</h1>
+                     <h1 >Auction History</h1>
                         <div >
-                            <div >
-                                
-                               <div class="table-responsive" style="border:none;">
-                               <table class="table table-striped jambo_table bulk_action">
+                            <div>
+                                <b>Product Information</b>
+                                <hr>
+                                <p>{{auction[0].pro_name}}</p>
+                           </div>
+                            <div>
+                                <b>Product Owner Information</b>
+                            </div>
+                            
+                            <div>
+                                <b>Auction Information</b>
+                            </div>
+                            
+                            <div>
+                                <b>Bidding History</b>
+                                <table class="table table-striped jambo_table bulk_action">
                                <thead
-                                 <tr​​>
-                                     <th>No </th>
-                                     <th >AuctID </th>
-                                     <th >Owner </th>
-
-                                     <th >Action </th>
+                                 <tr​​> 
+                                     <th >Auc</th>
+                                     <th >Product Name</th>
+                                     <th >Current Price</th>
+                                     <th >Start Date</th>
+                                     <th >End Date</th>
+                                     <th >You Bid AT</th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
-                                    <td>{{$index+1}} </td>
+                                 <tr ng-repeat="au in auction | orderBy:'bid_date':'reverse':'DESC' ">	   
+                                   
                                     <td>{{au.auc_id}}</td>
-                                    <td>{{au.firstname}} {{au.lastname}}</td>
-                  
-                                   <td>
-                                    <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                     <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                                     <a href="${pageContext.request.contextPath }/auc-admin/manage/info/{{au.auc_id}}" target="_new"  class='btn btn-info btn-sm'>Review</a>
-                                     
-                                   </td>
+                                    <td>{{au.pro_name}}</td>
+                                    <td>{{au.auc_current_price}} </td> 
+                                   <td >{{au.auc_start_date   | date:'medium'}}</td>
+                                   <td >{{au.auc_end_date   | date:'medium'}}</td>
+                                   <td >{{au.bid_date  | date:'medium'}}</td>
                                   </tr>
                                  </tbody>
                                </table>
-                             </div>
-                             <div   id="pagination" class="pull-right" ></div> 
-                           </div>
+                                <div id="pagination" class="pull-right"></div>
+                            </div>
                          </div>
                    </div>  
             </div>
@@ -242,7 +254,9 @@
     <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/auction_history.js"></script>
+        <!-- boot page -->
+        <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
     <!-- angular app -->
     <script>
       $(document).ready(function() {

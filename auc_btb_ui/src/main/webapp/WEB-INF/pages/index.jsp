@@ -25,6 +25,8 @@
         <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath }/resources/images/ico/apple-touch-icon-57-precomposed.png">
 
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+        
+        <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
 
@@ -304,6 +306,7 @@
                                 <div id="pagination" class="pull-right"></div>
 
                             </div><!--features_items-->
+                            
 
                             <div class="recommended_items"><!--recommended_items-->
                                 <h2 class="title text-center">ផលិតផលដែលពេញនិយម</h2>
@@ -428,18 +431,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <!-- <div class="col-sm-2">
-                                    <div class="single-widget">
-                                            <h2>Quock Shop</h2>
-                                            <ul class="nav nav-pills nav-stacked">
-                                                    <li><a href="">T-Shirt</a></li>
-                                                    <li><a href="">Mens</a></li>
-                                                    <li><a href="">Womens</a></li>
-                                                    <li><a href="">Gift Cards</a></li>
-                                                    <li><a href="">Shoes</a></li>
-                                            </ul>
-                                    </div>
-                            </div> -->
+                            
                             <div class="col-sm-2">
                                 <div class="single-widget">
                                     <h2>គោលការណ៍</h2>
@@ -511,6 +503,7 @@
 
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
         <!--<script>
         
             $.noConflict();

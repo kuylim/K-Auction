@@ -68,7 +68,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
 
 
     $scope.getAuction_detail = function (id) {
-        alert("ME");
+        
         $http({
             method: 'GET',
             url: 'http://localhost:9999/api/auction/search/' + id
@@ -178,7 +178,11 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                 check = false;
             }
         }, function () {
-            alert('Error');
+            swal(
+                    'Problem',
+                    'Please check your internet connection',
+                    'error'
+               );
         });
 
 
