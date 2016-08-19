@@ -894,15 +894,15 @@ $scope.addBrand = function(){
 		
 		frmData.append('name', $scope.name);
 		frmData.append('cat_id', $scope.catid);
-                frmData.append('brand_id', $scope.brandid);
-                frmData.append('pro_info', $scope.proinfo);
+                                    frmData.append('brand_id', $scope.brandid);
+                                    frmData.append('pro_info', $scope.proinfo);
 		
 		$http({
 			url:'http://localhost:9999/api/product/add',
 			method: 'POST',
 			data: frmData,
 			transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
+                            headers: {'Content-Type': undefined}
 		}).then(function(response){
 			console.log(response.data);
 			//$scope.getRest();
@@ -928,7 +928,20 @@ $scope.addBrand = function(){
            }
        };
    }; 
-   
+
+$scope.searchCategory =function(searchcat){
+            if(searchcat!=="")
+        {
+            alert(searchcat);
+           $http({
+        	url:'http://localhost:9999/api/auction/get-by-category/'+searchcat+'?page=1&limit=6',
+                  method:'GET'
+        }).then(function(response){
+            $scope.auctions = response.data.DATA;
+            console.log(response.data.DATA);
+        }); 
+        }
+};  
 });
 
 // $('#add').modal({
@@ -940,5 +953,7 @@ $scope.addBrand = function(){
 //            backdrop: 'static',
 //            keyboard: false
 //        });
+
+
 
 
