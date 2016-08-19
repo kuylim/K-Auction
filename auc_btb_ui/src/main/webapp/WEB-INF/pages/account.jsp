@@ -52,7 +52,7 @@
         }
         .tab-content{
 
-            width: 400px;
+            width: 818px;
             margin-top: 50px;
         }
         .panel-success>.panel-heading{
@@ -253,6 +253,29 @@
                             </div>
                             <div class="tab-pane" id="tab3">
                                 <!--place auction hsitory here-->
+                                <table class="table table-striped jambo_table bulk_action">
+                               <thead
+                                 <tr​​> 
+                                     <th >Auction ID</th>
+                                     <th >Product Name</th>
+                                     <th >Current Price</th>
+                                     <th >Start Date</th>
+                                     <th >End Date</th>
+                                     <th >You Bid AT</th>
+                                 </tr
+                               </thead>
+                               <tbody>
+                                 <tr ng-repeat="au in auction | orderBy:'bid_date':'reverse':'DESC' ">	   
+                                   
+                                    <td>{{au.auc_id}}</td>
+                                    <td>{{au.pro_name}}</td>
+                                    <td>{{au.auc_current_price}} </td> 
+                                   <td >{{au.auc_start_date   | date:'medium'}}</td>
+                                   <td >{{au.auc_end_date   | date:'medium'}}</td>
+                                   <td >{{au.bid_date  | date:'medium'}}</td>
+                                  </tr>
+                                 </tbody>
+                               </table>
                             </div>
 
                             <div class="tab-pane" id="tab4">

@@ -131,7 +131,25 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                         swal("Cancelled", "Top up operation has been cancelled", "error");
                     }
                 });
-    }
+    };
+    
+    
+    
+    $scope.getAuctionHistory = function()
+    {
+        $scope.usr_id = user_id;
+        $http({
+            method: 'GET',
+            url: 'http://localhost:9999/api/auction/get-history/' + user_id
+        })
+                .then(function (response) {
+                    $scope.auction = response.data.DATA;
+                }, function (response) {
+
+                });
+    };
+    
+    $scope.getAuctionHistory();
 
 
 });
