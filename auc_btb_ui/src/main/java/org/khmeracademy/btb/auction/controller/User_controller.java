@@ -54,4 +54,11 @@ public class User_controller {
         model.addAttribute("user_id" ,user_id);
         return "account";
     }
+    
+    @RequestMapping("/auction/search/{pro_name}")
+    public String searchByProName(ModelMap model, @PathVariable("pro_name") String pro_name)
+    {
+        model.addAttribute("pro_name" ,pro_name);
+        return "search";
+    }
 }

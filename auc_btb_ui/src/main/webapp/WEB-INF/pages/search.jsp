@@ -157,7 +157,7 @@
             </header><!--/header-->
             <!-- pass category id to angular control -->
             <script>
-                var cate_id = '${cat_id}';
+                var pro_name = '${pro_name}';
             </script>
 
             <section>
@@ -214,7 +214,7 @@
                                     <div  class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" /></a>
+                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="256" height="256" /></a>
                                                 <h2>{{auc.current_price}} $</h2>
                                                 <p>{{auc.name}}</p>
 
@@ -434,7 +434,7 @@
         <!-- boot page -->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
         <!-- main app -->
-        <script src="${pageContext.request.contextPath }/resources/js/auction_by_category_app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/search_app.js"></script>
 
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>

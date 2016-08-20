@@ -145,11 +145,11 @@
                             </div>
                             <div class="col-sm-5">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="ស្វែងរក ផលិតផល">
+                                    <input type="text" ng-model="pro_name" class="form-control" placeholder="ស្វែងរក ផលិតផល">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
+                                        <a class="btn btn-default" href="${pageContext.request.contextPath }/auction/search/{{pro_name}}">
                                             <span class="glyphicon glyphicon-search"></span>
-                                        </button>
+                                        </a>
                                     </span>
                                 </div>
                             </div>
