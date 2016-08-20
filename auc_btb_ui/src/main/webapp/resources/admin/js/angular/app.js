@@ -280,12 +280,17 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                 "usr_id": $scope.usrid
            }
             }).then(function(response){
-                      console.log(response.data);
+                      //console.log(response.data);
                             //alert(response.data.MESSAGE);
-//                      $scope.getAuction();
-                      $scope.showData(currentPage);
+                      $scope.getAuction();
+                      //$scope.showData(currentPage);
                             // $scope.name = "";
-                            // $scope.age = "";
+                            // $scope.age = ""; 
+                            swal(
+                                'Success!',
+                                'Add successfully!',
+                                'success'
+                              );
                       },function(response){
             });
     };
@@ -302,11 +307,11 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             closeOnCancel: false}, 
             function(isConfirm){   
             if (isConfirm) {     
-                               $http({
+                    $http({
                     url:'http://localhost:9999/api/auction/delete/'+id,
                                         method:'PUT'
                                 }).then(function(response){
-                                    alert(document.getElementById("pagination").value);
+                                    
                     swal("Deleted!", "Auction item has been deleted :)", "success");  
                     $scope.getAuction();
                     },function(response){
@@ -405,7 +410,12 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                     "phone": $scope.phone
                   }
             }).then(function(response){
-                      console.log(response.data);
+                      //console.log(response.data);
+                      swal(
+                                'Success!',
+                                'Add successfully!',
+                                'success'
+                              );
                       $scope.getOwner();
                       },function(response){
             });
@@ -513,8 +523,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
     };
     $scope.getProduct();
     $scope.getProductObject = function(rec){
-         alert(rec.pro.cat_id +" "+ rec.pro.brand_id);
-         	$scope.name = rec.pro.name;
 	$scope.catid = rec.pro.cat_id;
 	$scope.brandid = rec.pro.brand_id;
 	$scope.proinfo = rec.pro.pro_info;
@@ -731,7 +739,12 @@ $scope.addBrand = function(){
                                     "name": $scope.brandname
                            }
                            }).then(function(response){
-		console.log(response.data);
+                               swal(
+                                'Success!',
+                                'Add successfully!',
+                                'success'
+                              );
+		//console.log(response.data);
 		$scope.getBrand();
                             }, function(response){			
                             });
@@ -800,46 +813,7 @@ $scope.addBrand = function(){
                      } 
              });
     };
-//-------------------------------------------------------------------------------------------------Brand Manager block-----------------//   
-    //=========================upload image===================================
-    var FILE = {};			
-			//TODO: on submit event, multiple file
-    $scope.upload = function(event){
-				event.preventDefault();
-
-				var frmData = new FormData();
-				var files = angular.element('#file')[0].files;
-				for(var i=0; i<files.length; i++)
-					frmData.append("files", files[i]);
-				
-				FILE.upload(frmData);
-			};
-			//TODO: upload file to server
-   FILE.upload = function(frmData){
-				$http({
-					url: 'http://localhost:9999/api/image/upload',
-					params: {
-						folder: $scope.folder
-					},
-					method: 'POST',
-					data: frmData,
-					transformRequest: angular.identity,
-		            headers: {'Content-Type': undefined}
-					
-				}).then(function(response){
-					var files = response.data;
-					$scope.message = files.message;
-					$scope.filePath = files.projectPath;
-					
-					$scope.images = [];
-					for(var i=0; i<files.names.length; i++){
-						$scope.images.push(files.names[i]);
-					}
-					console.log(response);
-				}, function(response){
-					console.log(response);
-				});
-			};                       
+                      
 //=================pagination===========================
             check = true;
             currentPage = 1;
@@ -882,9 +856,8 @@ $scope.addBrand = function(){
                        };
    $scope.showData(currentPage);    
    
+   //============== Add Product ===================
    $scope.addProduct = function(){
-
-                alert($scope.name);
 		var frmData = new FormData();
 		
 		var restaurant_files = angular.element('#img')[0].files;
@@ -904,12 +877,23 @@ $scope.addBrand = function(){
 			transformRequest: angular.identity,
                             headers: {'Content-Type': undefined}
 		}).then(function(response){
-			console.log(response.data);
+			//console.log(response.data);
 			//$scope.getRest();
+                        swal(
+                                'Success!',
+                                'Add successfully!',
+                                'success'
+                              );
+                        $scope.getProduct();
 		}, function(error){
-			console.log(error.data);
-			alert('failed to upload data');
+			//console.log(error.data);
+			//alert('failed to upload data');
 			//$scope.getRest();
+                        swal(
+                                'Error!',
+                                'Cannot add produt!',
+                                'error'
+                              );
 		});
 };
    $scope.showData(currentPage);
@@ -934,10 +918,15 @@ $scope.searchCategory =function(searchcat){
         {
             alert(searchcat);
            $http({
-        	url:'http://localhost:9999/api/auction/get-by-category/'+searchcat+'?page=1&limit=6',
+        	url:'http://localhost:9999/api/auction/get-by-category/'+searchcat+'?page='+currentPage+'&limit=6',
                   method:'GET'
         }).then(function(response){
             $scope.auctions = response.data.DATA;
+            
+            if(check){
+                                setPagination(response.data.PAGINATION.TOTAL_PAGES,currentPage);
+                                check=false;
+                            }
             console.log(response.data.DATA);
         }); 
         }
