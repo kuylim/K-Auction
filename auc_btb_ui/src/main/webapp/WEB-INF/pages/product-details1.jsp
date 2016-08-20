@@ -25,7 +25,7 @@
 
         <!-- slide -->
 
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/images/motor/myslide.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/myslide.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
 
         <style>
@@ -176,51 +176,17 @@
                     <div class="product-details"><!--product-details-->
                         <div class="col-sm-6" style="margin-top:50px;">
 
-                            <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 456px; overflow: hidden; visibility: hidden; background-color: white;">
+                            <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 800px; height: 600px; overflow: hidden; visibility: hidden; background-color: white;">
                                 <!-- Loading Screen -->
                                 <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
                                     <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
                                     <div style="position:absolute;display:block;background:url('${pageContext.request.contextPath }/resources/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
                                 </div>
-                                <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 356px; overflow: hidden;" ng-repeat="image in auc_detail.images">
-                                    <div data-p="144.50" style="display: none;">
-                                        <img src="http://localhost:9999/resources/{{image.img_path}}" width="640" height="480">
-                                        <img  src="http://localhost:9999/resources/{{image.img_path}}" data-u="thumb" />
+                                <div  data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 800px; height: 550px; overflow: hidden;" >
+                                    <div ng-repeat="auc in auc_detail.images" my-filter data-p="144.50" style="display: none;">
+                                        <img  data-u="image" src="http://localhost:9999/resources/{{auc.img_path}}">                     
                                     </div>
-                                    <!--<div data-p="144.50" style="display: none;">
-                                        <img data-u="image" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-2-Recovered.jpg"/>
-                                        <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-2-Recovered.jpg" />
-                                    </div>
-                                    <div data-p="144.50" style="display: none;">
-                                        <img data-u="image" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-3-Recovered.jpg" />
-                                        <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-3-Recovered.jpg" />
-                                    </div>
-                                    <div data-p="144.50" style="display: none;">
-                                        <img data-u="image" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-4-Recovered.jpg" />
-                                        <img data-u="thumb" src="${pageContext.request.contextPath }/resources/images/motor/Untitled-4-Recovered.jpg"/>
-                                    </div>-->
-
-
-
-                                    <!--<a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider</a>-->
-
                                 </div>
-                                <!-- Thumbnail Navigator -->
-                                <div data-u="thumbnavigator" class="jssort01" style="position:absolute;left:0px;bottom:0px;width:800px;height:100px;" data-autocenter="1">
-                                    <!-- Thumbnail Item Skin Begin -->
-                                    <div data-u="slides" style="cursor: default;">
-                                        <div data-u="prototype" class="p">
-                                            <div class="w">
-                                                <div data-u="thumbnailtemplate" class="t"></div>
-                                            </div>
-                                            <div class="c"></div>
-                                        </div>
-                                    </div>
-                                    <!-- Thumbnail Item Skin End -->
-                                </div>
-                                <!-- Arrow Navigator -->
-                                <span data-u="arrowleft" class="jssora05l" style="top:158px;left:8px;width:40px;height:40px;"></span>
-                                <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;"></span>
                             </div>
 
                         </div>
@@ -468,8 +434,7 @@
     </section>
 
     <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
-    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
+    
     <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/price-range.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
@@ -479,10 +444,12 @@
 
     <!--slider-->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/jsslide/jssor.slider.min.js"></script>
-    <script src="${pageContext.request.contextPath }/resources/jsslide/myjs.js"></script>
+    <!--<script src="${pageContext.request.contextPath }/resources/jsslide/myjs.js"></script>-->
+    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
 
-    <script>
+<!--    <script>
         jssor_1_slider_init();
-    </script>
+    </script>-->
 </body>
 </html>

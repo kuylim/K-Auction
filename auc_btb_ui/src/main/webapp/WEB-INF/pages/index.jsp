@@ -309,16 +309,16 @@
                             
 
                             <div class="recommended_items"><!--recommended_items-->
-                                <h2 class="title text-center">ផលិតផលដែលពេញនិយម</h2>
+                                <h2 class="title text-center">ផលិតផលថ្មី</h2>
 
                                 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="item active">	
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4" ng-repeat=" auc in auctions">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/GalaxyS5/s-l501(1).jpg" alt="" />
+                                                        <div class="productinfo text-center" >
+                                                            <img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt=""  width="200" height="200"/>
                                                             <h2>$280</h2>
                                                             <p>ទូរស័ព្ទ Galaxy S5</p>
                                                             <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
@@ -327,7 +327,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+<!--                                            <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
@@ -339,8 +339,8 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-4">
+                                            </div>-->
+<!--                                            <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
@@ -352,10 +352,10 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
-                                        <div class="item">	
-                                            <div class="col-sm-4">
+                                       <div class="item">	
+                                            <div class="col-sm-4" ng-repeat=" auc in auctions">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
@@ -368,7 +368,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+<!--                                            <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
@@ -380,8 +380,8 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-4">
+                                            </div>-->
+<!--                                            <div class="col-sm-4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
@@ -393,7 +393,7 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                     <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

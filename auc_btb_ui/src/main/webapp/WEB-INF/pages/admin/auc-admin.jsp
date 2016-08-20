@@ -50,7 +50,7 @@
                   <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
                   <div class="count">179</div>
                   <p></p>
-                  <h4>អ្នកចុះឈ្មោះថ្មី</h4>
+                  <h4>ផលិតផលសរុប</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
