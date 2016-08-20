@@ -43,7 +43,6 @@
  <!--    sweetaler style--> 
  <!--    Cloak style-->
     <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
-    
  <!--    Cloak style-->
   </head>
 

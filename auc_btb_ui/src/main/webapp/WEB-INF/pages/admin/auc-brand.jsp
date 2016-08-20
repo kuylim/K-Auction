@@ -54,7 +54,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main"  >
-          <div class="" ng-controller="AuctionController" ng-cloak="cloak">
+          <div class="" ng-controller="BrandController" ng-cloak="cloak">
 	<!--add new product-->
         
                   <!--replace by the sweetalert start-->
