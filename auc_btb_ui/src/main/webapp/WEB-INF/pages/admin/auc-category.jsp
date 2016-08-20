@@ -53,7 +53,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main"  >
-          <div class="" ng-controller="AuctionController" ng-cloak="cloak">
+          <div class="" ng-controller="CategoryController" ng-cloak="cloak">
 	<!--add new product-->
         
                   <!--replace by the sweetalert start-->
@@ -77,7 +77,7 @@
                                     <input type="text" class="form-control"  ng-model="categoryname" placeholder="Brand description"><br>
                                     <span>In Categorize of </span>
                                     <select class="form-control"  ng-model="parentid" style="padding-top: 2px;" ng-disabled="!categorytype">
-                                        <option ng-repeat=" cat in category | filter: {'parent_id' : '0'}" value="{{cat.cat_id}}" >{{cat.name}}</option>
+                                        <option ng-repeat=" cat in category | filter: listOnlyMainCategory('parent_id',0)" value="{{cat.cat_id}}" >{{cat.name}}</option>
                                     </select><br>
                                     <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
 	   	
@@ -122,8 +122,8 @@
 <!--                                    <select class="form-control"  ng-model="parentid" style="padding-top: 2px;">
                                         <option ng-repeat=" cat in category | filter:{'parent_id':0}" value="{{cat.cat_id}}" >{{cat.name}}</option>
                                     </select><br>-->
-<select  class="form-control" ng-model="parentid" ng-disabled="parentid===0" style="padding-left:8px; padding-top: 2px;" 
-                                             ng-options="cat.cat_id as cat.name for cat in category | filter:{'parent_id':0}">
+                                    <select  class="form-control" ng-model="parentid" ng-disabled="parentid===0" style="padding-left:8px; padding-top: 2px;" 
+                                             ng-options="cat.cat_id as cat.name for cat in category | filter:listOnlyMainCategory('parent_id',0)">
         		</select><br>
                                     <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
 	   	<a href="" ng-click="updateCategory()" type="button" id="add" class="btn btn-success" ng-disabled="!categoryname">Update</a>

@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Seller</title>
+    <title>K-Auction | User</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -54,7 +54,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main" >
-          <div class="" ng-controller="OwnerController">
+          <div class="" ng-controller="AuctionController">
 	<!--add new product-->
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
@@ -63,7 +63,7 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Seller</h4>
+	   	<h4 class="modal-title">Add New Owner</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
@@ -91,13 +91,13 @@
                         <div class="modal-content">
                            <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Seller</h4>
+	   	<h4 class="modal-title">Update Auction</h4>
                            </div>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <span>OwnerID</span><input type="number" ng-model="ownerid"  class="form-control" readonly="true"><br>
 	   	 <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name"><br>
-                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Last name"><br>
+                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
                                     <span>Phone</span><input type="text" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
                                     <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Input name"><br>
                                     <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
@@ -114,13 +114,13 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                        <h1 >Seller Account Manager</h1>
+                        <h1 >Owner Account Manager</h1>
                         <div >
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                                         <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New Seller</button>
+                                   
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
                                  <tr​​>
