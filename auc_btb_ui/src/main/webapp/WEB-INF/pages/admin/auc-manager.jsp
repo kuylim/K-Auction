@@ -158,39 +158,40 @@
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
-                                     <th>No </th>
+                                     
                                      <th >AuctID </th>
                                      <th >Owner </th>
                                      <th >Product </th>
-                                     <th >Condition </th>
-                                     <th >Start Price </th>
-                                     <th >Buy Price</th>
-                                     <th >Bid Increase </th>
+                                     
+                                     
+                                     
+                                     <th >Number of Bids</th>
                                      <th >Current Price </th>
                                      <th >Start Date </th>
                                      <th >End Date </th>
-                                     <th >User ID </th>
+                                     
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
                                  <tr ng-repeat="au in auctions | orderBy:'auc_id':'reverse':'DESC' ">	   
-                                    <td>{{$index+1}} </td>
+                                    
                                     <td>{{au.auc_id}}</td>
                                     <td>{{au.firstname}} {{au.lastname}}</td>
                                     <td>{{au.name}} </td>
-                                    <td>{{au.product_condition}}</td>
-                                    <td>{{au.start_price}}</td>		    
-                                    <td>{{au.buy_price}}</td>
-                                    <td >{{au.bid_increment_price}} </td>
+                                    		    
+                                    
+                                    
+                                    <td>{{au.number_of_bids}}</td>
                                     <td >{{au.current_price}} </td>
-                                   <td >{{au.start_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.end_date  |  date:'yyyy-MM-dd'}} </td>
-                                   <td >{{au.urs_id}} </td>
+                                   <td >{{au.start_date  | date:'medium'}} </td>
+                                   <td >{{au.end_date  | date:'medium'}} </td>
+                                   
+                                   
                                    <td>
                                     <a href="" ng-click="getCurrentObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
                                      <a href="" ng-click="deleteAuction(au.auc_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                                     <a href="${pageContext.request.contextPath }/auc-admin/manage/info/{{au.auc_id}}" target="_new"  class='btn btn-info btn-sm'>Review</a>
+                                     <a href="${pageContext.request.contextPath }/auc-admin/manage/info/{{au.auc_id}}" target="_new"  class='btn btn-info btn-sm'>View</a>
                                      
                                    </td>
                                   </tr>
