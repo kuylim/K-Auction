@@ -18,7 +18,6 @@
               </div>
             </div>
             <!-- /menu profile quick info -->
-
             <br/>
 
             <!-- sidebar menu -->
@@ -31,16 +30,16 @@
                       <li><a href="${pageContext.request.contextPath }/auc-admin">DASHBOARD</a></li>
                     </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-user"></i>SELLER</a></li>
+<!--                  <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-user"></i>SELLER</a></li>-->
                   <li><a><i class="fa fa-user"></i> ACCOUNT <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-sellsy"></i>Admin </span></a>
+                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Admin </span></a>
 <!--                      	<ul class="nav child_menu">
                                             <li><a href="#">រថយន្ដ</a></li>
                                             <li><a href="#">ម៉ូតូ</a></li>
                                      </ul>-->
                           </li>
-                      <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-buysellads"></i>Seller</span></a>
+                      <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Seller</span></a>
 <!--                          <ul class="nav child_menu">
                           <li><a href="#">ដីលូ</a></li>
                           <li><a href="#">ផ្ទះល្វែង</a></li>
@@ -49,10 +48,19 @@
                      
                     </ul>
                   </li>
-                  <li><a href="${pageContext.request.contextPath }/auc-admin/product"><i class="fa fa-legal"></i>PRODUCT MANAGE</a></li>
+                  <li><a href="${pageContext.request.contextPath }/auc-admin/product"><i class="fa fa-product-hunt"></i>PRODUCT MANAGE</a></li>
+                  <li><a><i class="fa fa-user"></i> ACCOUNT <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu" >
+                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Admin </span></a>
+                          </li>
+                      <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Seller</span></a>
+                      </li>
+                     
+                    </ul>
+                  </li>
                   <li><a href="${pageContext.request.contextPath }/auc-admin/manage"><i class="fa fa-edit"></i>AUCTION MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }/auc-admin/category"><i class="fa fa-plus-square"></i>CATEGORY MANAGE</a>
-                   <li><a href="${pageContext.request.contextPath }/auc-admin/brand"><i class="fa fa-plus-circle"></i>BRAND MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }/auc-admin/category"><i class="fa fa-book"></i>CATEGORY MANAGE</a>
+                   <li><a href="${pageContext.request.contextPath }/auc-admin/brand"><i class="fa fa-asterisk"></i>BRAND MANAGE</a>
                   </li>
                 </ul>
               </div>
