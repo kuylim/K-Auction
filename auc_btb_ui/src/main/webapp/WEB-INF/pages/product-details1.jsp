@@ -27,6 +27,7 @@
 
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/myslide.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
+        <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
 
         <style>
 
@@ -447,9 +448,7 @@
     <!--<script src="${pageContext.request.contextPath }/resources/jsslide/myjs.js"></script>-->
     <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
-
-<!--    <script>
-        jssor_1_slider_init();
-    </script>-->
+    
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
 </body>
 </html>
