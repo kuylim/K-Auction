@@ -241,7 +241,7 @@
                                         <div id="_{{x.name}}"   ng-show="x.parent_id == 0" class="panel-collapse collapse">
                                             <div class="panel-body" >
                                                 <ul ng-repeat = "y in categories" ng-show = "y.parent_id == x.cat_id">
-                                                    <li><a href="/auction/category/{{y.cat_id}}">{{y.name}}</a></li>
+                                                    <li><a href="${pageContext.request.contextPath }/auction/category/{{y.cat_id}}">{{y.name}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -257,7 +257,7 @@
                                     <h2>ម៉ាកផលិតផល</h2>
                                     <div class="brands-name">
                                         <ul class="nav nav-pills nav-stacked">
-                                            <li ng-repeat=" br in brand"><a href="/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
+                                            <li ng-repeat=" br in brand"><a href="${pageContext.request.contextPath }/auction/brand/{{br.brand_id}}"> <span class="pull-right">({{br.number_of_brand}})</span>{{br.name}}</a></li>
                                         </ul>
                                     </div>
                                 </div><!--/brands_products-->
@@ -273,7 +273,7 @@
                                     <div  class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="256" height="256"/></a>
+                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="256" height="256"/></a>
                                                 <h2>{{auc.current_price}} $</h2>
                                                 <p>{{auc.name}}</p>
 
@@ -295,8 +295,7 @@
                                         </div>
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
-                                                <li><a>{{auc.number_of_bids}} bids</a></li>
-                                                <!--<li><a>នៅសល់ {{(auc.end_date - date) / (1000 * 60 * 60) % 24 | number:0}} ម៉ោង</a></li>-->
+                                                <li><a>{{auc.number_of_bids}} bids</a></li>        
                                                 <li><a>{{auc.remainingTime | durationview}}</a></li>
                                             </ul>
                                         </div>
@@ -314,86 +313,46 @@
                                 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner">
                                         <div class="item active">	
-                                            <div class="col-sm-4" ng-repeat=" auc in auctions">
+                                            <div class="col-sm-4" ng-repeat=" auc in New_auctions | limitTo : 3 : 0">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center" >
-                                                            <img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt=""  width="200" height="200"/>
-                                                            <h2>$280</h2>
-                                                            <p>ទូរស័ព្ទ Galaxy S5</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
+                                                            <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="200" height="200"/></a>
+                                                            <h2>$ {{auc.current_price}}</h2>
+                                                            <p>{{auc.name}}</p>
+                                                            <security:authorize access="isAuthenticated()">
+                                                                <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>    
+                                                                <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>
 
+                                                            <security:authorize access="isAnonymous()">
+                                                                <a href="${pageContext.request.contextPath }/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>  
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-<!--                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/WaterProof/s-l1604 (1).jpg" alt="" />
-                                                            <h2>$80</h2>
-                                                            <p>នាឡិកា WaterProof</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>-->
-<!--                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/Plugin/s-l5010.jpg" alt="" />
-                                                            <h2>$11</h2>
-                                                            <p>កាស BOBO</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>-->
                                         </div>
                                        <div class="item">	
-                                            <div class="col-sm-4" ng-repeat=" auc in auctions">
+                                            <div class="col-sm-4" ng-repeat=" auc in New_auctions | limitTo : 3 : 3">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/OEMAppleAdapter/s-l500.jpg" alt="" />
-                                                            <h2>$16</h2>
-                                                            <p>ឆ្នាំសាក IPhone 4/4s</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
+                                                        <div class="productinfo text-center" >
+                                                            <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="200" height="200"/></a>
+                                                            <h2>$ {{auc.current_price}}</h2>
+                                                            <p>{{auc.name}}</p>
+                                                            <security:authorize access="isAuthenticated()">
+                                                                <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>    
+                                                                <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>
 
+                                                            <security:authorize access="isAnonymous()">
+                                                                <a href="${pageContext.request.contextPath }/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>  
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-<!--                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/eyeClass/s-l1600.jpg" alt="" />
-                                                            <h2>$15</h2>
-                                                            <p>វែនតា Sun Protection</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>-->
-<!--                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                            <h2>$450</h2>
-                                                            <p>កុំព្យូទ័រ Asus N4532</p>
-                                                            <a href="#" class="btn btn-success add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>-->
                                         </div>
                                     </div>
                                     <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
@@ -439,9 +398,6 @@
                                         <li><a href="">របៀបចូលរួមដេញថ្លៃ</a></li>
                                         <li><a href="">ដាក់ផលិតផលដេញថ្លៃ</a></li>
                                         <li><a href="">សេវាកម្ម</a></li>
-                                        <!-- <li><a href="">Refund Policy</a></li>
-                                        <li><a href="">Billing System</a></li>
-                                        <li><a href="">Ticket System</a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -451,10 +407,7 @@
                                     <ul class="nav nav-pills nav-stacked">
                                         <li><a href="">គេហទំព័ររបស់យើងខ្ញុំ</a></li>
                                         <li><a href="">ការផ្លស់ប្តូរ</a></li>
-                                        <!-- <li><a href="">មុខងារ និងតួនាទី</a></li> -->
                                         <li><a href="https://www.google.com.kh/maps/place/Korea+Software+HRD+Center/@11.575766,104.889167,15z/data=!4m5!3m4!1s0x0:0x2c2974b77cdaff4b!8m2!3d11.575766!4d104.889167">ទីតាំង</a></li>
-                                        <!-- <li><a href="">Affillate Program</a></li> -->
-                                        <!-- <li><a href="">Copyright</a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -489,7 +442,6 @@
         <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
         <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>                                                                                                     
 
-
         <script src="${pageContext.request.contextPath }/resources/js/jquery.js"></script>
         <script src="${pageContext.request.contextPath }/resources/js/bootstrap.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/js/jquery.scrollUp.min.js"></script>
@@ -504,12 +456,5 @@
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
-        <!--<script>
-        
-            $.noConflict();
-            jQuery(document).ready(function(){
-            jQuery("#iframe22").colorbox({iframe:true, width:"80%", height:"80%"});
-            });
-        </script>--> 
     </body>
 </html>

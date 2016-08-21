@@ -55,7 +55,11 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
 
         if ($scope.cus.credit <= 0) {
-            alert("You don't have enought credit to bit. please charge your balance");
+            swal(
+             'You do not have enough credit.',
+             'Please topup your balance',
+             'warning'
+          );
         } else {
 
             $scope.Nowsday = new Date();
@@ -97,10 +101,13 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                                                 $http.put('http://localhost:9999/api/user/update-balance', $scope.cus)
 
                                                         .success(function () {
-                                                            //$scope.getAuction();
-                                                            //$scope.getAuction_detail(id);
+                                                            
+                                                            swal(
+                                                                'Good job!',
+                                                                'You bid successfully!',
+                                                                'success'
+                                                              );
                                                             $scope.showData(currentPage);
-                                                            alert("You bid succesfully!");
                                                         })
                                                         .error(function ()
                                                         {
@@ -205,6 +212,24 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     $timeout(tick, 1000);
 
     $timeout($scope.auctions, 10000);
+    
+    $scope.getNewAuction = function()
+    {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:9999/api/auction/get-new-auctions'
+        })
+                .then(function (response) {
+                    $scope.New_auctions = response.data.DATA;
+                    //console.log(response.data.DATA);
+                }, function (response) {
+
+                });
+    };
+    $scope.getNewAuction();
+    
+      
+    
 });
 
 app.factory('datetime', ['$timeout', function ($timeout) {

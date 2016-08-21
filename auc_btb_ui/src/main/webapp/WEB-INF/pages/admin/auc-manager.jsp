@@ -150,11 +150,15 @@
                                                        ng-options="cat.cat_id as cat.name for cat in category | filter: listOnlySubCategory('parent_id', 0)">
                                        </select>
                                        <button ng-click="searchCategory(catid)" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
+                                       <!--<button class="btn btn-link" ng-click="exportToExcel('#tblauction')">-->
+<!--        <span class="glyphicon glyphicon-share"></span> Export to Excel
+    </button>-->
+                                       <button ng-json-export-excel data="dataList" report-fields="{id: 'ID Heder', name: 'Name Header', price: 'Price Head'}" filename="'filename'" class="btn-sm btn-primary">Export Excel</button>
                                        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
                                    </div>
                               
                                   
-                               <table class="table table-striped jambo_table bulk_action">
+                                   <table class="table table-striped jambo_table bulk_action" id="tblauction">
                                <thead
                                  <tr​​>
                                      
@@ -239,10 +243,17 @@
      <!-- Select2 -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
-       <!-- angular app -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+       
+        
+        <!--Export to excel-->
+        <script src="${pageContext.request.contextPath }/resources/admin/js/excel/json-export-excel.min.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/excel/FileSaver.js"></script>
+        
+        <!-- angular app -->
+        
+        <!--<script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>-->
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script> 
+       <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
@@ -271,8 +282,8 @@
     
     <!-- boot page -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
-    <!-- main app -->
-    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+<!--     main app 
+    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>-->
     <!--pop up product detail-->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
     <script>

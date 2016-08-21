@@ -93,11 +93,14 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                                                 $scope.cus.credit = $scope.cus.credit - 500;
                                                 $http.put('http://localhost:9999/api/user/update-balance', $scope.cus)
 
-                                                        .success(function () {
-                                                            //$scope.getAuction();
-                                                            //$scope.getAuction_detail(id);
+                                                        .success(function () { 
+                                                            
+                                                            swal(
+                                                                'Good job!',
+                                                                'You bid successfully!',
+                                                                'success'
+                                                              );
                                                             $scope.showData(currentPage);
-                                                            alert("You bid succesfully!");
                                                         })
                                                         .error(function ()
                                                         {
@@ -205,6 +208,21 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
     $timeout($scope.auctions, 10000);
     //=================== end =========================
+    
+    $scope.getNewAuction = function()
+    {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:9999/api/auction/get-new-auctions'
+        })
+                .then(function (response) {
+                    $scope.New_auctions = response.data.DATA;
+                    //console.log(response.data.DATA);
+                }, function (response) {
+
+                });
+    };
+    $scope.getNewAuction();
     
 });
 

@@ -245,7 +245,7 @@
 //          $scope.getUserSelect(globalID); 
 //});
 // 13th, Aug, 2016---------------------------------------------------------------------------------------------------------------//
-var app = angular.module('AuctionApp', []);
+var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
 //    $scope.getAuction = function(searchcat){
@@ -1315,4 +1315,26 @@ app.controller('OwnerController', function($scope, $http, $filter, $window, $roo
                          } 
                  });
         };
+        
+        $scope.dataList = [
+                    {
+                        id: 1,
+                        name: 'github',
+                        price: '200$',
+                        publisher: {
+                            name: 'hieutran',
+                            company: 'Dtag-VN'
+                        }
+                    },
+                    {
+                        id: 2,
+                        name: 'google',
+                        price: '300$',
+                        publisher: {
+                            name: 'tran',
+                            company: 'Vietname'
+                        }
+                    }
+                ]
 });
+
