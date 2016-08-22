@@ -245,24 +245,10 @@
 //          $scope.getUserSelect(globalID); 
 //});
 // 13th, Aug, 2016---------------------------------------------------------------------------------------------------------------//
-var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
+//var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
+var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
-//    $scope.getAuction = function(searchcat){
-//        if(searchcat==="")
-//        {
-//           $http({
-//        	url:'http://localhost:9999/api/auction/get',
-//                  method:'GET'
-//        }).then(function(response){
-//            $scope.auctions = response.data.DATA;
-//            console.log(response.data.DATA);
-//        }); 
-//        }
-//        
-//    };
-//    $scope.getAuction();
-
     $scope.addAuction = function(){
             $http({
             url:'http://localhost:9999/api/auction/add',
@@ -388,7 +374,17 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
 //-------------------------------------------------------------------------------------------------Auction Manager block end----------//
 //-------------------------------------------------------------------------------------------------Owner Manager  block---------------//
     
-//-------------------------------------------------------------------------------------------------Owner  Manager block end-----------//    
+//-------------------------------------------------------------------------------------------------Owner  Manager block end-----------//  
+   $scope.getOwner = function(){
+                $http({
+                    url:'http://localhost:9999/api/product-owner/get',
+                        method:'GET'
+                }).then(function(response){
+                        $scope.owners = response.data.DATA;
+                    console.log("Owners response => ", response.data.DATA);
+                });
+        };
+    $scope.getOwner();
 //-------------------------------------------------------------------------------------------------Owner Manager  block---------------//
     $scope.getUser = function(){
             $http({
@@ -412,95 +408,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         });
     };
     $scope.getProduct();
-    $scope.getProductObject = function(rec){
-	$scope.catid = rec.pro.cat_id;
-	$scope.brandid = rec.pro.brand_id;
-	$scope.proinfo = rec.pro.pro_info;
-                  $scope.productObject = rec.pro;
-    };
-    $scope.updateProduct = function(){
-            swal({   
-            title: "Are you sure to update this owner?",   
-            text: "This will be effective to existing information!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#E98106",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false }, 
-            function(isConfirm){   
-            if(isConfirm) {     
-                    $http({
-                            url:'http://localhost:9999/api/product/edit',
-                            method:'PUT',
-                            data:{
-                                    "pro_id" : $scope.proid,
-		"name": $scope.name,
-		"cat_id": $scope.catid,
-		"brand_id": $scope.brandid,
-		"pro_info":$scope.proinfo
-                    }
-                    }).then(function(response){
-                           $scope.productObject.name = $scope.name ;
-                           $scope.productObject.cat_id = $scope.catid;
-                           $scope.productObject.brand_id = $scope.brandid;
-                           $scope.productObject.pro_info = $scope.prinfo;
-                            swal("Updated!", "Record has been updated :)", "success"); 
-                            $('#btnclose').trigger('click');
-                           //$scope.getAuction();
-                             },function(response){
-                             });	  
-                     }else {     
-                           swal("Cancelled", "Record has not been updated :(", "error");   
-                     } 
-             });
-    };
-        $scope.deleteProduct = function(id){
-            swal({   
-            title: "Are you sure to delete this product?",   
-            text: "It may worstly effect to rational auction item!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#ED0909",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false}, 
-            function(isConfirm){   
-            if (isConfirm) {     
-                               $http({
-                                        url:'http://localhost:9999/api/product/delete/'+id,
-                                        method:'PUT'
-                                }).then(function(response){
-                                    swal("Deleted!", "Current product has been deleted :)", "success");  
-                                    $scope.getProduct();
-                    },function(response){
-                    }); 
-                    } else {     
-                            swal("Cancelled", "Current product has not been deleted :(", "error");   
-                    } 
-             });
-    };
-
-//    $scope.addProduct = function(){
-//        alert($scope.name+"  "+$scope.catid+"  "+$scope.brandid);
-//         $http({
-//	url:'http://localhost:9999/api/product/add',
-//                            method:'POST',
-//                        data:{
-//		"name": $scope.name,
-//		"cat_id": $scope.catid,
-//		"brand_id": $scope.brandid,
-//		"pro_info":$scope.proinfo
-//                           }
-//		}).then(function(response){
-//			console.log(response.data);
-//			$scope.getProduct();
-//			}, function(response){			
-//		});
-//    };
-
     //-------------------------------------------------------------------------------------------------Product Manager block end-----------------//   
     //-------------------------------------------------------------------------------------------------Category Manager block-----------------//   
     $scope.getCategory = function(){
@@ -514,100 +421,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         });
     };
     $scope.getCategory();
-    $scope.addCategory = function(){ 
-        $http({
-	url:'http://localhost:9999/api/category/add',
-                  method:'POST',
-                  data:{ 
-                           "parent_id": $scope.parentid,
-                           "name": $scope.categoryname,
-                           "description":$scope.description
-                  }
-	}).then(function(response){
-                           $scope.categoryname = "";
-                           $scope.description = "";
-                           console.log(response.data);
-                           $scope.getCategory();
-	}, function(response){			
-	});
-    };
-        $scope.deleteCategory = function(id){
-            swal({   
-            title: "Are you sure to delete this Category?",   
-            text: "It may worstly effect to existing relational product!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#ED0909",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false}, 
-            function(isConfirm){   
-            if (isConfirm) {     
-                  $http({
-                        url:'http://localhost:9999/api/category/delete/'+id,
-                         method:'PUT'
-                        }).then(function(response){
-                            swal("Deleted!", " Current catgory has been deleted :)", "success");  
-                            $scope.getCategory();
-                    }); 
-            } else {     
-                    swal("Cancelled", "Current category has not been deleted :(", "error");   
-            } 
-             });
-    };
-    $scope.getCategoryObject = function(rec){
-            alert("CateID : "+rec.cat.cat_id+"  ParrentID"+rec.cat.parent_id);
-            $scope.categoryname ="";
-            $scope.catid =rec.cat.cat_id;
-            if(rec.cat.parent_id === 0)
-            {
-                $scope.parentid =rec.cat.cat_id;
-            }
-            //$scope.categorytype=1;
-            $scope.categoryname =rec.cat.name;
-            $scope.parentid =rec.cat.parent_id;
-            $scope.description =rec.cat.description;
-            $scope.categoryObject = rec.cat;
-    };
-    $scope.updateCategory = function(){
-         alert("CateID : "+$scope.catid+"  ParrentID :"+ $scope.parentid+" Categoryname : "+ $scope.categoryname+" Description"+ $scope.description);
-            swal({   
-            title: "Are you sure to update this record?",   
-            text: "You will not be able to roll back!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#E98106",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false }, 
-            function(isConfirm){   
-            if(isConfirm) {     
-                    $http({
-                            url:'http://localhost:9999/api/category/edit',
-                            method:'PUT',
-                            data:{
-                                "cat_id": $scope.catid,
-                                "parent_id": $scope.parentid,
-                                "name": $scope.categoryname,
-                                "description":$scope.description
-                              }
-                    }).then(function(response){
-                                $scope.categoryObject.name=$scope.categoryname;
-                                 $scope.categoryObject.parent_id=$scope.parentid;
-                                  $scope.categoryObject.description=$scope.description;
-//                            $scope.brandObject.name = $scope.brandname;
-//                            $scope.brandObject.description = $scope.description;
-                            swal("Updated!", "Current brand has been updated :)", "success"); 
-                            $('#btnclose').trigger('click');
-                             },function(response){
-                             });	  
-                     }else {     
-                           swal("Cancelled", "Current brand has not been updated :(", "error");   
-                     } 
-             });
-    };
     //-------------------------------------------------------------------------------------------------Category Manager block end-----------------//   
     //-------------------------------------------------------------------------------------------------Brand Manager block-----------------//   
     $scope.getBrand = function(){
@@ -620,89 +433,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         });
     };
     $scope.getBrand();
-$scope.addBrand = function(){
-         $http({
-	url:'http://localhost:9999/api/brand/add',
-                  method:'POST',
-                  data:{
-                                    "description": $scope.description,
-                                    "name": $scope.brandname
-                           }
-                           }).then(function(response){
-                               swal(
-                                'Success!',
-                                'Add successfully!',
-                                'success'
-                              );
-		//console.log(response.data);
-		$scope.getBrand();
-                            }, function(response){			
-                            });
-    };  
-    $scope.deleteBrand = function(id){
-            swal({   
-            title: "Are you sure to delete this Brand?",   
-            text: "Bider will not see this item anymore!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#ED0909",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false}, 
-            function(isConfirm){   
-            if (isConfirm) {     
-                  $http({
-                        url:'http://localhost:9999/api/brand/delete/'+id,
-                         method:'PUT'
-                        }).then(function(response){
-                            swal("Deleted!", " Current brand has been deleted :)", "success");  
-                            $scope.getBrand();
-                    }); 
-            } else {     
-                    swal("Cancelled", "Current brand has not been deleted :(", "error");   
-            } 
-             });
-    };
-     $scope.getBrandObject = function(rec){
-            $scope.brandid =rec.bra.brand_id;
-            $scope.brandname =rec.bra.name;
-            $scope.description =rec.bra.description;
-            $scope.brandObject = rec.bra;
-    };
-    $scope.updateBrand = function(){
-            swal({   
-            title: "Are you sure to update this record?",   
-            text: "You will not be able to roll back!",   
-            type: "warning",   
-            showCancelButton: true,   
-            confirmButtonColor: "#E98106",   
-            confirmButtonText: "Yes",   
-            cancelButtonText: "No",   
-            closeOnConfirm: false,   
-            closeOnCancel: false }, 
-            function(isConfirm){   
-            if(isConfirm) {     
-                    $http({
-                            url:'http://localhost:9999/api/brand/edit',
-                            method:'PUT',
-                            data:{
-                                "brand_id": $scope.brandid,
-                                "name": $scope.brandname,
-                                "description": $scope.description
-                              }
-                    }).then(function(response){
-                            $scope.brandObject.name = $scope.brandname;
-                            $scope.brandObject.description = $scope.description;
-                            swal("Updated!", "Current brand has been updated :)", "success"); 
-                            $('#btnclose').trigger('click');
-                             },function(response){
-                             });	  
-                     }else {     
-                           swal("Cancelled", "Current brand has not been updated :(", "error");   
-                     } 
-             });
-    };
                       
 //=================pagination===========================
             check = true;
@@ -721,7 +451,7 @@ $scope.addBrand = function(){
                 }, function(){
                         alert('Error');
                 }); 
-            };
+    };
    setPagination = function(totalPage, currentPage){
                        $('#pagination').bootpag({
                                total: totalPage,
@@ -744,50 +474,7 @@ $scope.addBrand = function(){
                                $scope.showData(currentPage);
                            }); 	
                        };
-   $scope.showData(currentPage);    
-   
-   //============== Add Product ===================
-   $scope.addProduct = function(){
-		var frmData = new FormData();
-		
-		var restaurant_files = angular.element('#img')[0].files;
-		for(var i=0; i<restaurant_files.length; i++){
-			frmData.append("images", restaurant_files[i]);
-		}
-		
-		frmData.append('name', $scope.name);
-		frmData.append('cat_id', $scope.catid);
-                                    frmData.append('brand_id', $scope.brandid);
-                                    frmData.append('pro_info', $scope.proinfo);
-		
-		$http({
-			url:'http://localhost:9999/api/product/add',
-			method: 'POST',
-			data: frmData,
-			transformRequest: angular.identity,
-                            headers: {'Content-Type': undefined}
-		}).then(function(response){
-			//console.log(response.data);
-			//$scope.getRest();
-                        swal(
-                                'Success!',
-                                'Add successfully!',
-                                'success'
-                              );
-                        $scope.getProduct();
-		}, function(error){
-			//console.log(error.data);
-			//alert('failed to upload data');
-			//$scope.getRest();
-                        swal(
-                                'Error!',
-                                'Cannot add produt!',
-                                'error'
-                              );
-		});
-};
-   $scope.showData(currentPage);
-   
+   //$scope.showData(currentPage);    
    $scope.listOnlyMainCategory = function (prop, value){
        return function(item){
            if (item[prop] === value){
@@ -802,25 +489,34 @@ $scope.addBrand = function(){
            }
        };
    }; 
+   $scope.searchCategory =function(searchcat,searchname){
+              if(searchname !== undefined || searchcat === ""){
+                alert(searchname);
+                $scope.catid = 0;
+               $http({
+                    url:'http://localhost:9999/api/auction/search-product/'+searchname+'?page=1&limit=6',
+                      method:'GET'
+            }).then(function(response){
+                $scope.auctions = response.data.DATA;
+                console.log(response.data.DATA);
+            }); 
+            }
+              else if(searchcat !== undefined || searchname === ""){
 
-$scope.searchCategory =function(searchcat){
-            if(searchcat!=="")
-        {
-            alert(searchcat);
-           $http({
-        	url:'http://localhost:9999/api/auction/get-by-category/'+searchcat+'?page='+currentPage+'&limit=6',
-                  method:'GET'
-        }).then(function(response){
-            $scope.auctions = response.data.DATA;
-            
-            if(check){
-                                setPagination(response.data.PAGINATION.TOTAL_PAGES,currentPage);
-                                check=false;
-                            }
-            console.log(response.data.DATA);
-        }); 
-        }
-};  
+                alert(searchcat);
+               $http({
+                    url:'http://localhost:9999/api/auction/get-by-category/'+searchcat+'?page='+currentPage+'&limit=6',
+                      method:'GET'
+            }).then(function(response){
+                $scope.auctions = response.data.DATA;
+                console.log(response.data.DATA);
+            }); 
+            }
+    };  
+   $scope.clearSearchCatid = function(){
+       $scope.searchname = undefined;
+    };
+ 
 });
 
 // $('#add').modal({
@@ -1202,7 +898,6 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
        };
    };
 });
-
 app.controller('OwnerController', function($scope, $http, $filter, $window, $rootScope){
     $scope.getOwner = function(){
                 $http({
@@ -1337,4 +1032,5 @@ app.controller('OwnerController', function($scope, $http, $filter, $window, $roo
                     }
                 ]
 });
+
 

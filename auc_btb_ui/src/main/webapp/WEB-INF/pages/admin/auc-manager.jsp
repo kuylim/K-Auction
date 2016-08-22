@@ -35,7 +35,7 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/auctionApp.js"></script>
     <!-- angular app -->
 <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
@@ -49,8 +49,6 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container"  ng-app="AuctionApp">
-        
-
         <!-- top navigation -->
          <%@ include file="left-side.jsp" %>
         <!-- /top navigation -->
@@ -75,17 +73,18 @@
 		<select  class="form-control" ng-model="ownerid" style="padding-left:6px;" 
                                             ng-options="own.owner_id as own.lastname for own in owners">
                                     </select><br>
+                                    <span>Product</span>
 	   	<select  class="form-control" ng-model="proid" style="padding-left:6px;" 
                                              ng-options="pro.pro_id as pro.name for pro in products">
         		</select><br>
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="Input name"><br>
-	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="Input age"><br>
+	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="condition"><br>
+	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="starting price"><br>
+	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="buy price"><br>
+	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="increase price per bid"><br>
+	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="current price"><br>
+	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
+	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="end date"><br>
+	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="userid"><br>
 	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>                            
@@ -96,12 +95,13 @@
 	</div>
 	<!--end modal add -->
 	<!--modal​ update-->
+                  
 	 <div class="modal fade" id="update" role="dialog">
 	   <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Auction</h4>
+                                <h4 class="modal-title" ><ul class="fa-facebook">Update Auction</ul> </h4>
                            </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -116,14 +116,14 @@
         		</select><br>
                                     
                                    <!-- <span>Product</span><input type="number" class="form-control"  ng-model="proid"><br> -->
-	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Price</span><input type="number" id="startprice" class="form-control"  ng-model="startprice" placeholder="Input age"><br>
-	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Bid Increase Price</span><input type="number"  class="form-control"  ng-model="bidincrementprice" placeholder="Input age"><br>
-	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="Input name"><br>
-	   	<span>Started Date</span><input class="form-control"  ng-model="startdate" placeholder="Input age"><br>
-	   	<span>End Date</span><input  ng-model="enddate" class="form-control" placeholder="Input name" ><br>
-	   	<span>User ID</span><input type="number"  class="form-control"  ng-model="usrid" readonly ><br>					
+	   	<span>Condition</span><input type="text" ng-model="productcondition"  class="form-control" placeholder="condition"><br>
+	   	<span>Started Price</span><input type="number" class="form-control"  ng-model="startprice" placeholder="starting price"><br>
+	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="buy price"><br>
+	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="increase price per bid"><br>
+	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="current price"><br>
+	   	<span>Started Date</span><input type="text" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
+	   	<span>End Date</span><input type="text" ng-model="enddate" class="form-control" placeholder="end date"><br>
+	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="userid"><br>			
 	   	<a href="" ng-click="updateAuction(id)" class="btn btn-success"  
                                     ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
 	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
@@ -142,14 +142,11 @@
                                 
                                <div class="table-responsive" style="border:none;">
                                    <div class="form-group">
-<!--                                       <select style=" height: 30px;">
-                                           <option value="">Category</option>
-                                       </select>-->
-                                       <input   ng-model="searcheng"   style=" height: 30px; ">
-                                       <select ng-model="catid"style="padding-left:8px; height: 30px;" 
+                                     <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " placeholder="product name">
+                                     <span>By Category : </span><select ng-model="searchCat"style="padding-left:8px; height: 30px;" ng-change="clearSearchCatid()"
                                                        ng-options="cat.cat_id as cat.name for cat in category | filter: listOnlySubCategory('parent_id', 0)">
                                        </select>
-                                       <button ng-click="searchCategory(catid)" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
+                                       <button ng-click="searchAuctions()" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
                                        <!--<button class="btn btn-link" ng-click="exportToExcel('#tblauction')">-->
 <!--        <span class="glyphicon glyphicon-share"></span> Export to Excel
     </button>-->

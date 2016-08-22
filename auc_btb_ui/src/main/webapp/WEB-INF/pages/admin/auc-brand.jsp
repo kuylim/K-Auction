@@ -36,7 +36,7 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/brandApp.js"></script>
     <!-- angular app -->
     <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">

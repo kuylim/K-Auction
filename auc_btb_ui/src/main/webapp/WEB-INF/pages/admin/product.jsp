@@ -252,7 +252,7 @@
        <!-- angular app -->
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/productApp.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/jquery/jquery.js"></script>
     <!-- angular app -->
      <!-- jQuery Tags Input -->

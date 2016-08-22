@@ -36,17 +36,20 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/ownerApp.js"></script>
     <!-- angular app -->
        <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
  <!--    sweetaler style--> 
+   <!--    Cloak style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
+ <!--    Cloak style-->
   </head>
 
   <body class="nav-md">
     <div class="container body">
-      <div class="main_container"  ng-app="AuctionApp">
+        <div class="main_container"  ng-app="AuctionApp" ng-cloak="cloak">
           
        <%@ include file="left-side.jsp" %>
        
@@ -119,7 +122,8 @@
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-<!--                                   <h3 class="pull-left">Filter Here..</h3>-->
+                                        <span>By Email : </span><input   ng-model="searchemail" style=" height: 30px; " placeholder="domain@example.com">
+                                        <button ng-click="searchByEmail()" style="margin-top:5px; height: 30px;" >Search</button>
                                          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New Seller</button>
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>

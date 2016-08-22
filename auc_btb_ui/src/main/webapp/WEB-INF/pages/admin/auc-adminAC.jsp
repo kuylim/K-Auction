@@ -36,7 +36,7 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/adminApp.js"></script>
     <!-- angular app -->
        <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
@@ -54,7 +54,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main" >
-          <div class="" ng-controller="OwnerController">
+          <div class="" ng-controller="AdminController">
 	<!--add new product-->
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
@@ -77,8 +77,6 @@
 	   	<a href="" ng-click="addOwner()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-	   	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
                             </div>     	  
 	       </div>
 	    </div>
@@ -104,9 +102,7 @@
                                     <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>				
 	   	<a href="" ng-click="updateOwner()" class="btn btn-success"  
                                     ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
-	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
+	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
                                 </div>    	  
                             </div>
                         </div>
@@ -135,7 +131,7 @@
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="owner in owners | orderBy:'owner_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="owner in owners">	   
                                     <td>{{$index+1}} </td>
                                     <td>{{owner.owner_id}}</td>
                                     <td>{{owner.firstname}} {{owner.lastname}}</td>
@@ -145,8 +141,8 @@
                                     <td>{{owner.company_profile}}</td>
                                     
                                    <td>
-                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Modify</a>
+                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
                                  </tbody>

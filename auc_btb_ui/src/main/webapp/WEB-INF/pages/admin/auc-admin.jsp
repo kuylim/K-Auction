@@ -28,15 +28,16 @@
     <link href="${pageContext.request.contextPath }/resources/build/css/custom.css" rel="stylesheet">
     
     <link href="${pageContext.request.contextPath }/resources/build/css/auction.css" rel="stylesheet">
-    
+      <!--    Cloak style-->
+    <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
+ <!--    Cloak style-->
     <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+    
   </head>
 
   <body class="nav-md" ng-app="AuctionApp">
       <div class="container body" ng-controller="AdminController">
       <div class="main_container">
-        
-
         <%@ include file="left-side.jsp" %>
         
         <!-- /top navigation -->
