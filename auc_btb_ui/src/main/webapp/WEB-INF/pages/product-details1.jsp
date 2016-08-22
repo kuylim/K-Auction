@@ -251,173 +251,51 @@
                     </div><!--/category-tab-->
 
                     <div class="recommended_items"><!--recommended_items-->
-                        <h2 class="title text-center">ផលិតផលពេញនិយម</h2>
+                        <h2 class="title text-center">ផលិតផលថ្មី</h2>
 
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">	
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/GalaxyS5/s-l501(1).jpg" alt="" />
-                                                    <h2>$280</h2>
-                                                    <p>ទូរស័ព្ទ Galaxy S5</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
+                                    <div class="col-sm-4" ng-repeat="auc in New_auctions | limitTo : 3 : 0">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                        <div class="productinfo text-center" >
+                                                            <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="200" height="200"/></a>
+                                                            <h2>$ {{auc.current_price}}</h2>
+                                                            <p>{{auc.name}}</p>
+                                                            <security:authorize access="isAuthenticated()">
+                                                                <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>    
+                                                                <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/WaterProof/s-l1604 (1).jpg" alt="" />
-                                                    <h2>$80</h2>
-                                                    <p>នាឡិកា WaterProof</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+                                                            <security:authorize access="isAnonymous()">
+                                                                <a href="${pageContext.request.contextPath }/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>  
+                                                        </div>
+                                                    </div>
                                                 </div>
-
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Plugin/s-l5010.jpg" alt="" />
-                                                    <h2>$11</h2>
-                                                    <p>កាស BOBO</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/WaterProof/s-l1604 (1).jpg" alt="" />
-                                                    <h2>$80</h2>
-                                                    <p>នាឡិកា WaterProof</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/OEMAppleAdapter/s-l500.jpg" alt="" />
-                                                    <h2>$16</h2>
-                                                    <p>ឆ្នាំសាក IPhone 4/4s</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/OEMAppleAdapter/s-l500.jpg" alt="" />
-                                                    <h2>$16</h2>
-                                                    <p>ឆ្នាំសាក IPhone 4/4s</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="item">	
+                                    <div class="col-sm-4" ng-repeat="auc in New_auctions | limitTo : 3 : 3">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                        <div class="productinfo text-center" >
+                                                            <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="200" height="200"/></a>
+                                                            <h2>$ {{auc.current_price}}</h2>
+                                                            <p>{{auc.name}}</p>
+                                                            <security:authorize access="isAuthenticated()">
+                                                                <span ng-init="getCus(<security:authentication property="principal.id" />);"></span>    
+                                                                <a ng-click="bidding(auc.auc_id)" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>
 
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/eyeClass/s-l1600.jpg" alt="" />
-                                                    <h2>$15</h2>
-                                                    <p>វែនតា Sun Protection</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
+                                                            <security:authorize access="isAnonymous()">
+                                                                <a href="${pageContext.request.contextPath }/login" class="btn btn-success add-to-cart"><i class="fa fa-hand-paper-o"></i>Bid</a>
+                                                            </security:authorize>  
+                                                        </div>
+                                                    </div>
                                                 </div>
-
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                    <h2>$450</h2>
-                                                    <p>កុំព្យូទ័រ Asus N4532</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                    <h2>$450</h2>
-                                                    <p>កុំព្យូទ័រ Asus N4532</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                    <h2>$450</h2>
-                                                    <p>កុំព្យូទ័រ Asus N4532</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                    <h2>$450</h2>
-                                                    <p>កុំព្យូទ័រ Asus N4532</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="${pageContext.request.contextPath }/resources/images/Asus/s-l500.jpg" alt="" />
-                                                    <h2>$450</h2>
-                                                    <p>កុំព្យូទ័រ Asus N4532</p>
-                                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-plus-square"></i>ដាក់ចូល wishlist</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <
                                 </div>
                             </div>
                             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">

@@ -93,7 +93,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                             current_price: 1.0,
                             cus_id: 1,
                             date: "1"
-                        }
+                        };
 
                         //console.log($scope.auction.auc_id);
                         $scope.bid_log.auc_id = $scope.auction.auc_id;
@@ -162,7 +162,6 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
         $http({url: 'http://localhost:9999/api/auction/get?page=' + currentPage + '&limit=6',
             method: 'GET'
         }).then(function (response) {
-            //console.log(response.data);
             $scope.auctions = response.data.DATA;
             if (check) {
                 setPagination(response.data.PAGINATION.TOTAL_PAGES, currentPage);

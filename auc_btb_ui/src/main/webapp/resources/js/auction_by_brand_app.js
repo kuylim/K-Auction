@@ -51,9 +51,6 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
     // bidding function
     $scope.bidding = function (id) {
-        //alert(bidder_id);
-
-
         if ($scope.cus.credit <= 0) {
             swal(
              'You do not have enough credit.',

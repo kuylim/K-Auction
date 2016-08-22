@@ -68,11 +68,13 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
     // bidding function
     $scope.bidding = function (id) {
-        //alert(bidder_id);
-
-
+        
         if ($scope.cus.credit <= 0) {
-            alert("You don't have enought credit to bit. please charge your balance");
+           swal(
+             'You do not have enough credit.',
+             'Please topup your balance',
+             'warning'
+          );
         } else {
 
             $scope.Nowsday = new Date();
@@ -283,6 +285,21 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
             $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
             //responsive code end
         };
+        
+        $scope.getNewAuction = function()
+        {
+            $http({
+                method: 'GET',
+                url: 'http://localhost:9999/api/auction/get-new-auctions'
+            })
+                    .then(function (response) {
+                        $scope.New_auctions = response.data.DATA;
+                        //console.log(response.data.DATA);
+                    }, function (response) {
+
+                    });
+        };
+        $scope.getNewAuction();
 });
 
 app.factory('datetime', ['$timeout', function ($timeout) {

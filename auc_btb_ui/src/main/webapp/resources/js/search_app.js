@@ -48,11 +48,13 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
 
     // bidding function
     $scope.bidding = function (id) {
-        //alert(bidder_id);
-
-
+        
         if ($scope.cus.credit <= 0) {
-            alert("You don't have enought credit to bit. please charge your balance");
+           swal(
+             'You do not have enough credit.',
+             'Please topup your balance',
+             'warning'
+          );
         } else {
 
             $scope.Nowsday = new Date();

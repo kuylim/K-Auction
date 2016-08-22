@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="AuctionApp">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -32,8 +32,8 @@
     <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
   </head>
 
-  <body class="nav-md" ng-app="AuctionApp">
-      <div class="container body" ng-controller="AdminController">
+  <body class="nav-md" >
+      <div class="container body" ng-controller="AuctionController">
       <div class="main_container">
         
 
@@ -48,105 +48,54 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">{{Number_of_Product}}</div>
                   <p></p>
-                  <h4>ផលិតផលសរុប</h4>
+                  <h4>Total Active Products</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-comments-o"></i></div>
-                  <div class="count">500</div>
+                  <div class="count">{{Number_of_User}}</div>
                   <p></p>
-                  <h4>អ្នកប្រើប្រាស់សរុប</h4>
+                  <h4>Total Bidders</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                  <div class="count">179</div>
+                  <div class="count">{{Number_of_Active_Auctions}}</div>
                   <p></p>
-                  <h4>ផលិតផលដាក់ដេញថ្លៃ</h4>
+                  <h4>Total Active Auctions</h4>
                 </div>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats">
                   <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                  <div class="count">50</div>
+                  <div class="count">{{Number_of_Disable_Auctions}}</div>
                   <p></p>
-                  <h4>ផលិតផលចប់ការដេញថ្លៃ</h4>
+                  <h4>Disable Auctions</h4>
                 </div>
               </div>
             </div>
 
-            <div class="row">
+              <div class="row">
               <div class="col-md-4">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Top Profiles </h2>
+                    <h2>Top Bidders </h2>
                     <div class="x_content ">
-                  <!--  <ul class="nav navbar-right panel_toolbox">-->
-                    	<!--<ul class="list-unstyled top_profiles scroll-view">-->
-                       
-<!--                        <article class="media event" ng-repeat="customer in bidcustomers">
-                            <h6>{{customer.cus_id}}</h6>
-                            <a class="pull-left border-aero profile_thumb">
-                              <i class="fa fa-user aero"></i>
-                            </a>
-                            <div class="media-body" ng-repeat="top in topcustomers | filter:{ 'cus_id': 1}">
-                              <a class="title" href="#">{{top.cus_id}}</a>
-                              <p>Pay for bidding <strong>2300 Credit </strong>today</p>
-                              <p> <small>Number of Bids 12 times</small>
-                              </p>
-                            </div>
-                          </article>-->
-                       
-                          <article class="media event">
+                          <article class="media event" ng-repeat="bidders in Top_Bidder">
                             <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-user green"></i>
                             </a>
-                            <div class="media-body">
-                              <a class="title" href="#">ជុន ចំរើន</a>
-                              <p>ចំនាយអស់ <strong>2300 Credit </strong>ក្នុងថ្ងៃនេះ</p>
-                              <p> <small>បាន Bids ចំនួន 12 ដង</small>
+                            <div class="media-body" >
+                              <a class="title" href="#">{{bidders.lastname}} {{bidders.firstname}}</a>
+                              <p>Spend <strong>{{bidders.number_of_bid * 500}} Credit </strong></p>
+                              <p> <small>{{bidders.number_of_bid}} Bids</small>
                               </p>
                             </div>
                           </article>
-<!--                          <article class="media event">
-                            <a class="pull-left border-blue profile_thumb">
-                              <i class="fa fa-user blue"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">ជា ណាវី</a>
-                              <p>ចំនាយអស់ <strong>2300 Credit </strong>ក្នុងថ្ងៃនេះ</p>
-                              <p> <small>បាន Bids ចំនួន 12 ដង</small>
-                              </p>
-                            </div>
-                          </article>-->
-<!--                          <article class="media event">
-                            <a class="pull-left border-aero profile_thumb">
-                              <i class="fa fa-user aero"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">ស៊ីម វិច្ឋិរា</a>
-                              <p>ចំនាយអស់ <strong>2300 Credit </strong>ក្នុងថ្ងៃនេះ</p>
-                              <p> <small>បាន Bids ចំនួន 12 ដង</small>
-                              </p>
-                            </div>
-                          </article>-->
-<!--                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-user green"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">ងាន ឋានៈ</a>
-                              <p>ចំនាយអស់ <strong>2300 Credit </strong>ក្នុងថ្ងៃនេះ</p>
-                              <p> <small>បាន Bids ចំនួន 12 ដង</small>
-                              </p>
-                            </div>
-                          </article>-->
-                        <!--</ul>-->
- 					<!--</ul>-->
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -157,18 +106,18 @@
               <div class="col-md-4">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Top Product</h2>
-                    <div class="x_content">
+                    <h2>Top Auctions</h2>
+                    <div class="x_content" ng-repeat="auc in TopLowAuction | limitTo : 5 : 0">
                     <!--<ul class="nav navbar-right panel_toolbox">
                     	<ul class="list-unstyled top_profiles scroll-view">-->
-                          <article class="media event">
+                    <article class="media event" >
                           <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-legal"></i>
                             </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Galaxy S6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>50 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
+                              <div class="media-body" >
+                              <a class="title" href="${pageContext.request.contextPath }/auc-admin/manage/info/{{auc.auc_id}}" target="_new">{{auc.name}}</a>
+                              <p>Get Bid<strong>{{auc.number_of_bids}} Bids</strong></p>
+                              <p> <small>{{auc.remainingTime | durationview}}</small>
                               </p>
                             </div>
                           </article>
@@ -228,18 +177,18 @@
               <div class="col-md-4">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Lowest Product</h2>
-                    <div class="x_content">
+                    <h2>Lowest Auctions</h2>
+                    <div class="x_content" ng-repeat="auc in TopLowAuction | limitTo : 5 : 0 , orderBy : 'number_of_bids'">
                    <!-- <ul class="nav navbar-right panel_toolbox">
                     	<ul class="list-unstyled top_profiles scroll-view">-->
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
+                          <article class="media event" >
+                          <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-legal"></i>
                             </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Iphone 6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>0 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
+                              <div class="media-body" >
+                              <a class="title" href="${pageContext.request.contextPath }/auc-admin/manage/info/{{auc.auc_id}}" target="_new">{{auc.name}}</a>
+                              <p>Get Bid<strong>{{auc.number_of_bids}} Bids</strong></p>
+                              <p> <small>{{auc.remainingTime | durationview}}</small>
                               </p>
                             </div>
                           </article>
@@ -313,7 +262,7 @@
 <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
          <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/dashboard_app.js"></script>
     <!-- angular app -->
     <!-- jQuery -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery/dist/jquery.min.js"></script>

@@ -112,20 +112,37 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                     if (isConfirm) {
                         
                         $scope.user.credit = $scope.user.credit + $scope.usr.credit;
+                        $scope.Nowsday = new Date();
+                        
+                        $scope.topup_log = {
+                            amount: $scope.usr.credit,
+                            cus_id: $scope.user.cus_id,
+                            date: $scope.Nowsday
+                        };
                         
                         $http.put('http://localhost:9999/api/user/edit', $scope.user)
 
                                 .success(function () {
-                                    swal("Updated!", "Your balance has been top up", "success");
-                                    $('#btnclose').trigger('click');
+                                    
+                                    $http.post('http://localhost:9999/api/user/add-topup-log', $scope.topup_log)
+
+                                        .success(function () {
+                                            swal("Updated!", "Your balance has been top up", "success");
+                                             $('#btnclose').trigger('click');
+                                        })
+                                        .error(function ()
+                                        {
+                                            swal(
+                                                    'Problem internet connection',
+                                                    'You clicked the button!',
+                                                    'error'
+                                                    );
+                                        });
+                                   
                                 })
                                 .error(function ()
                                 {
-                                    swal(
-                                            'Problem internet connection',
-                                            'You clicked the button!',
-                                            'error'
-                                            );
+                                  
                                 });
                     } else {
                         swal("Cancelled", "Top up operation has been cancelled", "error");
@@ -133,26 +150,13 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                 });
     };
     
+    
+    
+    
     //================pagination===================
     
     check = true;
     currentPage = 1;
-    
-    //=======================
-//    $scope.getAuctionHistory = function()
-//    {
-//        $scope.usr_id = user_id;
-//        $http({
-//            method: 'GET',
-//            url: 'http://localhost:9999/api/auction/get-history/' + user_id
-//        })
-//                .then(function (response) {
-//                    $scope.auction = response.data.DATA;
-//                }, function (response) {
-//
-//                });
-//    };
-    //=================================
     
     $scope.showData = function (currentPage) {
 
