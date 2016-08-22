@@ -172,7 +172,11 @@
                                 
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left"></h3>
-                              
+                                     <span>By Name : </span><input   ng-model="searchProName" style=" height: 30px; " placeholder=" product name">
+                                    <span>By Category : </span>
+                                    <select ng-model="searchBra"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
+                                             ng-options="bra.brand_id as bra.name for bra in brand">
+                                     </select>
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
