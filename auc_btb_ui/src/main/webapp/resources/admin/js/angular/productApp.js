@@ -5,24 +5,22 @@
  */
 var app = angular.module('AuctionApp', []);
 app.controller('ProductController', function($scope, $http, $filter, $window, $rootScope){
-//    $scope.getProduct = function(){
-//        $http({
-//          url:'http://localhost:9999/api/product/get',
-////            url:'http://localhost:9999/api/product/get-all',
-//            method:'GET'
-//        }).then(function(response){
-//            $scope.products = response.data.DATA;
-//            console.log("Product response => ",response.data.DATA);
-//        });
-//    };
-////  $scope.getProduct();
+      $scope.getProduct = function(){
+        $http({
+            url:'http://localhost:9999/api/product/get',
+            method:'GET'
+        }).then(function(response){
+            $scope.products = response.data.DATA;
+            console.log("Product response => ",response.data.DATA);
+        });
+    };
+    $scope.getProduct();  
     
     $scope.addProduct = function(){
 		var frmData = new FormData();
 		
-		var restaurant_files = angular.element('#img')[0].files;
-		for(var i=0; i<restaurant_files.length; i++){
-			frmData.append("images", restaurant_files[i]);
+		for(var i=0; i<newFiles['img'].length; i++){
+			frmData.append("images", newFiles['img'][i]);
 		}
 		
 		frmData.append('name', $scope.name);
@@ -44,7 +42,7 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
                                 'Add successfully!',
                                 'success'
                               );
-                        $scope.findAllProducts();
+                        $scope.getProduct();
 		}, function(error){
 			//console.log(error.data);
 			//alert('failed to upload data');
@@ -65,22 +63,22 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
             console.log("Brand response =>",response.data.DATA);
         });
     };
-    $scope.getBrand();
-    $scope.listOnlyMainCategory = function (prop, value){
+      $scope.getBrand();
+      $scope.listOnlyMainCategory = function (prop, value){
        return function(item){
            if (item[prop] === value){
                return true;
            }
        };
    };
-    $scope.listOnlySubCategory = function (prop, value){
+   $scope.listOnlySubCategory = function (prop, value){
        return function(item){
            if (item[prop] !== value){
                return true;
            }
        };
    }; 
-    $scope.getCategory = function(){
+   $scope.getCategory = function(){
         $http({
             url:'http://localhost:9999/api/category/get',
             method:'GET'
@@ -136,7 +134,7 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
                      } 
              });
     };
-    $scope.deleteProduct = function(id){
+        $scope.deleteProduct = function(id){
             swal({   
             title: "Are you sure to delete this product?",   
             text: "It may worstly effect to rational auction item!",   
@@ -154,7 +152,7 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
                                         method:'PUT'
                                 }).then(function(response){
                                     swal("Deleted!", "Current product has been deleted :)", "success");  
-                                    $scope.findAllProducts();
+                                    $scope.getProduct();
                     },function(response){
                     }); 
                     } else {     
@@ -162,63 +160,24 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
                     } 
              });
     };   
-   check = true;
-   currentPage = 1;    
-    $scope.filter ={
-            page : 1,
-            limit : 10,
-            name : '',
-            brandId: ''
-        };
-        
-    $scope.findAllProducts = function(){
-        $http({
-            url : "http://localhost:9999/api/product/get-all",
-            method: "GET",
-            params : $scope.filter
-        }).success(function(response){
-            $scope.products = response.DATA;
-            $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
-             console.log("Find All =>",response);
-        });
-        alert("FindAll");
-    };
-    
-    $scope.searchProducts = function(){
-        $scope.filter.name = $scope.searchName;
-        $scope.filter.brandId = $scope.searchBrand;
-        $scope.filter.page = 1;
-        $scope.findAllProducts();
-        alert("SearchAuction");
-    };
-    
-    var PAGINATION = $("#pagination");
-    $scope.setPagination = function(totalPage){
-       PAGINATION.bootpag({
-                    total: totalPage,
-                    page: $scope.filter.page,
-                    maxVisible: 5,
-                    leaps: true,
-                    firstLastUse: true,
-                    first: 'First',
-                    last: 'Last',
-                    wrapClass: 'pagination',
-                    activeClass: 'active',
-                    disabledClass: 'disabled',
-                    nextClass: 'next',
-                    prevClass: 'prev',
-                    lastClass: 'last',
-                    firstClass: 'first'
-                }); 	
-                alert("Pagination buttom");
-    };
-    
-   PAGINATION.on("page", function(event, currentPage){
-            $scope.filter.page = currentPage;
-            $scope.findAllProducts();
-            alert("Pagination On");
-   });
-     $scope.findAllProducts();
 });
+
+app.directive('myFilter', [function() {
+            return {
+                restrict: 'A',       
+                link: function(scope, element) {
+                    // wait for the last item in the ng-repeat then call init
+                    angular.element(document).ready(function() {
+                        initJqueryFiler(['#img'], [[]]);
+                    });
+                    // OR use $braodcast & $on in Controller
+                }
+            };
+            /**** Usable array ****/
+            // If your input file, id = '#gallery' use:
+          
+            // => deletedImageIDs['gallery']
+
+        }]);
 
 
