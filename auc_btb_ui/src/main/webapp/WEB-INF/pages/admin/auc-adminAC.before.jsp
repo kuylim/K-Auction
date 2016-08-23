@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Supplier</title>
+    <title>K-Auction | Admin</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -36,20 +36,17 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/ownerApp.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/adminApp.js"></script>
     <!-- angular app -->
        <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
  <!--    sweetaler style--> 
-   <!--    Cloak style-->
-    <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
- <!--    Cloak style-->
   </head>
 
   <body class="nav-md">
     <div class="container body">
-        <div class="main_container"  ng-app="AuctionApp" ng-cloak="cloak">
+      <div class="main_container"  ng-app="AuctionApp">
           
        <%@ include file="left-side.jsp" %>
        
@@ -57,7 +54,7 @@
          <div class="clearfix"></div>
         <!-- page content -->
         <div class="right_col" role="main" >
-          <div class="" ng-controller="OwnerController">
+          <div class="" ng-controller="AdminController">
 	<!--add new product-->
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
@@ -66,7 +63,7 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Supplier</h4>
+	   	<h4 class="modal-title">Add New Seller</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
@@ -80,8 +77,6 @@
 	   	<a href="" ng-click="addOwner()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Add</a>
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-	   	<!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
                             </div>     	  
 	       </div>
 	    </div>
@@ -107,9 +102,7 @@
                                     <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>				
 	   	<a href="" ng-click="updateOwner()" class="btn btn-success"  
                                     ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
-	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button> -->
+	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
                                 </div>    	  
                             </div>
                         </div>
@@ -117,14 +110,12 @@
 	</div>
 	<!--end modal update-->  
                     <div class="row">
-                        <h1 >Seller Account Manager</h1>
+                        <h1 >Administrator</h1>
                         <div >
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-                                   <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchOwners()" placeholder="Supplier name">
-<!--                                        <span>By Email : </span><input   ng-model="searchemail" style=" height: 30px; " placeholder="domain@example.com">
-                                        <button ng-click="searchByEmail()" style="margin-top:5px; height: 30px;" >Search</button>-->
+<!--                                   <h3 class="pull-left">Filter Here..</h3>-->
                                          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New Seller</button>
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
@@ -140,7 +131,7 @@
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="owner in owners | orderBy:'owner_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="owner in owners">	   
                                     <td>{{$index+1}} </td>
                                     <td>{{owner.owner_id}}</td>
                                     <td>{{owner.firstname}} {{owner.lastname}}</td>
@@ -150,14 +141,14 @@
                                     <td>{{owner.company_profile}}</td>
                                     
                                    <td>
-                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Modify</a>
+                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
                                  </tbody>
                                </table>
                              </div>
-                             <div   id="pagination" class="pull-right" ></div> 
+<!--                             <div   id="pagination" class="pull-right" ></div> -->
                            </div>
                          </div>
                    </div>
@@ -200,9 +191,9 @@
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
        <!-- angular app -->
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/ownerApp.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>

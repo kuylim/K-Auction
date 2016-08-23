@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Supplier</title>
+    <title>K-Auction | Seller</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Supplier</h4>
+	   	<h4 class="modal-title">Add New Seller</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
@@ -122,9 +122,8 @@
                             <div >
                                 
                                <div class="table-responsive" style="border:none;">
-                                   <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchOwners()" placeholder="Supplier name">
-<!--                                        <span>By Email : </span><input   ng-model="searchemail" style=" height: 30px; " placeholder="domain@example.com">
-                                        <button ng-click="searchByEmail()" style="margin-top:5px; height: 30px;" >Search</button>-->
+                                        <span>By Email : </span><input   ng-model="searchemail" style=" height: 30px; " placeholder="domain@example.com">
+                                        <button ng-click="searchByEmail()" style="margin-top:5px; height: 30px;" >Search</button>
                                          <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New Seller</button>
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
@@ -157,7 +156,7 @@
                                  </tbody>
                                </table>
                              </div>
-                             <div   id="pagination" class="pull-right" ></div> 
+<!--                             <div   id="pagination" class="pull-right" ></div> -->
                            </div>
                          </div>
                    </div>
@@ -200,9 +199,9 @@
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
        <!-- angular app -->
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/ownerApp.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
     <!-- angular app -->
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>

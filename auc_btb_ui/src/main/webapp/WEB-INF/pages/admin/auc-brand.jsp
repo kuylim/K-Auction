@@ -110,7 +110,8 @@
                         <div >
                             <div >                  
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left">Filter Here..</h3>
+<!--                                   <h3 class="pull-left">Filter Here..</h3>-->
+                                   <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchBrands()" placeholder=" Brand name">
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Brand</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead

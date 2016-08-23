@@ -142,7 +142,13 @@
                         <div >
                             <div >                  
                                <div class="table-responsive" style="border:none;">
-                                   <h3 class="pull-left">Filter Here..</h3>
+<!--                                   <h3 class="pull-left">Filter Here..</h3>-->
+                                     <span>By Name : </span><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name">
+                                     <span>By Type : </span>
+                                    <select  ng-model="categorytype">
+                                        <option value="0" >Main Category</option>
+                                         <option value="1">Sub Category</option>
+                                    </select>
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
