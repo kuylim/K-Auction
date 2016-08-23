@@ -63,19 +63,22 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Seller</h4>
+	   	<h4 class="modal-title">Add New Supplier</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
                                     <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name"><br>
                                     <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
+                                    <span>Username</span><input type="text" ng-model="username"  class="form-control" placeholder="Username"><br>
+                                    <span>Password</span><input type="password" ng-model="password"  class="form-control" placeholder="Password"><br>
                                     <span>Phone</span><input type="number" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
-                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Input name"><br>
+                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Domain@example.com"><br>
                                     <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
-                                    <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>
+                                    <span>Role</span><input type="text" ng-model="role"  class="form-control" placeholder="User Role"><br>
 	   	
-	   	<a href="" ng-click="addOwner()" type="button" id="add" class="btn btn-success" 
-                                        ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Add</a>
+	   	<a href="" ng-click="addUser()" type="button" id="add" class="btn btn-success" 
+                                        >Add</a>
+<!--                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password"-->
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
                             </div>     	  
 	       </div>
@@ -83,72 +86,50 @@
                     </div>	 	  	     		
 	</div>
 	<!--end modal add -->
-	<!--modal​ update-->
-	 <div class="modal fade" id="update" role="dialog">
-	   <div class="modal-dialog">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Seller</h4>
-                           </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <span>OwnerID</span><input type="number" ng-model="ownerid"  class="form-control" readonly="true"><br>
-	   	 <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name"><br>
-                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Last name"><br>
-                                    <span>Phone</span><input type="text" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
-                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Input name"><br>
-                                    <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
-                                    <span>Company Profile</span><input type="text" ng-model="company"  class="form-control" placeholder="Company description"><br>				
-	   	<a href="" ng-click="updateOwner()" class="btn btn-success"  
-                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !company ">Update</a>
-	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>
-                                </div>    	  
-                            </div>
-                        </div>
-                     </div>	 	  	     		
-	</div>
-	<!--end modal update-->  
+
                     <div class="row">
                         <h1 >Administrator</h1>
                         <div >
                             <div >
-                                
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                                         <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New Seller</button>
+                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name">
+<!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
+                                         <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add New User</button>
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
                                  <tr​​>
                                      <th>No </th>
-                                     <th >Owner ID </th>
-                                     <th >Owner Name </th>
-                                     <th >Phone </th>
+                                     <th >UsrID </th>
+                                     <th >Name </th>
+                                     <th >Username </th>
+                                     <th >Password </th>
                                      <th >Email </th>
-                                     <th >Address </th>
-                                     <th >Company </th>
+                                     <th >Role As </th>
+                                      <th >Address </th>
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="owner in owners">	   
+                                 <tr ng-repeat="usr in users | orderBy:'cus_id':'DESC'">	   
                                     <td>{{$index+1}} </td>
-                                    <td>{{owner.owner_id}}</td>
-                                    <td>{{owner.firstname}} {{owner.lastname}}</td>
-                                    <td>{{owner.phone}} </td>
-                                    <td>{{owner.email}}</td>
-                                    <td>{{owner.address}}</td>		    
-                                    <td>{{owner.company_profile}}</td>
+                                    <td>{{usr.cus_id}}</td>
+                                    <td>{{usr.firstname}} {{usr.lastname}}</td>
+                                    <td>{{usr.username}} </td>
+                                    <td>{{usr.password}} </td>
+                                    <td>{{usr.email}}</td>
+                                    <td>{{usr.role}}</td>		    
+                                    <td>{{usr.address}}</td>
                                     
                                    <td>
-                                    <a href="" ng-click="getOwnerObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Modify</a>
-                                     <a href="" ng-click="deleteOwner(owner.owner_id)"  class='btn btn-danger btn-sm'>Remove</a>
+                                 
+                                     <a href="" ng-click="deleteUser(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
                                  </tbody>
                                </table>
                              </div>
-<!--                             <div   id="pagination" class="pull-right" ></div> -->
+                             <div   id="pagination" class="pull-right" ></div> 
                            </div>
                          </div>
                    </div>
@@ -190,11 +171,7 @@
      <!-- Select2 -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
-       <!-- angular app -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-    <!-- angular app -->
+
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!-- Switchery -->

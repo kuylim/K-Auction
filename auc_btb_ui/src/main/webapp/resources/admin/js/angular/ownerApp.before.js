@@ -5,25 +5,25 @@
  */
 var app = angular.module('AuctionApp', []);
 app.controller('OwnerController', function($scope, $http, $filter, $window, $rootScope){
-//    $scope.searchByEmail = function(){
-//                $http({
-//                    url:'http://localhost:9999/api/product-owner/get',
-//                        method:'GET'
-//                }).then(function(response){
-//                        $scope.owners = response.data.DATA;
-//                    console.log("Owners response => ", response.data.DATA);
-//                });
-//        };
-//    $scope.getOwner = function(){
-//                $http({
-//                    url:'http://localhost:9999/api/product-owner/get',
-//                        method:'GET'
-//                }).then(function(response){
-//                        $scope.owners = response.data.DATA;
-//                    console.log("Owners response => ", response.data.DATA);
-//                });
-//        };
-//        $scope.getOwner();
+    $scope.searchByEmail = function(){
+                $http({
+                    url:'http://localhost:9999/api/product-owner/get',
+                        method:'GET'
+                }).then(function(response){
+                        $scope.owners = response.data.DATA;
+                    console.log("Owners response => ", response.data.DATA);
+                });
+        };
+    $scope.getOwner = function(){
+                $http({
+                    url:'http://localhost:9999/api/product-owner/get',
+                        method:'GET'
+                }).then(function(response){
+                        $scope.owners = response.data.DATA;
+                    console.log("Owners response => ", response.data.DATA);
+                });
+        };
+        $scope.getOwner();
        $scope.addOwner = function(){
                 $http({
                 url:'http://localhost:9999/api/product-owner/add',
@@ -145,59 +145,7 @@ app.controller('OwnerController', function($scope, $http, $filter, $window, $roo
                             company: 'Vietname'
                         }
                     }
-                ];
-     
-    check = true;
-   currentPage = 1;    
-    $scope.filter ={
-            page : 1,
-            limit : 10,
-            name : ''
-        };
-        
-    $scope.findAllOwners = function(){
-        $http({
-            url : "http://localhost:9999/api/product-owner/get-all",
-            method: "GET",
-            params : $scope.filter
-        }).success(function(response){
-            $scope.owners = response.DATA;
-            $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
-             console.log("Find All =>",response);
-        });
-    };
-    
-    $scope.searchOwners = function(){
-        $scope.filter.name = $scope.searchName;
-        $scope.filter.page = 1;
-        $scope.findAllOwners();
-    };
-    
-    var PAGINATION = $("#pagination");
-    $scope.setPagination = function(totalPage){
-       PAGINATION.bootpag({
-                    total: totalPage,
-                    page: $scope.filter.page,
-                    maxVisible: 5,
-                    leaps: true,
-                    firstLastUse: true,
-                    first: 'First',
-                    last: 'Last',
-                    wrapClass: 'pagination',
-                    activeClass: 'active',
-                    disabledClass: 'disabled',
-                    nextClass: 'next',
-                    prevClass: 'prev',
-                    lastClass: 'last',
-                    firstClass: 'first'
-                });
-    };
-    
-   PAGINATION.on("page", function(event, currentPage){
-            $scope.filter.page = currentPage;
-            $scope.findAllOwners();
-   });
-     $scope.findAllOwners();
+                ]
 });
 
 

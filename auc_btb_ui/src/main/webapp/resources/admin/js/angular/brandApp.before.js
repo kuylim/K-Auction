@@ -5,16 +5,16 @@
  */
 var app = angular.module('AuctionApp', []);
 app.controller('BrandController', function($scope, $http, $filter, $window, $rootScope){
-//    $scope.getBrand = function(){
-//            $http({
-//                url:'http://localhost:9999/api/brand/get',
-//                method:'GET'
-//            }).then(function(response){
-//                $scope.brand = response.data.DATA;
-//                console.log("Brand => ",response.data.DATA);
-//            });
-//        };
-//    $scope.getBrand();
+    $scope.getBrand = function(){
+            $http({
+                url:'http://localhost:9999/api/brand/get',
+                method:'GET'
+            }).then(function(response){
+                $scope.brand = response.data.DATA;
+                console.log("Brand => ",response.data.DATA);
+            });
+        };
+        $scope.getBrand();
     $scope.addBrand = function(){
              $http({
             url:'http://localhost:9999/api/brand/add',
@@ -29,7 +29,8 @@ app.controller('BrandController', function($scope, $http, $filter, $window, $roo
                                     'Add successfully!',
                                     'success'
                                   );
-                    $scope.findAllBrands();
+                    //console.log(response.data);
+                    $scope.getBrand();
                                 }, function(response){			
                                 });
         };  
@@ -51,7 +52,7 @@ app.controller('BrandController', function($scope, $http, $filter, $window, $roo
                          method:'PUT'
                         }).then(function(response){
                             swal("Deleted!", " Current brand has been deleted :)", "success");  
-                            $scope.findAllBrands();
+                            $scope.getBrand();
                     }); 
             } else {     
                     swal("Cancelled", "Current brand has not been deleted :(", "error");   
@@ -97,58 +98,6 @@ app.controller('BrandController', function($scope, $http, $filter, $window, $roo
                      } 
              });
     };
-   
-    check = true;
-   currentPage = 1;    
-    $scope.filter ={
-            page : 1,
-            limit : 10,
-            name : ''
-        };
-        
-    $scope.findAllBrands = function(){
-        $http({
-            url : "http://localhost:9999/api/brand/get-all",
-            method: "GET",
-            params : $scope.filter
-        }).success(function(response){
-            $scope.brand = response.DATA;
-            $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
-             console.log("Find All =>",response);
-        });
-    };
-    
-    $scope.searchBrands = function(){
-        $scope.filter.name = $scope.searchName;
-        $scope.filter.page = 1;
-        $scope.findAllBrands();
-    };
-    
-    var PAGINATION = $("#pagination");
-    $scope.setPagination = function(totalPage){
-       PAGINATION.bootpag({
-                    total: totalPage,
-                    page: $scope.filter.page,
-                    maxVisible: 5,
-                    leaps: true,
-                    firstLastUse: true,
-                    first: 'First',
-                    last: 'Last',
-                    wrapClass: 'pagination',
-                    activeClass: 'active',
-                    disabledClass: 'disabled',
-                    nextClass: 'next',
-                    prevClass: 'prev',
-                    lastClass: 'last',
-                    firstClass: 'first'
-                }); 	
-    };
-    
-   PAGINATION.on("page", function(event, currentPage){
-            $scope.filter.page = currentPage;
-            $scope.findAllBrands();
-   });
-     $scope.findAllBrands();
 });
 
 

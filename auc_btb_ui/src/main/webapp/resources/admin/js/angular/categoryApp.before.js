@@ -5,17 +5,17 @@
  */
 var app = angular.module('AuctionApp', []);
 app.controller('CategoryController', function($scope, $http, $filter, $window, $rootScope){
-//    $scope.getCategory = function(){
-//        $http({
-//            url:'http://localhost:9999/api/category/get',
-//            method:'GET'
-//        }).then(function(response){
-//            
-//            $scope.category = response.data.DATA;
-//            console.log('Category response => ', response.data.DATA);
-//        });
-//    };
-//    $scope.getCategory();
+    $scope.getCategory = function(){
+        $http({
+            url:'http://localhost:9999/api/category/get',
+            method:'GET'
+        }).then(function(response){
+            
+            $scope.category = response.data.DATA;
+            console.log('Category response => ', response.data.DATA);
+        });
+    };
+    $scope.getCategory();
     $scope.addCategory = function(){ 
         $http({
 	url:'http://localhost:9999/api/category/add',
@@ -29,11 +29,11 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
                            $scope.categoryname = "";
                            $scope.description = "";
                            console.log(response.data);
-                           $scope.findAllCategories();
+                           $scope.getCategory();
 	}, function(response){			
 	});
     };
-    $scope.deleteCategory = function(id){
+        $scope.deleteCategory = function(id){
             swal({   
             title: "Are you sure to delete this Category?",   
             text: "It may worstly effect to existing relational product!",   
@@ -51,7 +51,7 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
                          method:'PUT'
                         }).then(function(response){
                             swal("Deleted!", " Current catgory has been deleted :)", "success");  
-                            $scope.findAllCategories();
+                            $scope.getCategory();
                     }); 
             } else {     
                     swal("Cancelled", "Current category has not been deleted :(", "error");   
@@ -59,6 +59,7 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
              });
     };
     $scope.getCategoryObject = function(rec){
+            alert("CateID : "+rec.cat.cat_id+"  ParrentID"+rec.cat.parent_id);
             $scope.categoryname ="";
             $scope.catid =rec.cat.cat_id;
             if(rec.cat.parent_id === 0)
@@ -72,7 +73,7 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
             $scope.categoryObject = rec.cat;
     };
     $scope.updateCategory = function(){
-//         alert("CateID : "+$scope.catid+"  ParrentID :"+ $scope.parentid+" Categoryname : "+ $scope.categoryname+" Description"+ $scope.description);
+         alert("CateID : "+$scope.catid+"  ParrentID :"+ $scope.parentid+" Categoryname : "+ $scope.categoryname+" Description"+ $scope.description);
             swal({   
             title: "Are you sure to update this record?",   
             text: "You will not be able to roll back!",   
@@ -109,65 +110,13 @@ app.controller('CategoryController', function($scope, $http, $filter, $window, $
                      } 
              });
     };
-    $scope.listOnlyMainCategory = function (prop, value){
+       $scope.listOnlyMainCategory = function (prop, value){
        return function(item){
            if (item[prop] === value){
                return true;
            }
        };
    };
-   
-    check = true;
-   currentPage = 1;    
-    $scope.filter ={
-            page : 1,
-            limit : 10,
-            name : ''
-        };
-        
-    $scope.findAllCategories = function(){
-        $http({
-            url : "http://localhost:9999/api/category/get-all",
-            method: "GET",
-            params : $scope.filter
-        }).success(function(response){
-            $scope.category = response.DATA;
-            $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
-             console.log("Find All =>",response);
-        });
-    };
-    
-    $scope.searchCategories = function(){
-        $scope.filter.name = $scope.searchName;
-        $scope.filter.page = 1;
-        $scope.findAllCategories();
-    };
-    
-    var PAGINATION = $("#pagination");
-    $scope.setPagination = function(totalPage){
-       PAGINATION.bootpag({
-                    total: totalPage,
-                    page: $scope.filter.page,
-                    maxVisible: 5,
-                    leaps: true,
-                    firstLastUse: true,
-                    first: 'First',
-                    last: 'Last',
-                    wrapClass: 'pagination',
-                    activeClass: 'active',
-                    disabledClass: 'disabled',
-                    nextClass: 'next',
-                    prevClass: 'prev',
-                    lastClass: 'last',
-                    firstClass: 'first'
-                });
-    };
-    
-   PAGINATION.on("page", function(event, currentPage){
-            $scope.filter.page = currentPage;
-            $scope.findAllCategories();
-   });
-     $scope.findAllCategories();
 });
 
 

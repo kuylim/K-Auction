@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
+var app = angular.module('AuctionApp', []);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
     $scope.addAuction = function(){
@@ -189,45 +189,44 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
 //-------------------------------------------------------------------------------------------------Paginaton block-----------------//   
    check = true;
    currentPage = 1;
-//   $scope.showData = function(currentPage){
-//                //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';  
-//                $http({url: 'http://localhost:9999/api/auction/get?page='+ currentPage +'&limit=6',
-//                       method: 'GET'
-//                }).then(function(response){
-//                        console.log(response.data);
-//                        $scope.auctions = response.data.DATA;
-//                        if(check){
-//                                setPagination(response.data.PAGINATION.TOTAL_PAGES,currentPage);
-//                                check=false;
-//                            }
-//                }, function(){
-//                        alert('Error');
-//                }); 
-//    };
-//   setPagination = function(totalPage, currentPage){
-//        alert("Pagination top");
-//                       $('#pagination').bootpag({
-//                               total: totalPage,
-//                               page: currentPage,
-//                               maxVisible: 5,
-//                               leaps: true,
-//                               firstLastUse: true,
-//                               first: 'First',
-//                               last: 'Last',
-//                               wrapClass: 'pagination',
-//                               activeClass: 'active',
-//                               disabledClass: 'disabled',
-//                               nextClass: 'next',
-//                               prevClass: 'prev',
-//                               lastClass: 'last',
-//                               firstClass: 'first'
-//                           }).on("page", function(event, currentPage){
-//                               check = false;
-//                               getCurrentPage = currentPage;
-//                               $scope.showData(currentPage);
-//                           }); 	
-//                       };
-//   //$scope.showData(currentPage);    
+   $scope.showData = function(currentPage){
+                //$http.defaults.headers.common['Authorization'] = 'Basic ZGV2OiFAI2FwaQ==';  
+                $http({url: 'http://localhost:9999/api/auction/get?page='+ currentPage +'&limit=6',
+                       method: 'GET'
+                }).then(function(response){
+                        console.log(response.data);
+                        $scope.auctions = response.data.DATA;
+                        if(check){
+                                setPagination(response.data.PAGINATION.TOTAL_PAGES,currentPage);
+                                check=false;
+                            }
+                }, function(){
+                        alert('Error');
+                }); 
+    };
+   setPagination = function(totalPage, currentPage){
+                       $('#pagination').bootpag({
+                               total: totalPage,
+                               page: currentPage,
+                               maxVisible: 5,
+                               leaps: true,
+                               firstLastUse: true,
+                               first: 'First',
+                               last: 'Last',
+                               wrapClass: 'pagination',
+                               activeClass: 'active',
+                               disabledClass: 'disabled',
+                               nextClass: 'next',
+                               prevClass: 'prev',
+                               lastClass: 'last',
+                               firstClass: 'first'
+                           }).on("page", function(event, currentPage){
+                               check = false;
+                               getCurrentPage = currentPage;
+                               $scope.showData(currentPage);
+                           }); 	
+                       };
+   //$scope.showData(currentPage);    
    $scope.listOnlyMainCategory = function (prop, value){
        return function(item){
            if (item[prop] === value){
@@ -288,7 +287,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
              console.log("Find All =>",response);
         });
-        alert("FindAll");
     };
     
     $scope.searchAuctions = function(){
@@ -297,7 +295,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         $scope.filter.categoryId = $scope.searchCat;
         $scope.filter.page = 1;
         $scope.findAllAcutions();
-        alert("SearchAuction");
     };
     
     var PAGINATION = $("#pagination");
@@ -318,13 +315,11 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                     lastClass: 'last',
                     firstClass: 'first'
                 }); 	
-                alert("Pagination buttom");
     };
     
    PAGINATION.on("page", function(event, currentPage){
             $scope.filter.page = currentPage;
             $scope.findAllAcutions();
-            alert("Pagination On");
    });
      $scope.findAllAcutions();
  
