@@ -19,9 +19,8 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
     $scope.addProduct = function(){
 		var frmData = new FormData();
 		
-		var restaurant_files = angular.element('#img')[0].files;
-		for(var i=0; i<restaurant_files.length; i++){
-			frmData.append("images", restaurant_files[i]);
+		for(var i=0; i<newFiles['img'].length; i++){
+			frmData.append("images", newFiles['img'][i]);
 		}
 		
 		frmData.append('name', $scope.name);
@@ -162,5 +161,23 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
              });
     };   
 });
+
+app.directive('myFilter', [function() {
+            return {
+                restrict: 'A',       
+                link: function(scope, element) {
+                    // wait for the last item in the ng-repeat then call init
+                    angular.element(document).ready(function() {
+                        initJqueryFiler(['#img'], [[]]);
+                    });
+                    // OR use $braodcast & $on in Controller
+                }
+            };
+            /**** Usable array ****/
+            // If your input file, id = '#gallery' use:
+          
+            // => deletedImageIDs['gallery']
+
+        }]);
 
 

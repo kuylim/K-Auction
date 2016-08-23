@@ -2,7 +2,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="app" ng-cloak="cloak">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,8 @@
 
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/fonts/font/khmer/auction.css">
 
+        <link href="${pageContext.request.contextPath }/resources/css/cloakstyle.css" rel="stylesheet">
+        
         <style type="text/css">
             .choose ul li a,.productinfo p{
                 color: black;
@@ -451,10 +453,13 @@
         <!-- boot page -->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
         <!-- main app -->
-        <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+        
 
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+       
+        <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+        
     </body>
 </html>

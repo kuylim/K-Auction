@@ -177,6 +177,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
 
 
     }
+    
 
     setPagination = function (totalPage, currentPage) {
         $('#pagination').bootpag({
@@ -213,6 +214,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
     }
     var processAuctionItems = function (data) {
         angular.forEach(data, function (item) {
+            //item.current_price;
             item.remainingTime = datetime.getRemainigTime(item.end_date);
         });
     }
@@ -221,7 +223,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
 
     $timeout(tick, 1000);
 
-    $timeout($scope.auctions, 100);
+    $timeout($scope.auctions, 10000);
     //==============================================
     
     $scope.getNewAuction = function()
