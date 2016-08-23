@@ -441,6 +441,65 @@
             </footer><!--/Footer-->
         </div>
                                                             
+                                                            <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+                                                            
+        <script src="${pageContext.request.contextPath }/resources/js/sockjs-0.3.4.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/js/stomp.js"></script>
+        
+        <script type="text/javascript">
+             alert(2220000);
+        var stompClient = null;
+        
+        function setConnected(connected) {
+//            document.getElementById('connect').disabled = connected;
+//            document.getElementById('disconnect').disabled = !connected;
+//            document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+//            document.getElementById('response').innerHTML = '';
+        }
+        
+        function connect() {
+            alert("connect");
+            var socket = new SockJS('/hello');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                setConnected(true);
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/greetings', function(greeting){
+                	alert("KE SEND MOK HOUY...");
+                    showGreeting(JSON.parse(greeting.body).content);
+                });
+            });
+        }
+        
+        function disconnect() {
+            alert(stompClient);
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+            setConnected(false);
+            alert("Disconnected");
+            console.log("Disconnected");
+        }
+        
+        function sendName() {
+            var name = document.getElementById('name').value;
+            stompClient.send("/app/hello", {}, JSON.stringify({ 'name': name }));
+        }
+        
+//        function showGreeting(message) {
+//            var response = document.getElementById('response');
+//            var p = document.createElement('p');
+//            p.style.wordWrap = 'break-word';
+//            p.appendChild(document.createTextNode(message));
+//            response.appendChild(p);
+//        }
+        //disconnect();
+        connect();
+        
+        
+    </script>
+
         <script src="${pageContext.request.contextPath }/resources/js/momentjs/moment.js"></script> 
         <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>                                                                                                     
 
@@ -454,16 +513,17 @@
         <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
         <!-- main app -->
         
+
         <!--pop up product detail-->
         <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
         <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
         
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.min.js"></script>
+        <script src="https://js.pusher.com/3.2/pusher.min.js"></script>-->
+<!--        <script src ="${pageContext.request.contextPath }/resources/js/pusher-angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
         
-        <!-- Websocket -->
-        <script src="${pageContext.request.contextPath }/resources/js/sockjs-0.3.4.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/js/stomp.js"></script>
-    </script>
-                
+
+        
     </body>
 </html>

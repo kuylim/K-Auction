@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module('AuctionApp', []);
+var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
     $scope.addAuction = function(){

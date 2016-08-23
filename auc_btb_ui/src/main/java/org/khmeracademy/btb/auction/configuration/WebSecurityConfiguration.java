@@ -35,7 +35,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-			.antMatchers("/" , "/index" , "/about").permitAll()
+			.antMatchers("/" , "/index" , "/about", "/hello/**").permitAll()
                         .antMatchers("/auc-admin/**").hasRole("ADMIN");
 		http
 			.formLogin()

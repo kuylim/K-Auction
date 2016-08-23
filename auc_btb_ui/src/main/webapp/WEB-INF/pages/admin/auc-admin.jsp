@@ -109,8 +109,6 @@
                   <div class="x_title">
                     <h2>Top Auctions</h2>
                     <div class="x_content" ng-repeat="auc in TopLowAuction | limitTo : 5 : 0">
-                    <!--<ul class="nav navbar-right panel_toolbox">
-                    	<ul class="list-unstyled top_profiles scroll-view">-->
                     <article class="media event" >
                           <a class="pull-left border-green profile_thumb">
                               <i class="fa fa-legal"></i>
@@ -122,52 +120,6 @@
                               </p>
                             </div>
                           </article>
-<!--                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Galaxy S6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>50 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Galaxy S6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>50 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Galaxy S6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>50 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Galaxy S6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>50 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>-->
-               <!--         </ul>
- 					</ul>-->
                     </div>
                     <div class="clearfix"></div>
                   </div>
@@ -179,7 +131,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Lowest Auctions</h2>
-                    <div class="x_content" ng-repeat="auc in TopLowAuction | limitTo : 5 : 0 , orderBy : 'number_of_bids'">
+                    <div class="x_content" ng-repeat="auc in TopLowAuction | orderBy : 'number_of_bids' | limitTo : 5 : 0">
                    <!-- <ul class="nav navbar-right panel_toolbox">
                     	<ul class="list-unstyled top_profiles scroll-view">-->
                           <article class="media event" >
@@ -193,52 +145,6 @@
                               </p>
                             </div>
                           </article>
-<!--                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Iphone 6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>0 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Iphone 6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>0 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Iphone 6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>0 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>
-                          <article class="media event">
-                            <a class="pull-left border-green profile_thumb">
-                              <i class="fa fa-legal"></i>
-                            </a>
-                            <div class="media-body">
-                              <a class="title" href="#">Iphone 6</a>
-                              <p>ទទួលការ bid ចំនួន <strong>0 ដង</strong></p>
-                              <p> <small>នៅសល់ 7 ថ្ងៃទៀត ចប់ការដេញថ្លៃ</small>
-                              </p>
-                            </div>
-                          </article>-->
-               <!--         </ul>
- 					</ul>-->
                     </div>
                     <div class="clearfix"></div>
                   </div>

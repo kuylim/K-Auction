@@ -1,9 +1,7 @@
 
 var app = angular.module('app', []);
 app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
-
-
-    //testing customer
+    
     $scope.cus;
     //fetch persons
     $scope.getCus = function (bidder_id) {
@@ -124,6 +122,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                                                                 'success'
                                                               );
                                                             $scope.showData(currentPage);
+                                                            sendName();
                                                         })
                                                         .error(function ()
                                                         {
@@ -240,6 +239,41 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                 });
     };
     $scope.getNewAuction();
+    
+    //==========================================================================
+    
+    var stompClient = null;
+        
+
+        
+        function connect() {
+            //connect
+            var socket = new SockJS('/bidding');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                //respone
+                stompClient.subscribe('/topic/auction', function(greeting){
+                    
+                    $scope.showData(currentPage);                
+                });
+            });
+        }
+        
+        function disconnect() {
+            //disconnect from websocket
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+          
+        }
+        
+        function sendName() {
+            //send request
+            stompClient.send("/app/bidding", {}, JSON.stringify({ 'name': "BID ON AUCTION HAPPENDED..." }));
+        }
+        
+        disconnect();
+        connect();
     
 });
 
