@@ -142,8 +142,8 @@
                                 
                                <div class="table-responsive" style="border:none;">
                                    <div class="form-group">
-                                     <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " placeholder="product name">
-                                     <span>By Category : </span><select ng-model="searchCat"style="padding-left:8px; height: 30px;" ng-change="clearSearchCatid()"
+                                       <span>By Name : </span><input   ng-model="searchName" ng-change="searchAuctions()" style=" height: 30px; " placeholder="product name">
+                                     <span>By Category : </span><select ng-model="searchCat"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
                                                        ng-options="cat.cat_id as cat.name for cat in category | filter: listOnlySubCategory('parent_id', 0)">
                                        </select>
                                        <button ng-click="searchAuctions()" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
@@ -262,7 +262,6 @@
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/autosize/dist/autosize.min.js"></script>
     <!-- jQuery autocomplete -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    
      <!-- Datatables -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

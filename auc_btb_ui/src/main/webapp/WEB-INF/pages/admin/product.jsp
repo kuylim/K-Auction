@@ -176,48 +176,51 @@
                         <div class="row">
                             <h1 >Product Manager</h1>
                             <div >
-                                <div >
-
-                                    <div class="table-responsive" style="border:none;">
-                                        <h3 class="pull-left"></h3>
-
-                                        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
-                                        <table class="table table-striped jambo_table bulk_action">
-                                            <thead
-                                                <tr​​>
-                                                    <th>No </th>
-                                                    <th >PID </th>
-                                                    <th >Name </th>
-                                                    <th >Brand </th>
-                                                    <th >Category </th>
-                                                    <th >Information </th>
-                                                    <th >Action </th>
-                                                </tr
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="pro in products| orderBy:'pro_id':'reverse':'DESC' ">	   
-                                                    <td>{{$index + 1}} </td>
-                                                    <td>{{pro.pro_id}}</td>
-                                                    <td>{{pro.name}}</td>
-                                                    <td>{{pro.brand_id}} </td>
-                                                    <td>{{pro.cat_id}}</td>
-                                                    <td>{{pro.pro_info}}</td>		    
-                                                    <td>
-                                                        <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
-                                                        <a href="" ng-click="deleteProduct(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div   id="pagination" class="pull-right" ></div> 
-                                </div>
-                            </div>
-                        </div>
-                        <!--replace by the sweetalert end-->      
-                    </div>
-                </div>
-            </div>  
+                                
+                               <div class="table-responsive" style="border:none;">
+                                   <h3 class="pull-left"></h3>
+                                     <span>By Name : </span><input   ng-model="searchProName" style=" height: 30px; " placeholder=" product name">
+                                    <span>By Category : </span>
+                                    <select ng-model="searchBra"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
+                                             ng-options="bra.brand_id as bra.name for bra in brand">
+                                     </select>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
+                               <table class="table table-striped jambo_table bulk_action">
+                               <thead
+                                 <tr​​>
+                                     <th>No </th>
+                                     <th >PID </th>
+                                     <th >Name </th>
+                                     <th >Brand </th>
+                                     <th >Category </th>
+                                     <th >Information </th>
+                                     <th >Action </th>
+                                 </tr
+                               </thead>
+                               <tbody>
+                                 <tr ng-repeat="pro in products | orderBy:'pro_id':'reverse':'DESC' ">	   
+                                    <td>{{$index+1}} </td>
+                                    <td>{{pro.pro_id}}</td>
+                                    <td>{{pro.name}}</td>
+                                    <td>{{pro.brand_id}} </td>
+                                    <td>{{pro.cat_id}}</td>
+                                    <td>{{pro.pro_info}}</td>		    
+                                   <td>
+                                    <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
+                                     <a href="" ng-click="deleteProduct(pro.pro_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                   </td>
+                                  </tr>
+                                 </tbody>
+                               </table>
+                             </div>
+                             <div   id="pagination" class="pull-right" ></div> 
+                           </div>
+                         </div>
+                   </div>
+            <!--replace by the sweetalert end-->      
+         </div>
+            </div>
+          </div>  
         </div>
         <!-- /page content -->
 

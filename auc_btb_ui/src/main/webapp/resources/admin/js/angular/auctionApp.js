@@ -290,7 +290,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
     };
     
     $scope.searchAuctions = function(){
-        alert($scope.searchName +" "+$scope.searchCat);
+//        alert($scope.searchName +" "+$scope.searchCat);
         $scope.filter.name = $scope.searchName;
         $scope.filter.categoryId = $scope.searchCat;
         $scope.filter.page = 1;
