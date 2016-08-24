@@ -91,13 +91,14 @@
                                                 </select>
                                                 <br>
                                                 <span>Product Info</span><textarea class="form-control"  ng-model="proinfo" placeholder="Product information"> </textarea><br>
-                                                <span>Image</span> <input type="file" id="img" name="file[]"  multiple>
+                                                <span style="margin-bottom: 5px;">Image</span> <input style="margin-bottom: 5px;" class="form-control" type="file" id="img" name="file[]"  multiple>
 
                                                 <!--<a href="" ng-click="addProduct()" type="button" id="add" class="btn btn-success" data-toggle="modal" data-target="#upload_img">Add</a>-->
-                                                <input type="submit" class="btn btn-default"  value="Add"/>
+                                                <input type="submit" class="btn btn-default" style="margin-top: 5px;" value="Add"/>
+                                                <button type="button" class="btn btn-default" style="margin-top: 5px;"  data-dismiss="modal">Close</button>
                                             </form>
                                             <!--<a href="" ng-click="addProduct()" type="button" id="add" class="btn btn-success" data-toggle="modal" data-target="#upload_img">Add</a>-->
-                                            <button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
+                                            
                                             <!-- <a href="" ng-click="addPerson()" type="button" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern" id="add" class="btn btn-success">Add</a>
                                             <button type="button" class="btn btn-default"   data-dismiss="modal">Close</button> -->
                                         </div>     	  
@@ -184,8 +185,10 @@
                                     <select ng-model="searchBra"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
                                              ng-options="bra.brand_id as bra.name for bra in brand">
                                      </select>
+                                    <button  ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'Auction Report'" class="btn-sm btn-primary">Export Excel</button>
+                                    <button type="button" style="margin-top:5px; margin-left:1px; height: 30px;" id="print">Print</button>
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
-                               <table class="table table-striped jambo_table bulk_action">
+                                   <table class="table table-striped jambo_table bulk_action" id="tblproduct">
                                <thead
                                  <tr​​>
                                      <th>No </th>
@@ -297,6 +300,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/imageupload/js/jquery.filer.js?v=1.0.5"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/imageupload/js/custom.js?v=1.0.5"></script>
 
+ <!--Export to excel-->
+<script src="${pageContext.request.contextPath }/resources/admin/js/excel/json-export-excel.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/admin/js/excel/FileSaver.js"></script>
+
 <script type="text/javascript">
         $(".filer-fancybox").fancybox({
             padding: 0,
@@ -316,75 +323,21 @@
     </script>
 
 <script>
-//        function fullDate() {
-//                
-//                var date = new Date(milis);
-//                var dateToStr = date.toUTCString().split(' ');
-//                var cleanDate =dateToStr[3] + ' ' + dateToStr[2]+ ' ' + dateToStr[1];
-//               
-//        }
-                                                            $(document).ready(function () {
-                                                                var handleDataTableButtons = function () {
-                                                                    if ($("#datatable-buttons").length) {
-                                                                        $("#datatable-buttons").DataTable({
-                                                                            dom: "Bfrtip",
-                                                                            buttons: [
-                                                                                {
-                                                                                    extend: "copy",
-                                                                                    className: "btn-sm"
-                                                                                },
-                                                                                {
-                                                                                    extend: "csv",
-                                                                                    className: "btn-sm"
-                                                                                },
-                                                                                {
-                                                                                    extend: "excel",
-                                                                                    className: "btn-sm"
-                                                                                },
-                                                                                {
-                                                                                    extend: "pdfHtml5",
-                                                                                    className: "btn-sm"
-                                                                                },
-                                                                                {
-                                                                                    extend: "print",
-                                                                                    className: "btn-sm"
-                                                                                },
-                                                                            ],
-                                                                            responsive: true
-                                                                        });
-                                                                    }
-                                                                };
 
-                                                                TableManageButtons = function () {
-                                                                    "use strict";
-                                                                    return {
-                                                                        init: function () {
-                                                                            handleDataTableButtons();
-                                                                        }
-                                                                    };
-                                                                }();
+    $(document).ready(function () {
+         function printData()
+            {
+               var divToPrint=document.getElementById("tblproduct");
+               newWin= window.open("");
+               newWin.document.write(divToPrint.outerHTML);
+               newWin.print();
+               newWin.close();
+            }
 
-                                                                $('#datatable').dataTable();
-                                                                $('#datatable-keytable').DataTable({
-                                                                    keys: true
-                                                                });
-
-                                                                $('#datatable-responsive').DataTable();
-
-                                                                $('#datatable-scroller').DataTable({
-                                                                    ajax: "js/datatables/json/scroller-demo.json",
-                                                                    deferRender: true,
-                                                                    scrollY: 380,
-                                                                    scrollCollapse: true,
-                                                                    scroller: true
-                                                                });
-
-                                                                var table = $('#datatable-fixed-header').DataTable({
-                                                                    fixedHeader: true
-                                                                });
-
-                                                                TableManageButtons.init();
-                                                            });
+            $('#print').on('click',function(){
+            printData();
+            });                                                
+    });
 </script>
 </body>
 </html>

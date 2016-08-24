@@ -61,4 +61,10 @@ public class User_controller {
         model.addAttribute("pro_name" ,pro_name);
         return "search";
     }
+    
+    @RequestMapping("/verifykey/{key}")
+    public String verifyEmail(ModelMap model, @PathVariable("key") String key)
+    {
+        return "verify-email";
+    }
 }

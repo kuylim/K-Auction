@@ -68,7 +68,7 @@
                                     <span>Owner</span>
 		<select  class="form-control" ng-model="ownerid" style="padding-left:6px;" 
                                             ng-options="own.owner_id as own.lastname for own in owners">
-                                    </select><br>
+                </select>                <br>
                                     <span>Product</span>
 	   	<select  class="form-control" ng-model="proid" style="padding-left:6px;" 
                                              ng-options="pro.pro_id as pro.name for pro in products">
@@ -144,7 +144,8 @@
                                        </select>
                                        <button ng-click="searchAuctions()" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
 
-                                       <button ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'filename'" class="btn-sm btn-primary">Export Excel</button>
+                                       <button  ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'Auction Report'" class="btn-sm btn-primary">Export Excel</button>
+                                       <button type="button" style="margin-top:5px; margin-left:1px; height: 30px;" id="print">Print</button>
                                        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
                                    </div>
                               
@@ -271,79 +272,23 @@
     
     <!-- boot page -->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
-<!--     main app 
-    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>-->
+
     <!--pop up product detail-->
     <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
     <script>
-//        function fullDate() {
-//                
-//                var date = new Date(milis);
-//                var dateToStr = date.toUTCString().split(' ');
-//                var cleanDate =dateToStr[3] + ' ' + dateToStr[2]+ ' ' + dateToStr[1];
-//               
-//        }
       $(document).ready(function() {
-        var handleDataTableButtons = function() {
-          if ($("#datatable-buttons").length) {
-            $("#datatable-buttons").DataTable({
-              dom: "Bfrtip",
-              buttons: [
-                {
-                  extend: "copy",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "csv",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "excel",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "pdfHtml5",
-                  className: "btn-sm"
-                },
-                {
-                  extend: "print",
-                  className: "btn-sm"
-                },
-              ],
-              responsive: true
-            });
-          }
-        };
-
-        TableManageButtons = function() {
-          "use strict";
-          return {
-            init: function() {
-              handleDataTableButtons();
+        function printData()
+            {
+               var divToPrint=document.getElementById("tblauction");
+               newWin= window.open("");
+               newWin.document.write(divToPrint.outerHTML);
+               newWin.print();
+               newWin.close();
             }
-          };
-        }();
 
-        $('#datatable').dataTable();
-        $('#datatable-keytable').DataTable({
-          keys: true
-        });
-
-        $('#datatable-responsive').DataTable();
-
-        $('#datatable-scroller').DataTable({
-          ajax: "js/datatables/json/scroller-demo.json",
-          deferRender: true,
-          scrollY: 380,
-          scrollCollapse: true,
-          scroller: true
-        });
-
-        var table = $('#datatable-fixed-header').DataTable({
-          fixedHeader: true
-        });
-
-        TableManageButtons.init();
+            $('#print').on('click',function(){
+            printData();
+            });
       });
     </script>
     
