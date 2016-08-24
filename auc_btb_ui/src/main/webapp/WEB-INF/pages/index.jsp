@@ -180,7 +180,7 @@
 
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
+                                            <img src="${pageContext.request.contextPath }/resources/images/home/p3.jpg" class="girl img-responsive" alt="" />
                                         </div>
                                     </div>
                                     <div class="item">
@@ -191,7 +191,7 @@
 
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
+                                            <img src="${pageContext.request.contextPath }/resources/images/home/p2.jpg" class="girl img-responsive" alt="" />
                                         </div>
                                     </div>
 
@@ -202,7 +202,7 @@
                                             <p>ធ្វើការលក់ផលិតផល ក្នុងតម្លៃមួយដែលោកអ្នកនឹកស្មានមិនដល់ </p>	
                                         </div>
                                         <div class="col-sm-6">
-                                            <img src="${pageContext.request.contextPath }/resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                                            <img src="${pageContext.request.contextPath }/resources/images/home/p1.jpg" class="girl img-responsive" alt="" />
                                         </div>
                                     </div>
 
