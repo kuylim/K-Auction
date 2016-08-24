@@ -6,7 +6,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
-<html lang="en">
+<html lang="en" ng-app="app">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,8 @@
 
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/mystyle.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/contactUs.css">
+        
+        <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
 
         <style>
             body{
@@ -135,7 +137,7 @@
                 </div><!--/header-bottom-->
             </header><!--/header-->
 
-    <div id="contact-page" class="container">
+            <div id="contact-page" class="container" ng-controller="ctrl">
         <div class="bg">
             <div class="row">    		
                 <div class="col-sm-12">    			   			
@@ -149,21 +151,21 @@
                     <div class="contact-form">
                         <h2 class="title text-center">ព័ត៌មានរបស់លោកអ្នក</h2>
                         <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" ng-submit="feedback(user)">
                             <div class="form-group col-md-6">
-                                <input type="text" name="name" class="form-control" required="required" placeholder="ឈ្មោះ">
+                                <input type="text" ng-model="user.name" class="form-control" required="required" placeholder="ឈ្មោះ">
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" name="phone" class="form-control" required="required" placeholder="លេខទូរស័ព្ទ">
+                                <input type="text" ng-model="user.phone" class="form-control" required="required" placeholder="លេខទូរស័ព្ទ">
                             </div>
                             <div class="form-group col-md-12">
-                                <input type="Email" name="phone" class="form-control" required="required" placeholder="Email">
+                                <input type="Email" ng-model="user.email" class="form-control" required="required" placeholder="Email">
                             </div>
                             <div class="form-group col-md-12">
-                                <input type="text" name="subject" class="form-control" required="required" placeholder="គោលបំណង">
+                                <input type="text" ng-model="user.subject" class="form-control" required="required" placeholder="គោលបំណង">
                             </div>
                             <div class="form-group col-md-12">
-                                <textarea name="message" id="message" required class="form-control" rows="8" placeholder="មតិយោបលរបស់លោកអ្នក"></textarea>
+                                <textarea ng-model="user.comment" id="message" required class="form-control" rows="8" placeholder="មតិយោបលរបស់លោកអ្នក"></textarea>
                             </div>                        
                             <div class="form-group col-md-12">
                                 <input type="submit" name="submit" class="btn btn-primary pull-right" value="បញ្ជូនទៅ">
@@ -301,6 +303,11 @@
     <script src="${pageContext.request.contextPath }/resources/js/main.js"></script>
 
     <script src="http://maps.googleapis.com/maps/api/js"></script>
+    
+    <!-- angular -->
+    <script src="${pageContext.request.contextPath }/resources/js/angular.min.js"></script>   
+    <script src="${pageContext.request.contextPath }/resources/js/feedback_app.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
 
     <script>
         var myCenter = new google.maps.LatLng(11.575768, 104.889166);
