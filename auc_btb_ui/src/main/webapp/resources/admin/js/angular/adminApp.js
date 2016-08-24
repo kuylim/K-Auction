@@ -6,28 +6,26 @@
 var app = angular.module('AuctionApp', []);
 app.controller('AdminController', function($scope, $http, $filter, $window, $rootScope){
        $scope.addUsers = function(){
-                $http({
-                url:'http://localhost:9999/api/user/add-user',
-                method:'POST',
-                data:{ 
-                        "firstname":$scope.firstname,
-                        "lastname": $scope.lastname,
-                        "username":$scope.username,
-                       "password":$scope.password,
-                        "email": $scope.email,
-                        "phone": $scope.phone,
-                         "address": $scope.address,
-                         "role": $scope.role
-                      }
-                }).then(function(response){
-                          swal(
-                                    'Success!',
-                                    'Add successfully!',
-                                    'success'
-                                  );
-                          $scope.findAllUsers();
-                          },function(response){
-                });
+                 $http({
+                    url:'http://localhost:9999/api/user/add-admin',
+                    method:'POST',
+                    data:{ 
+                            "firstname":$scope.firstname,
+                            "lastname": $scope.lastname,
+                            "username":$scope.username,
+                           "password":$scope.password,
+                            "email": $scope.email,
+                            "phone": $scope.phone,
+                             "address": $scope.address,
+                             "role": $scope.role
+                          }
+                    }).then(function(response){
+                              swal(
+                                        'Success!',
+                                        'Administrator account has been inserted successfully!',
+                                        'success'
+                                      );
+                    });
         }; 
        $scope.deleteUser = function(id){
                 swal({   
@@ -97,6 +95,8 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
         };
         
     $scope.findAllUsers = function(){
+//        $scope.role = 'USER_ROLE';
+         $scope.role = 'ADMIN_ROLE';
         $http({
             url : "http://localhost:9999/api/user/get-all",
             method: "GET",
@@ -106,14 +106,12 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
             $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
              console.log("Find All =>",response);
         });
-        alert("FindAll");
     };
     
     $scope.searchUsers = function(){
         $scope.filter.name = $scope.searchName;
         $scope.filter.page = 1;
         $scope.findAllUsers();
-        alert("SearchAuction");
     };
     
     var PAGINATION = $("#pagination");
@@ -133,14 +131,12 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
                     prevClass: 'prev',
                     lastClass: 'last',
                     firstClass: 'first'
-                }); 	
-                alert("Pagination buttom");
+                });
     };
     
    PAGINATION.on("page", function(event, currentPage){
             $scope.filter.page = currentPage;
             $scope.findAllUsers();
-            alert("Pagination On");
    });
      $scope.findAllUsers();    
 });
