@@ -194,8 +194,6 @@
                                      <th>No </th>
                                      <th >PID </th>
                                      <th >Name </th>
-                                     <th >Brand </th>
-                                     <th >Category </th>
                                      <th >Information </th>
                                      <th >Action </th>
                                  </tr
@@ -205,8 +203,6 @@
                                     <td>{{$index+1}} </td>
                                     <td>{{pro.pro_id}}</td>
                                     <td>{{pro.name}}</td>
-                                    <td>{{pro.brand_id}} </td>
-                                    <td>{{pro.cat_id}}</td>
                                     <td>{{pro.pro_info}}</td>		    
                                    <td>
                                     <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>
