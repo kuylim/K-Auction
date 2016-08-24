@@ -67,8 +67,9 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     }
 
     // bidding function
+    $scope.auctionID;
     $scope.bidding = function (id) {
-        
+         $scope.auctionID = id;
         if ($scope.cus.credit <= 0) {
            swal(
              'You do not have enough credit.',
@@ -122,7 +123,10 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                                                                 'You bid successfully!',
                                                                 'success'
                                                               );
+                                                            
                                                             $scope.getAuction_detail(id);
+                                                            $scope.getNewAuction();
+                                                            sendName();
                                                         })
                                                         .error(function ()
                                                         {
@@ -218,6 +222,37 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
     $timeout(tick, 1000);
 
     $timeout($scope.auc_detail, 10000);
+    
+    
+     var stompClient = null;
+        function connect() {
+            //connect
+            var socket = new SockJS('/bidding');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                //respone
+                stompClient.subscribe('/topic/auction', function(greeting){
+                    $scope.getAuction_detail($scope.auctionID);
+                    $scope.getNewAuction();               
+                });
+            });
+        }
+        
+        function disconnect() {
+            //disconnect from websocket
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }  
+        }
+        
+        function sendName() {
+            //send request
+            stompClient.send("/app/bidding", {}, JSON.stringify({ 'name': "BID ON AUCTION HAPPENDED..." }));
+        }
+        
+        disconnect();
+        connect();
+    
     //==============================================
     
     $scope.jssor_1_slider_init = function() {
@@ -300,6 +335,8 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                     });
         };
         $scope.getNewAuction();
+        
+       
 });
 
 app.factory('datetime', ['$timeout', function ($timeout) {

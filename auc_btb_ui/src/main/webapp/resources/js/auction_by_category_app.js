@@ -105,7 +105,9 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                                                                 'You bid successfully!',
                                                                 'success'
                                                               );
+                                                            sendName();
                                                             $scope.showData(currentPage);
+                                                            $scope.getNewAuction();
                                                         })
                                                         .error(function ()
                                                         {
@@ -228,6 +230,37 @@ app.controller('ctrl', function ($scope, $filter, $http, $timeout, datetime) {
                 });
     };
     $scope.getNewAuction();
+    
+     var stompClient = null;
+        function connect() {
+            //connect
+            var socket = new SockJS('/bidding');
+            stompClient = Stomp.over(socket);            
+            stompClient.connect({}, function(frame) {
+                //respone
+                stompClient.subscribe('/topic/auction', function(greeting){
+                    $scope.getNewAuction();  
+                    $scope.showData(currentPage);                
+                });
+            });
+        }
+        
+        function disconnect() {
+            //disconnect from websocket
+            if (stompClient != null) {
+                stompClient.disconnect();
+            }
+          
+        }
+        
+        function sendName() {
+            //send request
+            stompClient.send("/app/bidding", {}, JSON.stringify({ 'name': "BID ON AUCTION HAPPENDED..." }));
+        }
+        
+        disconnect();
+        connect();
+    
 });
 
 app.factory('datetime', ['$timeout', function ($timeout) {

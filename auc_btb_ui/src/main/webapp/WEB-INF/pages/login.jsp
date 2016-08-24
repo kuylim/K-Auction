@@ -170,7 +170,7 @@
                 <div class="col-sm-4">
                     <div class="signup-form"><!--sign up form-->
                         <h2>បង្កើត គណនីយថ្មី!</h2>
-                        <form action="#">
+                        <form ng-submit="user_login(user)">
                             <input  type="text" placeholder="First Name" ng-model="user.firstname" required/>
                             <input type="text" placeholder="Last Name" ng-model="user.lastname" required/>
                             <input type="text" placeholder="Userame" ng-model="user.username" required/>
@@ -179,7 +179,7 @@
                             <input type="password" placeholder="Comfirm Password" ng-model="user.comfirm_pass" required/>
                             <input type="text" placeholder="Address" ng-model="user.address" required/>
                             <input type="text" placeholder="Phone Number" ng-model="user.phone" required/>                                                                                                                            
-                            <button ng-click="user_login(user)" class="btn btn-default" >បង្កើត</button>
+                            <button type="submit" class="btn btn-default" >បង្កើត</button>
                         </form>
                     </div><!--/sign up form-->
                 </div>

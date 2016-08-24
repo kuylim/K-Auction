@@ -122,6 +122,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
                                                                 'success'
                                                               );
                                                             $scope.showData(currentPage);
+                                                            $scope.getNewAuction();
                                                             sendName();
                                                         })
                                                         .error(function ()
@@ -243,9 +244,6 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
     //==========================================================================
     
     var stompClient = null;
-        
-
-        
         function connect() {
             //connect
             var socket = new SockJS('/bidding');
@@ -253,7 +251,7 @@ app.controller('ctrl', function ($scope, $filter, $http,  $timeout, datetime) {
             stompClient.connect({}, function(frame) {
                 //respone
                 stompClient.subscribe('/topic/auction', function(greeting){
-                    
+                    $scope.getNewAuction();  
                     $scope.showData(currentPage);                
                 });
             });

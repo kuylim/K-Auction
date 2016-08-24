@@ -328,5 +328,9 @@
     <script src="${pageContext.request.contextPath }/resources/js/product_detail_app.js"></script>
     
     <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
+    
+    <!-- Websocket -->
+    <script src="${pageContext.request.contextPath }/resources/js/sockjs-0.3.4.js"></script>
+    <script src="${pageContext.request.contextPath }/resources/js/stomp.js"></script>
 </body>
 </html>

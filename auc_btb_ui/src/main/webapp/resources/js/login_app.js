@@ -36,11 +36,11 @@ app.controller('ctrl', function ($scope, $filter, $http) {
                     {
                         $http.post('http://localhost:9999/api/user/add-user', user)
                         .success(function(){
-                            swal({
-                                title: 'Register successfully!',
-                                text: 'Login to K-Auction to start bidding.',
-                                timer: 2000
-                              });
+                            swal(
+                                'Register Successfully!',
+                                'Please check your email to activate account',
+                                'success'
+                              );
                             $scope.result = false;
                         })
                         .error(function()
