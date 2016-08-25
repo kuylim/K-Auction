@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
@@ -31,21 +32,19 @@
                        
                     </ul>
                   </li>
-<!--                  <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-user"></i>SELLER</a></li>-->
+
                   <li><a><i class="fa fa-user"></i> ACCOUNTS <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Admin </span></a>
-<!--                      	<ul class="nav child_menu">
-                                            <li><a href="#">រថយន្ដ</a></li>
-                                            <li><a href="#">ម៉ូតូ</a></li>
-                                     </ul>-->
+                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Bidder </span></a>
                           </li>
                       <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Seller</span></a>
-<!--                          <ul class="nav child_menu">
-                          <li><a href="#">ដីលូ</a></li>
-                          <li><a href="#">ផ្ទះល្វែង</a></li>
-                        </ul>-->
                       </li>
+                      
+                      <security:authorize access="hasRole('SUPERVISOR')">
+                        <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Admin</span></a>
+
+                        </li>
+                      </security:authorize>
                      
                     </ul>
                   </li>

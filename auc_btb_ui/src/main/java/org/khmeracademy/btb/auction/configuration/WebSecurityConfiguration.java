@@ -8,6 +8,7 @@ package org.khmeracademy.btb.auction.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -36,7 +37,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeRequests()
 			.antMatchers("/" , "/index" , "/about", "/hello/**").permitAll()
-                        .antMatchers("/auc-admin/**").hasRole("ADMIN");
+                        .antMatchers("/auc-admin/**").hasAnyRole("ADMIN","SUPERVISOR");
+                        
 		http
 			.formLogin()
 			.loginPage("/login")
