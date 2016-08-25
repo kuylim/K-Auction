@@ -83,7 +83,7 @@
                                     <select ng-model="role"  class="form-control" disabled="true"><option value="USER_ROLE">USER</option><option value="ADMIN_ROLE">ADMIN</option>
                                     </select><br>
 	   	
-	   	<a href="" ng-click="addUsers()" type="button" id="add" class="btn btn-success" 
+	   	<a href="" ng-click="addAdmin()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password || !role">Add</a>
 <!--                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password"-->
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
@@ -102,7 +102,7 @@
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
                                         <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchAdmins()" placeholder=" Name">
 <!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
-                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>
+                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >Add Account</button>
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
                                  <tr​​>
@@ -127,7 +127,6 @@
                                     <td>{{usr.email}}</td>
                                     <td>{{usr.role}}</td>		    
                                     <td>{{usr.address}}</td>
-                                    
                                    <td>
                                      <a href="" ng-click="deleteAdmin(usr.cus_id)"  class='btn btn-danger btn-sm'>Revoke</a>
                                    </td>

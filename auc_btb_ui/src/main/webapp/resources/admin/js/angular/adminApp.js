@@ -5,7 +5,7 @@
  */
 var app = angular.module('AuctionApp', []);
 app.controller('AdminController', function($scope, $http, $filter, $window, $rootScope){
-       $scope.addUsers = function(){
+       $scope.addAdmin = function(){
                  $http({
                     url:'http://localhost:9999/api/user/add-admin',
                     method:'POST',
@@ -27,7 +27,7 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
                                       );
                     });
         }; 
-       $scope.deleteUser = function(id){
+       $scope.deleteAdmin = function(id){
                 swal({   
                 title: "Are you sure to delete this user?",   
                 text: "It may worstly effect to rational product!",   
@@ -98,7 +98,7 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
 //        $scope.role = 'USER_ROLE';
          $scope.role = 'ADMIN_ROLE';
         $http({
-            url : "http://localhost:9999/api/user/get-all",
+            url : "http://localhost:9999/api/user/get-all-admin",
             method: "GET",
             params : $scope.filter
         }).success(function(response){
@@ -108,7 +108,7 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
         });
     };
     
-    $scope.searchUsers = function(){
+    $scope.searchAdmins = function(){
         $scope.filter.name = $scope.searchName;
         $scope.filter.page = 1;
         $scope.findAllUsers();

@@ -29,8 +29,8 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
 //        }; 
        $scope.deleteBidder = function(id){
                 swal({   
-                title: "Are you sure to delete this user?",   
-                text: "It may worstly effect to rational product!",   
+                title: "Are you sure to delete this Bidder?",   
+                text: "It may worstly effect Bidder Account!",   
                 type: "warning",   
                 showCancelButton: true,   
                 confirmButtonColor: "#ED0909",   
@@ -44,15 +44,42 @@ app.controller('AdminController', function($scope, $http, $filter, $window, $roo
                                             url:'http://localhost:9999/api/user/delete/'+id,
                                             method:'PUT'
                                     }).then(function(response){
-                                        swal("Deleted!", "Current user has been deleted :)", "success");  
+                                        swal("Deleted!", "Current Bidder has been deleted :)", "success");  
                                         $scope.findAllUsers();
                         },function(response){
                         }); 
                         } else {     
-                                swal("Cancelled", "Current user has not been deleted :(", "error");   
+                                swal("Cancelled", "Current Bidder has not been deleted :(", "error");   
                         } 
                  });
-        };     
+        };
+        $scope.activateBidder = function(id){
+                swal({   
+                title: "Are you willing to activate this Bidder?",   
+                text: "This will aprove request for online!",   
+                type: "warning",   
+                showCancelButton: true,   
+                confirmButtonColor: "#ED0909",   
+                confirmButtonText: "Yes",   
+                cancelButtonText: "No",   
+                closeOnConfirm: false,   
+                closeOnCancel: false}, 
+                function(isConfirm){   
+                if (isConfirm) {     
+//                                   $http({
+//                                            url:'http://localhost:9999/api/user/delete/'+id,
+//                                            method:'PUT'
+//                                    }).then(function(response){
+//                                        swal("Deleted!", "Current Bidder has been deleted :)", "success");  
+//                                        $scope.findAllUsers();
+                              swal("Error!", "Function scope blank :)", "error"); 
+//                        },function(response){
+//                        }); 
+                        } else {     
+                                swal("Cancelled", "Current Bidder has not been deleted :(", "error");   
+                        } 
+                 });
+        };
        $scope.dataList = [
                     {
                         id: 1,

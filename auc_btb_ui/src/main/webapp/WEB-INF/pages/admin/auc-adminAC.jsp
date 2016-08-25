@@ -65,12 +65,12 @@
 	<!--end modal add -->
 
                     <div class="row">
-                        <h1 >BIDDERS</h1>
+                        <h1 >BIdder Account</h1>
                         <div >
                             <div >
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name"><br>
+                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; margin-bottom: 5px;" ng-change="searchUsers()" placeholder=" Name"><br>
 <!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
 <!--                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>-->
                                <table class="table table-striped jambo_table bulk_action">

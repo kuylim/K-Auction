@@ -35,13 +35,13 @@
 
                   <li><a><i class="fa fa-user"></i> ACCOUNTS <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Bidder </span></a>
+                          <li ><a href="${pageContext.request.contextPath }/auc-admin/bidder"><i class="fa fa-user-secret"></i>Bidder </span></a>
                           </li>
                       <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Seller</span></a>
                       </li>
                       
                       <security:authorize access="hasRole('SUPERVISOR')">
-                        <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-users"></i>Admin</span></a>
+                        <li><a href="${pageContext.request.contextPath }/auc-admin/superSU"><i class="fa fa-users"></i>Admin</span></a>
 
                         </li>
                       </security:authorize>

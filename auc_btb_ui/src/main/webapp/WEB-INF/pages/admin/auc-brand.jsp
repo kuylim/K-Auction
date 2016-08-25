@@ -124,7 +124,7 @@
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="bra in brand | orderBy:'brand_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="bra in brand | orderBy:'brand_id':'DESC' ">	   
                                     <td>{{$index+1}} </td>
                                     <td>{{bra.brand_id}}</td>
                                     <td>{{bra.name}}</td>
