@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Admin</title>
+    <title>K-Auction | Biders</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -67,7 +67,7 @@
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">ADMINSTRATOR</h4>
+	   	<h4 class="modal-title">BIDDERS</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
@@ -83,7 +83,7 @@
                                     <select ng-model="role"  class="form-control" disabled="true"><option value="USER_ROLE">USER</option><option value="ADMIN_ROLE">ADMIN</option>
                                     </select><br>
 	   	
-	   	<a href="" ng-click="addUsers()" type="button" id="add" class="btn btn-success" 
+	   	<a href="" ng-click="addBidders()" type="button" id="add" class="btn btn-success" 
                                         ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password || !role">Add</a>
 <!--                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password"-->
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
@@ -95,14 +95,14 @@
 	<!--end modal add -->
 
                     <div class="row">
-                        <h1 >Administrator</h1>
+                        <h1 >BIDDERS</h1>
                         <div >
                             <div >
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name">
+<!--                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name">-->
 <!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
-                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>
+<!--                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>-->
                                <table class="table table-striped jambo_table bulk_action">
                                    <thead>
                                  <tr​​>
@@ -112,7 +112,6 @@
                                      <th >Username </th>
                                      <th >Password </th>
                                      <th >Email </th>
-                                     <th >Role As </th>
                                       <th >Address </th>
                                      <th >Action </th>
                                  </tr
@@ -124,12 +123,11 @@
                                     <td>{{usr.firstname}} {{usr.lastname}}</td>
                                     <td>{{usr.username}} </td>
                                     <td>{{usr.password}} </td>
-                                    <td>{{usr.email}}</td>
-                                    <td>{{usr.role}}</td>		    
+                                    <td>{{usr.email}}</td>	    
                                     <td>{{usr.address}}</td>
                                     
                                    <td>
-                                 
+                                     <a href="" ng-click="activateUser(usr.cus_id)"  class='btn btn-info btn-sm'>Activate</a>
                                      <a href="" ng-click="deleteUser(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>

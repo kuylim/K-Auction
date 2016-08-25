@@ -71,7 +71,7 @@
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
-                     <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name" ><br>
+                                    <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name" ><br>
                                     <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
                                     <span>Username</span><input type="text" ng-model="username"  class="form-control" placeholder="Username"><br>
                                     <span>Password</span><input type="password" ng-model="password"  class="form-control" placeholder="Password"><br>

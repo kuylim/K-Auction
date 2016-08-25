@@ -34,7 +34,7 @@
 <!--                  <li><a href="${pageContext.request.contextPath }/auc-admin/user"><i class="fa fa-user"></i>SELLER</a></li>-->
                   <li><a><i class="fa fa-user"></i> ACCOUNTS <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu" >
-                          <li ><a href="${pageContext.request.contextPath }/auc-admin/admin"><i class="fa fa-user-secret"></i>Admin </span></a>
+                          <li ><a href="${pageContext.request.contextPath }/auc-admin/bidder"><i class="fa fa-user-secret"></i>Bidder </span></a>
 <!--                      	<ul class="nav child_menu">
                                             <li><a href="#">រថយន្ដ</a></li>
                                             <li><a href="#">ម៉ូតូ</a></li>
