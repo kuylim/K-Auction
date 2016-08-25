@@ -97,7 +97,6 @@
                                     <td>{{usr.address}}</td>
                                     
                                    <td>
-                                     <a href="" ng-click="activateBidder(usr.cus_id)"  class='btn btn-info btn-sm'>Activate</a>
                                      <a href="" ng-click="deleteBidder(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
