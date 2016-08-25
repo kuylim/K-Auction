@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>K-Auction | Category</title>
+    <title>K-Auction | Admin</title>
 
 	<!-- iCheck -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -36,163 +36,107 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/categoryApp.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/adminApp.js"></script>
     <!-- angular app -->
-    <!--    sweetaler style-->
+       <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.min.js"></script>
  <!--    sweetaler style--> 
-   <!--    Cloak style-->
+
+       <!--    Cloak style-->
     <link href="${pageContext.request.contextPath }/resources/admin/css/cloak/cloakstyle.css" rel="stylesheet">
  <!--    Cloak style-->
   </head>
 
   <body class="nav-md">
-      <div class="container body" ng-app="AuctionApp" ng-cloak="cloak">
-      <div class="main_container">
-        
-           <%@ include file="left-side.jsp" %>
-        
+    <div class="container body">
+      <div class="main_container"  ng-app="AuctionApp">
+          
+       <%@ include file="left-side.jsp" %>
+       
+        <!-- /top navigation -->
          <div class="clearfix"></div>
         <!-- page content -->
-        <div class="right_col" role="main"  >
-          <div class="" ng-controller="CategoryController" ng-cloak="cloak">
+        <div class="right_col" role="main" >
+            <div class="" ng-controller="AdminController" ng-cloak="cloak">
 	<!--add new product-->
-        
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
-	<div class="modal fade" id="addbrand" role="dialog">
+	<div class="modal fade" id="add" role="dialog">
 	   <div class="modal-dialog">
 	    <div class="modal-content">
                         <div class="modal-header">
 	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Add New Category</h4>
+	   	<h4 class="modal-title">ADMINSTRATOR</h4>
 	     </div>
                        <div class="modal-body">
 	         <div class="form-group">
-<!--	   	<span>Owner</span><input type="number" ng-model="ownerid"  class="form-control" placeholder="Input name"><br>-->
-                                    <span>Category Type </span><span style="color: red;">* </span>
-                                    <select class="form-control"  ng-model="categorytype" style="padding-top: 2px;">
-                                        <option value="" >Main Category</option>
-                                         <option value="1">Sub Category</option>
+                     <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name" ><br>
+                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
+                                    <span>Username</span><input type="text" ng-model="username"  class="form-control" placeholder="Username"><br>
+                                    <span>Password</span><input type="password" ng-model="password"  class="form-control" placeholder="Password"><br>
+                                    <span>Phone</span><input type="number" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
+                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Domain@example.com"><br>
+                                    <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
+<!--                                    <span>Role</span><input type="text" ng-model="role"  class="form-control" placeholder="User Role"><br>-->
+                                     <span>User Role</span>
+                                    <select ng-model="role"  class="form-control" disabled="true"><option value="USER_ROLE">USER</option><option value="ADMIN_ROLE">ADMIN</option>
                                     </select><br>
-                                    <span>Category</span>
-                                    <input type="text" class="form-control"  ng-model="categoryname" placeholder="Brand description"><br>
-                                    <span>In Categorize of </span>
-                                    <select class="form-control"  ng-model="parentid" style="padding-top: 2px;" ng-disabled="!categorytype">
-                                        <option ng-repeat=" cat in category | filter: listOnlyMainCategory('parent_id',0)" value="{{cat.cat_id}}" >{{cat.name}}</option>
-                                    </select><br>
-                                    <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
 	   	
-	   	<a href="" ng-click="addCategory()" type="button" id="add" class="btn btn-success" ng-disabled="!categoryname">Add</a>
+	   	<a href="" ng-click="addUsers()" type="button" id="add" class="btn btn-success" 
+                                        ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password || !role">Add</a>
+<!--                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password"-->
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-
                             </div>     	  
 	       </div>
 	    </div>
                     </div>	 	  	     		
 	</div>
 	<!--end modal add -->
-	<!--modal​ update-->
-	 <div class="modal fade" id="updatebrand" role="dialog">
-	   <div class="modal-dialog">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">Update Category</h4>
-                           </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <span>CatID</span>
-                                    <input type="number" class="form-control"  ng-model="catid" readonly="true"><br>
-                                       <span>ParentID</span>
-                                       <input type="number" class="form-control"  ng-model="parentid" readonly="true" style="display:none;"><br>
-                                  
-<!--                                    <select  class="form-control" ng-model="" style="padding-left:5px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>-->
-<!--	   	<span>Category Type </span><span style="color: red;">* </span>
-                                    <select class="form-control"  ng-model="categorytype" style="padding-top: 2px;">
-                                        <option value="" >Main Category</option>
-                                         <option value="1">Sub Category</option>
-                                    </select><br>-->
-                                    <span>Category</span>
-                                    <input type="text" class="form-control"  ng-model="categoryname" placeholder="Brand description"><br>
-                                    <span>In Categorize of </span>
-<!--                                    <select  class="form-control" ng-model="proid" style="padding-left:5px;" 
-                                             ng-options="pro.pro_id as pro.name for pro in products">
-        		</select><br>-->
-<!--                                    <select class="form-control"  ng-model="parentid" style="padding-top: 2px;">
-                                        <option ng-repeat=" cat in category | filter:{'parent_id':0}" value="{{cat.cat_id}}" >{{cat.name}}</option>
-                                    </select><br>-->
-                                    <select  class="form-control" ng-model="parentid" ng-disabled="parentid===0" style="padding-left:8px; padding-top: 2px;" 
-                                             ng-options="cat.cat_id as cat.name for cat in category | filter:listOnlyMainCategory('parent_id',0)">
-        		</select><br>
-                                    <span>Description</span><input type="text" class="form-control"  ng-model="description" placeholder="Brand description"><br>
-	   	<a href="" ng-click="updateCategory()" type="button" id="add" class="btn btn-success" ng-disabled="!categoryname">Update</a>
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>							
-                                </div>    	  
-                            </div>
-                        </div>
-                     </div>	 	  	     		
-	</div>
-	<!--end modal update-->  
+
                     <div class="row">
-                     <h1 >Category Manager</h1>
+                        <h1 >Administrator</h1>
                         <div >
-                            <div >                  
+                            <div >
                                <div class="table-responsive" style="border:none;">
-                                   
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-<!--                                     <span>By Name : </span><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name">
-                                     <span>By Type : </span>
-                                    <select  ng-model="categorytype">
-                                        <option value="0" >Main Category</option>
-                                         <option value="1">Sub Category</option>
-                                    </select>
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>-->
-
-                                <div class="col-sm-4 col-xs-12">
-                                    <table>
-                                        <tr><td> <h5 style="padding-right: 10px;"> SEARCH </h5></span></td>
-                                            <td><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name"></td>
-                                        </tr>
-                                    </table>
-                                 </div>
-
-                                <div class="col-sm-4 col-xs-12">
-
-                                </div>
-                                <div class="col-sm-2 col-sm-offset-2 col-xs-12 col-xs-offset-2">
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
-                                </div>
+                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name">
+<!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
+                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>
                                <table class="table table-striped jambo_table bulk_action">
-                               <thead
+                                   <thead>
                                  <tr​​>
                                      <th>No </th>
-                                     <th >Category ID </th>
-                                     <th >Category Name </th>
-                                     <th >Parrent ID </th>
-                                     <th >Description</th>
+                                     <th >UsrID </th>
+                                     <th >Name </th>
+                                     <th >Username </th>
+                                     <th >Password </th>
+                                     <th >Email </th>
+                                     <th >Role As </th>
+                                      <th >Address </th>
                                      <th >Action </th>
                                  </tr
                                </thead>
                                <tbody>
-                                 <tr ng-repeat="cat in category | orderBy:'cat_id':'reverse':'DESC' ">	   
+                                 <tr ng-repeat="usr in users | orderBy:'cus_id':'reverse':'DESC' ">	   
                                     <td>{{$index+1}} </td>
-                                    <td>{{cat.cat_id}}</td>
-                                    <td>{{cat.name}}</td>
-                                    <td>{{cat.parent_id}}</td>
-                                    <td>{{cat.description}} </td>                          
+                                    <td>{{usr.cus_id}}</td>
+                                    <td>{{usr.firstname}} {{usr.lastname}}</td>
+                                    <td>{{usr.username}} </td>
+                                    <td>{{usr.password}} </td>
+                                    <td>{{usr.email}}</td>
+                                    <td>{{usr.role}}</td>		    
+                                    <td>{{usr.address}}</td>
+                                    
                                    <td>
-                                    <a href="" ng-click="getCategoryObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#updatebrand'>Update</a>
-                                     <a href="" ng-click="deleteCategory(cat.cat_id)"  class='btn btn-danger btn-sm'>Delete</a>
+                                 
+                                     <a href="" ng-click="deleteUser(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
                                  </tbody>
                                </table>
                              </div>
-<!--                             <div   id="pagination" class="pull-right" ></div> -->
+                             <div   id="pagination" class="pull-right" ></div> 
                            </div>
                          </div>
                    </div>
@@ -234,11 +178,7 @@
      <!-- Select2 -->
     <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
-       <!-- angular app -->
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/app.js"></script>
-    <!-- angular app -->
+
      <!-- jQuery Tags Input -->
     <script src="${pageContext.request.contextPath }/resources/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
     <!-- Switchery -->

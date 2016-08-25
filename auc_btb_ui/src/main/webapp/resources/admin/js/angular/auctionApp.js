@@ -288,7 +288,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
              console.log("Find All =>",response);
         });
-        alert("FindAll");
     };
     
     $scope.searchAuctions = function(){
@@ -297,7 +296,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         $scope.filter.categoryId = $scope.searchCat;
         $scope.filter.page = 1;
         $scope.findAllAcutions();
-        alert("SearchAuction");
     };
     
     var PAGINATION = $("#pagination");
@@ -318,13 +316,11 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                     lastClass: 'last',
                     firstClass: 'first'
                 }); 	
-                alert("Pagination buttom");
     };
     
    PAGINATION.on("page", function(event, currentPage){
             $scope.filter.page = currentPage;
             $scope.findAllAcutions();
-            alert("Pagination On");
    });
      $scope.findAllAcutions();
  

@@ -181,7 +181,7 @@
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left"></h3>
                                      <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchProducts()" placeholder=" product name">
-                                    <span>By Category : </span>
+                                    <span>By Brand : </span>
                                     <select ng-model="searchBrand"style="padding-left:8px; height: 30px;" ng-change="searchProducts()"
                                              ng-options="bra.brand_id as bra.name for bra in brand">
                                      </select>
