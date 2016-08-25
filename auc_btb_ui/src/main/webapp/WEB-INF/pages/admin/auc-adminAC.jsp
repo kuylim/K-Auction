@@ -36,7 +36,7 @@
   <!-- angular app -->
 <!--        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
         <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
-        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/adminApp.js"></script>
+        <script src="${pageContext.request.contextPath }/resources/admin/js/angular/bidderApp.js"></script>
     <!-- angular app -->
        <!--    sweetaler style-->
     <link href="${pageContext.request.contextPath }/resources/admin/js/sweetalert/sweetalert.css" rel="stylesheet">
@@ -62,36 +62,6 @@
 	<!--add new product-->
                   <!--replace by the sweetalert start-->
            	<!--modal​ add-->
-	<div class="modal fade" id="add" role="dialog">
-	   <div class="modal-dialog">
-	    <div class="modal-content">
-                        <div class="modal-header">
-	   	<button type="button" class="close" data-dismiss="modal">&times;</button>
-	   	<h4 class="modal-title">BIDDERS</h4>
-	     </div>
-                       <div class="modal-body">
-	         <div class="form-group">
-                     <span>Firstname</span><input type="text" ng-model="firstname"  class="form-control" placeholder="First name" ><br>
-                                    <span>Lastname</span><input type="text" ng-model="lastname"  class="form-control" placeholder="Lastt name"><br>
-                                    <span>Username</span><input type="text" ng-model="username"  class="form-control" placeholder="Username"><br>
-                                    <span>Password</span><input type="password" ng-model="password"  class="form-control" placeholder="Password"><br>
-                                    <span>Phone</span><input type="number" ng-model="phone"  class="form-control" placeholder="Phone number"><br>
-                                    <span>Email</span><input type="email" ng-model="email"  class="form-control" placeholder="Domain@example.com"><br>
-                                    <span>Address</span><input type="text" ng-model="address"  class="form-control" placeholder="Current address"><br>
-<!--                                    <span>Role</span><input type="text" ng-model="role"  class="form-control" placeholder="User Role"><br>-->
-                                     <span>User Role</span>
-                                    <select ng-model="role"  class="form-control" disabled="true"><option value="USER_ROLE">USER</option><option value="ADMIN_ROLE">ADMIN</option>
-                                    </select><br>
-	   	
-	   	<a href="" ng-click="addBidders()" type="button" id="add" class="btn btn-success" 
-                                        ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password || !role">Add</a>
-<!--                                    ng-disabled="!firstname || !lastname || !phone || !email || !address || !username || !password"-->
-	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>
-                            </div>     	  
-	       </div>
-	    </div>
-                    </div>	 	  	     		
-	</div>
 	<!--end modal add -->
 
                     <div class="row">
@@ -100,7 +70,7 @@
                             <div >
                                <div class="table-responsive" style="border:none;">
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-<!--                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name">-->
+                                        <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchUsers()" placeholder=" Name"><br>
 <!--                                        <span>By Email : </span><input   ng-model="searchEmail" style=" height: 30px; " ng-change="searchUsersEmail()" placeholder=" domain@example.com">-->
 <!--                                         <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#add"  >SuperSU</button>-->
                                <table class="table table-striped jambo_table bulk_action">
@@ -127,8 +97,8 @@
                                     <td>{{usr.address}}</td>
                                     
                                    <td>
-                                     <a href="" ng-click="activateUser(usr.cus_id)"  class='btn btn-info btn-sm'>Activate</a>
-                                     <a href="" ng-click="deleteUser(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
+                                     <a href="" ng-click="activateBidder(usr.cus_id)"  class='btn btn-info btn-sm'>Activate</a>
+                                     <a href="" ng-click="deleteBidder(usr.cus_id)"  class='btn btn-danger btn-sm'>Remove</a>
                                    </td>
                                   </tr>
                                  </tbody>
