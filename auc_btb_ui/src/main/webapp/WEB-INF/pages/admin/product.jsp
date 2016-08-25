@@ -180,9 +180,9 @@
                                 
                                <div class="table-responsive" style="border:none;">
                                    <h3 class="pull-left"></h3>
-                                     <span>By Name : </span><input   ng-model="searchProName" style=" height: 30px; " placeholder=" product name">
+                                     <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchProducts()" placeholder=" product name">
                                     <span>By Category : </span>
-                                    <select ng-model="searchBra"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
+                                    <select ng-model="searchBrand"style="padding-left:8px; height: 30px;" ng-change="searchProducts()"
                                              ng-options="bra.brand_id as bra.name for bra in brand">
                                      </select>
                                     <button  ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'Auction Report'" class="btn-sm btn-primary">Export Excel</button>
@@ -260,7 +260,7 @@
 <link href="${pageContext.request.contextPath }/resources/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
 <!-- angular app -->
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
 <script src="${pageContext.request.contextPath }/resources/admin/js/angular/angular.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/admin/js/angular/productApp.js"></script>
 <script src="${pageContext.request.contextPath }/resources/admin/js/jquery/jquery.js"></script>
@@ -299,7 +299,13 @@
  <!--Export to excel-->
 <script src="${pageContext.request.contextPath }/resources/admin/js/excel/json-export-excel.min.js"></script>
 <script src="${pageContext.request.contextPath }/resources/admin/js/excel/FileSaver.js"></script>
-
+<!-- boot page -->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.bootpag.min.js"></script>
+    <!-- main app -->
+    <script src="${pageContext.request.contextPath }/resources/js/main_app.js"></script>
+    <!--pop up product detail-->
+    <script src="${pageContext.request.contextPath }/resources/js/jquery.colorbox.js"></script>
+    <!--<script>
 <script type="text/javascript">
         $(".filer-fancybox").fancybox({
             padding: 0,
