@@ -214,6 +214,18 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
             $scope.findAllProducts();
    });
      $scope.findAllProducts();
+     
+   $scope.showImage = function(path, name)
+   {
+       swal({
+            title: name,
+             text: 'Modal with a custom image.',
+            imageUrl: 'https://unsplash.it/400/200',
+            imageWidth: 600,
+            imageHeight: 800,
+            animation: false
+          });
+   }
 });
 
 app.directive('myFilter', [function() {

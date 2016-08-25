@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,9 +81,10 @@
 	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="current price"><br>
 	   	<span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
 	   	<span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="end date"><br>
-	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="userid"><br>
-	   	<a href="" ng-click="addAuction()" type="button" id="add" class="btn btn-success" 
-                                        ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Add</a>
+                <security:authorize access="isAuthenticated()">
+                    <a href="" ng-click="addAuction(<security:authentication property="principal.id" />)" type="button" id="add" class="btn btn-success" 
+                                        ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate">Add</a>
+                </security:authorize>                       
 	   	<button type="button" class="btn btn-default"   data-dismiss="modal">Close</button>                            
                              </div>     	  
 	       </div>
@@ -119,8 +121,10 @@
 	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="current price"><br>
 	   	<span>Started Date</span><input type="text" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
 	   	<span>End Date</span><input type="text" ng-model="enddate" class="form-control" placeholder="end date"><br>
-	   	<span>User ID</span><input type="number" class="form-control"  ng-model="usrid" placeholder="userid"><br>			
-	   	<a href="" ng-click="updateAuction(id)" class="btn btn-success"  
+                
+                    <span>Admin ID</span><input type="number" class="form-control"  ng-model="<security:authentication property="principal.id" />" placeholder="userid" readonly=""><br>			
+	   	
+                <a href="" ng-click="updateAuction(id)" class="btn btn-success"  
                                     ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
 	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
 	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>

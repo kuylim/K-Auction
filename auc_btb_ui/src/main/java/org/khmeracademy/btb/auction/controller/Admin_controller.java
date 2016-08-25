@@ -56,10 +56,13 @@ public class Admin_controller {
         return "admin/auc-brand";
     }
     
-// @RequestMapping(value={"/auc-admin/user/"})
-//    public String aucUserAdd(){
-//        return "admin/auc-user-add";
-//    }     
+    @RequestMapping(value = {"/auc-admin/account/{id}"})
+    public String aucAccount(ModelMap model,   @PathVariable("id") int id)
+    {
+        model.addAttribute("id", id);
+        return "admin/auc-account";
+    }
+      
     @RequestMapping(value={"/auc-admin/user/update/{id}"})
     public String userUpdate(ModelMap model,   @PathVariable("id") int id){
         model.addAttribute("id", id);

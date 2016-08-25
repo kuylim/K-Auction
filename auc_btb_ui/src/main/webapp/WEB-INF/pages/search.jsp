@@ -214,7 +214,7 @@
                                     <div  class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="256" height="256" /></a>
+                                                <a href="${pageContext.request.contextPath }/product-details/{{auc.auc_id}}"><img src="http://localhost:9999/resources/{{auc.images[0].img_path}}" alt="" width="200" height="200" /></a>
                                                 <h2>{{auc.current_price}} $</h2>
                                                 <p>{{auc.name}}</p>
 

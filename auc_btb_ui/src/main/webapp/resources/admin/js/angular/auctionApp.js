@@ -6,7 +6,7 @@
 var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
 app.controller('AuctionController', function($scope, $http, $filter, $window, $rootScope){
 //-------------------------------------------------------------------------------------------------Auction Manager block---------------//
-    $scope.addAuction = function(){
+    $scope.addAuction = function(admin_id){
             $http({
             url:'http://localhost:9999/api/auction/add',
             method:'POST',
@@ -20,7 +20,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                 "product_condition": $scope.productcondition,
                 "start_date":  $scope.startdate,
                 "start_price": $scope.startprice,
-                "usr_id": $scope.usrid
+                "usr_id": admin_id
            }
             }).then(function(response){
                       $scope.findAllAcutions();

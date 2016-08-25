@@ -194,6 +194,7 @@
                                      <th>No </th>
                                      <th >PID </th>
                                      <th >Name </th>
+                                     <th >Thumnail</th>
                                      <th >Information </th>
                                      <th >Action </th>
                                  </tr
@@ -203,6 +204,7 @@
                                     <td>{{$index+1}} </td>
                                     <td>{{pro.pro_id}}</td>
                                     <td>{{pro.name}}</td>
+                                    <td ng-click="showImage(pro.images[0].img_path,pro.name)"><img src="http://localhost:9999/resources/{{pro.images[0].img_path}}" width="40" height="40"/></td>
                                     <td>{{pro.pro_info}}</td>		    
                                    <td>
                                     <a href="" ng-click="getProductObject(this)" class='btn btn-success btn-sm' data-toggle='modal' data-target='#update'>Update</a>

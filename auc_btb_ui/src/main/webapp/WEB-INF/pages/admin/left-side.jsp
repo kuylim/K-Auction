@@ -15,7 +15,9 @@
               </div>
               <div class="profile_info">
                 <span>WELCOME,</span>
-                <h2>TITH KUYLIM</h2>
+                <security:authorize access="isAuthenticated()">
+                    <h2><security:authentication property="principal.username" /></h2>
+                </security:authorize>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -24,7 +26,12 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                  <security:authorize access="hasRole('SUPERVISOR')">
+                    <h3>SUPERVISOR</h3>
+                </security:authorize>
+                    <security:authorize access="hasRole('ADMIN')">
+                    <h3>ADMIN</h3>
+                </security:authorize>
                 <ul class="nav side-menu" ng-app="AuctionApp">
                    <li><a href="${pageContext.request.contextPath }/auc-admin"><i class="fa fa-home"></i> HOME <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
@@ -82,26 +89,21 @@
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
-
+              <security:authorize access="isAuthenticated()">
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt="">ទិត្យ គុយលីម
+                    <img src="${pageContext.request.contextPath }/resources/admin/images/img.jpg" alt=""><security:authentication property="principal.username" />
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> គណនី</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>ការកំណត់</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">ជំនួយការ</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> ចាកចេញ</a></li>
+                    <li><a href="${pageContext.request.contextPath }/auc-admin/account/<security:authentication property="principal.id" />"> Account</a></li>
+                       
+                    <li><a href="${pageContext.request.contextPath }/logout"><i class="fa fa-sign-out pull-right"></i> Sign Out</a></li>
                   </ul>
                 </li>
               </ul>
+              </security:authorize>
             </nav>
           </div>
         </div>

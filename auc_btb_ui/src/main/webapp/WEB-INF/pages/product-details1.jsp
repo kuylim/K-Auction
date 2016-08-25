@@ -256,7 +256,7 @@
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">	
-                                    <div class="col-sm-4" ng-repeat="auc in New_auctions | limitTo : 3 : 0">
+                                    <div class="col-sm-3" ng-repeat="auc in New_auctions | limitTo : 4 : 0">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center" >
@@ -277,7 +277,7 @@
                                             </div>
                                 </div>
                                 <div class="item">	
-                                    <div class="col-sm-4" ng-repeat="auc in New_auctions | limitTo : 3 : 3">
+                                    <div class="col-sm-3" ng-repeat="auc in New_auctions | limitTo : 4 : 4">
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center" >
