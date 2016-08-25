@@ -23,7 +23,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                 "usr_id": $scope.usrid
            }
             }).then(function(response){
-                      $scope.getAuction();
+                      $scope.findAllAcutions();
                             swal(
                                 'Success!',
                                 'Add successfully!',
@@ -285,10 +285,16 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             params : $scope.filter
         }).success(function(response){
             $scope.auctions = response.DATA;
+            
+            angular.forEach($scope.auctions, function(item, index){
+                item.start_date = $filter('date')(item.start_date, 'dd/MM/yyyy HH:mm:ss');
+                item.end_date = $filter('date')(item.end_date, 'dd/MM/yyyy HH:mm:ss');
+                console.log(item.start_date);
+            });
+            
             $scope.setPagination(response.PAGINATION.TOTAL_PAGES);
              console.log("Find All =>",response);
         });
-        alert("FindAll");
     };
     
     $scope.searchAuctions = function(){
@@ -297,7 +303,6 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
         $scope.filter.categoryId = $scope.searchCat;
         $scope.filter.page = 1;
         $scope.findAllAcutions();
-        alert("SearchAuction");
     };
     
     var PAGINATION = $("#pagination");
@@ -318,13 +323,11 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                     lastClass: 'last',
                     firstClass: 'first'
                 }); 	
-                alert("Pagination buttom");
     };
     
    PAGINATION.on("page", function(event, currentPage){
             $scope.filter.page = currentPage;
             $scope.findAllAcutions();
-            alert("Pagination On");
    });
      $scope.findAllAcutions();
  

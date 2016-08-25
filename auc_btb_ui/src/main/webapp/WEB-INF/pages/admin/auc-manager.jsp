@@ -142,8 +142,6 @@
                                      <span>By Category : </span><select ng-model="searchCat"style="padding-left:8px; height: 30px;" ng-change="searchAuctions()"
                                                        ng-options="cat.cat_id as cat.name for cat in category | filter: listOnlySubCategory('parent_id', 0)">
                                        </select>
-                                       <button ng-click="searchAuctions()" style="margin-top:5px; margin-left:1px; height: 30px;" >Search</button>
-
                                        <button  ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'Auction Report'" class="btn-sm btn-primary">Export Excel</button>
                                        <button type="button" style="margin-top:5px; margin-left:1px; height: 30px;" id="print">Print</button>
                                        <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Auction Item</button>
@@ -179,7 +177,7 @@
                                     
                                     <td>{{au.number_of_bids}}</td>
                                     <td >{{au.current_price}} </td>
-                                   <td >{{au.start_date  | date:'medium'}} </td>
+                                   <td >{{au.start_date  }} </td>
                                    <td >{{au.end_date  | date:'medium'}} </td>
                                    
                                    

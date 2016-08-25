@@ -142,14 +142,30 @@
                         <div >
                             <div >                  
                                <div class="table-responsive" style="border:none;">
+                                   
 <!--                                   <h3 class="pull-left">Filter Here..</h3>-->
-                                     <span>By Name : </span><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name">
+<!--                                     <span>By Name : </span><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name">
                                      <span>By Type : </span>
                                     <select  ng-model="categorytype">
                                         <option value="0" >Main Category</option>
                                          <option value="1">Sub Category</option>
                                     </select>
-                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>-->
+
+                                <div class="col-sm-4 col-xs-12">
+                                    <table>
+                                        <tr><td> <h5 style="padding-right: 10px;"> SEARCH </h5></span></td>
+                                            <td><input   ng-model="searchName" ng-change="searchCategories()" style=" height: 30px; " placeholder="Category name"></td>
+                                        </tr>
+                                    </table>
+                                 </div>
+
+                                <div class="col-sm-4 col-xs-12">
+
+                                </div>
+                                <div class="col-sm-2 col-sm-offset-2 col-xs-12 col-xs-offset-2">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addbrand"  >Add New Category</button>
+                                </div>
                                <table class="table table-striped jambo_table bulk_action">
                                <thead
                                  <tr​​>
