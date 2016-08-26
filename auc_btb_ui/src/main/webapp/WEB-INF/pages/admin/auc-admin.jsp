@@ -115,7 +115,7 @@
                             </a>
                               <div class="media-body" >
                               <a class="title" href="${pageContext.request.contextPath }/auc-admin/manage/info/{{auc.auc_id}}" target="_new">{{auc.name}}</a>
-                              <p>Get Bid<strong>{{auc.number_of_bids}} Bids</strong></p>
+                              <p>Get Bid <strong>{{auc.number_of_bids}} Bids</strong></p>
                               <p> <small>{{auc.remainingTime | durationview}}</small>
                               </p>
                             </div>
@@ -140,7 +140,7 @@
                             </a>
                               <div class="media-body" >
                               <a class="title" href="${pageContext.request.contextPath }/auc-admin/manage/info/{{auc.auc_id}}" target="_new">{{auc.name}}</a>
-                              <p>Get Bid<strong>{{auc.number_of_bids}} Bids</strong></p>
+                              <p>Get Bid <strong>{{auc.number_of_bids}} Bids</strong></p>
                               <p> <small>{{auc.remainingTime | durationview}}</small>
                               </p>
                             </div>

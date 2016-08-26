@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var app = angular.module('AuctionApp', []);
+var app = angular.module('AuctionApp', ["ngJsonExportExcel"]);
 app.controller('ProductController', function($scope, $http, $filter, $window, $rootScope){
 //    $scope.getProduct = function(){
 //        $http({
@@ -167,10 +167,11 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
             page : 1,
             limit : 10,
             name : '',
-            brandId: ''
+            brandId: 4
         };
         
     $scope.findAllProducts = function(){
+ 
         $http({
             url : "http://localhost:9999/api/product/get-all",
             method: "GET",
@@ -181,6 +182,8 @@ app.controller('ProductController', function($scope, $http, $filter, $window, $r
              console.log("Find All =>",response);
         });
     };
+    
+    $scope.searchBrand = 4;
     
     $scope.searchProducts = function(){
         $scope.filter.name = $scope.searchName;

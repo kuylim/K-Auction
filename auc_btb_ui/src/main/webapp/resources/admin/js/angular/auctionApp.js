@@ -73,7 +73,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
             $scope.aucid =rec.au.auc_id;
             $scope.currentObject = rec.au;
     };
-    $scope.updateAuction = function(){ 
+    $scope.updateAuction = function(id){ 
            // alert("Owner is "+$scope.ownerid+" , product is"+$scope.proid);
             swal({   
             title: "Are you sure to update this record?",   
@@ -101,7 +101,7 @@ app.controller('AuctionController', function($scope, $http, $filter, $window, $r
                                      "product_condition": $scope.productcondition,
                                      "start_date":  $scope.startdate,
                                      "start_price": $scope.startprice,
-                                      "usr_id":1 //$scope.usrid 
+                                      "usr_id": id //$scope.usrid 
                     }
                     }).then(function(response){
                             $scope.currentObject.bid_increment_price = $scope.bidincrementprice;

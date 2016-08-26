@@ -26,7 +26,7 @@ public class User_controller {
         return "product-details1";
     }
     
-    @RequestMapping(value={"/access-denied", "/error"})
+    @RequestMapping(value={"/access-denied"})
     public String Permision()
     {
         return "no-permison";

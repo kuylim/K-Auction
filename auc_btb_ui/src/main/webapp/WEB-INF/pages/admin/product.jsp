@@ -183,9 +183,9 @@
                                      <span>By Name : </span><input   ng-model="searchName" style=" height: 30px; " ng-change="searchProducts()" placeholder=" product name">
                                     <span>By Brand : </span>
                                     <select ng-model="searchBrand"style="padding-left:8px; height: 30px;" ng-change="searchProducts()"
-                                             ng-options="bra.brand_id as bra.name for bra in brand">
+                                             ng-options="bra.brand_id as bra.name for bra in brand" >
                                      </select>
-                                    <button  ng-json-export-excel data="auctions" report-fields="{auc_id: 'Auction ID', firstname: 'Supplier firstname', lastname: 'Supplier lastname', phone: 'Supplier phone', name: 'Product name', product_condition: 'Product condition', current_price: 'Current price', start_date: 'Start Date', end_date: 'End Date'}" filename="'Auction Report'" class="btn-sm btn-primary">Export Excel</button>
+                                    <button  ng-json-export-excel data="products" report-fields="{pro_id: 'Product ID', name: 'Product Name', pro_info: 'Product Information'}" filename="'Products'" class="btn-sm btn-primary">Export Excel</button>
                                     <button type="button" style="margin-top:5px; margin-left:1px; height: 30px;" id="print">Print</button>
                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#add"  >Add Product</button>
                                    <table class="table table-striped jambo_table bulk_action" id="tblproduct">
@@ -324,7 +324,7 @@
                 overlay : null
             }
         });
-    </script>
+    </script>-->
 
 <script>
 

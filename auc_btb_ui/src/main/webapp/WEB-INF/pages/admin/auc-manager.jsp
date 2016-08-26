@@ -119,12 +119,12 @@
 	   	<span>Buy Price</span><input type="number" ng-model="buyprice"  class="form-control" placeholder="buy price"><br>
 	   	<span>Bid Increase Price</span><input type="number" class="form-control"  ng-model="bidincrementprice" placeholder="increase price per bid"><br>
 	   	<span>Current Price</span><input type="number" ng-model="currentprice"  class="form-control" placeholder="current price"><br>
-	   	<span>Started Date</span><input type="text" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
-	   	<span>End Date</span><input type="text" ng-model="enddate" class="form-control" placeholder="end date"><br>
+                <span>Started Date</span><input type="date" class="form-control"  ng-model="startdate" placeholder="starting date"><br>
+                <span>End Date</span><input type="date" ng-model="enddate" class="form-control" placeholder="end date"><br>
                 
-                    <span>Admin ID</span><input type="number" class="form-control"  ng-model="<security:authentication property="principal.id" />" placeholder="userid" readonly=""><br>			
+                 		
 	   	
-                <a href="" ng-click="updateAuction(id)" class="btn btn-success"  
+                <a href="" ng-click="updateAuction(<security:authentication property="principal.id" />)" class="btn btn-success"  
                                     ng-disabled="!ownerid || !proid || !productcondition || !startprice || !buyprice || !bidincrementprice || !startdate || !enddate || !usrid">Update</a>
 	   	<button type="button" class="btn btn-default" id="btnclose" data-dismiss="modal">Close</button>								
 	   	<!-- <a href="" ng-click="updatePerson(id)" class="btn btn-success" ng-disabled="!name || name.$error.pattern || !age || age.$error.pattern">Update</a>
@@ -182,7 +182,7 @@
                                     <td>{{au.number_of_bids}}</td>
                                     <td >{{au.current_price}} </td>
                                    <td >{{au.start_date  }} </td>
-                                   <td >{{au.end_date  | date:'medium'}} </td>
+                                   <td >{{au.end_date }} </td>
                                    
                                    
                                    <td>
