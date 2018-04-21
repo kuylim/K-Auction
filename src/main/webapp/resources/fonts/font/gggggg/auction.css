@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face
+{
+	font-family: "Khmer OS";
+	src: url(../../production/font/KhmerOS.eot);
+	src: local('Khmer OS') url(../../production/font/KhmerOS.ttf) format('truetype');
+}
+
+body
+{
+	font-family: "Khmer OS";
+}
